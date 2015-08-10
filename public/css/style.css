@@ -1,0 +1,76 @@
+img.error {
+  width: inherit;  /* This makes the next two lines work in IE8. */
+  max-width: 100%; /* Add !important if needed. */
+  height: auto;    /* Add !important if needed. */
+}
+img.main {
+  display: inline-block;
+  width: inherit;  /* This makes the next two lines work in IE8. */
+  max-width: 100%; /* Add !important if needed. */
+  height: auto;    /* Add !important if needed. */
+}
+img.logo {
+  display: inline-block;
+  width: inherit;  /* This makes the next two lines work in IE8. */
+  max-height: 50px; /* Add !important if needed. */
+}
+div.error{
+	margin: auto;
+	text-align: center;
+	max-width: 800px;
+}
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+div.detail{
+	float: left;
+	background-color: #7F7F7F;
+	width: 100%;
+	min-height: 180px;
+}
+
+ul#horizontal-list {
+	float:left;
+	max-width: 100%;
+	list-style: none;
+	text-align:center;
+	/*background-color: #FFFF00;*/
+	padding: 0;
+    list-style-type: none;
+    margin: 0 auto;
+}
+ul#horizontal-list li {
+	display: inline;
+}
+div.catalogue{
+	display: block;
+	margin: 10px 0px;
+	padding:0px;
+	/*background-color: #00FF00;*/
+	text-align: center;
+}
+div.brand{
+	margin: 10px 0px;
+	height: inherit;
+	text-align: center;
+}
+.head1{
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight: bold;
+	font-size: 20px;
+	color: #F2F100;
+}
+@media screen and (min-width: 768px) {
+	div.catalogue{
+		float:left;
+		width: 30%;
+		height: 100%;
+	}
+	ul#horizontal-list {
+		max-width: 70%;
+	}
+	div.brand{
+		text-align: left;
+	}
+}
