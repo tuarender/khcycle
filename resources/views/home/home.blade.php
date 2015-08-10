@@ -13,7 +13,7 @@
       <!-- Wrapper for slides -->
       <div class="carousel-inner" role="listbox">
         <div class="item active">
-          <img src="images/carousel/slide1.jpg">
+          <img src="images/banner/banner1.jpg">
         </div>
         <div class="item">
           <img src="images/carousel/slide2.jpg">
@@ -32,15 +32,15 @@
       <div class="brand head1">
         KH Product
         <ul id="horizontal-list">
+          <li><a href="#"><img src="images/brand/assos.jpg" /></a></li>
+          <li><a href="#"><img src="images/brand/lightweight.jpg" /></a></li>
+          <li><a href="#"><img src="images/brand/scott.jpg" /></a></li>
+          <li><a href="#"><img src="images/brand/sidi.jpg" /></a></li>
+          <li><a href="#"><img src="images/brand/syncros.jpg" /></a></li>
+          <li><a href="#"><img src="images/brand/yeti.jpg" /></a></li>
           <li><a href="#"><img src="images/brand/brand1.gif" /></a></li>
           <li><a href="#"><img src="images/brand/brand2.gif" /></a></li>
           <li><a href="#"><img src="images/brand/brand3.gif" /></a></li>
-          <li><a href="#"><img src="images/brand/brand4.gif" /></a></li>
-          <li><a href="#"><img src="images/brand/brand4.gif" /></a></li>
-          <li><a href="#"><img src="images/brand/brand4.gif" /></a></li>
-          <li><a href="#"><img src="images/brand/brand4.gif" /></a></li>
-          <li><a href="#"><img src="images/brand/brand4.gif" /></a></li>
-          <li><a href="#"><img src="images/brand/brand4.gif" /></a></li>
           <li><a href="#"><img src="images/brand/brand4.gif" /></a></li>
         </ul>
       </div>

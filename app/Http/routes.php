@@ -12,5 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return View('home.home');
 });
+
+Route::any('home', function () {
+    return View('home.home');
+});
+
+Route::get('contact', function () {
+    return 'fuck you';
+});
+
