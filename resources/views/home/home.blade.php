@@ -1,26 +1,26 @@
 @extends('app')
 @section('content')
-  <div class="container2" style="padding:50px 0px">
+  <div class="slideContainer">
 
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
       <!-- Indicators -->
       <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
         <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
+<!--         <li data-target="#myCarousel" data-slide-to="2"></li> -->
       </ol>
 
       <!-- Wrapper for slides -->
       <div class="carousel-inner" role="listbox">
         <div class="item active">
-          <img src="images/banner/banner1.jpg">
+          <img src="images/banner/slide1.png">
         </div>
         <div class="item">
-          <img src="images/carousel/slide2.jpg">
+          <img src="images/banner/slide2.png">
         </div>
-        <div class="item">
+<!--         <div class="item">
           <img src="images/carousel/slide3.jpg">
-        </div>
+        </div> -->
       </div>
 
     </div>
