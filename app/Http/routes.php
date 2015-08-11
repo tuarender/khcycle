@@ -15,7 +15,7 @@ Route::get('/', function () {
     return View('home.home');
 });
 
-Route::any('home', function () {
+Route::get('home', function () {
     return View('home.home');
 });
 

@@ -13,6 +13,7 @@
       <!-- Wrapper for slides -->
       <div class="carousel-inner" role="listbox">
         <div class="item active">
+<<<<<<< HEAD
           <img src="images/banner/slide1.png">
         </div>
         <div class="item">
@@ -21,6 +22,16 @@
 <!--         <div class="item">
           <img src="images/carousel/slide3.jpg">
         </div> -->
+=======
+          <img src="images/banner/banner1.jpg" class="img-responsive">
+        </div>
+        <div class="item">
+          <img src="images/carousel/slide2.jpg" class="img-responsive">
+        </div>
+        <div class="item">
+          <img src="images/carousel/slide3.jpg" class="img-responsive">
+        </div>
+>>>>>>> origin/master
       </div>
 
     </div>
