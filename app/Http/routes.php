@@ -15,9 +15,11 @@ Route::get('/', function () {
     return View('home.home');
 });
 
-Route::get('home', function () {
+/*Route::get('home', function () {
     return View('home.home');
-});
+});*/
+
+Route::get('home', 'ProductController@index');
 
 Route::get('contact', function () {
     return 'fuck you';
