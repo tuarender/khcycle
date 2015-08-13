@@ -12,14 +12,26 @@
 */
 
 Route::get('/', function () {
-    return View('home.home');
+    return View::make('home.home');
 });
 
 Route::get('home', function () {
-    return View('home.home');
+    return View::make('home.home');
+});
+
+Route::get('product',function(){
+    return View::make('product.product');
+});
+
+Route::get('news',function(){
+   return View::make('news.news');
+});
+
+Route::get('member',function(){
+   return View::make('member.member');
 });
 
 Route::get('contact', function () {
-    return 'fuck you';
+    return View::make('contact.contact')->with('name','Contact');
 });
 
