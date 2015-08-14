@@ -15,7 +15,7 @@
             <li><a href="product">PRODUCT</a></li>
             <li><a href="news">NEWS/ARTICLES</a></li>
             <li><a href="contact">CONTACT</a></li>
-            <li><a href="news">MEMBER</a></li>
+            <li><a href="member">MEMBER</a></li>
             <li><a target="_blank" href="http://www.thaimtb.co.th/forum/index.php">WEBBOARD</a></li>
           </ul>
 
