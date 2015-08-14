@@ -18,9 +18,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $data = DB::select('select * from TEST_TABLE');
+        $brand = DB::select('SELECT BRAND_ID,BRAND_ORDER,BRAND_NAME,BRAND_LOGO_NAME FROM KH_BRAND WHERE BRAND_DELETE_STATUS <> 1');
 
-        return view('home.home', ['data' => $data]);
+        return view('product.product', ['brand' => $brand]);
     }
 
     /**

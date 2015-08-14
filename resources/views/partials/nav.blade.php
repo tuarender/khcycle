@@ -11,7 +11,7 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="home">HOME</a></li>
+            <li><a href="home">HOME</a></li>
             <li><a href="product">PRODUCT</a></li>
             <li><a href="news">NEWS/ARTICLES</a></li>
             <li><a href="contact">CONTACT</a></li>
@@ -19,7 +19,7 @@
             <li><a target="_blank" href="http://www.thaimtb.co.th/forum/index.php">WEBBOARD</a></li>
           </ul>
 
-          <div class="col-sm-3 col-md-3 pull-right">
+<!--           <div class="col-sm-3 col-md-3 pull-right">
             <form class="navbar-form" role="search">
               <div class="input-group">
                 <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
@@ -28,7 +28,7 @@
                 </div>
               </div>
             </form>
-          </div>
+          </div> -->
         </div><!--/.nav-collapse -->
       </div>
     </nav>
