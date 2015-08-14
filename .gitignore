@@ -2,3 +2,5 @@
 /node_modules
 Homestead.yaml
 .env
+app/Http/routes.php
+app/Http/routes.php
