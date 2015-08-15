@@ -18,7 +18,6 @@ class CategoryController extends Controller
     {
         //
         $category = \DB::select('select * from kh_category');
-
         return view('category.category',['categories'=> $category]);
     }
 
