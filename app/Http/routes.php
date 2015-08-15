@@ -19,6 +19,8 @@ Route::get('home', function () {
     return View::make('home.home');
 });
 
+Route::get('category','CategoryController@index');
+
 Route::get('product',function(){
     return View::make('product.product');
 });

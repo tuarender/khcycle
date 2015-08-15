@@ -17,6 +17,9 @@ class CategoryController extends Controller
     public function index()
     {
         //
+        $category = \DB::select('select * from kh_category');
+
+        return view('category.category',['categories'=> $category]);
     }
 
     /**
