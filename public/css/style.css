@@ -66,6 +66,27 @@ div.brand{
 }
 .productContainer{
 	padding-top: 50px;
+	max-width:1240px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.brandContainer{
+	float: left;
+	width: 100%;
+}
+.brandDiv{
+	margin: 10px 0px;
+	max-width: 200px;
+}
+.brandList >li{
+	list-style: none;
+	padding-left: 0px;
+}
+@media screen and (min-width: 768px){
+	.brandContainer{
+		min-width: 250px;
+		max-width: 30%;
+	}
 }
 @media screen and (min-width: 992px) {
 	div.catalogue{

@@ -4365,6 +4365,11 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   margin-top: 4px;
 }
 @media (min-width: 992px) {
+  .navAlignCenter{
+    width: 1200px;
+    margin-right: auto;
+    margin-left: auto;
+  }
   .navbar-toggle {
     display: none;
   }
