@@ -7,11 +7,12 @@
 			<?php
 			  if(isset($brand)){
 			    //print_r($brand[0]);
-			    echo "<ul class='brandList'>";
+			    echo "<ul id='brandList' class='brandList'>";
 			    for($i=0;$i<count($brand);$i++){
-			    	echo "<li>";
-			    	echo "<a href='#'>";
-			    	echo "<div class='brandDiv'><img src='images/brand/product/sample".$brand[$i]["BRAND_ID"].".jpg'>";
+			    	echo "<li id='".$brand[$i]["BRAND_ID"]."'>";
+			    	echo "<a href='javascript:getProduct(".$brand[$i]["BRAND_ID"].",0)'>";
+			    	echo "<div class='brandDiv'>";
+			    	echo "<img src='images/brand/product/sample".$brand[$i]["BRAND_ID"].".jpg' class='brandLogo'>";
 			    	echo "</div>";
 			    	echo "</a>";
 			    	echo "</li>";
@@ -21,10 +22,40 @@
 			?>
 		</div>
 	</div>
-	<div>
+	<div id="productList">
 		Product Detail
 	</div>
 </div>
+@endsection
+@section('scripts')
+    <script type="text/javascript">
+    	$(document).ready(function(){
+    		getProduct($('#brandList li').first().attr("id"));
 
+    		$(window).on('resize', function(){
+    			console.log($(this).height());
+			    if ($(this).width() <= 768){
+			    	$('.brandWrapper').css('height', 'none'); //set max height
+			    }else{
+			    	$('.brandWrapper').css('height', $(window).height()-50); 
+		    	}
+		   	}).resize();
+		});
+
+		function getProduct(brandId,groupId){
+			var url = "product/"+brandId;
+			if(groupId){
+				url += "/"+groupId;
+			}
+			$.ajax({
+				url: url, 
+				success: function(result){
+					if(result){
+						$('#productList').html(result);
+					}
+		    	}
+			});
+		}
+    </script>
 @endsection
 @stop

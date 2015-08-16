@@ -38,3 +38,4 @@ Route::get('contact', function () {
 });
 
 Route::get('product', 'ProductController@index');
+Route::get('product/{brandId}/{groupId?}', 'ProductController@getProduct');

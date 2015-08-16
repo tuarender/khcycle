@@ -66,7 +66,7 @@ div.brand{
 }
 .productContainer{
 	padding-top: 50px;
-	max-width:1240px;
+	max-width:1340px;
 	margin:10px auto;
 }
 .brandWrapper{
@@ -76,7 +76,6 @@ div.brand{
 }
 .brandDiv{
 	max-width: 200px;
-	margin: 5px 0px;
 }
 .brandList{
 	padding-left: 0px;
@@ -89,8 +88,20 @@ div.brand{
 	margin: 0px 5px;
 }
 .brandContainer{
-	width: 460px;
+	width: 430px;
 	margin: 0px auto;
+}
+.brandLogo{
+	border: 5px solid #FFFFFF;
+}
+.brandLogo:hover{
+	border-color: #F2F100;
+}
+.product{
+	width:350px;
+	height:200px;
+	float:left;
+	position: relative;
 }
 @media screen and (min-width: 768px){
 	.brandWrapper{
@@ -114,7 +125,7 @@ div.brand{
 		text-align: left;
 	}
 	.brandDiv{
-		margin: 10px 10px;
+		margin: 5px 5px;
 	}
 	.brandList >li{
 		float: none;
