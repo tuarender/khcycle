@@ -15,10 +15,10 @@ Route::get('/', function () {
     return View::make('home.home');
 });
 
-Route::get('home', function () {
-    return View::make('home.home');
-});
-
+//Route::get('home', function () {
+//    return View::make('home.home');
+//});
+Route::get('home','HomeController@index');
 Route::get('category','CategoryController@index');
 
 Route::get('product',function(){

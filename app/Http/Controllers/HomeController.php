@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -17,6 +18,8 @@ class HomeController extends Controller
     public function index()
     {
         //
+        $category = DB::select("select * from kh_category limit 1");
+        return view('home.home',['categories'=> $category]);
     }
 
     /**

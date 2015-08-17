@@ -4,6 +4,11 @@
     <div class="detail">
       <div class="catalogue head1">
         Lastest Catalogue
+          <br>
+          @foreach($categories as $data)
+          <a href="pdf/{!! $data['CATEGORY_PATH_PDF'] !!}" target="_blank"><img src="cover/{!!  $data['CATEGORY_COVER_PIC'] !!}.jpg"  width="200px" height="150px"> </a>
+          <b> <p>{!! $data['CATEGORY_NAME']  !!} <a href="category">View More>></a></p></b>
+          @endforeach
       </div>
       <div class="brand head1">
         KH Product
@@ -25,7 +30,7 @@
 
 <?php
   if(isset($data)){
-    print_r($data);
+   // print_r($data);
   }
 ?>
     <br>
