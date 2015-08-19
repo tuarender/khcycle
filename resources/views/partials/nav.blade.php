@@ -11,11 +11,11 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="home">HOME</a></li>
-            <li><a href="product">PRODUCT</a></li>
-            <li><a href="news">NEWS/ARTICLES</a></li>
-            <li><a href="contact">CONTACT</a></li>
-            <li><a href="member">MEMBER</a></li>
+            <li class="{{ \App\Http\Utils::setActive('home') }}"><a href="home">HOME</a></li>
+            <li class="{{ \App\Http\Utils::setActive('product') }}"><a href="product">PRODUCT</a></li>
+            <li class="{{ \App\Http\Utils::setActive('news') }}"><a href="news">NEWS/ARTICLES</a></li>
+            <li class="{{ \App\Http\Utils::setActive('contact') }}"><a href="contact">CONTACT</a></li>
+            <li class="{{ \App\Http\Utils::setActive('member') }}"><a href="member">MEMBER</a></li>
             <li><a target="_blank" href="http://www.thaimtb.co.th/forum/index.php">WEBBOARD</a></li>
           </ul>
 

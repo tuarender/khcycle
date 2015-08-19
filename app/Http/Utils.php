@@ -17,6 +17,10 @@ class Utils
 	    );
 	    return $templateList;
 	}
+
+	public static function setActive($route){
+        return (\Request::is($route.'/*') || \Request::is($route) ||(\Request::is('/')&&$route=="home")) ? "active" : '';
+    }
 }
 
 ?>

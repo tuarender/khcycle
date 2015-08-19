@@ -25,7 +25,7 @@ div.error{
 }
 div.detail{
 	float: left;
-	background-color: #7F7F7F;
+	background-color: #F2F2F2;
 	width: 100%;
 	min-height: 180px;
 }
@@ -38,10 +38,11 @@ ul#horizontal-list {
 	/*background-color: #FFFF00;*/
 	padding: 0;
     list-style-type: none;
-    margin: 0 auto;
+    margin: 0px auto;
 }
 ul#horizontal-list li {
-	display: inline;
+	display: inline-block;
+	margin:5px 0px;
 }
 div.catalogue{
 	display: block;
@@ -59,7 +60,8 @@ div.brand{
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-weight: bold;
 	font-size: 20px;
-	color: #F2F100;
+	color: #FEFA03;
+	text-shadow: 2px 2px #888888;
 }
 .slideContainer{
 	padding-top: 50px;
