@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class CategoryController extends Controller
+class CatalogueController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,8 @@ class CategoryController extends Controller
     public function index()
     {
         //
-        $category = \DB::select('select * from kh_category');
-        return view('category.category',['categories'=> $category]);
+        $catalogue = \DB::select('select * from kh_catalogue');
+        return view('catalogue.catalogue',['catalogue'=> $catalogue]);
     }
 
     /**
