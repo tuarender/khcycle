@@ -33,7 +33,6 @@
     		getProduct($('#brandList li').first().attr("id"));
 
     		$(window).on('resize', function(){
-    			console.log($(this).height());
 			    if ($(this).width() <= 768){
 			    	$('.brandWrapper').css('height', 'none'); //set max height
 			    }else{
@@ -47,6 +46,7 @@
 			if(groupId){
 				url += "/"+groupId;
 			}
+			console.log(url);
 			$.ajax({
 				url: url, 
 				success: function(result){

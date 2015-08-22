@@ -3208,7 +3208,6 @@ jQuery.Fotorama = function ($fotorama, opts) {
       if (height) {
         width = Math.round(width);
         height = measures.h = Math.round(minMaxLimit(height, numberFromWhatever(measures.minheight, windowHeight), numberFromWhatever(measures.maxheight, windowHeight)));
-        console.log("kuy"+height);
         $stage
             .stop()
             .animate({width: width, height: height}, time, function () {

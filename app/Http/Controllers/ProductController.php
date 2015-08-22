@@ -22,39 +22,33 @@ class ProductController extends Controller
         return view('product.product', ['brand' => $brand]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
     public function getProduct($brandId,$groupId=null)
     {
-        $group = null;
-        //$response = Utils::getDefaultResponse();
-        $sql = "SELECT PRODUCT_ID,PRODUCT_NAME,PRODUCT_FILE_NAME FROM KH_PRODUCT WHERE PRODUCT_DELETE_STATUS <> 1 AND PRODUCT_STATUS = 'ACTIVE' AND PRODUCT_BRAND_ID = ? ";
-        $queryParam = array($brandId);
+        $groups = null;
+        $products = null;
+        //SQL
+        $sqlGroup = "SELECT GROUP_ID,GROUP_NAME FROM KH_GROUP WHERE GROUP_DELETE_STATUS = 0 AND GROUP_ID IN (SELECT GROUP_ID FROM KH_BRAND_GROUP WHERE BRAND_ID = ?)";
+        $sqlProduct = "SELECT PRODUCT_ID,PRODUCT_NAME,PRODUCT_FILE_NAME FROM KH_PRODUCT WHERE PRODUCT_DELETE_STATUS <> 1 AND PRODUCT_STATUS = 'ACTIVE' AND PRODUCT_BRAND_ID = ? ";
+        
+        //query parameter
+        $groupQueryParam = array($brandId);
+        $productQueryParam = array($brandId);
 
-        //in case have group id
+        //if have group id then add to query parameter
         if(!is_null($groupId)){
-            $sql.= " AND PRODUCT_GROUP_ID = ?";
-            array_push($queryParam, $groupId);
+            $sqlProduct.= " AND PRODUCT_GROUP_ID = ?";
+            array_push($productQueryParam, $groupId);
         }
-        $sql.=" ORDER BY PRODUCT_ORDER";
 
-        $product = DB::select($sql,$queryParam);
+        //Order
+        $sqlGroup.=" ORDER BY GROUP_NAME";
+        $sqlProduct.=" ORDER BY PRODUCT_ORDER";
 
-/*        if(isset($brand)){
-            if(count($brand)>0){
-                $response['status'] = "Success";
-                $response['msg'] = "Success to retrive product";
-                $response['data'] = $brand;
-            }
-            else{
-                $response['status'] = "Not found";
-                $response['msg'] = "Can not found any data";
-            }
-        }*/
-        return view('product.productList', ['product' => $product,'group' => $group]);
+        //execute
+        $groups = DB::select($sqlGroup,$groupQueryParam);
+        $products = DB::select($sqlProduct,$productQueryParam);
+
+        return view('product.productList', ['products' => $products,'groups' => $groups,'brandId' => $brandId]);
     }
 
 }
