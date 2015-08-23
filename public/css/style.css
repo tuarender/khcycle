@@ -71,6 +71,15 @@ div.brand{
 	max-width:1340px;
 	margin:10px auto;
 }
+
+.contactContainer{
+	padding-top: 70px;
+	margin: 10px auto;
+	max-width: 1340px;
+}
+.contactContainer img{
+	width:100%;
+}
 .brandWrapper{
 	float: left;
 	width: 100%;
@@ -107,6 +116,7 @@ div.brand{
 	float:left;
 	position: relative;
 }
+
 .groupList{
 	list-style-type: none;
     margin: 0;
@@ -141,6 +151,7 @@ div.brand{
 .groupList >li >a:hover{
 	background-color:#0688fa;
 }
+
 @media screen and (min-width: 768px){
 	.brandList >li{
 		float: left;
@@ -153,7 +164,6 @@ div.brand{
 		margin: 0px auto;
 	}
 	.groupListContainer{
-		display:block;
 		overflow:hidden;
 	}
 }
@@ -179,6 +189,31 @@ div.brand{
 		margin:5px auto;
 	}
 }
+
+.contactbutton {
+	-moz-box-shadow:inset 0px 34px 0px -15px #261614;
+	-webkit-box-shadow:inset 0px 34px 0px -15px #261614;
+	box-shadow:inset 0px 34px 0px -15px #261614;
+	background-color:#120705;
+	border:1px solid #241d13;
+	display:inline-block;
+	cursor:pointer;
+	color:#e9f53b;
+	font-family:Arial;
+	font-size:21px;
+	font-weight:bold;
+	padding:9px 23px;
+	text-decoration:none;
+	text-shadow:0px -1px 0px #7a2a1d;
+}
+.contactbutton:hover {
+	background-color:#000000;
+}
+.contactbutton:active {
+	position:relative;
+	top:1px;
+}
+
 
 /*@media screen and (min-width: 1025px) {
 	img.logo {

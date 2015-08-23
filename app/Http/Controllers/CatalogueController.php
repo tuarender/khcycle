@@ -17,7 +17,7 @@ class CatalogueController extends Controller
     public function index()
     {
         //
-        $catalogue = \DB::select('select * from kh_catalogue');
+        $catalogue = \DB::select('select * from KH_CATALOGUE');
         return view('catalogue.catalogue',['catalogue'=> $catalogue]);
     }
 
