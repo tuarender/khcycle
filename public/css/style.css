@@ -80,17 +80,19 @@ div.brand{
 	max-width: 200px;
 }
 .brandList{
+	display: inline-block;
 	padding-left: 0px;
 }
 
 .brandList >li{
 	padding-left: 0px;
 	list-style: none;
-	float: left;
+	float: none;
 	margin: 0px 5px;
 }
 .brandContainer{
-	width: 430px;
+	/*width: 430px;*/
+	text-align: center;
 	margin: 0px auto;
 }
 .brandLogo{
@@ -116,13 +118,33 @@ div.brand{
 }
 .groupList >li{
     float: left;
+    margin:5px 5px;
 }
 .groupList >li >a{
-    display: block;
-    width: 100px;
-    ;clear: both;
+	-moz-box-shadow:inset 0px -3px 7px 0px #29bbff;
+	-webkit-box-shadow:inset 0px -3px 7px 0px #29bbff;
+	box-shadow:inset 0px -3px 7px 0px #29bbff;
+	background-color:#2dabf9;
+	-moz-border-radius:18px;
+	-webkit-border-radius:18px;
+	border-radius:18px;
+	/*border:1px solid #263666;*/
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	padding:5px 15px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #263666;
+}
+.groupList >li >a:hover{
+	background-color:#0688fa;
 }
 @media screen and (min-width: 768px){
+	.brandList >li{
+		float: left;
+	}
 	.brandWrapper{
 		max-width: 230px
 	}

@@ -28,25 +28,31 @@
 </div>
 @endsection
 @section('scripts')
+	<script src="js/ekko-lightbox.js"></script>
     <script type="text/javascript">
+    	$(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+		    event.preventDefault();
+		    $(this).ekkoLightbox();
+		});
+
     	$(document).ready(function(){
     		getProduct($('#brandList li').first().attr("id"));
 
     		$(window).on('resize', function(){
 			    if ($(this).width() <= 768){
-			    	$('.brandWrapper').css('height', 'none'); //set max height
+			    	//alert("kkkkk");
+			    	$('.brandWrapper').css('height', 'auto'); //set max height
 			    }else{
-			    	$('.brandWrapper').css('height', $(window).height()-50); 
+			    	$('.brandWrapper').css('height', $(window).height()-96); 
 		    	}
 		   	}).resize();
-		});
+		}); 
 
 		function getProduct(brandId,groupId){
 			var url = "product/"+brandId;
 			if(groupId){
 				url += "/"+groupId;
 			}
-			console.log(url);
 			$.ajax({
 				url: url, 
 				success: function(result){
