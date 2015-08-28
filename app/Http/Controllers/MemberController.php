@@ -17,6 +17,18 @@ class MemberController extends Controller
     public function index()
     {
         //
+
+        return view('member.member')->with('name', 'Member');
+    }
+
+    public function register()
+    {
+        return view('member.register')->with('name','Register');
+    }
+
+    public function postregister()
+    {
+        return 'Hello';
     }
 
     /**

@@ -29,13 +29,14 @@ Route::get('news',function(){
    return View::make('news.news');
 });
 
-Route::get('member',function(){
-   return View::make('member.member');
-});
+Route::get('member','MemberController@index');
 
 Route::get('contact', function () {
     return View::make('contact.contact')->with('name','Contact');
 });
+
+Route::get('register','MemberController@register');
+Route::post('register','MemberController@postregister');
 
 Route::get('product', 'ProductController@index');
 Route::get('product/{brandId}/{groupId?}', 'ProductController@getProduct');
