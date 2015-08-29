@@ -11,8 +11,8 @@
 	echo "<div id='productListContainer'>";
 	if(isset($products)&&!empty($products)){
 		foreach($products as $product){
-			echo "<a href='images/product/".$product['PRODUCT_FILE_NAME'].".png' data-toggle='lightbox'>";
-			echo "<div class='product' style='background-image: url(images/product/".$product['PRODUCT_FILE_NAME'].".png);'>";
+			echo "<a href='images/product/".$product['PRODUCT_FULL_FILE_NAME'].".".$product['PRODUCT_FULL_EXT']."' data-toggle='lightbox'>";
+			echo "<div class='product' style='background-image: url(images/product/".$product['PRODUCT_MIN_FILE_NAME'].".".$product['PRODUCT_MIN_EXT'].");'>";
 			echo "</div>";
 			echo "</a>";
 		}
