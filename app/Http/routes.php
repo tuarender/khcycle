@@ -25,9 +25,6 @@ Route::get('product',function(){
     return View::make('product.product');
 });
 
-Route::get('news',function(){
-   return View::make('news.news');
-});
 
 Route::get('member','MemberController@index');
 
@@ -40,3 +37,6 @@ Route::post('register','MemberController@postregister');
 
 Route::get('product', 'ProductController@index');
 Route::get('product/{brandId}/{groupId?}', 'ProductController@getProduct');
+
+Route::get('news','NewsController@getNewsList');
+Route::get('news/{newsId}','NewsController@getNews');
