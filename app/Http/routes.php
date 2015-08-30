@@ -25,19 +25,19 @@ Route::get('product',function(){
     return View::make('product.product');
 });
 
+
+Route::get('member','MemberController@index');
+
 Route::get('contact', function () {
     return View::make('contact.contact')->with('name','Contact');
 });
 
-Route::get('member','MemberController@index');
-Route::post('login','MemberController@postLogin');
-
 Route::get('register','MemberController@register');
 Route::post('register','MemberController@postregister');
-Route::get('forgetpassword','MemberController@forgetpassword');
 
 Route::get('product', 'ProductController@index');
 Route::get('product/{brandId}/{groupId?}', 'ProductController@getProduct');
 
 Route::get('news','NewsController@getNewsList');
+Route::get('newsHome','NewsController@getNewsListHome');
 Route::get('news/{newsId}','NewsController@getNews');

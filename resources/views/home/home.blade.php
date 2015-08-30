@@ -1,7 +1,7 @@
 @extends('app')
 @section('content')
 @include('partials.banner')
-    <div class="detail">
+    <div id="detail" class="detail" style="display:none">
       <div class="catalogue head1">
         Lastest Catalogue
         <div>
@@ -22,13 +22,30 @@
       </div>
       </div>
     </div>
-    <div style="height:500px;background-color:">
-
-<?php
-  if(isset($data)){
-    print_r($data);
-  }
-?>
+    <div id="newsList" class="container-fluid" style="max-width:80%;display:none">
+        <div class="row">
+          <img src="images/loading.gif" style="display: block;margin-left: auto;margin-right: auto;">
+        </div>
     </div>
+@endsection
+@section('scripts')
+  <script type="text/javascript">
+    $(document).ready(function(){
+        $('#detail').fadeIn('slow');
+        getNews();
+    }); 
+
+    function getNews(){
+      var url = "newsHome";
+      $.ajax({
+        url: url, 
+        success: function(result){
+          if(result){
+            $('#newsList').html(result).fadeIn('slow');
+          }
+        }
+      });
+    }
+  </script>
 @endsection
 @stop
