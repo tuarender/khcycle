@@ -25,12 +25,12 @@ Route::get('product',function(){
     return View::make('product.product');
 });
 
-
-Route::get('member','MemberController@index');
-
 Route::get('contact', function () {
     return View::make('contact.contact')->with('name','Contact');
 });
+
+Route::get('member','MemberController@index');
+Route::post('login','MemberController@postLogin');
 
 Route::get('register','MemberController@register');
 Route::post('register','MemberController@postregister');

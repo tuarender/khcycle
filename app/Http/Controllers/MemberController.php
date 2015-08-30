@@ -20,8 +20,7 @@ class MemberController extends Controller
     public function index()
     {
         //
-
-        return view('member.member')->with('name', 'Member');
+        return view('member.login')->with('name', 'Member');
     }
 
     public function forgetpassword()
@@ -225,6 +224,26 @@ class MemberController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function postLogin(Request $request)
+    {
+        $rules=[
+            'kh_username' =>'required',
+            'kh_password'=>'required',
+        ];
+        //Custom ควบคุม Message Error
+        $messages = [
+            'kh_username.required'=>'กรุณาระบุชื่อ Username',
+            'kh_password.required'=>'กรุณาระบุ Password'
+        ];
+
+        $validator =  Validator::make($request->all(),$rules,$messages);
+        if($validator->fails()) {
+            return redirect('member')->withErrors($validator)->withInput();
+        }else{
+
+        }
     }
 
 }
