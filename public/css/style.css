@@ -105,7 +105,10 @@ div.brand{
 	margin: 0px auto;
 }
 .brandLogo{
-	border: 5px solid #FFFFFF;
+	-moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+	border: 5px solid #F2F2F2;
 }
 .brandLogo:hover{
 	border-color: #F2F100;
@@ -151,6 +154,19 @@ div.brand{
 .groupList >li >a:hover{
 	background-color:#0688fa;
 }
+.newsInnerRow{
+	margin-left:10px;
+	margin-right:10px;
+	margin-top:20px;
+}
+.readmoreBtn{
+	border-radius: 0px;
+}
+.imageTitleNews{
+	max-width: 80%;
+	margin: auto;
+}
+.topBuffer { margin-top:20px; }
 
 @media screen and (min-width: 768px){
 	.brandList >li{
