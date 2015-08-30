@@ -3,7 +3,7 @@
 <?php
 	if(isset($newsList)){
 ?>
-<div class=".container-fluid">
+<div class="container-fluid">
 	<div class="row">
 		<?php
 			foreach($newsList as $news){
