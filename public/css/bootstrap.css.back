@@ -1087,7 +1087,7 @@ body {
   font-size: 14px;
   line-height: 1.42857143;
   color: #333;
-  background-color: #F2F2F2;
+  background-color: #fff;
 }
 input,
 button,
@@ -4424,6 +4424,22 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     padding-bottom: 15px;
   }
 }
+/*@media (min-width: 1025px) {
+  .navbar {
+    min-height: 80px;
+  }
+  .navbar-nav {
+    float: left;
+    margin: 0;
+  }
+  .navbar-nav > li {
+    float: left;
+  }
+  .navbar-nav > li > a {
+    padding: 30px 15px;
+    font-size: 20px;
+  }
+}*/
 .navbar-form {
   padding: 10px 15px;
   margin-top: 8px;
