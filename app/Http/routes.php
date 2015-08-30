@@ -37,6 +37,7 @@ Route::get('contact', function () {
 
 Route::get('register','MemberController@register');
 Route::post('register','MemberController@postregister');
+Route::get('forgetpassword','MemberController@forgetpassword');
 
 Route::get('product', 'ProductController@index');
 Route::get('product/{brandId}/{groupId?}', 'ProductController@getProduct');
