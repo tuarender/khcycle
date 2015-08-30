@@ -1,15 +1,10 @@
-<div class="productContainer">
+<div class="subheaderContainer">
     <div class="row">
-        <div class="col-lg-1">
-            {!! $name !!}
+        <label class="col-xs-6  col-sm-1 ">{!! $name !!}</label>
+        <div class="col-sm-5">
         </div>
-        <div class="col-lg-5">
-
-        </div>
-        <div class="col-lg-3">
-            สินใจสินค้าติดต่อ 0-2510-1906
-        </div>
-        <div class="col-lg-3">
+        <label class="col-xs-6  col-sm-3 control-label"> สินใจสินค้าติดต่อ 0-2510-1906</label>
+        <div class="col-sm-3">
             Social Network:
             <a href="https://www.facebook.com/KhcycleThailand" target="_blank" class="btn btn-social-icon btn-facebook">
                 <i class="fa fa-facebook">f</i>
@@ -20,4 +15,4 @@
         </div>
     </div>
 </div>
-@extends('partials.footer')
+<hr noshade style="border-color:#000000">

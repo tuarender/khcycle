@@ -242,7 +242,15 @@ class MemberController extends Controller
         if($validator->fails()) {
             return redirect('member')->withErrors($validator)->withInput();
         }else{
+            $kh_username = $request->input('kh_username');
+            $FindUser = $this->checkuser($kh_username);
+            if($FindUser>0)
+            {
 
+            }else{
+                Session::flash('alert-danger', 'ไม่พบผู้ใช้งานกรุณาลองอีกครั้ง');
+                return redirect('register')->withInput();
+            }
         }
     }
 
