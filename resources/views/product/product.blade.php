@@ -6,7 +6,6 @@
 		<div class="brandContainer">
 			<?php
 			  if(isset($brand)){
-			    //print_r($brand[0]);
 			    echo "<ul id='brandList' class='brandList'>";
 			    for($i=0;$i<count($brand);$i++){
 			    	echo "<li id='".$brand[$i]["BRAND_ID"]."'>";
@@ -28,12 +27,7 @@
 </div>
 @endsection
 @section('scripts')
-	<script src="js/ekko-lightbox.js"></script>
     <script type="text/javascript">
-    	$(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
-		    event.preventDefault();
-		    $(this).ekkoLightbox();
-		});
 
     	$(document).ready(function(){
     		getProduct($('#brandList li').first().attr("id"));

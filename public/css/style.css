@@ -170,7 +170,7 @@ div.brand{
 	margin: auto;
 }
 .topBuffer { margin-top:20px; }
-
+#productList{ padding-top: 5px}
 @media screen and (min-width: 768px){
 	.brandList >li{
 		float: left;
@@ -227,6 +227,7 @@ div.brand{
 }
 .contactbutton:hover {
 	background-color:#000000;
+	color:#e9f53b;
 }
 .contactbutton:active {
 	position:relative;

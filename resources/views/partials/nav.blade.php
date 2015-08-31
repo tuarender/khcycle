@@ -16,7 +16,7 @@
             <li class="{{ \App\Http\Utils::setActive('news') }}"><a href="news">NEWS/ARTICLES</a></li>
             <li class="{{ \App\Http\Utils::setActive('contact') }}"><a href="contact">CONTACT</a></li>
             <li class="{{ \App\Http\Utils::setActive('member') }}"><a href="member">MEMBER</a></li>
-            <li><a target="_blank" href="http://www.thaimtb.co.th/forum/index.php">WEBBOARD</a></li>
+            <li><a target="_blank" href="http://www.thaimtb.co.th/forum/viewforum.php?f=735">WEBBOARD</a></li>
           </ul>
 
 <!--           <div class="col-sm-3 col-md-3 pull-right">

@@ -5,7 +5,8 @@
       <div class="catalogue head1">
         Lastest Catalogue
         <div>
-          <a href="catalogue"><img src="cover/accessory.jpg"  style="max-width:130px" /></a>
+          <a href="catalogue"><img src="cover/accessory.jpg"  style="max-width:130px" /></a><br>
+          <a href="catalogue">Read more...</a>
         </div>
       </div>
       <div class="brand head1">
