@@ -115,7 +115,7 @@ class MemberController extends Controller
             }
 
             //insert username password
-            $id = DB::table('kh_member_login')->insertGetId(
+            $id = DB::table('KH_MEMBER_LOGIN')->insertGetId(
               [
                   'KH_MEMBER_LOGIN_USERNAME'=>$member_username,
                   'KH_MEMBER_LOGIN_PASSWORD'=>$ervpass,
@@ -123,7 +123,7 @@ class MemberController extends Controller
             );
 
             //insert contact
-            DB::table('kh_contact')->insert([
+            DB::table('KH_CONTACT')->insert([
                 'KH_CONTACT_MEMBER'=>$id,
                 'KH_CONTACT_EMAIL' =>$member_email,
                 'KH_CONTACT_NAME'=>$member_name,
@@ -132,7 +132,7 @@ class MemberController extends Controller
             ]);
 
             //insert information
-            DB::table('kh_information')->insert([
+            DB::table('KH_INFORMATION')->insert([
                'KH_INFORMATION_MEMBER' =>$id,
                 'KH_INFORMATION_HEIGHT'=>$member_height,
                 'KH_INFORMATION_WEIGHT'=>$member_weight,
@@ -151,7 +151,7 @@ class MemberController extends Controller
 
     private function checkuser($user)
     {
-        $query = DB::table('kh_member_login')
+        $query = DB::table('KH_MEMBER_LOGIN')
             ->where('KH_MEMBER_LOGIN_USERNAME','=',$user)
             ->count();
         return $query;
@@ -159,7 +159,7 @@ class MemberController extends Controller
 
     private function checkemail($email)
     {
-        $query = DB::table('kh_contact')
+        $query = DB::table('KH_CONTACT')
             ->where('KH_CONTACT_EMAIL','=',$email)
             ->count();
         return $query;
@@ -249,7 +249,7 @@ class MemberController extends Controller
 
             }else{
                 Session::flash('alert-danger', 'ไม่พบผู้ใช้งานกรุณาลองอีกครั้ง');
-                return redirect('register')->withInput();
+                return redirect('member');
             }
         }
     }

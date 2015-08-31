@@ -1,11 +1,11 @@
 <div class="subheaderContainer">
     <div class="row">
-        <label class="col-xs-6  col-sm-1 ">{!! $name !!}</label>
+        <font color="gray"><strong><label class="col-xs-6  col-sm-1">{!! $name !!}</label></strong></font>
         <div class="col-sm-5">
         </div>
-        <label class="col-xs-6  col-sm-3 control-label"> สินใจสินค้าติดต่อ 0-2510-1906</label>
+        <label class="col-xs-6  col-sm-3 "> สินใจสินค้าติดต่อ 0-2510-1906</label>
         <div class="col-sm-3">
-            Social Network:
+            <label class="col-sm-7">Social Network:</label>
             <a href="https://www.facebook.com/KhcycleThailand" target="_blank" class="btn btn-social-icon btn-facebook">
                 <i class="fa fa-facebook">f</i>
             </a>
@@ -15,4 +15,4 @@
         </div>
     </div>
 </div>
-<hr noshade style="border-color:#000000">
+<hr style="width:90%;margin:20px auto;border-color:#000000">
