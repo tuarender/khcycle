@@ -75,6 +75,12 @@ div.brand{
 	margin:10px auto;
 }
 
+.subheaderContainer{
+	/*padding-top: 50px;*/
+	max-width:1340px;
+	margin:10px auto;
+}
+
 .contactContainer{
 	padding-top: 70px;
 	margin: 10px auto;
