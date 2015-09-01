@@ -23,6 +23,8 @@ Route::get('product',function(){
 
 
 Route::get('member','MemberController@index');
+Route::post('login','MemberController@postLogin');
+Route::get('forgetpassword','MemberController@forgetpassword');
 
 Route::get('contact', function () {
     return View::make('contact.contact')->with('name','Contact');
