@@ -1,7 +1,7 @@
 @extends('app')
 @section('content')
 @include('partials.banner')
-    <div id="detail" class="detail" style="display:none">
+    <div id="detail" class="detail" style="display:none;">
       <div class="catalogue head1">
         Lastest Catalogue
         <div>
@@ -14,16 +14,25 @@
             KH Product
         </div>
         <div>
-        <ul id="horizontal-list">
-          <li><a href="#"><img src="images/brand/product/sample1.jpg" /></a></li>
-          <li><a href="#"><img src="images/brand/product/sample2.jpg" /></a></li>
-          <li><a href="#"><img src="images/brand/product/sample3.jpg" /></a></li>
-          <li><a href="#"><img src="images/brand/product/sample4.jpg" /></a></li>
-        </ul>
+      <?php
+        if(isset($brand)){
+          echo "<ul id='horizontal-list'>";
+          for($i=0;$i<count($brand);$i++){
+            echo "<li id='".$brand[$i]["BRAND_ID"]."'>";
+            echo "<a href='#'>";
+            echo "<div class='brandDiv'>";
+            echo "<img src='images/brand/product/sample".$brand[$i]["BRAND_ID"].".jpg' class='brandLogo_home'>";
+            echo "</div>";
+            echo "</a>";
+            echo "</li>";
+          }
+          echo "</ul>";
+        }
+      ?>
       </div>
       </div>
     </div>
-    <div id="newsList" class="container-fluid" style="max-width:80%;display:none">
+    <div id="newsList" class="container-fluid" style="max-width:85%;display:none">
         <div class="row">
           <img src="images/loading.gif" style="display: block;margin-left: auto;margin-right: auto;">
         </div>
@@ -31,9 +40,13 @@
 @endsection
 @section('scripts')
   <script type="text/javascript">
+    var flagNewsSwap = false;
     $(document).ready(function(){
         $('#detail').fadeIn('slow');
         getNews();
+        $(window).on('resize', function(){
+          swapNews();
+        });
     }); 
 
     function getNews(){
@@ -42,10 +55,37 @@
         url: url, 
         success: function(result){
           if(result){
-            $('#newsList').html(result).fadeIn('slow');
+            $('#newsList').html(result).fadeIn('slow',function(){
+              swapNews();
+            });
           }
         }
       });
+    }
+
+    function swapNews(){
+      if ($(this).width() <=749) {
+        if(!flagNewsSwap){
+          for(var i=2;$('#display'+i).length;i+=2){
+            var display = $('#display'+i).clone();
+            var content = $('#content'+i).clone();
+            $('#display'+i).replaceWith(content);
+            $('#content'+i).replaceWith(display);
+          }
+          flagNewsSwap = true;
+        }
+      }
+      else{
+        if(flagNewsSwap){
+          for(var i=2;$('#display'+i).length;i+=2){
+            var display = $('#display'+i).clone();
+            var content = $('#content'+i).clone();
+            $('#content'+i).replaceWith(display);
+            $('#display'+i).replaceWith(content);
+          }
+          flagNewsSwap = false;
+        }
+      }
     }
   </script>
 @endsection

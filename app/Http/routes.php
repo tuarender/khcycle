@@ -11,13 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return View::make('home.home');
-});
+Route::get('/', 'HomeController@index');
+Route::get('home', 'HomeController@index');
 
-Route::get('home', function () {
-    return View::make('home.home');
-});
 
 Route::get('catalogue','CatalogueController@index');
 

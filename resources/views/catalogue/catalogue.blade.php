@@ -8,7 +8,7 @@
                         @if($i==5)
                            <br><?php $i=1; ?>
                         @endif
-            <div class="col-lg-3">
+            <div class="col-md-3">
                 <a href="pdf/{!! $data['CATALOGUE_PATH_PDF'] !!}" target="_blank">
                     <img src="cover/{!!  $data['CATALOGUE_COVER_PIC'] !!}.jpg" class="img-responsive"> </a>
                <b> <center> <p>{!! $data['CATALOGUE_NAME']  !!}</p> </center></b>

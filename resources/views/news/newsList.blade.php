@@ -14,7 +14,7 @@
 				echo "</div>";
 				echo "<div class='col-sm-6'>";
 				echo "<h2>".$news['NEWS_TITLE']."</h2>";
-				echo "<p>".$news['NEWS_CONTENT_SUB']."</p>";
+				echo "<p class='news'>".$news['NEWS_CONTENT_SUB']."</p>";
 				echo "<a href='news/".$news['NEWS_ID']."' class='btn btn-info btn-md readmoreBtn'><span class='glyphicon glyphicon-eye-open'></span> Read more</a>";
 				echo "</div>";
 				echo "</div>";

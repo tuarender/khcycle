@@ -21,7 +21,7 @@
 			?>
 		</div>
 	</div>
-	<div id="productList">
+	<div id="productList" style="display:none">
 		Product Detail
 	</div>
 </div>
@@ -47,13 +47,15 @@
 			if(groupId){
 				url += "/"+groupId;
 			}
-			$.ajax({
-				url: url, 
-				success: function(result){
-					if(result){
-						$('#productList').html(result);
-					}
-		    	}
+			$('#productList').fadeOut(300,function(){
+				$.ajax({
+					url: url, 
+					success: function(result){
+						if(result){
+							$('#productList').html(result).fadeIn(800);
+						}
+			    	}
+				});
 			});
 		}
     </script>

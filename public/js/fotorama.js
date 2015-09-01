@@ -1316,7 +1316,7 @@ function fit ($el, measuresToFit, method, position) {
       height = width / measures.ratio;
       //alert(2);
     }
-    console.log(numberFromWhatever(pos.y, measuresToFit.h- height));
+    //console.log(numberFromWhatever(pos.y, measuresToFit.h- height));
 
     $el.css({
       width: width,

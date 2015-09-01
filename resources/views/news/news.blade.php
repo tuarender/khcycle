@@ -12,7 +12,7 @@
 	echo "<img src='images/news/".$news[0]['NEWS_IMAGE_TITLE_NAME'].".".$news[0]['NEWS_IMAGE_TITLE_EXT']."' class='img-responsive imageTitleNews'>";
 	echo "</div>";
 	echo "<div class='row topBuffer'>";
-	echo $news[0]['NEWS_CONTENT'];
+	echo "<p  class='news'>".$news[0]['NEWS_CONTENT']."</p>";
 	echo "</div>";
 ?>
 </div>

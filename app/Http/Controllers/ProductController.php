@@ -48,7 +48,7 @@ class ProductController extends Controller
         $groups = DB::select($sqlGroup,$groupQueryParam);
         $products = DB::select($sqlProduct,$productQueryParam);
 
-        return view('product.productList', ['products' => $products,'groups' => $groups,'brandId' => $brandId]);
+        return view('product.productList', ['products' => $products,'groups' => $groups,'brandId' => $brandId,'groupId' => $groupId]);
     }
 
 }
