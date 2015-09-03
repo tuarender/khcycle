@@ -4,8 +4,8 @@
     <div class="contactcontainer">
         <div class="row">
             <div class="col-sm-8 col-sm-offset-2">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">Register</div>
+                <div class="panel panel-primary loginPanel">
+                    <div class="loginPanel loginPanelHeader panel-heading">Register</div>
                     <div class="panel-body">
                         @if (count($errors) > 0)
                             <div class="alert alert-danger">
@@ -120,10 +120,10 @@
 
                             <div class="form-group">
                                 <div class="col-sm-6 col-sm-offset-4">
-                                    <button type="submit" class="btn btn-primary">
+                                    <button type="submit" class="btn btn-primary btnKhcycle">
                                         ยืนยัน
                                     </button>
-                                    <button type="reset" class="btn btn-primary">
+                                    <button type="reset" class="btn btn-primary btnKhcycle">
                                         ยกเลิก
                                     </button>
                                 </div>

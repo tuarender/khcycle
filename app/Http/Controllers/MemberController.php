@@ -279,24 +279,24 @@ class MemberController extends Controller
 
                 if($matchlogin>0)
                 {
-//                    $id = DB::table('KH_MEMBER_LOGIN')->select('KH_MEMBER_LOGIN_USERNAME')->where('KH_MEMBER_LOGIN_USERNAME','=',$kh_username)->first();
-//                    if($id)
-//                    {
-//                        Auth::login($id);
-//                        Session::flash('alert-danger', '1');
-//                       return redirect('member');
-//                    }else{
-//                        Session::flash('alert-danger', '2');
-//                       return redirect('member');
-//                    }
-                   if(Auth::attempt(array('KH_MEMBER_LOGIN_USERNAME'=>$kh_username,'password'=>$encryp_password)))
-                   {
-                       Session::flash('alert-danger', '1');
+                    $id = DB::table('KH_MEMBER_LOGIN')->select('KH_MEMBER_LOGIN_ID')->where('KH_MEMBER_LOGIN_USERNAME','=',$kh_username)->first();
+                    if($id)
+                    {
+                        Auth::loginUsingId($id);
+                        Session::flash('alert-danger', '1');
                        return redirect('member');
-                   }else{
-                       Session::flash('alert-danger', '2');
+                    }else{
+                        Session::flash('alert-danger', '2');
                        return redirect('member');
-                   }
+                    }
+//                   if(Auth::attempt(array('KH_MEMBER_LOGIN_USERNAME'=>$kh_username,'password'=>$encryp_password)))
+//                   {
+//                       Session::flash('alert-danger', '1');
+//                       return redirect('member');
+//                   }else{
+//                       Session::flash('alert-danger', '2');
+//                       return redirect('member');
+//                   }
                 }else{
                     Session::flash('alert-danger', 'Username/Password ผิด กรุณาลองอีกครั้ง');
                     return redirect('member');
