@@ -12,7 +12,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $sql = "SELECT BRAND_ID,BRAND_ORDER,BRAND_NAME,BRAND_LOGO_NAME FROM KH_BRAND WHERE BRAND_DELETE_STATUS <> 1 ORDER BY BRAND_ORDER";
+        $sql = "SELECT BRAND_ID,BRAND_ORDER,BRAND_NAME,BRAND_LOGO_NAME FROM KH_BRAND WHERE BRAND_DELETE_STATUS <> 1 ORDER BY BRAND_ORDER LIMIT 0 , 6";
         $brand = DB::select($sql);
 
         return view('home.home', ['brand' => $brand]);

@@ -1,4 +1,5 @@
 @extends('app')
+@extends('partials.subheader')
 @section('content')
 
 <div class="productContainer">

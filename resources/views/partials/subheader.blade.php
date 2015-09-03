@@ -15,4 +15,4 @@
         </div>
     </div>
 </div>
-<hr style="width:90%;margin:20px auto;border-color:#000000">
+<hr style="width:90%;margin:3px auto;border-color:#000000">

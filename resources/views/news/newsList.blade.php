@@ -1,9 +1,10 @@
 @extends('app')
+@extends('partials.subheader')
 @section('content')
 <?php
 	if(isset($newsList)){
 ?>
-<div class="container-fluid">
+<div id="newsContainer" class="container-fluid" style="display:none">
 	<div class="row">
 		<?php
 			foreach($newsList as $news){
@@ -29,5 +30,12 @@
 		echo "Error occored.";
 	}
 ?>
+@endsection
+@section('scripts')
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#newsContainer').fadeIn(1500);
+    });
+</script>
 @endsection
 @stop

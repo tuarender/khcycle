@@ -78,7 +78,7 @@ div.brand{
 .subheaderContainer{
 	/*padding-top: 50px;*/
 	max-width:1340px;
-	margin:10px auto;
+	margin:5px auto;
 }
 .subheaderContainer row{
 	display: block;
@@ -200,6 +200,13 @@ div.brand{
 	text-align: center;
 	margin-bottom: 20px;
 }
+.viewmoreContainer{
+	text-align: right;
+	padding-right: 40px;
+}
+.viewmore{
+	font-weight: bold;
+}
 #productList{ padding-top: 5px}
 @media screen and (min-width: 768px){
 	.brandList >li{
@@ -263,7 +270,21 @@ div.brand{
 	position:relative;
 	top:1px;
 }
-
+.loginPanelHeader{
+	background-color: #424242 !important; 
+	color: #F2F100 !important;
+}
+.loginPanel{
+	border-color: #424242 !important;
+}
+.btnKhcycle{
+	background-color: #424242 !important; 
+	color: #F2F100 !important;
+	border-color: #424242 !important;
+}
+.btnKhcycle:hover{
+	background-color:#000000 !important;
+}
 
 /*@media screen and (min-width: 1025px) {
 	img.logo {

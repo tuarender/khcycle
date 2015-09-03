@@ -5,8 +5,8 @@
         <div class="row">
             <div class="col-sm-8 col-sm-offset-2">
                 @include('partials.flashmessage')
-                <div class="panel panel-primary">
-                    <div class="panel-heading">เข้าสู่ระบบสมาชิก</div>
+                <div class="panel panel-primary loginPanel">
+                    <div class="loginPanel loginPanelHeader panel-heading">เข้าสู่ระบบสมาชิก</div>
                     <div class="panel-body">
                         {{--@if (count($errors) > 0)--}}
                             {{--<div class="alert alert-danger">--}}
@@ -44,10 +44,10 @@
 
                             <div class="form-group">
                                 <div class="col-sm-5 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary">
+                                    <button type="submit" class="btn btn-primary btnKhcycle">
                                         เช้าสู่ระบบ
                                     </button>
-                                   <a href="register" class="btn btn-primary">สมัครสมาชิก</a>
+                                   <a href="register" class="btn btn-primary btnKhcycle">สมัครสมาชิก</a>
                                 </div>
                             </div>
                         </form>
