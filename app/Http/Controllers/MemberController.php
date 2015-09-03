@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
@@ -199,8 +200,22 @@ class MemberController extends Controller
      */
     public function show($id)
     {
-
-        return $id;
+        $data = DB::table('KH_MEMBER_LOGIN AS login ')
+            ->leftjoin('KH_INFORMATION AS info','login.KH_MEMBER_LOGIN_ID','=','info.KH_INFORMATION_MEMBER')
+            ->leftjoin('KH_CONTACT AS contact','login.KH_MEMBER_LOGIN_ID','=','contact.KH_CONTACT_MEMBER')
+            ->select(
+                'login.KH_MEMBER_LOGIN_ID',
+                'login.KH_MEMBER_LOGIN_USERNAME',
+                'contact.KH_CONTACT_NAME',
+                'contact.KH_CONTACT_EMAIL',
+                'contact.KH_CONTACT_TEL',
+                'info.KH_INFORMATION_HEIGHT',
+                'info.KH_INFORMATION_WEIGHT',
+                'info.KH_INFORMATION_SHOE',
+                'contact.KH_CONTACT_ADDR')
+            ->where('login.KH_MEMBER_LOGIN_ID','=',$id)
+            ->get();
+        return view('member.memberdetail')->with('name','Member')->with('data',$data);
         //
     }
 
