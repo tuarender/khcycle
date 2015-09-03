@@ -199,6 +199,8 @@ class MemberController extends Controller
      */
     public function show($id)
     {
+
+        return $id;
         //
     }
 
@@ -291,17 +293,54 @@ class MemberController extends Controller
         }
     }
 
-    public function listmember()
+    public function listmember(Request $request)
     {
+        if ($request->isMethod('post'))
+        {
+            $data = DB::table('KH_MEMBER_LOGIN AS login ')
+                ->leftjoin('KH_INFORMATION AS info','login.KH_MEMBER_LOGIN_ID','=','info.KH_INFORMATION_MEMBER')
+                ->leftjoin('KH_CONTACT AS contact','login.KH_MEMBER_LOGIN_ID','=','contact.KH_CONTACT_MEMBER')
+                ->select(
+                    'login.KH_MEMBER_LOGIN_ID',
+                    'login.KH_MEMBER_LOGIN_USERNAME',
+                    'contact.KH_CONTACT_NAME',
+                    'contact.KH_CONTACT_EMAIL',
+                    'contact.KH_CONTACT_TEL',
+                    'info.KH_INFORMATION_HEIGHT',
+                    'info.KH_INFORMATION_WEIGHT',
+                    'info.KH_INFORMATION_SHOE',
+                    'contact.KH_CONTACT_ADDR');
+            if($request->has('sch_name'))
+            {
+                $sch_name = $request->input('sch_name');
+                $data = $data->where('KH_CONTACT_NAME','like','%'.$sch_name.'%');
+            }
+            if($request->has('sch_tel'))
+            {
+                $sch_tel = $request->input('sch_tel');
+                $data = $data->where('KH_CONTACT_TEL','like','%'.$sch_tel.'%');
+            }
+            $data = $data->get();
+
+        }else{
+
         $data = DB::table('KH_MEMBER_LOGIN AS login ')
             ->leftjoin('KH_INFORMATION AS info','login.KH_MEMBER_LOGIN_ID','=','info.KH_INFORMATION_MEMBER')
             ->leftjoin('KH_CONTACT AS contact','login.KH_MEMBER_LOGIN_ID','=','contact.KH_CONTACT_MEMBER')
-            ->select('')
+            ->select(
+                'login.KH_MEMBER_LOGIN_ID',
+                'login.KH_MEMBER_LOGIN_USERNAME',
+                'contact.KH_CONTACT_NAME',
+                'contact.KH_CONTACT_EMAIL',
+                'contact.KH_CONTACT_TEL',
+                'info.KH_INFORMATION_HEIGHT',
+                'info.KH_INFORMATION_WEIGHT',
+                'info.KH_INFORMATION_SHOE',
+                'contact.KH_CONTACT_ADDR')
             ->get();
-        var_dump(DB::getQuerylog());
-        dd($data);
+        }
 
-        return view('member.listmember')->with('name','Member');
+        return view('member.listmember')->with('name','Member')->with('data',$data);
     }
 
 }

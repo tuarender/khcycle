@@ -27,8 +27,11 @@ Route::get('member','MemberController@index');
 //   return View::make('member.listmember')->with('name','Member');
 //});
 Route::get('listmember','MemberController@listmember');
+Route::post('listmember','MemberController@listmember');
 Route::post('login','MemberController@postLogin');
 Route::get('forgetpassword','MemberController@forgetpassword');
+
+Route::get('member/{id}','MemberController@show');
 
 Route::get('contact', function () {
     return View::make('contact.contact')->with('name','Contact');

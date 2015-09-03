@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-8 col-sm-offset-2">
-                <form class="form-horizontal" role="form" method="post" action="srch">
+                <form class="form-horizontal" role="form" method="post" action="listmember">
                  {{ csrf_field() }}
                 <div class="col-sm-2">
                     <label>ค้นหาสมาชิก:</label>
@@ -22,7 +22,7 @@
                     <input type="text" name="sch_tel">
                 </div>
                 <div class="col-sm-1">
-                    <input type="button" value="submit">
+                    <input type="submit" value="submit">
                 </div>
                 </form>
             </div>
@@ -34,23 +34,40 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-8 col-sm-offset-2">
-                <table border="1">
-                    <tr>
-                    <th>ลำดับ</th>
-                    <th>UserName</th>
-                    <th>ชื่อ-นามสกุล</th>
-                    <th>Email</th>
-                    <th>เบอร์โทรศัพท์</th>
-                    <th>น้ำหนัก</th>
-                    <th>ส่วนสูง</th>
-                    <th>เบอร์รองเท้า</th>
-                    <th>ที่อยู่</th>
-                    <th>จัดการ</th>
+        </div>
+    <div class="container">
+        <div class="table-responsive">
+                <table class="table table-bordered">
+                    <tr bgcolor="#6495ed">
+                        <th class="text-center">ลำดับ</th>
+                        <th class="text-center">UserName</th>
+                        <th class="text-center">ชื่อ-นามสกุล</th>
+                        <th class="text-center">Email</th>
+                        <th class="text-center">เบอร์โทรศัพท์</th>
+                        <th class="text-center">น้ำหนัก</th>
+                        <th class="text-center">ส่วนสูง</th>
+                        <th class="text-center">เบอร์รองเท้า</th>
+                        <th class="text-center">ที่อยู่</th>
+                        <th class="text-center">จัดการ</th>
                     </tr>
+                    {{-- */$i=1;/* --}}
+                    @foreach($data as $member)
+                    <tr>
+                        <td>{{ $i }}</td>
+                        <td>{{$member['KH_MEMBER_LOGIN_USERNAME']}}</td>
+                        <td>{{$member['KH_CONTACT_NAME']}}</td>
+                        <td>{{$member['KH_CONTACT_EMAIL']}}</td>
+                        <td>{{$member['KH_CONTACT_TEL']}}</td>
+                        <td>{{$member['KH_INFORMATION_HEIGHT']}}</td>
+                        <td>{{$member['KH_INFORMATION_WEIGHT']}}</td>
+                        <td>{{$member['KH_INFORMATION_SHOE']}}</td>
+                        <td>{{$member['KH_CONTACT_ADDR']}}</td>
+                        <td><a href="member/{{$member['KH_MEMBER_LOGIN_ID']}}">EDIT</a></td>
+                        {{-- */$i++;/* --}}
+                    </tr>
+                    @endforeach
                 </table>
             </div>
         </div>
-    </div>
+
 @endsection
