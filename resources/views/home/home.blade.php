@@ -20,7 +20,7 @@
           for($i=0;$i<count($brand);$i++){
             echo "<li id='".$brand[$i]["BRAND_ID"]."'>";
             echo "<a href='#'>";
-            echo "<div class='brandDiv'>";
+            echo "<div>";
             echo "<img src='images/brand/product/sample".$brand[$i]["BRAND_ID"].".jpg' class='brandLogo_home'>";
             echo "</div>";
             echo "</a>";
