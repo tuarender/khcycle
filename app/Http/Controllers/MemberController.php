@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
@@ -165,6 +166,15 @@ class MemberController extends Controller
         return $query;
     }
 
+    private function chkmatchlogin($user,$pass)
+    {
+        $query = DB::table('KH_MEMBER_LOGIN')
+            ->where('KH_MEMBER_LOGIN_USERNAME','=',$user)
+            ->where('KH_memBER_LOGIN_PASSWORD','=',$pass)
+            ->count();
+        return $query;
+    }
+
     public function create()
     {
         //
@@ -246,12 +256,52 @@ class MemberController extends Controller
             $FindUser = $this->checkuser($kh_username);
             if($FindUser>0)
             {
+                $kh_password = $request->input('kh_password');
+                $encryp_password = $this->getEncode_member($kh_password,strlen($kh_password));
+                $matchlogin = $this->chkmatchlogin($kh_username,$encryp_password);
 
+                if($matchlogin>0)
+                {
+//                    $id = DB::table('KH_MEMBER_LOGIN')->select('KH_MEMBER_LOGIN_USERNAME')->where('KH_MEMBER_LOGIN_USERNAME','=',$kh_username)->first();
+//                    if($id)
+//                    {
+//                        Auth::login($id);
+//                        Session::flash('alert-danger', '1');
+//                       return redirect('member');
+//                    }else{
+//                        Session::flash('alert-danger', '2');
+//                       return redirect('member');
+//                    }
+                   if(Auth::attempt(array('KH_MEMBER_LOGIN_USERNAME'=>$kh_username,'password'=>$encryp_password)))
+                   {
+                       Session::flash('alert-danger', '1');
+                       return redirect('member');
+                   }else{
+                       Session::flash('alert-danger', '2');
+                       return redirect('member');
+                   }
+                }else{
+                    Session::flash('alert-danger', 'Username/Password ผิด กรุณาลองอีกครั้ง');
+                    return redirect('member');
+                }
             }else{
                 Session::flash('alert-danger', 'ไม่พบผู้ใช้งานกรุณาลองอีกครั้ง');
                 return redirect('member');
             }
         }
+    }
+
+    public function listmember()
+    {
+        $data = DB::table('KH_MEMBER_LOGIN AS login ')
+            ->leftjoin('KH_INFORMATION AS info','login.KH_MEMBER_LOGIN_ID','=','info.KH_INFORMATION_MEMBER')
+            ->leftjoin('KH_CONTACT AS contact','login.KH_MEMBER_LOGIN_ID','=','contact.KH_CONTACT_MEMBER')
+            ->select('')
+            ->get();
+        var_dump(DB::getQuerylog());
+        dd($data);
+
+        return view('member.listmember')->with('name','Member');
     }
 
 }

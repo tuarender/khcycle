@@ -23,6 +23,10 @@ Route::get('product',function(){
 
 
 Route::get('member','MemberController@index');
+//Route::get('listmember',function(){
+//   return View::make('member.listmember')->with('name','Member');
+//});
+Route::get('listmember','MemberController@listmember');
 Route::post('login','MemberController@postLogin');
 Route::get('forgetpassword','MemberController@forgetpassword');
 
