@@ -2,34 +2,36 @@
 @section('content')
 @include('partials.banner')
     <div id="detail" class="detail" style="display:none;">
-      <div class="catalogue head1">
-        Lastest Catalogue
-        <div>
-          <a href="catalogue"><img src="cover/accessory.jpg"  style="max-width:130px" /></a><br>
-          <a href="catalogue">Read more...</a>
+      <div class="container-fluid" style="width:85%">
+        <div class="col-md-4 catalogue head1">
+          Lastest Catalogue
+          <div>
+            <a href="catalogue"><img src="cover/accessory.jpg"  style="max-width:130px" /></a><br>
+            <a href="catalogue">Read more...</a>
+          </div>
         </div>
-      </div>
-      <div class="brand head1">
-        <div>
-            KH Product
-        </div>
-        <div>
-      <?php
-        if(isset($brand)){
-          echo "<ul id='horizontal-list'>";
-          for($i=0;$i<count($brand);$i++){
-            echo "<li id='".$brand[$i]["BRAND_ID"]."'>";
-            echo "<a href='#'>";
-            echo "<div>";
-            echo "<img src='images/brand/product/sample".$brand[$i]["BRAND_ID"].".jpg' class='brandLogo_home'>";
-            echo "</div>";
-            echo "</a>";
-            echo "</li>";
+        <div class="col-md-8 brand head1">
+          <div>
+              KH Product
+          </div>
+          <div>
+        <?php
+          if(isset($brand)){
+            echo "<ul id='horizontal-list'>";
+            for($i=0;$i<count($brand);$i++){
+              echo "<li id='".$brand[$i]["BRAND_ID"]."'>";
+              echo "<a href='product/brand/".$brand[$i]["BRAND_ID"]."'>";
+              echo "<div>";
+              echo "<img src='images/brand/product/sample".$brand[$i]["BRAND_ID"].".jpg' class='brandLogo_home'>";
+              echo "</div>";
+              echo "</a>";
+              echo "</li>";
+            }
+            echo "</ul>";
           }
-          echo "</ul>";
-        }
-      ?>
-      </div>
+        ?>
+          </div>
+        </div>
       </div>
     </div>
     <div id="newsList" class="container-fluid" style="max-width:85%;display:none">
@@ -38,7 +40,7 @@
         </div>
     </div>
 
-  <div class="contactContainer">
+  <div class="contactContainer" style="display:none">
     <div class="jumbotron">
     <div class="row">
       <div class="col-lg-4">
@@ -62,7 +64,11 @@
   <script type="text/javascript">
     var flagNewsSwap = false;
     $(document).ready(function(){
-        $('#detail').fadeIn('slow');
+        $('.slideContainer').fadeIn('slow',function(){
+          $('#detail').fadeIn('slow'); 
+          $('.contactContainer').fadeIn('slow');
+          $('#footer').fadeIn('slow');
+        });
         getNews();
         $(window).on('resize', function(){
           swapNews();

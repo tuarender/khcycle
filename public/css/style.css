@@ -127,6 +127,9 @@ div.brand{
     border-radius: 10px;
 	border: 4px solid #F2F2F2;
 }
+.brandLogoActive{
+	border-color: #F2F100;
+}
 .brandLogo:hover,.brandLogo_home:hover{
 	border-color: #F2F100;
 }
@@ -228,9 +231,6 @@ div.brand{
 		float:left;
 		width: 30%;
 		height: 100%;
-	}
-	ul#horizontal-list {
-		max-width: 70%;
 	}
 	div.brand{
 		text-align: left;

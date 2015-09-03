@@ -41,6 +41,7 @@ Route::get('register','MemberController@register');
 Route::post('register','MemberController@postregister');
 
 Route::get('product', 'ProductController@index');
+Route::get('product/brand/{brandId}', 'ProductController@index');
 Route::get('product/{brandId}/{groupId?}', 'ProductController@getProduct');
 
 Route::get('news','NewsController@getNewsList');

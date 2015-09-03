@@ -14,12 +14,12 @@ use DB;
 class ProductController extends Controller
 {
 
-    public function index()
+    public function index($brandId=null)
     {
         $sql = "SELECT BRAND_ID,BRAND_ORDER,BRAND_NAME,BRAND_LOGO_NAME FROM KH_BRAND WHERE BRAND_DELETE_STATUS <> 1 ORDER BY BRAND_ORDER";
         $brand = DB::select($sql);
 
-        return view('product.product', ['brand' => $brand],['name' => "Product"]);
+        return view('product.product', ['brand' => $brand,'brandId' => $brandId,'name' => "Product"]);
     }
 
     public function getProduct($brandId,$groupId=null)
