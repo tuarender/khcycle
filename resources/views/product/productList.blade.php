@@ -22,7 +22,7 @@
 		foreach($products as $product){
 			echo "<div class='product' style='margin:5px'>";
 			echo "<a href='#product".$product['PRODUCT_ID']."' data-target='#product".$product['PRODUCT_ID']."' data-toggle='modal'>";
-			echo "<img class='img-responsive' src='images/product/".$product['PRODUCT_MIN_FILE_NAME'].".".$product['PRODUCT_MIN_EXT']."'>";
+			echo "<img class='img-responsive' onerror='this.src=\"images/product/default.png\"' src='images/product/".$product['PRODUCT_MIN_FILE_NAME'].".".$product['PRODUCT_MIN_EXT']."'>";
 			echo "</a>";
 			echo "<a href='#product".$product['PRODUCT_ID']."' data-target='#product".$product['PRODUCT_ID']."' data-toggle='modal'>";
 			echo "<h4>".$product['PRODUCT_NAME']."</h4>";
@@ -32,7 +32,7 @@
 			echo "	<div class='modal-dialog modal-lg'>";
 			echo "		<div class='modal-content'>";
 			echo "			<div class='modal-body'>";
-			echo "				<img src='images/product/".$product['PRODUCT_FULL_FILE_NAME'].".".$product['PRODUCT_FULL_EXT']."' class='img-responsive'>";
+			echo "				<img src='images/product/".$product['PRODUCT_FULL_FILE_NAME'].".".$product['PRODUCT_FULL_EXT']."' class='img-responsive' onerror='this.src=\"images/product/default.png\"'>";
 			echo "			</div>";
 			echo "		</div>";
 			echo "	</div>";

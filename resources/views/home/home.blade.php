@@ -34,7 +34,7 @@
         </div>
       </div>
     </div>
-    <div id="newsList" class="container-fluid" style="max-width:85%;display:none">
+    <div id="newsList" class="container-fluid newsHome" style=";display:none">
         <div class="row">
           <img src="images/loading.gif" style="display: block;margin-left: auto;margin-right: auto;">
         </div>

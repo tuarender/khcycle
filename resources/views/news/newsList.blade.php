@@ -11,7 +11,12 @@
 				echo "<div class='col-md-6'>";
 				echo "<div class='row newsInnerRow'>";
 				echo "<div class='col-sm-6'>";
-				echo "<img class='img-responsive' src='images/news/".$news['NEWS_IMAGE_TITLE_NAME'].".".$news['NEWS_IMAGE_TITLE_EXT']."'>";
+				if($news['NEWS_IS_YOUTUBE']==1){
+					echo "<div class='videoWrapper'><iframe src='".$news['NEWS_YOUTUBE_URI']."' frameborder='0' allowfullscreen></iframe></div>";
+				}
+				else{
+					echo "<img class='img-responsive' src='images/news/".$news['NEWS_IMAGE_TITLE_NAME'].".".$news['NEWS_IMAGE_TITLE_EXT']."'>";
+				}
 				echo "</div>";
 				echo "<div class='col-sm-6'>";
 				echo "<h2>".$news['NEWS_TITLE']."</h2>";

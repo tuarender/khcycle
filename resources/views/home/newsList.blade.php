@@ -6,7 +6,12 @@
 		<?php
 			$indicator = 1;
 			foreach($newsList as $news){
-				$display = "<img class='img-responsive' src='images/news/".$news['NEWS_IMAGE_TITLE_NAME'].".".$news['NEWS_IMAGE_TITLE_EXT']."'>";
+				if($news['NEWS_IS_YOUTUBE']==1){
+					$display = "<div class='videoWrapper'><iframe src='".$news['NEWS_YOUTUBE_URI']."' frameborder='0' allowfullscreen></iframe></div>";
+				}
+				else{
+					$display = "<img class='img-responsive' src='images/news/".$news['NEWS_IMAGE_TITLE_NAME'].".".$news['NEWS_IMAGE_TITLE_EXT']."'>";
+				}
 				$content = "<h2>".$news['NEWS_TITLE']."</h2>";
 				$content.= "<p class='news'>".$news['NEWS_CONTENT_SUB']."</p>";
 				$content.= "<a href='news/".$news['NEWS_ID']."' class='btn btn-info btn-md readmoreBtn'><span class='glyphicon glyphicon-eye-open'></span> Read more</a>";

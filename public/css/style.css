@@ -109,7 +109,9 @@ div.brand{
 	display: inline-block;
 	padding-left: 0px;
 }
-
+.newsHome{
+	max-width:95%
+}
 .brandList >li{
 	padding-left: 0px;
 	list-style: none;
@@ -193,7 +195,7 @@ div.brand{
 	border-radius: 0px;
 }
 .imageTitleNews{
-	max-width: 80%;
+	max-width: 75%;
 	margin: auto;
 }
 .topBuffer { 
@@ -210,8 +212,24 @@ div.brand{
 .viewmore{
 	font-weight: bold;
 }
+.videoWrapper{
+	position:relative;
+	padding-bottom:56.25%;
+	height:0;
+	margin-bottom:30px
+}
+.videoWrapper iframe{
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%
+}
 #productList{ padding-top: 5px}
 @media screen and (min-width: 768px){
+	.newsHome{
+		max-width:80%
+	}
 	.brandList >li{
 		float: left;
 	}
@@ -243,6 +261,9 @@ div.brand{
 	}
 	.productContainer{
 		margin:5px auto;
+	}
+	.videoWrapper iframe{
+		height:89%
 	}
 }
 
