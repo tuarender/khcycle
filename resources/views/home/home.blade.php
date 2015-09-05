@@ -22,7 +22,7 @@
               echo "<li id='".$brand[$i]["BRAND_ID"]."'>";
               echo "<a href='product/brand/".$brand[$i]["BRAND_ID"]."'>";
               echo "<div>";
-              echo "<img src='images/brand/product/sample".$brand[$i]["BRAND_ID"].".jpg' class='brandLogo_home'>";
+              echo "<img onerror='this.src=\"images/brand/product/default.png\"' src='images/brand/product/sample".$brand[$i]["BRAND_ID"].".jpg' class='brandLogo_home'>";
               echo "</div>";
               echo "</a>";
               echo "</li>";
@@ -66,11 +66,23 @@
     $(document).ready(function(){
         $('.slideContainer').fadeIn('slow',function(){
           $('#detail').fadeIn('slow'); 
-          $('.contactContainer').fadeIn('slow');
+          $('.contactContainer').fadeIn('slow',function(){
+            var topTag = ($('.slideContainer').height()*0.8)-100;
+            var rightTag = ($('.slideContainer').width()*0.9)-120;
+            console.log("width:"+$('.slideContainer').width());
+            console.log("rightTag:"+rightTag);
+            $(".tag").css({ top: topTag ,left: rightTag });
+            $(".tag").fadeIn();
+          });
           $('#footer').fadeIn('slow');
         });
         getNews();
         $(window).on('resize', function(){
+          var topTag = ($('.slideContainer').height()*0.8)-100;
+          var rightTag = ($('.slideContainer').width()*0.9)-120;
+          console.log("width:"+$('.slideContainer').width());
+          console.log("rightTag:"+rightTag);
+          $(".tag").css({ top: topTag,left: rightTag });
           swapNews();
         });
     }); 

@@ -306,6 +306,15 @@ div.brand{
 .btnKhcycle:hover{
 	background-color:#000000 !important;
 }
+.tag {
+	font-weight: bold;
+   	float: right;
+   	position: absolute;
+   	z-index: 1000;
+   	padding: 5px;
+   	color: #FFFFFF;
+   	font-weight: bold;
+}
 
 /*@media screen and (min-width: 1025px) {
 	img.logo {

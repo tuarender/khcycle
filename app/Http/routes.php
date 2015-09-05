@@ -14,13 +14,11 @@
 Route::get('/', 'HomeController@index');
 Route::get('home', 'HomeController@index');
 
-
 Route::get('catalogue','CatalogueController@index');
 
 Route::get('product',function(){
     return View::make('product.product');
 });
-
 
 Route::get('member','MemberController@index');
 //Route::get('listmember',function(){

@@ -11,7 +11,7 @@
 			    	echo "<li id='".$brand[$i]["BRAND_ID"]."'>";
 			    	echo "<a href='javascript:getProduct(".$brand[$i]["BRAND_ID"].",0)'>";
 			    	echo "<div class='brandDiv'>";
-			    	echo "<img id='logoBrand".$brand[$i]["BRAND_ID"]."' src='images/brand/product/sample".$brand[$i]["BRAND_ID"].".jpg'";
+			    	echo "<img onerror='this.src=\"images/brand/product/default.png\"' id='logoBrand".$brand[$i]["BRAND_ID"]."' src='images/brand/product/sample".$brand[$i]["BRAND_ID"].".jpg'";
 			    	echo " class='brandLogo"; 
 			    	if(isset($brandId)&&!is_null($brandId)&&$brandId==$brand[$i]["BRAND_ID"]){
 			    		echo " brandLogoActive";
