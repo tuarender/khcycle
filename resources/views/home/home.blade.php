@@ -62,29 +62,36 @@
 @section('scripts')
   <script type="text/javascript">
     var flagNewsSwap = false;
+    var doTimeout;
     $(document).ready(function(){
         $('.slideContainer').fadeIn('slow',function(){
           $('#detail').fadeIn('slow'); 
           $('.contactContainer').fadeIn('slow',function(){
             var topTag = ($('.slideContainer').height()*0.8)-100;
             var rightTag = ($('.slideContainer').width()*0.9)-120;
-            console.log("width:"+$('.slideContainer').width());
-            console.log("rightTag:"+rightTag);
             $(".tag").css({ top: topTag ,left: rightTag });
-            $(".tag").fadeIn();
+            $(".tag").fadeIn(800);
           });
           $('#footer').fadeIn('slow');
         });
         getNews();
         $(window).on('resize', function(){
-          var topTag = ($('.slideContainer').height()*0.8)-100;
-          var rightTag = ($('.slideContainer').width()*0.9)-120;
-          console.log("width:"+$('.slideContainer').width());
-          console.log("rightTag:"+rightTag);
-          $(".tag").css({ top: topTag,left: rightTag });
           swapNews();
+              clearTimeout(doTimeout);
+              doTimeout = setTimeout(function() {
+                  resizeTag();
+              }, 100);
         });
     }); 
+
+    function resizeTag(){
+      console.log("Do it!");
+      console.log("width:"+$('.slideContainer').width());
+      console.log("rightTag:"+rightTag);
+      var topTag = ($('.slideContainer').height()*0.8)-100;
+          var rightTag = ($('.slideContainer').width()*0.9)-120;
+          $(".tag").css({ top: topTag,left: rightTag });
+    }
 
     function getNews(){
       var url = "newsHome";

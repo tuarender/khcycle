@@ -1,9 +1,9 @@
 @extends('app')
 @extends('partials.subheader')
 @section('content')
-    <div class="contactContainer">
+    <div class="contactContainer" style="width:90%">
         <div class="row">
-            <div class="col-lg-4">
+            <div class="col-md-4">
             <b>KHCYCLE BIKE STUDIO</b><br>
 
                     <b>เลขที่ 29 ถนนประเสริฐมนูญกิจ แขวงคลองกุ่ม กรุงเทพฯ 10240</b><br>
@@ -11,9 +11,9 @@
                     <b>Email:Sales@khcycle.com</b><br>
 
                 <a href="#" class="contactbutton">ติดต่อสอบถาม</a><br><br><br>
-                <div id="googleMap" style="width:400px;height:230px;"></div>
+                <div id="googleMap" style="width:100%;height:250px;margin-left:auto;margin-right:auto"></div>
             </div>
-            <div class="col-lg-8">
+            <div class="col-md-8">
                 <img src="images/contact/contact.png"/>
             </div>
         </div>
@@ -38,6 +38,12 @@
             var marker=new google.maps.Marker({
                 position:myCenter,
                 animation:google.maps.Animation.BOUNCE
+            });
+
+            google.maps.event.addDomListener(window, "resize", function() {
+                var center = map.getCenter();
+                google.maps.event.trigger(map, "resize");
+                map.setCenter(center); 
             });
 
             marker.setMap(map);

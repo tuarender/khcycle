@@ -88,6 +88,9 @@ div.brand{
 	font-size: 20px;
 	vertical-align: bottom;
 }
+.subheaderName{
+	padding-left: 30px;
+}
 
 .contactContainer{
 	padding-top: 70px;
