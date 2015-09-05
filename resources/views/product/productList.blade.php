@@ -32,7 +32,7 @@
 			echo "	<div class='modal-dialog modal-lg'>";
 			echo "		<div class='modal-content'>";
 			echo "			<div class='modal-body'>";
-			echo "				<img src='images/product/".$product['PRODUCT_FULL_FILE_NAME'].".".$product['PRODUCT_FULL_EXT']."' class='img-responsive' onerror='this.src=\"images/product/default.png\"'>";
+			echo "				<img src='images/product/".$product['PRODUCT_FULL_FILE_NAME'].".".$product['PRODUCT_FULL_EXT']."' class='img-responsive' onerror='this.src=\"images/product/default-lg.png\"'>";
 			echo "			</div>";
 			echo "		</div>";
 			echo "	</div>";

@@ -10,7 +10,7 @@
 					$display = "<div class='videoWrapper'><iframe src='".$news['NEWS_YOUTUBE_URI']."' frameborder='0' allowfullscreen></iframe></div>";
 				}
 				else{
-					$display = "<img class='img-responsive' src='images/news/".$news['NEWS_IMAGE_TITLE_NAME'].".".$news['NEWS_IMAGE_TITLE_EXT']."'>";
+					$display = "<img class='img-responsive' onerror='this.src=\"images/news/default.png\"' src='images/news/".$news['NEWS_IMAGE_TITLE_NAME'].".".$news['NEWS_IMAGE_TITLE_EXT']."'>";
 				}
 				$content = "<h2>".$news['NEWS_TITLE']."</h2>";
 				$content.= "<p class='news'>".$news['NEWS_CONTENT_SUB']."</p>";
