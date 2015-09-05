@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -19,10 +20,18 @@ class MemberController extends Controller
      *
      * @return Response
      */
+
+
     public function index()
     {
         //
-        return view('member.login')->with('name', 'Member');
+        if(Session::has('user'))
+        {
+            return $this->profilemember();
+        }
+        else{
+            return view('member.login')->with('name', 'Member');
+        }
     }
 
     public function forgetpassword()
@@ -98,7 +107,7 @@ class MemberController extends Controller
             $member_height = $request->input('member_height',0.00);
             $member_weight = $request->input('member_weight',0.00);
             $member_shoe = $request ->input('member_shoe',0.00);
-            $ervpass =$this-> getEncode_member($member_password,strlen($member_password));
+            $ervpass = $this-> getEncode_member($member_password,strlen($member_password));
 
             //check user
             $FindUser = $this->checkuser($member_username);
@@ -201,10 +210,10 @@ class MemberController extends Controller
     public function show($id)
     {
         $data = DB::table('KH_MEMBER_LOGIN AS login ')
-            ->leftjoin('KH_INFORMATION AS info','login.KH_MEMBER_LOGIN_ID','=','info.KH_INFORMATION_MEMBER')
-            ->leftjoin('KH_CONTACT AS contact','login.KH_MEMBER_LOGIN_ID','=','contact.KH_CONTACT_MEMBER')
+            ->leftjoin('KH_INFORMATION AS info','login.ID','=','info.KH_INFORMATION_MEMBER')
+            ->leftjoin('KH_CONTACT AS contact','login.ID','=','contact.KH_CONTACT_MEMBER')
             ->select(
-                'login.KH_MEMBER_LOGIN_ID',
+                'login.ID',
                 'login.KH_MEMBER_LOGIN_USERNAME',
                 'contact.KH_CONTACT_NAME',
                 'contact.KH_CONTACT_EMAIL',
@@ -213,7 +222,7 @@ class MemberController extends Controller
                 'info.KH_INFORMATION_WEIGHT',
                 'info.KH_INFORMATION_SHOE',
                 'contact.KH_CONTACT_ADDR')
-            ->where('login.KH_MEMBER_LOGIN_ID','=',$id)
+            ->where('login.ID','=',$id)
             ->get();
         return view('member.memberdetail')->with('name','Member')->with('data',$data);
         //
@@ -240,6 +249,59 @@ class MemberController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $rules=[
+            'member_name'=>'required',
+            'member_tel'=>'required',
+            'member_address'=>'required',
+            'member_weight'=>'required',
+            'member_height'=>'required',
+            'member_shoe'=>'required'
+        ];
+        //Custom ควบคุม Message Error
+        $messages = [
+            'member_name.required'=>'กรุณาระบุชื่อ-นามสกุล',
+            'member_tel.required'=>'กรุณาระบุเบอร์โทร',
+            'member_address.required'=>'กรุณาระบุที่อยู่',
+            'member_weight.required'=>'กรุณาระบุน้ำหนัก',
+            'member_height.required'=>'กรุณาระบุส่วนสูง',
+            'member_shoe.required'=>'กรุณาระบุเบอร์รองเท้า'
+        ];
+
+        $validator =  Validator::make($request->all(),$rules,$messages);
+
+        if($validator->fails()){
+            return redirect('register')->withErrors($validator)->withInput();
+        }else {
+
+            $member_name = $request->input('member_name', 'John Doe');
+            $member_tel = $request->input('member_tel', '0x-xxx-xxxx');
+            $member_addr = $request->input('member_address', 'Example Address');
+
+            //data for kh_information
+            $member_height = $request->input('member_height', 0.00);
+            $member_weight = $request->input('member_weight', 0.00);
+            $member_shoe = $request->input('member_shoe', 0.00);
+
+            //insert contact
+            DB::table('KH_CONTACT')
+                ->where('KH_CONTACT_MEMBER','=',$id)
+                ->update([
+                    'KH_CONTACT_NAME'=>$member_name,
+                'KH_CONTACT_TEL'=>$member_tel,
+                'KH_CONTACT_ADDR'=>$member_addr]
+                );
+
+            //insert information
+            DB::table('KH_INFORMATION')
+                ->where('KH_INFORMATION_MEMBER','=',$id)
+                ->update([
+                'KH_INFORMATION_HEIGHT'=>$member_height,
+                'KH_INFORMATION_WEIGHT'=>$member_weight,
+                'KH_INFORMATION_SHOE'=>$member_shoe
+            ]);
+            Session::flash('alert-success', 'อัพเดตค่าเรียบร้อยแล้ว');
+            return redirect('member/'.$id);
+        }
     }
 
     /**
@@ -271,23 +333,32 @@ class MemberController extends Controller
         }else{
             $kh_username = $request->input('kh_username');
             $FindUser = $this->checkuser($kh_username);
+
             if($FindUser>0)
             {
                 $kh_password = $request->input('kh_password');
                 $encryp_password = $this->getEncode_member($kh_password,strlen($kh_password));
+                //$encryp_password = Hash::make($kh_password);
                 $matchlogin = $this->chkmatchlogin($kh_username,$encryp_password);
-
+               // dd($encryp_password);
                 if($matchlogin>0)
                 {
-                    $id = DB::table('KH_MEMBER_LOGIN')->select('KH_MEMBER_LOGIN_ID')->where('KH_MEMBER_LOGIN_USERNAME','=',$kh_username)->first();
-                    if($id)
+                    $id = DB::table('KH_MEMBER_LOGIN')->select('ID')->WHERE('KH_MEMBER_LOGIN_USERNAME','=',$kh_username)->first();
+                    $user = User::find($id['ID']);
+                    if($user)
                     {
-                        Auth::loginUsingId($id);
-                        Session::flash('alert-danger', '1');
-                       return redirect('member');
+                        $chk = Auth::loginusingID($id['ID']);
+
+                        //$chk = Auth::attempt(array('KH_MEMBER_LOGIN_USERNAME'=>$kh_username,
+                        //'password'=>$encryp_password));
+
+                        Session::put('user',Auth::user());
+
+
+                       return redirect('profile');
                     }else{
-                        Session::flash('alert-danger', '2');
-                       return redirect('member');
+                        Session::flash('alert-danger', 'False');
+                        return redirect('member');
                     }
 //                   if(Auth::attempt(array('KH_MEMBER_LOGIN_USERNAME'=>$kh_username,'password'=>$encryp_password)))
 //                   {
@@ -308,42 +379,16 @@ class MemberController extends Controller
         }
     }
 
-    public function listmember(Request $request)
+    public function profilemember()
     {
-        if ($request->isMethod('post'))
-        {
-            $data = DB::table('KH_MEMBER_LOGIN AS login ')
-                ->leftjoin('KH_INFORMATION AS info','login.KH_MEMBER_LOGIN_ID','=','info.KH_INFORMATION_MEMBER')
-                ->leftjoin('KH_CONTACT AS contact','login.KH_MEMBER_LOGIN_ID','=','contact.KH_CONTACT_MEMBER')
-                ->select(
-                    'login.KH_MEMBER_LOGIN_ID',
-                    'login.KH_MEMBER_LOGIN_USERNAME',
-                    'contact.KH_CONTACT_NAME',
-                    'contact.KH_CONTACT_EMAIL',
-                    'contact.KH_CONTACT_TEL',
-                    'info.KH_INFORMATION_HEIGHT',
-                    'info.KH_INFORMATION_WEIGHT',
-                    'info.KH_INFORMATION_SHOE',
-                    'contact.KH_CONTACT_ADDR');
-            if($request->has('sch_name'))
-            {
-                $sch_name = $request->input('sch_name');
-                $data = $data->where('KH_CONTACT_NAME','like','%'.$sch_name.'%');
-            }
-            if($request->has('sch_tel'))
-            {
-                $sch_tel = $request->input('sch_tel');
-                $data = $data->where('KH_CONTACT_TEL','like','%'.$sch_tel.'%');
-            }
-            $data = $data->get();
 
-        }else{
+        $id = Session::get('user')->ID;
 
         $data = DB::table('KH_MEMBER_LOGIN AS login ')
-            ->leftjoin('KH_INFORMATION AS info','login.KH_MEMBER_LOGIN_ID','=','info.KH_INFORMATION_MEMBER')
-            ->leftjoin('KH_CONTACT AS contact','login.KH_MEMBER_LOGIN_ID','=','contact.KH_CONTACT_MEMBER')
+            ->leftjoin('KH_INFORMATION AS info','login.ID','=','info.KH_INFORMATION_MEMBER')
+            ->leftjoin('KH_CONTACT AS contact','login.ID','=','contact.KH_CONTACT_MEMBER')
             ->select(
-                'login.KH_MEMBER_LOGIN_ID',
+                'login.ID',
                 'login.KH_MEMBER_LOGIN_USERNAME',
                 'contact.KH_CONTACT_NAME',
                 'contact.KH_CONTACT_EMAIL',
@@ -352,10 +397,80 @@ class MemberController extends Controller
                 'info.KH_INFORMATION_WEIGHT',
                 'info.KH_INFORMATION_SHOE',
                 'contact.KH_CONTACT_ADDR')
+            ->where('login.ID','=',$id)
             ->get();
-        }
 
-        return view('member.listmember')->with('name','Member')->with('data',$data);
+        return view('member.memberprofile')->with('name','Member')->with('data',$data);
     }
 
+    public function listmember(Request $request)
+    {
+        if(Session::has('user'))
+        {
+            $rule = Session::get('user')->KH_MEMBER_RULE;
+            if(($rule) == 'ADMIN')
+            {
+                if ($request->isMethod('post'))
+                {
+                    $data = DB::table('KH_MEMBER_LOGIN AS login ')
+                        ->leftjoin('KH_INFORMATION AS info','login.ID','=','info.KH_INFORMATION_MEMBER')
+                        ->leftjoin('KH_CONTACT AS contact','login.ID','=','contact.KH_CONTACT_MEMBER')
+                        ->select(
+                            'login.ID',
+                            'login.KH_MEMBER_LOGIN_USERNAME',
+                            'contact.KH_CONTACT_NAME',
+                            'contact.KH_CONTACT_EMAIL',
+                            'contact.KH_CONTACT_TEL',
+                            'info.KH_INFORMATION_HEIGHT',
+                            'info.KH_INFORMATION_WEIGHT',
+                            'info.KH_INFORMATION_SHOE',
+                            'contact.KH_CONTACT_ADDR')
+                        ->where('login.KH_MEMBER_RULE','<>','ADMIN');
+                    if($request->has('sch_name'))
+                    {
+                        $sch_name = $request->input('sch_name');
+                        $data = $data->where('KH_CONTACT_NAME','like','%'.$sch_name.'%');
+                    }
+                    if($request->has('sch_tel'))
+                    {
+                        $sch_tel = $request->input('sch_tel');
+                        $data = $data->where('KH_CONTACT_TEL','like','%'.$sch_tel.'%');
+                    }
+                    $data = $data->get();
+
+                }else{
+
+                    $data = DB::table('KH_MEMBER_LOGIN AS login ')
+                        ->leftjoin('KH_INFORMATION AS info','login.ID','=','info.KH_INFORMATION_MEMBER')
+                        ->leftjoin('KH_CONTACT AS contact','login.ID','=','contact.KH_CONTACT_MEMBER')
+                        ->select(
+                            'login.ID',
+                            'login.KH_MEMBER_LOGIN_USERNAME',
+                            'contact.KH_CONTACT_NAME',
+                            'contact.KH_CONTACT_EMAIL',
+                            'contact.KH_CONTACT_TEL',
+                            'info.KH_INFORMATION_HEIGHT',
+                            'info.KH_INFORMATION_WEIGHT',
+                            'info.KH_INFORMATION_SHOE',
+                            'contact.KH_CONTACT_ADDR')
+                        ->where('login.KH_MEMBER_RULE','<>','ADMIN')
+                        ->get();
+                }
+                return view('member.listmember')->with('name','Profile')->with('data',$data);
+            } else{
+                Session::flash('alert-warning', 'PERMISSION DENIED');
+                return redirect('member');
+            }
+        }else{
+            Session::flash('alert-warning', 'กรุณาLoginก่อน');
+            return redirect('member');
+        }
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        Session::forget('user');
+        return redirect('home');
+    }
 }

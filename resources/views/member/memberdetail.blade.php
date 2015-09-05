@@ -4,8 +4,8 @@
     <div class="contactcontainer">
         <div class="row">
             <div class="col-sm-8 col-sm-offset-2">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">แก้ไขข้อมูล</div>
+                <div class="panel panel-primary loginPanel">
+                    <div class="loginPanel loginPanelHeader panel-heading">แก้ไขข้อมูล</div>
                     <div class="panel-body">
                         @if (count($errors) > 0)
                             <div class="alert alert-danger">
@@ -21,12 +21,12 @@
                         @include('partials.flashmessage')
 
                         @foreach($data as $members)
-                        <form class="form-horizontal" role="form" method="post" action="updatemember">
+                        <form class="form-horizontal" role="form" method="post" action="updatemember/{{$members['ID']}}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class="form-group @if ($errors->has('member_username')) has-error @endif" >
                                 <label class="col-sm-4 control-label"><font color="red">*</font>Username</label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" name="member_username" value="{{ $members['KH_MEMBER_LOGIN_USERNAME'] }}" >
+                                    <input type="text" class="form-control" name="member_username" value="{{ $members['KH_MEMBER_LOGIN_USERNAME'] }}" readonly>
                                     @if($errors->has('member_username')) <p class="help-block">{{$errors->first('member_username')}}</p>@endif
                                 </div>
                             </div>
@@ -34,7 +34,7 @@
                             <div class="form-group @if ($errors->has('member_email')) has-error @endif">
                                 <label class="col-sm-4 control-label"><font color="red">*</font>E-Mail Address</label>
                                 <div class="col-sm-5">
-                                    <input type="email" class="form-control" name="member_email" value="{{ $members['KH_CONTACT_EMAIL'] }}" >
+                                    <input type="email" class="form-control" name="member_email" value="{{ $members['KH_CONTACT_EMAIL'] }}" readonly>
                                     @if($errors->has('member_email')) <p class="help-block">{{$errors->first('member_email')}}</p>@endif
                                 </div>
                             </div>
@@ -96,10 +96,10 @@
 
                             <div class="form-group">
                                 <div class="col-sm-6 col-sm-offset-4">
-                                    <button type="submit" class="btn btn-primary">
+                                    <button type="submit" class="btn btn-primary btnKhcycle">
                                         ยืนยัน
                                     </button>
-                                    <button type="reset" class="btn btn-primary">
+                                    <button type="reset" class="btn btn-primary btnKhcycle">
                                         ยกเลิก
                                     </button>
                                 </div>
