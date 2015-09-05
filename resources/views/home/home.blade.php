@@ -2,7 +2,7 @@
 @section('content')
 @include('partials.banner')
     <div id="detail" class="detail" style="display:none;">
-      <div class="container-fluid" style="width:85%">
+      <div class="container-fluid" style="width:90%">
         <div class="col-md-4 catalogue head1">
           Lastest Catalogue
           <div>
@@ -43,18 +43,17 @@
   <div class="contactContainer" style="display:none">
     <div class="jumbotron">
     <div class="row">
-      <div class="col-lg-4">
+      <div class="col-sm-4">
         <b>KHCYCLE BIKE STUDIO</b><br>
 
         <b>เลขที่ 29 ถนนประเสริฐมนูญกิจ แขวงคลองกุ่ม กรุงเทพฯ 10240</b><br>
         <b>โทร: 0-2510-1906</b><br>
-        <b>Email:Sales@khcycle.com</b><br>
+        <b>Email:Sales@khcycle.com</b><br><br>
 
-        คลิ๊กเพื่อดูแผนที่ขนาดใหญ่<br>
-        <div id="googleMap" style="width:400px;height:230px;"></div>
+        <div id="googleMap" style="width:100%;height:250px;margin-left:auto;margin-right:auto"></div>
       </div>
-      <div class="col-lg-8">
-        <img src="images/contact/contact.png"/>
+      <div class="col-sm-8">
+        <img src="images/contact/contact.png"  class='img-responsive'/>
       </div>
     </div>
     </div>
@@ -146,6 +145,12 @@
       var marker=new google.maps.Marker({
         position:myCenter,
         animation:google.maps.Animation.BOUNCE
+      });
+
+      google.maps.event.addDomListener(window, "resize", function() {
+         var center = map.getCenter();
+         google.maps.event.trigger(map, "resize");
+         map.setCenter(center); 
       });
 
       marker.setMap(map);

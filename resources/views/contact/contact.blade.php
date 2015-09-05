@@ -11,7 +11,6 @@
                     <b>Email:Sales@khcycle.com</b><br>
 
                 <a href="#" class="contactbutton">ติดต่อสอบถาม</a><br><br><br>
-                คลิ๊กเพื่อดูแผนที่ขนาดใหญ่<br>
                 <div id="googleMap" style="width:400px;height:230px;"></div>
             </div>
             <div class="col-lg-8">
