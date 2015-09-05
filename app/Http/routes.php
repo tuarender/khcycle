@@ -28,6 +28,10 @@ Route::get('listmember','MemberController@listmember');
 Route::post('listmember','MemberController@listmember');
 Route::post('login','MemberController@postLogin');
 Route::get('forgetpassword','MemberController@forgetpassword');
+Route::get('profile','MemberController@profilemember');
+Route::get('logout','MemberController@logout');
+Route::post('logout','MemberController@logout');
+Route::post('updatemember/{id}','MemberController@update');
 
 Route::get('member/{id}','MemberController@show');
 

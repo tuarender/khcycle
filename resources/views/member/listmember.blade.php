@@ -62,7 +62,7 @@
                         <td>{{$member['KH_INFORMATION_WEIGHT']}}</td>
                         <td>{{$member['KH_INFORMATION_SHOE']}}</td>
                         <td>{{$member['KH_CONTACT_ADDR']}}</td>
-                        <td><a href="member/{{$member['KH_MEMBER_LOGIN_ID']}}">EDIT</a></td>
+                        <td><a href="member/{{$member['ID']}}">EDIT</a></td>
                         {{-- */$i++;/* --}}
                     </tr>
                     @endforeach

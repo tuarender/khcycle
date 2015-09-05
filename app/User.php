@@ -31,7 +31,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      *
      * @var array
      */
-    protected $hidden = ['KH_MEMBER_LOGIN_REAL', 'remember_token'];
+    protected $hidden = array('KH_MEMBER_LOGIN_PASSWORD');//['KH_MEMBER_LOGIN_REAL', 'remember_token'];
 
     public function getAuthPassword() {
         return $this->KH_MEMBER_LOGIN_PASSWORD;
