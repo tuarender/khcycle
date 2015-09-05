@@ -1,6 +1,7 @@
 @extends('app')
+@extends('partials.subheader')
 @section('content')
-    <div class="container-fluid" style="max-width: 60%;margin-top:30px">
+    <div id="catalougeContainer" class="container-fluid" style="max-width:60%;margin-top:30px;display:none">
         <div class="row">
             <div class="form-group">
                 <?php $i=1; ?>
@@ -22,7 +23,12 @@
             @endforeach
         </div>
     </div>
-
-
+@endsection
+@section('scripts')
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#catalougeContainer').fadeIn(1200);
+    });
+</script>
 @endsection
 @stop

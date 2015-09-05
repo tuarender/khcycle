@@ -27,7 +27,7 @@ div.error{
   text-align: center;
 }
 div.detail{
-	float: left;
+	/*float: left;*/
 	background-color: #E0E0E0;
 	width: 100%;
 	min-height: 180px;
