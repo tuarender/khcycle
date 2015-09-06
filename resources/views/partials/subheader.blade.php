@@ -3,8 +3,8 @@
         <div class="col-xs-4 col-sm-6 subheaderName">
             <font color="gray"><strong><label>{!! $name !!}</label></strong></font>
         </div>
-        <div class="col-xs-8 col-sm-3">
-            <label>สินใจสินค้าติดต่อ 0-2510-1906</label>
+        <div class="col-xs-8 col-sm-3 subheaderContact">
+            <label>สนใจสินค้าติดต่อ 0-2510-1906</label>
         </div>
         <div class="col-xs-12 col-sm-3">
             <label>Social Network:</label>

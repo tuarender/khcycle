@@ -21,7 +21,7 @@
   <div class="container tag" style="display:none">
   	<div class="row">
   		<div class="col-xs-12">
-  			<h3><u>Follow us:</u></h3>
+  			<h3><u>Follow us</u></h3>
   		</div>
   	</div>
   	<div class="row">

@@ -1,20 +1,27 @@
 @font-face {
     font-family: CSChatThai;
-    src: url(fonts/CSChatThai.ttf);
+    src: url(../fonts/CSChatThai.ttf);
 }
 @font-face {
-    font-family: CSChatThaiUI;
-    src: url(fonts/CSChatThaiUI.ttf);
+    font-family: OpenSans;
+    src: url(../fonts/OpenSans-Light.ttf);
 }
-body{
-	font-family: CSChatThaiUI
+@font-face {
+    font-family: DidactGothic;
+    src: url(../fonts/DidactGothic.ttf);
 }
 p.news {
+	font-family: OpenSans;
+	font-style: normal;
+	font-weight: 300;
 	color: #5a5a5a;
-	font-size: 20px;
+	font-size: 18px;
     text-indent: 50px;
 }
 p.newsList {
+	font-family: OpenSans;
+	font-style: normal;
+	font-weight: 300;
 	color: #5a5a5a;
 	font-size: 16px;
     text-indent: 30px;
@@ -116,20 +123,23 @@ div.brand{
 	display: block;
 }
 .subheaderContainer label{
+	padding-left: 20px;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 20px;
 	vertical-align: bottom;
 }
-.subheaderName{
-	padding-left: 30px;
-}
-
 .sessionContainer{
 	text-align: right;
 	margin: 10px auto;
 }
-
+.subheaderContact label{
+	font-family: CSChatThai !important;
+	font-size: 26px;
+	line-height: 32px;
+}
 .contactContainer{
+	font-family: CSChatThai;
+	font-size: 20px;
 	padding-top: 30px;
 	margin: 10px auto;
 	max-width: 1340px;
@@ -193,14 +203,16 @@ div.brand{
 	border: 4px solid #E0E0E0;
 }
 .product{
+	margin:5px auto;
 	max-width:330px;
 	/*height:200px;*/
-	float:left;
+	/*float:left;*/
 	height: 260px;
 	position: relative;
 }
 
 .groupList{
+	text-align: center;
 	list-style-type: none;
     margin: 0;
     padding: 0;
@@ -210,7 +222,7 @@ div.brand{
 	/*overflow:hidden;*/
 }
 .groupList >li{
-    float: left;
+    display: inline-block;
     margin:5px 5px;
 }
 .groupList >li >a{
@@ -242,6 +254,8 @@ div.brand{
 	margin-top:20px;
 }
 .newsInnerRow >div>h2{
+	font-family: DidactGothic;
+	letter-spacing: 4px;
 	margin-top: 0px;
 }
 .readmoreBtn{
@@ -283,8 +297,18 @@ div.newsEnd{
 .newsContent{
 	padding-left: 20px;
 }
+.navText{
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
 #productList{ padding-top: 5px}
 @media screen and (min-width: 768px){
+	.product{
+		margin: 5px 10px;
+		float: left;
+	}
+	.groupList{
+		text-align: left;
+	}
 	.newsHome{
 		max-width:100%
 	}
@@ -372,13 +396,14 @@ div.newsEnd{
 	background-color:#000000 !important;
 }
 .tag {
-	font-weight: bold;
    	float: right;
    	position: absolute;
    	z-index: 1000;
    	padding: 5px;
    	color: #FFFFFF;
-   	font-weight: bold;
+}
+.tag h3{
+	font-weight: bold;
 }
 
 /*@media screen and (min-width: 1025px) {

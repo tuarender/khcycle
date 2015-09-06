@@ -43,6 +43,7 @@
     		}
 
     		$(window).on('resize', function(){
+    			//console.log($('#productList').height());
 			    if ($(this).width() <= 768){
 			    	$('.brandWrapper').css('height', 'auto'); //set max height
 			    }else{

@@ -36,7 +36,7 @@
 				$indicator+=1;
 			}
 		?>
-		<div class="col-md-12 viewmoreContainer"><h3><a class="viewmore" href="news">View More>></a><h3></div>
+		<div class="col-md-12 viewmoreContainer"><h3><a class="viewmore" href="news">View More></a><h3></div>
 	</div>
 </div>	
 <?php
