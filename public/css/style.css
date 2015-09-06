@@ -120,6 +120,10 @@ div.brand{
 	width:100%;
 }
 
+.contactContainer .jumbotron{
+	padding:20px;
+}
+
 .adminleft{
 	float: left;
 	width: 100%;
