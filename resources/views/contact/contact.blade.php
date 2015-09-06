@@ -1,6 +1,19 @@
 @extends('app')
 @extends('partials.subheader')
 @section('content')
+
+    <div class="sessionContainer" style="width: 90%">
+        @if(Session::has('user'))
+            <div class="row">
+                Log in as {{Session::get('user')->KH_MEMBER_LOGIN_USERNAME }} <a href="logout">ออกจากระบบ</a><br>
+                @if(Session::get('user')->KH_MEMBER_RULE =='ADMIN')
+                <a href="{{ $admin }}" class="btn btn-info btnKhcycle"><span class="glyphicon glyphicon-asterisk"></span> จัดการข้อมูลโดยแอดมิน</a>
+                @endif
+            </div>
+        @endif
+
+    </div>
+
     <div class="contactContainer" style="width:90%">
         <div class="row">
             <div class="col-md-4">

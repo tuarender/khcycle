@@ -97,7 +97,7 @@
                             <div class="form-group">
                                 <div class="col-sm-6 col-sm-offset-4">
                                     <button type="submit" class="btn btn-primary btnKhcycle">
-                                        ยืนยัน
+                                        ยืนยันและบันทึก
                                     </button>
                                     <button type="reset" class="btn btn-primary btnKhcycle">
                                         ยกเลิก
