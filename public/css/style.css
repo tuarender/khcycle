@@ -102,6 +102,11 @@ div.brand{
 	margin:10px auto;
 }
 
+.adminContainer{
+	max-width:1340px;
+	margin:10px auto;
+}
+
 .subheaderContainer{
 	/*padding-top: 50px;*/
 	max-width:1340px;
@@ -119,14 +124,30 @@ div.brand{
 	padding-left: 30px;
 }
 
+.sessionContainer{
+	text-align: right;
+	margin: 10px auto;
+}
+
 .contactContainer{
-	padding-top: 70px;
+	padding-top: 30px;
 	margin: 10px auto;
 	max-width: 1340px;
 }
 .contactContainer img{
 	width:100%;
 }
+
+.contactContainer .jumbotron{
+	padding:20px;
+}
+
+.adminleft{
+	float: left;
+	width: 100%;
+	max-width: none;
+}
+
 .brandWrapper{
 	float: left;
 	width: 100%;
