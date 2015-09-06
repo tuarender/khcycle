@@ -1,5 +1,23 @@
+@font-face {
+    font-family: CSChatThai;
+    src: url(fonts/CSChatThai.ttf);
+}
+@font-face {
+    font-family: CSChatThaiUI;
+    src: url(fonts/CSChatThaiUI.ttf);
+}
+body{
+	font-family: CSChatThaiUI
+}
 p.news {
+	color: #5a5a5a;
+	font-size: 20px;
     text-indent: 50px;
+}
+p.newsList {
+	color: #5a5a5a;
+	font-size: 16px;
+    text-indent: 30px;
 }
 img.error {
   width: inherit;  /* This makes the next two lines work in IE8. */
@@ -122,7 +140,7 @@ div.brand{
 	padding-left: 0px;
 }
 .newsHome{
-	max-width:95%
+	max-width:100%
 }
 .brandList >li{
 	padding-left: 0px;
@@ -153,7 +171,6 @@ div.brand{
     border-radius: 10px;
 	border: 4px solid #E0E0E0;
 }
-
 .product{
 	max-width:330px;
 	/*height:200px;*/
@@ -203,6 +220,9 @@ div.brand{
 	margin-right:10px;
 	margin-top:20px;
 }
+.newsInnerRow >div>h2{
+	margin-top: 0px;
+}
 .readmoreBtn{
 	border-radius: 0px;
 }
@@ -228,7 +248,6 @@ div.brand{
 	position:relative;
 	padding-bottom:56.25%;
 	height:0;
-	margin-bottom:30px
 }
 .videoWrapper iframe{
 	position:absolute;
@@ -237,10 +256,16 @@ div.brand{
 	width:100%;
 	height:100%
 }
+div.newsEnd{
+	margin-bottom: 25px;
+}
+.newsContent{
+	padding-left: 20px;
+}
 #productList{ padding-top: 5px}
 @media screen and (min-width: 768px){
 	.newsHome{
-		max-width:80%
+		max-width:100%
 	}
 	.brandList >li{
 		float: left;
@@ -257,6 +282,9 @@ div.brand{
 	}
 }
 @media screen and (min-width: 992px) {
+	.newsHome{
+		max-width:95%
+	}
 	div.catalogue{
 		float:left;
 		width: 30%;
@@ -275,10 +303,14 @@ div.brand{
 		margin:5px auto;
 	}
 	.videoWrapper iframe{
-		height:89%
+		height:100%
 	}
 }
-
+@media screen and (min-width: 1500px) {
+	.newsHome{
+		max-width:70%
+	}
+}
 .contactbutton {
 	-moz-box-shadow:inset 0px 34px 0px -15px #261614;
 	-webkit-box-shadow:inset 0px 34px 0px -15px #261614;

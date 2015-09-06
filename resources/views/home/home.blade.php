@@ -42,7 +42,7 @@
         </div>
       </div>
     </div>
-    <div id="newsList" class="container-fluid newsHome" style=";display:none">
+    <div id="newsList" class="container-fluid newsHome" style="display:none">
         <div class="row">
           <img src="images/loading.gif" style="display: block;margin-left: auto;margin-right: auto;">
         </div>
@@ -77,6 +77,9 @@
           $('.contactContainer').fadeIn('slow',function(){
             var topTag = ($('.slideContainer').height()*0.8)-100;
             var rightTag = ($('.slideContainer').width()*0.9)-120;
+            if($('.slideContainer').width()<800){
+              rightTag-=50;
+            }
             $(".tag").css({ top: topTag ,left: rightTag });
             $(".tag").fadeIn(800);
           });
@@ -97,8 +100,11 @@
       console.log("width:"+$('.slideContainer').width());
       console.log("rightTag:"+rightTag);
       var topTag = ($('.slideContainer').height()*0.8)-100;
-          var rightTag = ($('.slideContainer').width()*0.9)-120;
-          $(".tag").css({ top: topTag,left: rightTag });
+      var rightTag = ($('.slideContainer').width()*0.9)-120;
+      if($('.slideContainer').width()<800){
+        rightTag-=50;
+      }
+      $(".tag").css({ top: topTag,left: rightTag });
     }
 
     function getNews(){

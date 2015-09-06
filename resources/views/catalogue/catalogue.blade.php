@@ -28,6 +28,7 @@
 <script type="text/javascript">
     $(document).ready(function(){
         $('#catalougeContainer').fadeIn(1200);
+        $('#footer').fadeIn('slow');
     });
 </script>
 @endsection

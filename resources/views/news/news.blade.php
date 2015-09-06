@@ -28,6 +28,7 @@
 <script type="text/javascript">
     $(document).ready(function(){
         $('#newsContainer').fadeIn('slow');
+        $('#footer').fadeIn('slow');
     });
 </script>
 @endsection

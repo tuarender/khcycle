@@ -14,12 +14,12 @@
 				}
 				$content = "<h2>".$news['NEWS_TITLE']."</h2>";
 				$content.= "<p class='news'>".$news['NEWS_CONTENT_SUB']."</p>";
-				$content.= "<a href='news/".$news['NEWS_ID']."' class='btn btn-info btn-md readmoreBtn'><span class='glyphicon glyphicon-eye-open'></span> Read more</a>";
+				$content.= "<a href='news/".$news['NEWS_ID']."' class='btn btn-info btn-lg readmoreBtn'><span class='glyphicon glyphicon-eye-open'></span> Read more</a>";
         
-				$display = "<div id='display".$indicator."' class='col-sm-5'>".$display."</div>";
-				$content = "<div id='content".$indicator."' class='col-sm-7'>".$content."</div>";
+				$display = "<div id='display".$indicator."' class='col-sm-8'>".$display."</div>";
+				$content = "<div id='content".$indicator."' class='col-sm-4'>".$content."</div>";
 
-				echo "<div class='col-md-12'>";
+				echo "<div class='col-md-12 newsEnd'>";
 				echo "<div class='row newsInnerRow'>";
 				if($indicator%2==1){
 					echo $display;
@@ -32,6 +32,7 @@
 
 				echo "</div>";
 				echo "</div>";
+								echo "<div class='col-xs-12'><hr style='width:100%;margin:15px 0px;border-color:#E7E7E7'><div>";
 				$indicator+=1;
 			}
 		?>

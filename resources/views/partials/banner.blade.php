@@ -26,9 +26,7 @@
   	</div>
   	<div class="row">
   		<div class="col-xs-12">
-            <a href="https://www.facebook.com/KhcycleThailand" target="_blank" class="btn btn-social-icon btn-facebook">
-                <i class="fa fa-facebook"></i>
-            </a>
+            <a href="https://www.facebook.com/KhcycleThailand" target="_blank"><img src="images/facebook.png" style="max-width:150px"></a>
             <a class="btn btn-social-icon btn-instagram">
                 <i class="fa fa-instagram"></i>
             </a>

@@ -1,7 +1,7 @@
 @extends('app')
 @extends('partials.subheader')
 @section('content')
-    <div class="contactContainer" style="width:90%">
+    <div id="contact" class="contactContainer" style="width:90%;display:none">
         <div class="row">
             <div class="col-md-4">
             <b>KHCYCLE BIKE STUDIO</b><br>
@@ -22,6 +22,10 @@
 @section('scripts')
     <script src="http://maps.googleapis.com/maps/api/js"></script>
     <script>
+        $(document).ready(function(){
+            $('#contact').fadeIn(1200);
+            $('#footer').fadeIn('slow');
+        });
         var myCenter=new google.maps.LatLng(13.8082871,100.6528724);
         var marker;
 

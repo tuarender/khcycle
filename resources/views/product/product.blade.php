@@ -33,9 +33,8 @@
 @endsection
 @section('scripts')
     <script type="text/javascript">
-
     	$(document).ready(function(){
-    		console.log($('.brandDiv img').hasClass('brandLogoActive'));
+    		//console.log($('.brandDiv img').hasClass('brandLogoActive'));
     		if(!$('.brandDiv img').hasClass('brandLogoActive')){
     			getProduct($('#brandList li').first().attr("id"));
     		}
@@ -50,6 +49,7 @@
 			    	$('.brandWrapper').css('height', $(window).height()-96); 
 		    	}
 		   	}).resize();
+		   	$('#footer').fadeIn('slow');
 		}); 
 
 		function getProduct(brandId,groupId){
