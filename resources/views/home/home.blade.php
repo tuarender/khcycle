@@ -3,11 +3,19 @@
 @include('partials.banner')
     <div id="detail" class="detail" style="display:none;">
       <div class="container-fluid" style="width:90%">
-        <div class="col-md-4 catalogue head1">
-          Lastest Catalogue
-          <div>
-            <a href="catalogue"><img src="cover/accessory.jpg"  style="max-width:130px" /></a><br>
-            <a href="catalogue">Read more...</a>
+        <div class="col-md-4 catalogue">
+          <div class="head1">Lastest Catalogue</div>
+          <div class="lastestCatalogue">
+<?php
+  if(isset($catalogue)){
+    if(!is_null($catalogue[0])){
+      echo "<a href='pdf/".$catalogue[0]['CATALOGUE_PATH_PDF']."' target='_blank'>";
+      echo "<img src='cover/accessory.jpg' style='max-width:130px' /></a>";
+      echo "<div class='catalogueDetail'><a class='linkCatalogue' href='pdf/".$catalogue[0]['CATALOGUE_PATH_PDF']."' target='_blank'>".$catalogue[0]['CATALOGUE_NAME']."</a>";
+      echo "&nbsp;&nbsp;<a class='linkViewMoreCatalogue' href='catalogue'>View more..</a></div>";
+    }
+  }
+?>
           </div>
         </div>
         <div class="col-md-8 brand head1">
@@ -77,10 +85,10 @@
         getNews();
         $(window).on('resize', function(){
           swapNews();
-              clearTimeout(doTimeout);
-              doTimeout = setTimeout(function() {
-                  resizeTag();
-              }, 100);
+          clearTimeout(doTimeout);
+          doTimeout = setTimeout(function() {
+              resizeTag();
+          }, 100);
         });
     }); 
 
