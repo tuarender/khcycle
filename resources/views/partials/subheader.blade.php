@@ -1,4 +1,4 @@
-<div class="subheaderContainer">
+<div class="container-fluid subheaderContainer">
     <div class="row">
         <div class="col-xs-4 col-sm-6 subheaderName">
             <font color="gray"><strong><label>{!! $name !!}</label></strong></font>

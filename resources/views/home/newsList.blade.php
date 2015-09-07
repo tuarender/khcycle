@@ -2,7 +2,6 @@
 	if(isset($newsList)){
 ?>
 <div class="container-fluid">
-	<div class="row">
 		<?php
 			$indicator = 1;
 			foreach($newsList as $news){
@@ -12,6 +11,8 @@
 				else{
 					$display = "<img class='img-responsive' onerror='this.src=\"images/news/default.png\"' src='images/news/".$news['NEWS_IMAGE_TITLE_NAME'].".".$news['NEWS_IMAGE_TITLE_EXT']."'>";
 				}
+
+				echo '<div class="row">';
 				$content = "<h2>".$news['NEWS_TITLE']."</h2>";
 				$content.= "<p class='news'>".$news['NEWS_CONTENT_SUB']."</p>";
 				$content.= "<a href='news/".$news['NEWS_ID']."' class='btn btn-info btn-lg readmoreBtn'><span class='glyphicon glyphicon-eye-open'></span> Read more</a>";
@@ -32,11 +33,14 @@
 
 				echo "</div>";
 				echo "</div>";
-								echo "<div class='col-xs-12'><hr style='width:100%;margin:15px 0px;border-color:#E7E7E7'><div>";
+				echo '<div class="col-md-12 viewmoreContainer"><h3><a class="viewmore" href="news">View More></a><h3></div>';
+
+				echo "<div class='col-xs-12'><hr style='width:100%;margin:15px 0px;border-color:#E7E7E7'><div>";
+				echo '</div>';
 				$indicator+=1;
 			}
 		?>
-		<div class="col-md-12 viewmoreContainer"><h3><a class="viewmore" href="news">View More></a><h3></div>
+		{{--<div class="col-md-12 viewmoreContainer"><h3><a class="viewmore" href="news">View More></a><h3></div>--}}
 	</div>
 </div>	
 <?php
