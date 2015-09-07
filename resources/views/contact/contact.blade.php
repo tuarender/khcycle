@@ -1,7 +1,7 @@
 @extends('app')
 @extends('partials.subheader')
 @section('content')
-    <div id="contact" class="contactContainer" style="width:90%;display:none">
+    <div id="contact" class="container-fluid contactContainer" style="width:90%;display:none">
         <div class="sessionContainer" style="width: 90%">
         @if(Session::has('user'))
             <div class="row">
