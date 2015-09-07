@@ -33,14 +33,13 @@
 
 				echo "</div>";
 				echo "</div>";
-				echo '<div class="col-md-12 viewmoreContainer"><h3><a class="viewmore" href="news">View More></a><h3></div>';
 
 				echo "<div class='col-xs-12'><hr style='width:100%;margin:15px 0px;border-color:#E7E7E7'><div>";
 				echo '</div>';
 				$indicator+=1;
 			}
 		?>
-		{{--<div class="col-md-12 viewmoreContainer"><h3><a class="viewmore" href="news">View More></a><h3></div>--}}
+		<div class="col-md-12 viewmoreContainer"><h3><a class="viewmore" href="news">View More></a><h3></div>
 	</div>
 </div>	
 <?php
