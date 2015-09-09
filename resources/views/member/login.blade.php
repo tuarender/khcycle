@@ -43,7 +43,7 @@
                             </div>
 
                             <div class="form-group">
-                                <div class="col-sm-5 col-md-offset-4">
+                                <div class="col-sm-5 col-sm-offset-4">
                                     <button type="submit" class="btn btn-primary btnKhcycle">
                                         เช้าสู่ระบบ
                                     </button>

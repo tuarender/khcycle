@@ -1,6 +1,14 @@
 @extends('app')
-@extends('partials.subheader')
+
 @section('content')
+    <div class="adminContainer">
+        <div class="col-md-4">
+            <div class="container">
+                @extends('partials.sideleftadmin')
+            </div>
+        </div>
+
+
     <div class="container">
         <div class="row">
             <div class="col-sm-8 col-sm-offset-2">

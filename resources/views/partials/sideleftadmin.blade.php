@@ -8,7 +8,7 @@
         <li><a href="#">PRODUCT SETTING</a></li>
         <li><a href="#">NEWS/ARTICLES SETTING</a></li>
         <li><a href="admin/contact">CONTACT SETTING</a></li>
-        <li><a href="#">MEMBER SETTING</a></li>
+        <li><a href="listmember">MEMBER SETTING</a></li>
         <li><a href="#">CATALOGUE SETTING</a></li>
     </ul>
 </div>
