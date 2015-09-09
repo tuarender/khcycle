@@ -50,3 +50,5 @@ Route::get('product/{brandId}/{groupId?}', 'ProductController@getProduct');
 Route::get('news','NewsController@getNewsList');
 Route::get('newsHome','NewsController@getNewsListHome');
 Route::get('news/{newsId}','NewsController@getNews');
+
+Route::get('search/{newsId}','SearchController@search');

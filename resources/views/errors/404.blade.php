@@ -2,19 +2,30 @@
 <html>
     <head>
         <title>KHCYCLE</title>
-        <link href="//fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="css/style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    	<script src="js/bootstrap.min.js"></script>
     </head>
-<body>
-	<div>
-		<img class="error" src="images/khcycle_logo.png"/>
-		<div>
-			<h2>
-				It look like something lost...
-			</h2>
+	<body>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-4 col-md-5"></div>
+				<div class="col-xs-4 col-md-2">
+					<img class="img-responsive" src="images/khcycle_logo.png"/>
+				</div>
+				<div class="col-xs-4 col-md-5"></div>
+				<div class="col-xs-12" style="text-align:center">
+					<h2>
+						It look like something lost...
+					</h2>
+				</div>
+				<div class="col-xs-2 col-md-4"></div>
+				<div class="col-xs-8 col-md-4">
+					<img class="img-responsive" src="images/lostWheel.jpg"/>
+				</div>
+				<div class="col-xs-2 col-md-4"></div>
+			</div>
 		</div>
-		<img class="error" src="images/lostWheel.jpg"/>
-	</div>
-</body>
+	</body>
 </html>

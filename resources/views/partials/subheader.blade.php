@@ -1,9 +1,9 @@
 <div class="container-fluid subheaderContainer">
     <div class="row">
-        <div class="col-xs-3 col-sm-2 col-md-4 col-lg-6 subheaderName">
+        <div class="col-xs-12 col-sm-2 col-md-4 col-lg-6 subheaderName">
             <font color="gray"><strong><label>{!! $name !!}</label></strong></font>
         </div>
-        <div class="col-xs-9 col-sm-5 col-md-4 col-lg-3 subheaderContact">
+        <div class="col-xs-12 col-sm-5 col-md-4 col-lg-3 subheaderContact">
             <label>สนใจสินค้าติดต่อ 0-2510-1906</label>
         </div>
         <div class="col-xs-12 col-sm-5 col-md-4 col-lg-3">

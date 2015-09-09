@@ -1,4 +1,8 @@
 @font-face {
+	font-family: HelveticaInseratLTStd;
+    src: url(../fonts/HelveticaInseratLTStd-Roman.otf);
+}
+@font-face {
     font-family: CSChatThai;
     src: url(../fonts/CSChatThai.ttf);
 }
@@ -55,10 +59,13 @@ div.error{
   text-align: center;
 }
 div.detail{
-	/*float: left;*/
 	background-color: #E0E0E0;
 	width: 100%;
 	min-height: 180px;
+}
+
+div.detail >div{
+	width: 100%;
 }
 
 ul#horizontal-list {
@@ -85,20 +92,22 @@ div.brand{
 	text-align: center;
 }
 .head1{
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: CSChatThai;
 	font-weight: bold;
-	font-size: 20px;
+	font-size: 24px;
 	color: #FEFA03;
 	text-shadow: 2px 2px #888888;
 }
 .linkCatalogue{
-	font-size: 14px;
+	font-family: CSChatThai;
+	font-size: 18px;
 	color: #424242;
 	font-weight: bold;
 }
 .linkViewMoreCatalogue{
+	font-family: CSChatThai;
 	font-weight: bold;
-	font-size: 12px;
+	font-size: 14px;
 }
 .catalogueDetail{
 	margin-top: 5px;
@@ -181,9 +190,6 @@ div.brand{
 	width: 100%;
 	max-width: none;
 }
-.brandDiv{
-	max-width: 200px;
-}
 .brandList{
 	display: inline-block;
 	padding-left: 0px;
@@ -198,7 +204,6 @@ div.brand{
 	margin: 0px 5px;
 }
 .brandContainer{
-	/*width: 430px;*/
 	text-align: center;
 	margin: 0px auto;
 }
@@ -295,6 +300,8 @@ div.brand{
 	padding-right: 40px;
 }
 .viewmore{
+	font-size: 26px;
+	font-family: CSChatThai;
 	font-weight: bold;
 }
 .videoWrapper{
@@ -316,9 +323,9 @@ div.newsEnd{
 	padding-left: 20px;
 }
 .navText{
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: HelveticaInseratLTStd,"Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-#productList{ padding-top: 5px}
+#productList{ padding-top: 5px;padding-left: 0px}
 .contactbutton {
 	-moz-box-shadow:inset 0px 34px 0px -15px #261614;
 	-webkit-box-shadow:inset 0px 34px 0px -15px #261614;
@@ -352,6 +359,7 @@ div.newsEnd{
 	/*font-family: CSChatThai;*/
 }
 .btnKhcycle{
+	font-size: 18px;
 	background-color: #424242 !important; 
 	color: #F2F100 !important;
 	border-color: #424242 !important;
@@ -374,7 +382,36 @@ div.newsEnd{
 .tag div{
 	text-align: right;
 }
+.btnSearch{
+	color:#DDDDDD;
+	background-color:#222;
+	border: 0px;
+	border-color: #222;
+}
+.btnSearch:hover,.btnSearch:active,.btnSearch:focus{
+	color:#F2F100;
+	background-color:#222;
+	border: 0px;
+	border-color: #222;
+}
+
+.searchInput{
+	-moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    border-radius: 15px;
+}
+
+.productMain{
+	max-width: 100%;
+}
 @media screen and (min-width: 768px){
+	.brandLogo{
+		max-width: 200px;
+		float: right;
+	}
+	.productMain{
+		max-width: 90%;
+	}
 	.tag{
 		color:#FFFFFF;
 	   	float: right;
@@ -412,7 +449,14 @@ div.newsEnd{
 		overflow:hidden;
 	}
 }
+
 @media screen and (min-width: 992px) {
+	.productMain{
+		max-width: 85%;
+	}
+	div.detail >div{
+		width: 80%;
+	}
 	.newsHome{
 		max-width:95%
 	}

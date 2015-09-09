@@ -18,17 +18,14 @@
             <li class="{{ \App\Http\Utils::setActive('member') }}"><a href="member">MEMBER</a></li>
             <li><a target="_blank" href="http://www.thaimtb.co.th/forum/viewforum.php?f=735">WEBBOARD</a></li>
           </ul>
-
-<!--           <div class="col-sm-3 col-md-3 pull-right">
-            <form class="navbar-form" role="search">
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
-                <div class="input-group-btn">
-                  <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                </div>
-              </div>
-            </form>
-          </div> -->
-        </div><!--/.nav-collapse -->
+          <form class="navbar-form navbar-right" role="search" action="search">
+            <div class="form-group">
+              <input type="text" class="form-control searchInput" placeholder="Search">
+            </div>
+            <button type="submit" class="btn btn-md btnSearch">
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+          </form>
+        </div>
       </div>
     </nav>

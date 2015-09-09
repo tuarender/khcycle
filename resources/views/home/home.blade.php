@@ -2,8 +2,8 @@
 @section('content')
 @include('partials.banner')
     <div id="detail" class="detail" style="display:none;">
-      <div class="container-fluid" style="width:90%">
-        <div class="col-md-4 catalogue">
+      <div class="container-fluid">
+        <div class="col-sm-4 catalogue">
           <div class="head1">Lastest Catalogue</div>
           <div class="lastestCatalogue">
 <?php
@@ -18,7 +18,7 @@
 ?>
           </div>
         </div>
-        <div class="col-md-8 brand head1">
+        <div class="col-sm-8 brand head1">
           <div>
               KH Product
           </div>
@@ -101,9 +101,6 @@
     }); 
 
     function resizeTag(){
-      console.log("Do it!");
-      console.log("width:"+$('.slideContainer').width());
-      console.log("rightTag:"+rightTag);
       var topTag = ($('.slideContainer').height()*0.8)-100;
       var rightTag = ($('.slideContainer').width()*0.9)-120;
       if($('.slideContainer').width()<800){
