@@ -26,6 +26,9 @@ p.newsList {
 	font-size: 16px;
     text-indent: 30px;
 }
+img{
+	border: 0px;
+}
 img.error {
   width: inherit;  /* This makes the next two lines work in IE8. */
   max-width: 100%; /* Add !important if needed. */
@@ -317,7 +320,75 @@ div.newsEnd{
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 #productList{ padding-top: 5px}
+.contactbutton {
+	-moz-box-shadow:inset 0px 34px 0px -15px #261614;
+	-webkit-box-shadow:inset 0px 34px 0px -15px #261614;
+	box-shadow:inset 0px 34px 0px -15px #261614;
+	background-color:#120705;
+	border:1px solid #241d13;
+	display:inline-block;
+	cursor:pointer;
+	color:#e9f53b;
+	font-family:Arial;
+	font-size:21px;
+	font-weight:bold;
+	padding:9px 23px;
+	text-decoration:none;
+	text-shadow:0px -1px 0px #7a2a1d;
+}
+.contactbutton:hover {
+	background-color:#000000;
+	color:#e9f53b;
+}
+.contactbutton:active {
+	position:relative;
+	top:1px;
+}
+.loginPanelHeader{
+	background-color: #424242 !important; 
+	color: #F2F100 !important;
+}
+.loginPanel{
+	border-color: #424242 !important;
+	/*font-family: CSChatThai;*/
+}
+.btnKhcycle{
+	background-color: #424242 !important; 
+	color: #F2F100 !important;
+	border-color: #424242 !important;
+}
+.btnKhcycle:hover{
+	background-color:#000000 !important;
+}
+.tag {
+	background-color: #E0E0E0;
+   	z-index: 1000;
+   	padding: 5px;
+   	color: #FEFA03;
+   	text-shadow: 2px 2px #888888;
+}
+.tag h3{
+	display:none;
+	margin-top: 0px;
+	font-weight: bold;
+}
+.tag div{
+	text-align: right;
+}
 @media screen and (min-width: 768px){
+	.tag{
+		color:#FFFFFF;
+	   	float: right;
+   		position: absolute;
+   		background-color: transparent;
+	   	text-shadow: none;
+	}
+	.tag h3{
+		display:block;
+	}
+	.tag div{
+		text-align: left;
+	}
 	.product{
 		margin: 5px 10px;
 		float: left;
@@ -372,65 +443,3 @@ div.newsEnd{
 		max-width:70%
 	}
 }
-.contactbutton {
-	-moz-box-shadow:inset 0px 34px 0px -15px #261614;
-	-webkit-box-shadow:inset 0px 34px 0px -15px #261614;
-	box-shadow:inset 0px 34px 0px -15px #261614;
-	background-color:#120705;
-	border:1px solid #241d13;
-	display:inline-block;
-	cursor:pointer;
-	color:#e9f53b;
-	font-family:Arial;
-	font-size:21px;
-	font-weight:bold;
-	padding:9px 23px;
-	text-decoration:none;
-	text-shadow:0px -1px 0px #7a2a1d;
-}
-.contactbutton:hover {
-	background-color:#000000;
-	color:#e9f53b;
-}
-.contactbutton:active {
-	position:relative;
-	top:1px;
-}
-.loginPanelHeader{
-	background-color: #424242 !important; 
-	color: #F2F100 !important;
-}
-.loginPanel{
-	border-color: #424242 !important;
-	/*font-family: CSChatThai;*/
-}
-.btnKhcycle{
-	background-color: #424242 !important; 
-	color: #F2F100 !important;
-	border-color: #424242 !important;
-}
-.btnKhcycle:hover{
-	background-color:#000000 !important;
-}
-.tag {
-   	float: right;
-   	position: absolute;
-   	z-index: 1000;
-   	padding: 5px;
-   	color: #FFFFFF;
-}
-.tag h3{
-	font-weight: bold;
-}
-
-/*@media screen and (min-width: 1025px) {
-	img.logo {
-	  max-height: 80px; 
-	}
-	.slideContainer{
-		padding-top: 80px;
-	}
-	.productContainer{
-		padding-top: 80px;
-	}
-}*/
