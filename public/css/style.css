@@ -155,7 +155,23 @@ div.brand{
 .adminleft{
 	float: left;
 	width: 100%;
+	max-width: 300px;
+	margin-left: 10px;
+	text-align: center;
+	margin-top: 11px;
+}
+
+.adminleft #button li{
+	float: left;
+	list-style: none;
+	text-align: center;
+	background-color: #C0C0C0;
+	margin-right: 30px;
+	width: 200px;
+	line-height: 60px;
 	max-width: none;
+	display:inline-block;
+	margin-top: 30px;
 }
 
 .brandWrapper{

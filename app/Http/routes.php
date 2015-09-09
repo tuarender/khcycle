@@ -38,9 +38,7 @@ Route::get('member/{id}','MemberController@show');
 Route::get('contact', function () {
     return View::make('contact.contact')->with('name','Contact')->with('admin','admin/contact');
 });
-Route::get('admin/contact',function(){
-   return View::make('admin.contact')->with('name','Contact Settings');
-});
+Route::get('admin/contact','AdminController@getContact');
 
 Route::get('register','MemberController@register');
 Route::post('register','MemberController@postregister');
