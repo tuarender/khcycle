@@ -333,6 +333,10 @@ div.newsEnd{
 	padding-top: 5px;
 	padding-left: 0px
 }
+.productList{
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
 .productList >div{
 	min-height: 225px;
 }
