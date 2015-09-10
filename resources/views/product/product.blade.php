@@ -22,7 +22,7 @@
 	}		
 ?>
 		</div>
-		<div id="productList" class="col-sm-9 col-lg-9" style="text-align:left">
+		<div id="productList" class="col-sm-9 col-lg-9 productListContainer" style="text-align:left">
 		</div>
 	</div>
 </div>
@@ -33,17 +33,14 @@
 @section('scripts')
     <script type="text/javascript">
     	$(document).ready(function(){
-    		console.log($('.brandDiv>a>img').hasClass('brandLogoActive'));
-    		console.log($('.productMain').children().children().children().attr("id"));
     		if(!$('.brandDiv>a>img').hasClass('brandLogoActive')){
-    			getProduct($('.productMain').children().children().children().attr("id"));
+    			getProduct($('.productMain').children().children().children().attr("id"),false,true);
     		}
     		else{
-    			getProduct($('.brandLogoActive').parent().parent().attr('id'));
+    			getProduct($('.brandLogoActive').parent().parent().attr('id'),false,true);
     		}
 
     		$(window).on('resize', function(){
-    			//console.log($('#productList').height());
 			    if ($(this).width() <= 768){
 			    	$('.brandWrapper').css('height', 'auto'); //set max height
 			    }else{
@@ -53,7 +50,7 @@
 		   	$('#footer').fadeIn('slow');
 		}); 
 
-		function getProduct(brandId,groupId){
+		function getProduct(brandId,groupId,isFirstTime){
 
 			var url = "product/"+brandId;
 			if(groupId){
@@ -68,7 +65,13 @@
 					url: url, 
 					success: function(result){
 						if(result){
-							$('#productList').html(result).fadeIn(800);
+							$('#productList').html(result).fadeIn(800,function(){
+								if ($(window).width() <= 768&&!isFirstTime){
+									$('html, body').animate({
+								        scrollTop: $("#productList").offset().top-50
+								    }, 2000);
+								}
+							});
 						}
 			    	}
 				});
