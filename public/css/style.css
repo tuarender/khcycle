@@ -163,10 +163,14 @@ div.brand{
 	padding:20px;
 }
 
+.membercontainer{
+	/*margin-left: 250px;*/
+}
+
 .adminleft{
 	float: left;
 	width: 100%;
-	max-width: 300px;
+	max-width: 250px;
 	margin-left: 10px;
 	text-align: center;
 	margin-top: 11px;

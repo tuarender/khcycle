@@ -24,8 +24,8 @@ Route::get('member','MemberController@index');
 //Route::get('listmember',function(){
 //   return View::make('member.listmember')->with('name','Member');
 //});
-Route::get('listmember','MemberController@listmember');
-Route::post('listmember','MemberController@listmember');
+Route::get('listmember','AdminController@listmember');
+Route::post('listmember','AdminController@listmember');
 Route::post('login','MemberController@postLogin');
 Route::get('forgetpassword','MemberController@forgetpassword');
 Route::get('profile','MemberController@profilemember');
