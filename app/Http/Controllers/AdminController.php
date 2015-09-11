@@ -19,7 +19,20 @@ class AdminController extends Controller
 
     public function getContact()
     {
-        return view('admin.contact')->with('name','Contact Setting');
+        $data = DB::table('KH_CONTACTUS')->get();
+        return view('admin.contact')->with('name','Contact Setting')->with('data',$data);
+    }
+
+    public function postContact(Request $request)
+    {
+        $contact = $request->input('contact_name');
+
+        DB::table('KH_CONTACTUS')->update([
+            'KH_CONTACTUS'=>$contact,
+        ]);
+
+        Session::flash('alert-success', 'อัพเดตเรียบร้อยแล้ว');
+        return redirect('admin/contact');
     }
 
     public function index()

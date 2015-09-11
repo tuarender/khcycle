@@ -14,13 +14,16 @@
         <div class="sessionContainer" style="width: 90%">
             Log in as:{{ Session::get('user')->KH_MEMBER_LOGIN_USERNAME }}<a href="logout">ออกจากระบบ</a>
         </div>
-        <form>
+        @include('partials.flashmessage')
+        @foreach($data as $contact)
+        <form class="form-horizontal" role="form" method="post" action="postcontact">
+            {{ csrf_field() }}
             <div class="form-group">
                 <div class="col-md-3">
                     รายละเอียดโดยย่อ
                 </div>
                 <div class="col-md-9">
-                    <textarea name="contact_name" rows="5" cols="50"></textarea>
+                    <textarea name="contact_name" rows="5" cols="50">{{$contact['KH_CONTACTUS']}}</textarea>
                 </div>
             </div>
             <div class="form-group">
@@ -33,7 +36,7 @@
                 </div>
             </div>
         </form>
-
+        @endforeach
     </div>
 </div>
 @endsection

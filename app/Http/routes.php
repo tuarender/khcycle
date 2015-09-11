@@ -32,12 +32,11 @@ Route::get('profile','MemberController@profilemember');
 Route::get('logout','MemberController@logout');
 Route::post('logout','MemberController@logout');
 Route::post('updatemember/{id}','MemberController@update');
+Route::post('postcontact','AdminController@postContact');
 
 Route::get('member/{id}','MemberController@show');
 
-Route::get('contact', function () {
-    return View::make('contact.contact')->with('name','Contact')->with('admin','admin/contact');
-});
+Route::get('contact','ContactController@index');
 Route::get('admin/contact','AdminController@getContact');
 
 Route::get('register','MemberController@register');
