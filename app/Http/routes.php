@@ -13,41 +13,42 @@
 
 Route::get('/', 'HomeController@index');
 Route::get('home', 'HomeController@index');
-
 Route::get('catalogue','CatalogueController@index');
-
-Route::get('product',function(){
-    return View::make('product.product');
-});
-
 Route::get('member','MemberController@index');
-//Route::get('listmember',function(){
-//   return View::make('member.listmember')->with('name','Member');
-//});
-Route::get('listmember','AdminController@listmember');
-Route::post('listmember','AdminController@listmember');
 Route::post('login','MemberController@postLogin');
 Route::get('forgetpassword','MemberController@forgetpassword');
 Route::get('profile','MemberController@profilemember');
 Route::get('logout','MemberController@logout');
 Route::post('logout','MemberController@logout');
 Route::post('updatemember/{id}','MemberController@update');
-Route::post('postcontact','AdminController@postContact');
 
 Route::get('member/{id}','MemberController@show');
 
 Route::get('contact','ContactController@index');
-Route::get('admin/contact','AdminController@getContact');
-
+//register
+//--get
 Route::get('register','MemberController@register');
+//--post
 Route::post('register','MemberController@postregister');
 
+//product
 Route::get('product', 'ProductController@index');
 Route::get('product/brand/{brandId}', 'ProductController@index');
 Route::get('product/{brandId}/{groupId?}', 'ProductController@getProduct');
 
+//news
 Route::get('news','NewsController@getNewsList');
 Route::get('newsHome','NewsController@getNewsListHome');
 Route::get('news/{newsId}','NewsController@getNews');
-
+//search
 Route::get('search/{newsId}','SearchController@search');
+
+
+//admin
+//--get
+Route::get('admin/{pageSetting?}','AdminController@getSetting');
+Route::get('admin/setting/{page}','AdminController@getPage');
+Route::get('listmember','AdminController@listmember');
+//--post
+Route::post('postcontact','AdminController@postContact');
+Route::post('listmember','AdminController@listmember');

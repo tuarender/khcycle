@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use App;
 
 class AdminController extends Controller
 {
@@ -17,10 +18,22 @@ class AdminController extends Controller
      * @return Response
      */
 
-    public function getContact()
+    public function getSetting($pageSetting=null)
     {
         $data = DB::table('KH_CONTACTUS')->get();
-        return view('admin.contact')->with('name','Contact Setting')->with('data',$data);
+        return view('admin.admin',['page'=>$pageSetting]);
+    }
+
+    public function getPage($page){
+
+        if($page=='contact'){
+            $data = DB::table('KH_CONTACTUS')->get();
+        }
+        else{
+            return "Page not found";
+        }
+        
+        return view('admin.'.$page,['name'=>'Contact Setting','data'=>$data]);
     }
 
     public function postContact(Request $request)
@@ -34,78 +47,6 @@ class AdminController extends Controller
         Session::flash('alert-success', 'อัพเดตเรียบร้อยแล้ว');
         return redirect('admin/contact');
     }
-
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  Request  $request
-     * @return Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  Request  $request
-     * @param  int  $id
-     * @return Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
 
     public function listmember(Request $request)
     {
