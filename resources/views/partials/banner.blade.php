@@ -7,13 +7,11 @@
 	foreach ($banners as $banner) {
 		if($banner['BANNER_IS_YOUTUBE']==1){
 			echo "<a href='".$banner['BANNER_YOUTUBE_URI']."'><img src='images/banner/".$banner['BANNER_IMAGE'].".".$banner['BANNER_IMAGE_EXT']."'></a>";
-			//echo "<div class='videoWrapper'><iframe src='".$banner['BANNER_YOUTUBE_URI']."' frameborder='0' allowfullscreen></iframe></div>";
 		}
 		else{
 			echo "<div data-img='images/banner/".$banner['BANNER_IMAGE'].".".$banner['BANNER_IMAGE_EXT']."'>";
 			echo "<a href='".$banner['BANNER_URL']."' target='_blank'></a>";
 			echo "</div>";
-			//echo "<a href='".$banner['BANNER_URL']."'>hh<img src='images/banner/".$banner['BANNER_IMAGE'].".".$banner['BANNER_IMAGE_EXT']."'></a>";
 		}
 	}
 ?>
@@ -26,7 +24,13 @@
   	</div>
   	<div class="row">
   		<div class="col-xs-12">
-            <a href="https://www.facebook.com/KhcycleThailand" target="_blank"><img src="images/facebook.png" style="max-width:150px"></a>
+            <a class="tagFacebookImage" href="https://www.facebook.com/KhcycleThailand" target="_blank">
+              <img src="images/facebook.png" style="max-width:150px">
+            </a>
+            <span class="innerFollowUs">Follow us:</span>
+            <a class="btn btn-social-icon btn-facebook tagFacebookIcon">
+                <i class="fa fa-facebook"></i>
+            </a>
             <a class="btn btn-social-icon btn-instagram">
                 <i class="fa fa-instagram"></i>
             </a>

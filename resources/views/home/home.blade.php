@@ -10,7 +10,7 @@
   if(isset($catalogue)){
     if(!is_null($catalogue[0])){
       echo "<a href='pdf/".$catalogue[0]['CATALOGUE_PATH_PDF']."' target='_blank'>";
-      echo "<img src='cover/accessory.jpg' style='max-width:130px' /></a>";
+      echo "<img src='cover/".$catalogue[0]['CATALOGUE_COVER_PIC'].".jpg' class='img-responsive catalogueHome' style='background-image: url(cover/".$catalogue[0]['CATALOGUE_COVER_PIC'].".jpg)'/></a>";
       echo "<div class='catalogueDetail'><a class='linkCatalogue' href='pdf/".$catalogue[0]['CATALOGUE_PATH_PDF']."' target='_blank'>".$catalogue[0]['CATALOGUE_NAME']."</a>";
       echo "&nbsp;&nbsp;<a class='linkViewMoreCatalogue' href='catalogue'>View more..</a></div>";
     }
@@ -22,12 +22,12 @@
           <div class='row'>
               KH Product
           </div>
-          <div class='row'>
+          <div id="brandHome" data-width="100%" data-ratio="208/58" class='row'>
         <?php
           if(isset($brand)){
             foreach($brand as $eachBrand){
               echo "<div id='".$eachBrand["BRAND_ID"]."' class='col-xs-12 col-sm-6 col-md-4 col-lg-3 brandList' style='text-align:right'>";
-              echo "<a href='javascript:getProduct(".$eachBrand["BRAND_ID"].",0)'>";
+              echo "<a href='product/brand/".$eachBrand["BRAND_ID"]."'>";
               echo "<img onerror='this.src=\"images/brand/product/default.png\"' id='logoBrand".$eachBrand["BRAND_ID"]."' src='images/brand/product/sample".$eachBrand["BRAND_ID"].".jpg'";
               echo " class='brandLogo_home img-responsive"; 
                 if(isset($brandId)&&!is_null($brandId)&&$brandId==$eachBrand["BRAND_ID"]){
@@ -77,6 +77,7 @@
   <script type="text/javascript">
     var flagNewsSwap = false;
     var doTimeout;
+    var isBrandSlider = false;
     $(document).ready(function(){
         $('.slideContainer').fadeIn('slow',function(){
           $('#detail').fadeIn('slow'); 
@@ -92,7 +93,9 @@
           $('#footer').fadeIn('slow');
         });
         getNews();
+        brandSlider();
         $(window).on('resize', function(){
+          brandSlider();
           swapNews();
           clearTimeout(doTimeout);
           doTimeout = setTimeout(function() {
@@ -122,6 +125,22 @@
           }
         }
       });
+    }
+
+    function brandSlider(){
+      if ($(this).width() <=749) {
+        if(!isBrandSlider){
+            $('#brandHome').fotorama();
+            isBrandSlider = true;
+        }
+      }
+      else{
+        if(isBrandSlider){
+          $('#brandHome').data('fotorama').destroy();
+          $('#brandHome').removeClass('fotorama');
+          isBrandSlider = false;
+        }
+      }
     }
 
     function swapNews(){

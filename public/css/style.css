@@ -392,6 +392,19 @@ div.newsEnd{
 .tag div{
 	text-align: right;
 }
+.tagFacebookIcon,.innerFollowUs{
+	display: inline-block;
+}
+.innerFollowUs{
+	font-family: HelveticaInseratLTStd;
+	color: #000000;
+	font-weight: bold;
+	display: inline-block;
+	text-shadow: none; 
+}
+.tagFacebookImage{
+	display: none;
+}
 .btnSearch{
 	color:#DDDDDD;
 	background-color:#222;
@@ -414,7 +427,33 @@ div.newsEnd{
 .productMain,.adminMain{
 	max-width: 100%;
 }
+
+.catalogueHome{
+	max-width: 130px;
+	margin-left: auto;
+	margin-right: auto;
+}
+@media screen and (max-width: 767px){
+	.catalogueHome{
+		max-width:none;
+		padding: 130px 0 0 0;
+	    margin: 1px;
+	    height: 0px;
+	    display: block;
+	    background-image: url(cover/category2014.jpg);
+	    background-repeat: no-repeat;
+	    background-size: 100%;
+	    background-position-y: -300px;
+	    width: 100%;
+	}
+}
 @media screen and (min-width: 768px){
+	.tagFacebookImage{
+		display: inline-block;
+	}
+	.tagFacebookIcon{
+		display: none;
+	}
 	.brandLogo{
 		max-width: 200px;
 		float: right;
