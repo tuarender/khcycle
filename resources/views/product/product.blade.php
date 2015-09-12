@@ -4,7 +4,7 @@
 <?php
 	if(isset($brand)){
 ?>
-<div class="productMain container-fluid" style="display:block;">
+<div class="productMain container-fluid" style="display:none;">
 	<div class="row">
 		<div class="col-sm-3 col-lg-3">
 <?php
@@ -26,7 +26,7 @@
 		</div>
 	</div>
 </div>
-<?
+<?php
 	}
 ?>
 @endsection
@@ -40,18 +40,12 @@
     			getProduct($('.brandLogoActive').parent().parent().attr('id'),false,true);
     		}
 
-    		$(window).on('resize', function(){
-			    if ($(this).width() <= 768){
-			    	$('.brandWrapper').css('height', 'auto'); //set max height
-			    }else{
-			    	$('.brandWrapper').css('height', $(window).height()-96); 
-		    	}
-		   	}).resize();
-		   	$('#footer').fadeIn('slow');
+		   	$('.productMain').fadeIn('2000',function(){
+		   		$('#footer').fadeIn('slow');
+		   	})
 		}); 
 
 		function getProduct(brandId,groupId,isFirstTime){
-
 			var url = "product/"+brandId;
 			if(groupId){
 				url += "/"+groupId;
