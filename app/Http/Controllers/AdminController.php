@@ -35,6 +35,11 @@ class AdminController extends Controller
         return redirect('admin/contact');
     }
 
+    public function getCatalogue()
+    {
+        $data = DB::table('KH_CATALOGUE');
+    }
+
     public function index()
     {
         //

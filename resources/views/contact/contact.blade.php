@@ -2,7 +2,7 @@
 @extends('partials.subheader')
 @section('content')
     <div id="contact" class="container-fluid contactContainer" style="width:90%;display:none">
-        <div class="sessionContainer" style="width: 90%">
+        <div class="sessionContainer" style="width: 95%">
         @if(Session::has('user'))
             <div class="row">
                 Log in as {{Session::get('user')->KH_MEMBER_LOGIN_USERNAME }} <a href="logout">ออกจากระบบ</a><br>

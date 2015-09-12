@@ -1,7 +1,22 @@
 @extends('app')
 @extends('partials.subheader')
 @section('content')
-    <div id="catalougeContainer" class="container-fluid" style="max-width:60%;margin-top:30px;display:none">
+
+
+    <div id="catalougeContainer" class="container-fluid" style="max-width:60%;margin-top:10px;display:none">
+        <div class="sessionContainer" style="width: 95%">
+            @if(Session::has('user'))
+                <div class="row">
+                    Log in as {{Session::get('user')->KH_MEMBER_LOGIN_USERNAME }} <a href="logout">ออกจากระบบ</a><br>
+                    @if(Session::get('user')->KH_MEMBER_RULE =='ADMIN')
+                        <a href="{{ $admin }}" class="btn btn-info btnKhcycle"><span class="glyphicon glyphicon-asterisk"></span> จัดการข้อมูลโดยแอดมิน</a>
+                    @endif
+                </div>
+            @endif
+
+        </div>
+
+
         <div class="row">
             <div class="form-group">
                 <?php $i=1; ?>

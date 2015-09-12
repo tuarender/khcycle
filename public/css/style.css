@@ -143,6 +143,7 @@ div.brand{
 .sessionContainer{
 	text-align: right;
 	margin: 10px auto;
+	width: 100%;
 }
 .subheaderContact label{
 	font-family: CSChatThai !important;

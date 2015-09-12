@@ -18,7 +18,10 @@ class CatalogueController extends Controller
     {
         //
         $catalogue = \DB::select('select * from KH_CATALOGUE');
-        return view('catalogue.catalogue',['catalogue'=> $catalogue,'name'=>'Catalogue']);
+        return view('catalogue.catalogue',[
+            'catalogue'=> $catalogue,
+            'name'=>'Catalogue',
+            'admin'=>'admin/catalogue']);
     }
 
 }
