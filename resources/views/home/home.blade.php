@@ -22,7 +22,7 @@
           <div class='row'>
               KH Product
           </div>
-          <div id="brandHome" data-width="100%" data-ratio="208/58" class='row'>
+          <div id="brandHome" data-width="100%" data-ratio="208/58" data-autoplay="3000" data-stopautoplayontouch="false" class='row'>
         <?php
           if(isset($brand)){
             foreach($brand as $eachBrand){
