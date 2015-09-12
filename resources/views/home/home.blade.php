@@ -19,23 +19,24 @@
           </div>
         </div>
         <div class="col-sm-8 brand head1">
-          <div>
+          <div class='row'>
               KH Product
           </div>
-          <div>
+          <div class='row'>
         <?php
           if(isset($brand)){
-            echo "<ul id='horizontal-list'>";
-            for($i=0;$i<count($brand);$i++){
-              echo "<li id='".$brand[$i]["BRAND_ID"]."'>";
-              echo "<a href='product/brand/".$brand[$i]["BRAND_ID"]."'>";
-              echo "<div>";
-              echo "<img onerror='this.src=\"images/brand/product/default.png\"' src='images/brand/product/sample".$brand[$i]["BRAND_ID"].".jpg' class='brandLogo_home'>";
-              echo "</div>";
-              echo "</a>";
-              echo "</li>";
+            foreach($brand as $eachBrand){
+              echo "<div id='".$eachBrand["BRAND_ID"]."' class='col-xs-12 col-sm-6 col-md-4 col-lg-3 brandList' style='text-align:right'>";
+              echo "<a href='javascript:getProduct(".$eachBrand["BRAND_ID"].",0)'>";
+              echo "<img onerror='this.src=\"images/brand/product/default.png\"' id='logoBrand".$eachBrand["BRAND_ID"]."' src='images/brand/product/sample".$eachBrand["BRAND_ID"].".jpg'";
+              echo " class='brandLogo_home img-responsive"; 
+                if(isset($brandId)&&!is_null($brandId)&&$brandId==$eachBrand["BRAND_ID"]){
+                  echo " brandLogoActive";
+                }
+                echo "'>";
+                echo "</a>";
+                echo "</div>";
             }
-            echo "</ul>";
           }
         ?>
           </div>

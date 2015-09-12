@@ -9,16 +9,16 @@
 		<div class="col-sm-3 col-lg-3">
 <?php
 	foreach($brand as $eachBrand){
-			echo "<div id='".$eachBrand["BRAND_ID"]."' class='brandDiv' style='text-align:right'>";
-			echo "<a href='javascript:getProduct(".$eachBrand["BRAND_ID"].",0)'>";
-			echo "<img onerror='this.src=\"images/brand/product/default.png\"' id='logoBrand".$eachBrand["BRAND_ID"]."' src='images/brand/product/sample".$eachBrand["BRAND_ID"].".jpg'";
-			echo " class='brandLogo img-responsive"; 
-	    	if(isset($brandId)&&!is_null($brandId)&&$brandId==$eachBrand["BRAND_ID"]){
-	    		echo " brandLogoActive";
-	    	}
-	    	echo "'>";
-	    	echo "</a>";
-	    	echo "</div>";
+		echo "<div id='".$eachBrand["BRAND_ID"]."' class='brandDiv' style='text-align:right'>";
+		echo "<a href='javascript:getProduct(".$eachBrand["BRAND_ID"].",0)'>";
+		echo "<img onerror='this.src=\"images/brand/product/default.png\"' id='logoBrand".$eachBrand["BRAND_ID"]."' src='images/brand/product/sample".$eachBrand["BRAND_ID"].".jpg'";
+		echo " class='brandLogo img-responsive"; 
+    	if(isset($brandId)&&!is_null($brandId)&&$brandId==$eachBrand["BRAND_ID"]){
+    		echo " brandLogoActive";
+    	}
+    	echo "'>";
+    	echo "</a>";
+    	echo "</div>";
 	}		
 ?>
 		</div>

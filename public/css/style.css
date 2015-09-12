@@ -189,17 +189,11 @@ div.brand{
 	max-width: none;
 }
 .brandList{
-	display: inline-block;
 	padding-left: 0px;
+	padding-right: 0px;
 }
 .newsHome{
 	max-width:100%
-}
-.brandList >li{
-	padding-left: 0px;
-	list-style: none;
-	float: none;
-	margin: 0px 5px;
 }
 .brandContainer{
 	text-align: center;
@@ -471,7 +465,7 @@ div.newsEnd{
 		max-width: 85%;
 	}
 	div.detail >div{
-		width: 80%;
+		width: 90%;
 	}
 	.newsHome{
 		max-width:95%
@@ -498,6 +492,9 @@ div.newsEnd{
 	}
 }
 @media screen and (min-width: 1500px) {
+	div.detail >div{
+		width: 80%;
+	}
 	.newsHome{
 		max-width:70%
 	}
