@@ -20,7 +20,7 @@
           </ul>
           <form class="navbar-form navbar-right" role="search" action="search">
             <div class="form-group">
-              <input type="text" class="form-control searchInput" placeholder="Search">
+              <input type="text" name="keyword" class="form-control searchInput" placeholder="Search">
             </div>
             <button type="submit" class="btn btn-md btnSearch">
               <span class="glyphicon glyphicon-search"></span>

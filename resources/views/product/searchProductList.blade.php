@@ -1,20 +1,7 @@
 <?php
 	echo "<div class='row'>";
-	if(isset($groups)&&!empty($groups)){
-		echo "<ul class='groupList'>";
-		echo "<li><a ";
-		if(!isset($groupId)){
-			echo "class='groupListActive' ";
-		}
-		echo "href='javascript:getProduct(".$brandId.")'>All</a></li>";
-		foreach($groups as $group){
-			echo "<li><a ";
-			if(isset($groupId)&&$groupId==$group['GROUP_ID']){
-				echo "class='groupListActive' ";
-			}
-			echo "href='javascript:getProduct(".$brandId.",".$group['GROUP_ID'].")'>".$group['GROUP_NAME']."</a></li>";
-		}
-		echo "</ul>";
+	if(isset($keyword)){
+		echo "<label class='searchHeader'>Keyword : ".$keyword."</label>";
 	}
 	echo "</div>";
 	echo "<div class='row productList'>";

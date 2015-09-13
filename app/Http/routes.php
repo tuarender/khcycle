@@ -41,8 +41,8 @@ Route::get('news','NewsController@getNewsList');
 Route::get('newsHome','NewsController@getNewsListHome');
 Route::get('news/{newsId}','NewsController@getNews');
 //search
-Route::get('search/{newsId}','SearchController@search');
-
+Route::get('search','SearchController@search');
+Route::get('search/{keyword}','SearchController@searchProduct');
 
 //admin
 //--get
