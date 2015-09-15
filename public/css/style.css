@@ -440,6 +440,23 @@ div.newsEnd{
 	padding-left: 20px;
 	padding-right: 20px;
 }
+.searchHeader{
+	font-size: 24px;
+	font-family: HelveticaInseratLTStd;
+	font-weight: bold;
+	padding-left: 15px;
+}
+.productName{
+	font-family: HelveticaInseratLTStd;
+	font-size: 18px;
+}
+.notFoundProduct{
+	text-align: center;
+	font-family: HelveticaInseratLTStd;
+	padding-top: 50px;
+	font-size: 45px;
+	font-weight: bold;
+}
 @media screen and (max-width: 767px){
 	#brandHome{
 		margin-left: 0px;
