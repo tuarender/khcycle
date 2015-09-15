@@ -1,6 +1,6 @@
 @extends('app')
 @section('content')
-<?
+<?php
 	if(isset($page)){
 		echo "<input id='page' type='hidden' value='".$page."'/>";
 	}
@@ -43,12 +43,16 @@
     		});
 		}); 
 
-		function getSetting(page){
+		function getSetting(page ,isMainPage){
+
+			isMainPage = typeof isMainPage !== 'undefined'? isMainPage:false;
 			var url = "admin/setting/"+page;
 
-			if($('#'+page).length!=0){
-				$('.btn-block').removeClass("active");
-				$('#'+page).addClass("active");
+			if(!isMainPage){
+				if($('#'+page).length!=0){
+					$('.btn-block').removeClass("active");
+					$('#'+page).addClass("active");
+				}
 			}
 			$('#adminDetail').fadeOut(300,function(){
 				$.ajax({
@@ -61,6 +65,9 @@
 				});
 			});
 		}
+
+
+
     </script>
 @endsection
 @stop

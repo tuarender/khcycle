@@ -20,7 +20,7 @@ Route::get('forgetpassword','MemberController@forgetpassword');
 Route::get('profile','MemberController@profilemember');
 Route::get('logout','MemberController@logout');
 Route::post('logout','MemberController@logout');
-Route::post('updatemember/{id}','MemberController@update');
+//Route::post('updatemember/{id}','MemberController@update');
 
 Route::get('member/{id}','MemberController@show');
 
@@ -48,7 +48,10 @@ Route::get('search/{newsId}','SearchController@search');
 //--get
 Route::get('admin/{pageSetting?}','AdminController@getSetting');
 Route::get('admin/setting/{page}','AdminController@getPage');
+Route::get('admin/setting/catalogue/edit/{id}','AdminController@catalogueEdit');
+Route::get('admin/setting/member/edit/{id}','AdminController@memberEdit');
 Route::get('listmember','AdminController@listmember');
 //--post
 Route::post('postcontact','AdminController@postContact');
 Route::post('listmember','AdminController@listmember');
+Route::post('updatemember/{id}','AdminController@updatemember');
