@@ -231,6 +231,7 @@ div.brand{
 	list-style-type: none;
     margin: 0;
     padding: 0;
+    padding-left: 10px;
 }
 .groupListContainer{
 	display:block;
@@ -441,6 +442,9 @@ div.newsEnd{
 	padding-right: 20px;
 }
 .searchHeader{
+	text-align: center;
+}
+.searchHeader >label{
 	font-size: 24px;
 	font-family: HelveticaInseratLTStd;
 	font-weight: bold;
@@ -451,11 +455,16 @@ div.newsEnd{
 	font-size: 18px;
 }
 .notFoundProduct{
+	color: #F2F100;
+	text-shadow: 3px 0 0 #000, -3px 0 0 #000, 0 3px 0 #000, 0 -3px 0 #000, 2px 2px #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;
 	text-align: center;
 	font-family: HelveticaInseratLTStd;
 	padding-top: 50px;
 	font-size: 45px;
 	font-weight: bold;
+}
+.productImgDiv{
+	padding-right: 0px;
 }
 @media screen and (max-width: 767px){
 	#brandHome{
@@ -475,6 +484,9 @@ div.newsEnd{
 	}
 }
 @media screen and (min-width: 768px){
+	.searchHeader{
+		text-align: left;
+	}
 	.lastestCatalogue{
 		padding-left: 0px;
 		padding-right: 0px;
