@@ -37,7 +37,10 @@ class AdminController extends Controller
         } else if($page=='member') {
             $data =  $this->listmember($request);
             $menu = "ADMIN SETTING";
-        }else{
+        } else if($page=='zone'){
+
+        }
+        else{
             return "Page not found";
         }
         
@@ -224,7 +227,57 @@ class AdminController extends Controller
         }
     }
 
+    public function zoneIndex()
+    {
+        $name= 'ZONE MANAGE';
+        $data = DB::table('KH_ZONE')
+            ->select(
+                'ID',
+                'ZONE_NAME')
+            ->where('ZONE_DELETE_STATUS','<>','1')
+            ->get();
+        return view('admin/zone',['name'=>$name,'data'=>$data]);
+    }
+
+    public function zoneCreate(Request $request)
+    {
+        if($request->isMethod('post'))
+        {
+            $zone_name = $request->input('zone_name');
+            DB::table('KH_ZONE')->insert([
+                'ZONE_NAME'=>$zone_name
+            ]);
+
+            $name= 'ZONE MANAGE';
+            $data = DB::table('KH_ZONE')
+                ->select(
+                    'ID',
+                    'ZONE_NAME')
+                ->where('ZONE_DELETE_STATUS','<>','1')
+                ->get();
+            return redirect('admin/zone')->with(['name'=>$name,'data'=>$data]);
+        }
+        $name = 'Zone Add';
+        return view('admin/zoneEdit',[
+            'name'=>$name]);
+    }
+
+    public function zoneEdit($id)
+    {
+
+    }
+
+    public function branchIndex()
+    {
+
+    }
+
     public function catalogueEdit($id)
+    {
+
+    }
+
+    public function catalogueAdd(Request $request)
     {
 
     }

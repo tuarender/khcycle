@@ -14,27 +14,18 @@
 
         </div>
         <div class="row">
-            <div class="col-md-4">
-                <div class="jumbotron">
+            <div class="col-md-4 col-lg-4">
+                <div class="jumbotron" style="overflow-y: scroll;height: 100px">
                     @foreach($data as $contact)
-                    {{--<b>KHCYCLE BIKE STUDIO</b><br>--}}
-
-                    {{--<b>เลขที่ 29 ถนนประเสริฐมนูญกิจ แขวงคลองกุ่ม กรุงเทพฯ 10240</b><br>--}}
-                    {{--<b>โทร: 0-2510-1906</b><br>--}}
-                    {{--<b>Email:Sales@khcycle.com</b><br>--}}
                        <b> <?php echo nl2br($contact['KH_CONTACTUS']) ?></b>
                     @endforeach
                     <br>
-                    <a href="#" class="contactbutton">ติดต่อสอบถาม</a>
-                    </div>
+                    <a href="https://www.facebook.com/KhcycleThailand" target="_blank" class="contactbutton">ติดต่อสอบถาม</a>
+                </div>
+                <div id="googleMap" style="width:100%;margin-left:auto;margin-right:auto;"></div>
             </div>
-            <div class="col-md-8">
-                <img src="images/contact/contact.png"/>
-            </div>
-        </div>
-        <div class="row">
-            <div class="jumbotron">
-                <div id="googleMap" style="width:100%;height:300px;margin-left:auto;margin-right:auto"></div>
+            <div class="col-md-8 col-lg-8">
+                <img id="imgcontact" src="images/contact/contact.png" class="img-responsive"/>
             </div>
         </div>
     </div>
@@ -47,6 +38,10 @@
         $(document).ready(function(){
             $('#contact').fadeIn(1200);
             $('#footer').fadeIn('slow');
+            ImageResize();
+            $(window).on('resize', function(){
+                ImageResize();
+            });
         });
         var myCenter=new google.maps.LatLng(13.8082871,100.6528724);
         var marker;
@@ -76,6 +71,18 @@
         }
 
         google.maps.event.addDomListener(window, 'load', initialize);
+
+
+        function ImageResize(){
+            if($(window).width()<=991)
+            {
+                $('#googleMap').height(180);
+            }else{
+            var imgpic = $('#imgcontact').height()-130;
+            $('#googleMap').height(imgpic);
+            //           alert( imgpic);
+            }
+        };
     </script>
 
 @endsection

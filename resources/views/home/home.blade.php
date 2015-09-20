@@ -59,18 +59,12 @@
         <b>โทร: 0-2510-1906</b><br>
         <b>Email:Sales@khcycle.com</b><br>
       </div>
+      <div id="googleMap" style="width:100%;margin-left:auto;margin-right:auto"></div>
     </div>
     <div class="col-md-8">
-      <img src="images/contact/contact.png"/>
+      <img id="imgcontact" src="images/contact/contact.png"/>
     </div>
   </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="jumbotron">
-          <div id="googleMap" style="width:90%;height:300px;margin-left:auto;margin-right:auto"></div>
-        </div>
-      </div>
-    </div>
 </div>
 @endsection
 @section('scripts')
@@ -80,7 +74,7 @@
     var isBrandSlider = false;
     $(document).ready(function(){
         $('.slideContainer').fadeIn('slow',function(){
-          $('#detail').fadeIn('slow'); 
+          $('#detail').fadeIn('slow');
           $('.contactContainer').fadeIn('slow',function(){
             var topTag = ($('.slideContainer').height()*0.8)-100;
             var rightTag = ($('.slideContainer').width()*0.9)-120;
@@ -91,10 +85,13 @@
             $(".tag").fadeIn(800);
           });
           $('#footer').fadeIn('slow');
+
+          ImageResize();
         });
         getNews();
         brandSlider();
         $(window).on('resize', function(){
+          ImageResize();
           brandSlider();
           swapNews();
           clearTimeout(doTimeout);
@@ -126,7 +123,6 @@
         }
       });
     }
-
     function brandSlider(){
       if ($(this).width() <=749) {
         if(!isBrandSlider){
@@ -200,6 +196,21 @@
     }
 
     google.maps.event.addDomListener(window, 'load', initialize);
+
+    function ImageResize(){
+      if($(window).width()<=991)
+      {
+        $('#googleMap').height(150);
+      }
+      else if(($(window).width()>991)&&($(window).width()<=1340))
+      {
+        var imgpic = $('#imgcontact').height()-210;
+        $('#googleMap').height(imgpic);
+      }else{
+        var imgpic = $('#imgcontact').height()-185;
+        $('#googleMap').height(imgpic);
+      }
+    };
   </script>
 @endsection
 @stop

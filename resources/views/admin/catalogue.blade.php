@@ -10,7 +10,7 @@
         @include('partials.flashmessage')
         <div class="container">
             <div class="row" style="text-align: right;padding-right: 15px">
-                <button type="button" class="btn btn-primary">เพิ่ม CATALOGUE</button>
+                <button type="button" onclick="getSetting('catalogue/add',true)" class="btn btn-primary">เพิ่ม CATALOGUE</button>
             </div>
             <div class="table-responsive">
                 <table class="table table-bordered">
