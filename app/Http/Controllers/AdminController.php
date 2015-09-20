@@ -242,7 +242,7 @@ class AdminController extends Controller
                 $extension = $file->getClientOriginalExtension(); 
                 $fileName = rand(11111,99999)."_".$id; 
                 $fileNameFull = $fileName.".".$extension;
-                $fileMoved = $file->move($destinationPath, $fileName);
+                $fileMoved = $file->move($destinationPath, $fileNameFull);
                 if (File::exists($fileMoved->getRealPath())){
                     $bannerType = $request->input('bannerType', '0');
                     $url = $request->input('url');
