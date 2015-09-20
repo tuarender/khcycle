@@ -1,25 +1,26 @@
+@extends('admin.admin')
+@section('adminContent')
 @include('admin.partials.adminSubHeader')
 <div class="sessionContainer" style="width: 100%">
     Log in as:{{ Session::get('user')->KH_MEMBER_LOGIN_USERNAME }} <a href="logout">ออกจากระบบ</a>
 </div>
 <?php
-	$formAction = "admin/setting/home/banner";
+	$formAction = "admin/home/banner";
 	$isYoutube = "";
 	$bannerUrl ="";
 	if(isset($data)){
 		$formAction.="/".$data[0]["BANNER_ID"];
 		$isYoutube = $data[0]['BANNER_IS_YOUTUBE']==1?"selected":"";
 		$bannerUrl = $data[0]['BANNER_IS_YOUTUBE']==1?$data[0]['BANNER_YOUTUBE_URI']:$data[0]['BANNER_URL'];
+		$isYoutubeOld = Input::old("bannerType");
+		if($isYoutubeOld!=null&&$isYoutubeOld!=""){
+			$isYoutube = $isYoutubeOld==1?"selected":"";
+		}
 	}
 
-	if(isset($validator)){
-		print_r($validator->errors());
-		$errors = $validator->errors();
-		$isYoutube = $request['bannerType']==1?"selected":"";
-		$bannerUrl = $request['url'];
-	}
 ?>
 <div class="container-fluid">
+	@include('partials.flashmessage')
 	<form id="bannerForm" class="form-horizontal" role="form" method="post" action="<?=$formAction?>"  enctype="multipart/form-data">
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
 		<div class="form-group">
@@ -31,6 +32,7 @@
 				</select>
 			</div>
 		</div>
+
 <?php
 	if(isset($data)){
 		echo "<div class='form-group'>";
@@ -53,14 +55,14 @@
 		<div class="form-group @if ($errors->has('url')) has-error @endif">
             <label for="url" class="col-sm-3 control-label"><font color="red">*</font>ระบุลิงค์</label>
             <div class="col-sm-5">
-                <input type="text" class="form-control" name="url" value="<?=$bannerUrl?>" >
+                <input type="text" class="form-control" name="url" value="{{old('url',$bannerUrl)}}" >
                 @if($errors->has('url')) 
                 <p class="help-block">{{$errors->first('url')}}</p>@endif
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-6 col-sm-offset-4">
-                <button type="button" onclick="callSubmit('bannerForm')" class="btn btn-primary btnKhcycle">
+                <button type="submit" class="btn btn-primary btnKhcycle">
                     ยืนยันและบันทึก
                 </button>
                 <button type="reset" class="btn btn-primary btnKhcycle">
@@ -70,3 +72,4 @@
         </div>
 	</form>
 </div>
+@endsection

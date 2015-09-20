@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use App;
+use File;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
@@ -29,6 +31,20 @@ class AdminController extends Controller
         $data = $this->getBannerList();
         $menu = "Home Setting";
         return view('admin.home',['name'=>$menu,'data'=>$data]);
+    }
+
+    public function getBannerEdit($id=null){
+        $data = null;
+        $name = 'Home Setting->เพิ่มแบนเนอร์';
+        //edit case
+        if($id!=null){
+            $data = $this->getBanner($id);
+            $name = 'Home Setting->แก้ไขข้อมูลแบนเนอร์';
+        }
+        
+        return  view('admin/homeEdit')
+                ->with('data',$data)
+                ->with('name',$name);
     }
 
     public function getContact(){
@@ -74,11 +90,58 @@ class AdminController extends Controller
         return redirect('admin/contact');
     }
 
+
+
     private function getBanner($id){
         $banner = DB::table('KH_BANNER')
                 ->where('BANNER_ID', '=', $id)
                 ->get();
         return $banner;
+    }
+
+    public function zoneIndex()
+    {
+        $name= 'ZONE MANAGE';
+        $data = DB::table('KH_ZONE')
+            ->select(
+                'ID',
+                'ZONE_NAME')
+            ->where('ZONE_DELETE_STATUS','<>','1')
+            ->get();
+        return view('admin/zone',['name'=>$name,'data'=>$data]);
+    }
+
+    public function zoneCreate(Request $request)
+    {
+        if($request->isMethod('post'))
+        {
+            $zone_name = $request->input('zone_name');
+            DB::table('KH_ZONE')->insert([
+                'ZONE_NAME'=>$zone_name
+            ]);
+
+            $name= 'ZONE MANAGE';
+            $data = DB::table('KH_ZONE')
+                ->select(
+                    'ID',
+                    'ZONE_NAME')
+                ->where('ZONE_DELETE_STATUS','<>','1')
+                ->get();
+            return redirect('admin/zone')->with(['name'=>$name,'data'=>$data]);
+        }
+        $name = 'Zone Add';
+        return view('admin/zoneEdit',[
+            'name'=>$name]);
+    }
+
+    public function zoneEdit($id)
+    {
+
+    }
+
+    public function branchIndex()
+    {
+
     }
 
     private function getBannerList(){
@@ -190,55 +253,11 @@ class AdminController extends Controller
         }
     }
 
-    public function zoneIndex()
-    {
-        $name= 'ZONE MANAGE';
-        $data = DB::table('KH_ZONE')
-            ->select(
-                'ID',
-                'ZONE_NAME')
-            ->where('ZONE_DELETE_STATUS','<>','1')
-            ->get();
-        return view('admin/zone',['name'=>$name,'data'=>$data]);
-    }
-
-    public function zoneCreate(Request $request)
-    {
-        if($request->isMethod('post'))
-        {
-            $zone_name = $request->input('zone_name');
-            DB::table('KH_ZONE')->insert([
-                'ZONE_NAME'=>$zone_name
-            ]);
-
-            $name= 'ZONE MANAGE';
-            $data = DB::table('KH_ZONE')
-                ->select(
-                    'ID',
-                    'ZONE_NAME')
-                ->where('ZONE_DELETE_STATUS','<>','1')
-                ->get();
-            return redirect('admin/zone')->with(['name'=>$name,'data'=>$data]);
-        }
-        $name = 'Zone Add';
-        return view('admin/zoneEdit',[
-            'name'=>$name]);
-    }
-
-    public function zoneEdit($id)
-    {
-
-    }
-
-    public function branchIndex()
-    {
-
-    }
-
     public function catalogueEdit($id)
     {
 
     }
+
 
 
     public function catalogueAdd(Request $request)
@@ -259,29 +278,58 @@ class AdminController extends Controller
                 ->with('name',$name);
     }
 
+
     public function bannerUpdate(Request $request,$id){
         $rules=[
             'bannerType'=>'required',
             'url'=>'required|url',
-            'bannerImage'=>'image|size:2000kb',
+            'bannerImage'=>'image|max:1024',
         ];
         $messages = [
             'bannerType.required'=>'กรุณาระบุชื่อ-นามสกุล',
             'url.required'=>'กรุณาระบุลิงค์',
             'url.url'=>'ลิงค์ไม่ถูกต้อง',
             'bannerImage.image'=>'กรุณาระบุประเภทของรูปภาพให้ถูกต้อง',
-            'bannerImage.size'=>'ขนาดของรูปภาพต้องไม่เกิน 2MB',
+            'bannerImage.size'=>'ขนาดของรูปภาพต้องไม่เกิน 1MB',
         ];
 
         $validator = Validator::make($request->all(),$rules,$messages);
         if($validator->fails()){
-            $data = $this->getBanner($id);
-            $name = 'Home Setting->แก้ไขข้อมูลแบนเนอร์';
-            return view('admin.homeEdit',['name'=>$name,'request'=>$request->all(),'data'=>$data,'validator'=>$validator]);
+            Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาตรวจสอบ');
+            return redirect('admin/home/banner/'.$id)->withErrors($validator)->withInput();
         }else {
-            $data = $this->getBannerList();
-            $name = "Home Setting";
-            return view('admin.home',['name'=>$name,'data'=>$data]);
+
+            $file = Input::file('bannerImage');
+            if ($file!=null&&$file->isValid()) {
+                $destinationPath = 'images/banner'; 
+                $extension = $file->getClientOriginalExtension(); 
+                $fileName = rand(11111,99999)."_".$id; 
+                $fileNameFull = $fileName.".".$extension;
+                $fileMoved = $file->move($destinationPath, $fileNameFull);
+                if (File::exists($fileMoved->getRealPath())){
+                    $bannerType = $request->input('bannerType', '0');
+                    $url = $request->input('url');
+                    $sqlUpdate = "UPDATE KH_BANNER SET BANNER_IMAGE=?,BANNER_IMAGE_EXT=?, BANNER_URL=?, BANNER_IS_YOUTUBE=?,BANNER_YOUTUBE_URI=? WHERE BANNER_ID=?";
+                    $youtubeUri = $bannerType==1?$url:"";
+                    $updateParam = array($fileName,$extension,$url,$bannerType,$youtubeUri,$id);
+                    $data = DB::update($sqlUpdate,$updateParam);
+                    Session::flash('alert-success', 'อัพเดทสำเร็จ ');
+                    return redirect('admin/home/');
+                }
+                else{
+                    Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาติดต่อผู้ดูแลระบบ');
+                    return redirect('admin/home/');
+                }
+            }
+            else if($file==null){
+                Session::flash('alert-success', 'อัพเดทสำเร็จ');
+                return redirect('admin/home/');
+            }
+            else {
+                Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาติดต่อผู้ดูแลระบบ');
+                return redirect('admin/home/');
+            }
+
         }
 
     }
