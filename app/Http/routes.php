@@ -46,8 +46,8 @@ Route::get('search/{keyword}','SearchController@searchProduct');
 
 //admin
 //--get
-Route::get('admin/{pageSetting?}','AdminController@getSetting');
-Route::get('admin/setting/{page}','AdminController@getPage');
+Route::get('admin/setting/home/banner','AdminController@bannerEdit');
+Route::get('admin/setting/home/banner/{id?}','AdminController@bannerEdit');
 Route::get('admin/setting/catalogue/edit/{id}','AdminController@catalogueEdit');
 Route::get('admin/setting/member/edit/{id}','AdminController@memberEdit');
 Route::get('listmember','AdminController@listmember');
@@ -55,3 +55,12 @@ Route::get('listmember','AdminController@listmember');
 Route::post('postcontact','AdminController@postContact');
 Route::post('listmember','AdminController@listmember');
 Route::post('updatemember/{id}','AdminController@updatemember');
+Route::post('admin/setting/home/banner','AdminController@bannerAdd');
+Route::post('admin/setting/home/banner/{id}','AdminController@bannerUpdate');
+
+Route::get('admin/home','AdminController@getHome');
+Route::get('admin/contact','AdminController@getContact');
+Route::get('admin/member','AdminController@getMember');
+Route::get('admin/catalogue','AdminController@getCatalogue');
+Route::get('admin/product','AdminController@getProduct');
+Route::get('admin/news','AdminController@getNews');

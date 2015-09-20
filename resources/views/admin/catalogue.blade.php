@@ -1,3 +1,5 @@
+@extends('admin.admin')
+@section('adminContent')
 <div class="adminContainer">
     <div class="col-md-10 col-lg-10">
         <div class="container">
@@ -36,3 +38,4 @@
         </div>
     </div>
 </div>
+@endSection

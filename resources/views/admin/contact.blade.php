@@ -1,3 +1,5 @@
+@extends('admin.admin')
+@section('adminContent')
 <div class="adminContainer">
     <div class="col-md-8">
         <div class="container">
@@ -32,3 +34,4 @@
         @endforeach
     </div>
 </div>
+@endSection

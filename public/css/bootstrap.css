@@ -2452,7 +2452,7 @@ table th[class*="col-"] {
   min-height: .01%;
   overflow-x: auto;
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 991px) {
   .table-responsive {
     width: 100%;
     margin-bottom: 15px;
