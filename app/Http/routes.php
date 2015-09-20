@@ -56,11 +56,16 @@ Route::get('admin/news','AdminController@getNews');
 Route::get('admin/home/banner','AdminController@getBannerEdit');
 Route::get('admin/home/banner/{id?}','AdminController@getBannerEdit');
 Route::get('admin/setting/catalogue/edit/{id}','AdminController@catalogueEdit');
+Route::get('admin/setting/catalogue/add','AdminController@catalogueAdd');
 Route::get('admin/setting/member/edit/{id}','AdminController@memberEdit');
 Route::get('listmember','AdminController@listmember');
+Route::get('admin/setting/zone/index','AdminController@zoneIndex');
+Route::get('admin/setting/zone/create','AdminController@zoneCreate');
+Route::get('admin/setting/branch/index','AdminController@branchIndex');
 //--post
 Route::post('postcontact','AdminController@postContact');
 Route::post('listmember','AdminController@listmember');
+Route::post('zone/create','AdminController@zoneCreate');
 Route::post('updatemember/{id}','AdminController@updatemember');
 Route::post('admin/home/banner','AdminController@bannerAdd');
 Route::post('admin/home/banner/{id}','AdminController@bannerUpdate');

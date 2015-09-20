@@ -10,6 +10,16 @@
             Log in as:{{ Session::get('user')->KH_MEMBER_LOGIN_USERNAME }} <a href="logout">ออกจากระบบ</a>
         </div>
         @include('partials.flashmessage')
+        <div class="form-group">
+            <div class="col-md-3">
+                การจัดการสาขา
+            </div>
+            <div class="col-md-9">
+                <button class="btn btn-primary btnKhcycle" onclick="getSetting('zone/index',true)">ZONE</button>
+                <button class="btn btn-primary btnKhcycle" onclick="getSetting('branch/index',true)">BRANCH</button>
+            </div>
+        </div>
+        <br><br><br>
         @foreach($data as $contact)
         <form class="form-horizontal" role="form" method="post" action="postcontact">
             {{ csrf_field() }}
