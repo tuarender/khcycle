@@ -8,11 +8,10 @@
     Log in as:{{ Session::get('user')->KH_MEMBER_LOGIN_USERNAME }} <a href="logout">ออกจากระบบ</a>
 </div>
 <div class="container-fluid">
+	@include('partials.flashmessage')
 	<div class="row">
 		<div class='col-xs-12' style="text-align:right">
-		<button type="button" class="btn btn-primary btn-sm" onclick="getSetting('home/banner',true)">
-		  <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> เพิ่มแบนเนอร์
-		</button>
+		<a href="admin/home/banner" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> เพิ่มแบนเนอร์</a>
 		</div>
 	</div>
 	<div class='table-responsive'>
@@ -49,8 +48,8 @@
 			echo "<td>".$bannerUri."</td>";
 			echo "<td class='tdCenter'>";
 			echo "<div class='btn-group' role='group'>";
-			echo "  <button type='button' onclick='getSetting(\"home/banner/".$data[$i]['BANNER_ID']."\",true)' class='btn btn-warning'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span> แก้ไข</button>";
-			echo "  <button type='button' onclick='' class='btn btn-danger'><span class='glyphicon glyphicon-remove-sign' aria-hidden='true'></span> ลบ</button>";
+			echo "  <a href='admin/home/banner/".$data[$i]['BANNER_ID']."' class='btn btn-warning'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span> แก้ไข</a>";
+			echo "  <a href='admin/home/banner/".$data[$i]['BANNER_ID']."' class='btn btn-danger'><span class='glyphicon glyphicon-remove-sign' aria-hidden='true'></span> ลบ</a>";
 			echo "</div>";
 			echo "</td>";
 			echo "</tr>";
