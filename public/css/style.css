@@ -122,7 +122,7 @@ div.brand{
 }
 .subheaderContainer{
 	/*padding-top: 50px;*/
-	max-width:1340px;
+	max-width:85%;
 	margin:5px auto;
 }
 .subheaderContainer row{
@@ -136,6 +136,7 @@ div.brand{
 }
 .sessionContainer{
 	text-align: right;
+	padding-right: 20px;
 	margin: 10px auto;
 }
 .subheaderContact label{
@@ -332,7 +333,8 @@ div.newsEnd{
 .adminMenuDiv{
 	margin-top: 10px;
 }
-.adminMenuDiv >button{
+.adminMenuDiv a{
+	border:1px solid;
 	-moz-border-radius: 0px;
     -webkit-border-radius: 0px;
     border-radius: 0px;
@@ -502,7 +504,7 @@ div.newsEnd{
 		float: right;
 	}
 	.productMain,.adminMain{
-		max-width: 90%;
+		max-width: 80%;
 	}
 	.tag{
 		color:#FFFFFF;
@@ -544,7 +546,7 @@ div.newsEnd{
 
 @media screen and (min-width: 992px) {
 	.productMain,.adminMain{
-		max-width: 85%;
+		max-width: 75%;
 	}
 	div.detail >div{
 		width: 90%;
@@ -580,4 +582,32 @@ div.newsEnd{
 	.newsHome{
 		max-width:70%
 	}
+}
+
+
+/*--------ADMIN------------*/
+.adminSubheader{
+	padding-left: 15px;
+}
+.adminMenuSubheader{
+	padding-top: 5px;
+}
+.adminSubheader,.adminMenuSubheader span{
+	color: #444444;
+	font-weight: bold;
+	font-family: HelveticaInseratLTStd,"Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 18px;
+}
+.adminBtnManage{
+	margin: 0px 5px;
+}
+.tableAdmin .tdCenter{
+	text-align: center;
+}
+.tableAdmin .tdGryph{
+	font-size: 20px;
+}
+.tableAdmin .tableHeader{
+	background-color: #222222;
+	color: #DDDDDD;
 }
