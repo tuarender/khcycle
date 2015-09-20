@@ -29,7 +29,8 @@
                         <td>{{ $i }}</td>
                         <td>{{$catalogue['CATALOGUE_NAME']}}</td>
                         <td><button onclick="getSetting('catalogue/edit/{{ $catalogue['CATALOGUE_ID'] }}',true)" class="btn btn-warning">แก้ไข</button> &nbsp;&nbsp;
-                            <button id="catalogue/delete/{{ $catalogue['CATALOGUE_ID'] }}" onclick="getSetting(this.id)" class="btn btn-danger">ลบ</button></td>
+                            <button id="catalogue/delete/{{ $catalogue['CATALOGUE_ID'] }}" onclick="getSetting(this.id)" class="btn btn-danger">
+                                <span class='glyphicon glyphicon-remove-sign' aria-hidden='true'></span>ลบ</button></td>
                         {{-- */$i++;/* --}}
                     </tr>
                     @endforeach

@@ -31,25 +31,6 @@ class AdminController extends Controller
         return view('admin.home',['name'=>$menu,'data'=>$data]);
     }
 
-<<<<<<< HEAD
-        if ($page == 'contact') {
-            $data = DB::table('KH_CONTACTUS')->get();
-            $menu = "Contact Setting";
-        } else if ($page == 'catalogue') {
-            $data=  DB::table('KH_CATALOGUE')->get();
-            $menu="CATALOGUE SETTING";
-        } else if($page=='member') {
-            $data =  $this->listmember($request);
-            $menu = "ADMIN SETTING";
-        } else if($page=='zone'){
-
-        }
-        else{
-            return "Page not found";
-        }
-        
-        return view('admin.'.$page,['name'=>$menu,'data'=>$data]);
-=======
     public function getContact(){
         $data = DB::table('KH_CONTACTUS')->get();
         $menu = "Contact Setting";
@@ -63,7 +44,7 @@ class AdminController extends Controller
     }
 
     public function getMember(){
-        $data =  $this->listmember($request);
+        $data =  $this->listmember();
         $menu = "ADMIN SETTING";
         return view('admin.member',['name'=>$menu,'data'=>$data]);
     }
@@ -78,7 +59,7 @@ class AdminController extends Controller
         $data = null;
         $menu = "Product Setting";
         return view('admin.product',['name'=>$menu,'data'=>$data]);
->>>>>>> 7a58680d91ebc3da332b157af3328a06464ae76f
+
     }
 
     public function postContact(Request $request)
@@ -109,15 +90,10 @@ class AdminController extends Controller
         return $bannerList;
     }
 
-    public function listmember($request)
+    public function listmember()
     {
 
-        if ($request->isMethod('post'))
-        {
-            $data = 2;
-        }
-        else{
-            $data = DB::table('KH_MEMBER_LOGIN AS login ')
+        $data = DB::table('KH_MEMBER_LOGIN AS login ')
                 ->leftjoin('KH_INFORMATION AS info','login.ID','=','info.KH_INFORMATION_MEMBER')
                 ->leftjoin('KH_CONTACT AS contact','login.ID','=','contact.KH_CONTACT_MEMBER')
                 ->select(
@@ -132,7 +108,6 @@ class AdminController extends Controller
                     'contact.KH_CONTACT_ADDR')
                 ->where('login.KH_MEMBER_RULE','<>','ADMIN')
                 ->get();
-        }
 
         return $data;
     }
@@ -265,11 +240,11 @@ class AdminController extends Controller
 
     }
 
-<<<<<<< HEAD
+
     public function catalogueAdd(Request $request)
     {
 
-=======
+    }
     public function bannerEdit($id=null){
         $data = null;
         $name = 'Home Setting->เพิ่มแบนเนอร์';
@@ -308,7 +283,7 @@ class AdminController extends Controller
             $name = "Home Setting";
             return view('admin.home',['name'=>$name,'data'=>$data]);
         }
->>>>>>> 7a58680d91ebc3da332b157af3328a06464ae76f
+
     }
 
 }

@@ -1,6 +1,6 @@
-@extends('app')
-
-@section('content')
+@extends('admin.admin')
+@section('adminContent')
+@include('admin.partials.adminSubHeader')
     <div class="adminContainer">
             <div class="membercontainer">
                 {{$name}}
