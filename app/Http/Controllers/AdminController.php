@@ -60,7 +60,7 @@ class AdminController extends Controller
     }
 
     public function getMember(){
-        $data =  $this->listmember($request);
+        $data =  $this->listmember();
         $menu = "ADMIN SETTING";
         return view('admin.member',['name'=>$menu,'data'=>$data]);
     }
@@ -75,6 +75,7 @@ class AdminController extends Controller
         $data = null;
         $menu = "Product Setting";
         return view('admin.product',['name'=>$menu,'data'=>$data]);
+
     }
 
     public function postContact(Request $request)
@@ -89,11 +90,58 @@ class AdminController extends Controller
         return redirect('admin/contact');
     }
 
+
+
     private function getBanner($id){
         $banner = DB::table('KH_BANNER')
                 ->where('BANNER_ID', '=', $id)
                 ->get();
         return $banner;
+    }
+
+    public function zoneIndex()
+    {
+        $name= 'ZONE MANAGE';
+        $data = DB::table('KH_ZONE')
+            ->select(
+                'ID',
+                'ZONE_NAME')
+            ->where('ZONE_DELETE_STATUS','<>','1')
+            ->get();
+        return view('admin/zone',['name'=>$name,'data'=>$data]);
+    }
+
+    public function zoneCreate(Request $request)
+    {
+        if($request->isMethod('post'))
+        {
+            $zone_name = $request->input('zone_name');
+            DB::table('KH_ZONE')->insert([
+                'ZONE_NAME'=>$zone_name
+            ]);
+
+            $name= 'ZONE MANAGE';
+            $data = DB::table('KH_ZONE')
+                ->select(
+                    'ID',
+                    'ZONE_NAME')
+                ->where('ZONE_DELETE_STATUS','<>','1')
+                ->get();
+            return redirect('admin/zone')->with(['name'=>$name,'data'=>$data]);
+        }
+        $name = 'Zone Add';
+        return view('admin/zoneEdit',[
+            'name'=>$name]);
+    }
+
+    public function zoneEdit($id)
+    {
+
+    }
+
+    public function branchIndex()
+    {
+
     }
 
     private function getBannerList(){
@@ -105,15 +153,10 @@ class AdminController extends Controller
         return $bannerList;
     }
 
-    public function listmember($request)
+    public function listmember()
     {
 
-        if ($request->isMethod('post'))
-        {
-            $data = 2;
-        }
-        else{
-            $data = DB::table('KH_MEMBER_LOGIN AS login ')
+        $data = DB::table('KH_MEMBER_LOGIN AS login ')
                 ->leftjoin('KH_INFORMATION AS info','login.ID','=','info.KH_INFORMATION_MEMBER')
                 ->leftjoin('KH_CONTACT AS contact','login.ID','=','contact.KH_CONTACT_MEMBER')
                 ->select(
@@ -128,7 +171,6 @@ class AdminController extends Controller
                     'contact.KH_CONTACT_ADDR')
                 ->where('login.KH_MEMBER_RULE','<>','ADMIN')
                 ->get();
-        }
 
         return $data;
     }
@@ -216,6 +258,27 @@ class AdminController extends Controller
 
     }
 
+
+
+    public function catalogueAdd(Request $request)
+    {
+
+    }
+    public function bannerEdit($id=null){
+        $data = null;
+        $name = 'Home Setting->เพิ่มแบนเนอร์';
+        //edit case
+        if($id!=null){
+            $data = $this->getBanner($id);
+            $name = 'Home Setting->แก้ไขข้อมูลแบนเนอร์';
+        }
+        
+        return  view('admin/homeEdit')
+                ->with('data',$data)
+                ->with('name',$name);
+    }
+
+
     public function bannerUpdate(Request $request,$id){
         $rules=[
             'bannerType'=>'required',
@@ -268,6 +331,7 @@ class AdminController extends Controller
             }
 
         }
+
     }
 
 }

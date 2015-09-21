@@ -23,10 +23,15 @@
                         </tr>
                         @foreach($data as $zone)
                             <tr>
-                                <td>{{$zone['ID']}}</td>
+                                <td >{{$zone['ID']}}</td>
                                 <td>{{$zone['ZONE_NAME']}}</td>
-                                <td><button class="btn btn-warning">EDIT</button>
-                                    <button class="btn btn-danger">DELETE</button></td>
+
+                                <td align="center">
+                                    <div class='btn-group' role='group'>
+                                    <button class="btn btn-warning"><span class='glyphicon glyphicon-edit' aria-hidden='true'></span> EDIT</button>
+                                    <button class="btn btn-danger"><span class='glyphicon glyphicon-remove-sign' aria-hidden='true'></span> DELETE</button>
+                                    </div>
+                                </td>
                             </tr>
                         @endforeach
                     </table>
