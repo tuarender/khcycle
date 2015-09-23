@@ -66,6 +66,11 @@ Route::get('admin/zone','AdminController@getZone');
 Route::get('admin/zone/edit','AdminController@zoneEdit');
 Route::get('admin/zone/edit/{id?}','AdminController@zoneEdit');
 Route::get('admin/zone/delete/{id}','AdminController@zoneDelete');
+Route::get('admin/branch','AdminController@getBranch');
+Route::get('admin/branch/edit','AdminController@branchEdit');
+Route::get('admin/branch/edit/{id?}','AdminController@branchEdit');
+Route::get('admin/branch/delete/{id}','AdminController@branchDelete');
+
 
 //--post
 Route::post('postcontact','AdminController@postContact');
@@ -78,3 +83,5 @@ Route::post('admin/catalogue/edit','AdminController@catalogueAdd');
 Route::post('admin/catalogue/edit/{id}','AdminController@catalogueUpdate');
 Route::post('admin/zone/edit','AdminController@zoneAdd');
 Route::post('admin/zone/edit/{id}','AdminController@zoneUpdate');
+Route::post('admin/branch/edit','AdminController@zoneAdd');
+Route::post('admin/branch/edit/{id}','AdminController@zoneUpdate');

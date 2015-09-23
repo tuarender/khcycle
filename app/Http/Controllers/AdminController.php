@@ -197,6 +197,17 @@ class AdminController extends Controller
     public function getBranch()
     {
 
+        $name= 'BRANCH MANAGE';
+        $data = DB::table('KH_BRANCH as br')
+            ->join('KH_ZONE AS zone','br.BRANCH_ZONE','=','zone.ID')
+            ->select('zone.ZONE_NAME',
+                'br.BRANCH_ID',
+                'br.BRANCH_SHOP',
+                'br.BRANCH_ADDR',
+                'br.BRANCH_EMAIL')
+            ->where('BRANCH_DELETE_STATUS','<>','1')
+            ->get();
+        return view('admin/branch',['name'=>$name,'data'=>$data]);
     }
 
     private function getBannerList(){
