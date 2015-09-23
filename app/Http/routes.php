@@ -59,11 +59,14 @@ Route::get('admin/setting/catalogue/edit/{id}','AdminController@catalogueEdit');
 Route::get('admin/setting/catalogue/add','AdminController@catalogueAdd');
 Route::get('admin/setting/member/edit/{id}','AdminController@memberEdit');
 Route::get('listmember','AdminController@listmember');
-Route::get('admin/catalogue/edit','AdminController@CatalogueEdit');
-Route::get('admin/catalogue/edit/{id?}','AdminController@CatalogueEdit');
-Route::get('admin/setting/zone/index','AdminController@zoneIndex');
-Route::get('admin/setting/zone/create','AdminController@zoneCreate');
-Route::get('admin/setting/branch/index','AdminController@branchIndex');
+Route::get('admin/catalogue/edit','AdminController@catalogueEdit');
+Route::get('admin/catalogue/edit/{id?}','AdminController@catalogueEdit');
+Route::get('admin/catalogue/delete/{id}','AdminController@catalogueDelete');
+Route::get('admin/zone','AdminController@getZone');
+Route::get('admin/zone/edit','AdminController@zoneEdit');
+Route::get('admin/zone/edit/{id?}','AdminController@zoneEdit');
+Route::get('admin/zone/delete/{id}','AdminController@zoneDelete');
+
 //--post
 Route::post('postcontact','AdminController@postContact');
 Route::post('listmember','AdminController@listmember');
@@ -73,3 +76,5 @@ Route::post('admin/home/banner','AdminController@bannerAdd');
 Route::post('admin/home/banner/{id}','AdminController@bannerUpdate');
 Route::post('admin/catalogue/edit','AdminController@catalogueAdd');
 Route::post('admin/catalogue/edit/{id}','AdminController@catalogueUpdate');
+Route::post('admin/zone/edit','AdminController@zoneAdd');
+Route::post('admin/zone/edit/{id}','AdminController@zoneUpdate');

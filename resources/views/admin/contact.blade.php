@@ -15,8 +15,8 @@
                 การจัดการสาขา
             </div>
             <div class="col-md-9">
-                <button class="btn btn-primary btnKhcycle" onclick="getSetting('zone/index',true)">ZONE</button>
-                <button class="btn btn-primary btnKhcycle" onclick="getSetting('branch/index',true)">BRANCH</button>
+                <a class="btn btn-primary btnKhcycle" href="admin/zone">ZONE</a>
+                <a class="btn btn-primary btnKhcycle" href="admin/branch">BRANCH</a>
             </div>
         </div>
         <br><br><br>

@@ -1,6 +1,5 @@
-@extends('app')
-
-@section('content')
+@extends('admin.admin')
+@section('adminContent')
     <div class="adminContainer">
         <div class="membercontainer">
             {{$name}}
@@ -12,7 +11,7 @@
 
             <div class="container">
                 <div class="row" style="text-align: right;padding-right: 15px">
-                    <button type="button" onclick="getSetting('zone/create',true)" class="btn btn-primary">เพิ่ม ZONE</button>
+                    <a type="button" href="admin/zone/edit" class="btn btn-primary">เพิ่ม ZONE</a>
                 </div>
                 <div class="table-responsive">
                     <table class="table table-bordered">
@@ -28,8 +27,9 @@
 
                                 <td align="center">
                                     <div class='btn-group' role='group'>
-                                    <button class="btn btn-warning"><span class='glyphicon glyphicon-edit' aria-hidden='true'></span> EDIT</button>
-                                    <button class="btn btn-danger"><span class='glyphicon glyphicon-remove-sign' aria-hidden='true'></span> DELETE</button>
+                                    <a class="btn btn-warning" href="admin/zone/edit/{{$zone['ID']}}"><span class='glyphicon glyphicon-edit' aria-hidden='true'></span> EDIT</a>
+                                    <a class="btn btn-danger" href="admin/zone/delete/{{$zone['ID']}}" onclick="return confirm('Are you sure you want to delete this item?');">
+                                        <span class='glyphicon glyphicon-remove-sign' aria-hidden='true'></span> DELETE</a>
                                     </div>
                                 </td>
                             </tr>

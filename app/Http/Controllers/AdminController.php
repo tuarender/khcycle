@@ -66,7 +66,9 @@ class AdminController extends Controller
     }
 
     public function getCatalogue(){
-        $data =  DB::table('KH_CATALOGUE')->get();
+        $data =  DB::table('KH_CATALOGUE')
+            ->where('CATALOGUE_DELETE_STATUS','<>','1')
+            ->get();
         $menu ="CATALOGUE SETTING";
         return view('admin.catalogue',['name'=>$menu,'data'=>$data]);
     }
@@ -106,7 +108,7 @@ class AdminController extends Controller
         return $banner;
     }
 
-    public function zoneIndex()
+    public function getZone()
     {
         $name= 'ZONE MANAGE';
         $data = DB::table('KH_ZONE')
@@ -118,35 +120,81 @@ class AdminController extends Controller
         return view('admin/zone',['name'=>$name,'data'=>$data]);
     }
 
-    public function zoneCreate(Request $request)
+    public function zoneDelete($id)
     {
-        if($request->isMethod('post'))
-        {
+        $data = DB::table('KH_ZONE')
+            ->where('ID','=',$id)
+            ->update(['ZONE_DELETE_STATUS'=>'1']);
+        return redirect('admin/zone');
+    }
+
+    public function zoneUpdate(Request $request,$id)
+    {
+        $rules = [
+            'zone_name' =>'required'
+        ];
+        $message =[
+            'zone_name.required'=>'กรุณาระบุ Zone'
+        ];
+
+        $validator = Validator::make($request->all(),$rules,$message);
+        if($validator->fails()) {
+            Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาตรวจสอบ');
+            return redirect('admin/zone/edit/' . $id)->withErrors($validator)->withInput();
+        }else{
             $zone_name = $request->input('zone_name');
-            DB::table('KH_ZONE')->insert([
-                'ZONE_NAME'=>$zone_name
-            ]);
-
-            $name= 'ZONE MANAGE';
             $data = DB::table('KH_ZONE')
-                ->select(
-                    'ID',
-                    'ZONE_NAME')
-                ->where('ZONE_DELETE_STATUS','<>','1')
-                ->get();
-            return redirect('admin/zone')->with(['name'=>$name,'data'=>$data]);
+                ->where('ID','=',$id)
+                ->update(['ZONE_NAME'=>$zone_name]);
+            Session::flash('alert-success', 'อัพเดตค่า เรียบร้อย');
+            return redirect('admin/zone');
         }
-        $name = 'Zone Add';
-        return view('admin/zoneEdit',[
-            'name'=>$name]);
     }
 
-    public function zoneEdit($id)
+    public function zoneAdd(Request $request)
     {
+        $rules = [
+            'zone_name' =>'required'
+        ];
+        $message =[
+            'zone_name.required'=>'กรุณาระบุ Zone'
+        ];
 
+        $validator = Validator::make($request->all(),$rules,$message);
+        if($validator->fails()) {
+            Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาตรวจสอบ');
+            return redirect('admin/zone/edit/')->withErrors($validator)->withInput();
+        }else{
+            $zone_name = $request->input('zone_name');
+            $data = DB::table('KH_ZONE')
+                ->insert(['ZONE_NAME'=>$zone_name]);
+            Session::flash('alert-success', 'อัพเดตค่า เรียบร้อย');
+            return redirect('admin/zone');
+        }
     }
 
-    public function branchIndex()
+    public function zoneEdit($id=null)
+    {
+        $data= null;
+        $name='Zone Setting->เพิ่ม Zone';
+        if($id!=null){
+            $data = $this->getZoneData($id);
+            $name = 'Zone Setting->แก้ไขข้อมูล Zone';
+        }
+        return view('admin/zoneEdit')
+            ->with('data',$data)
+            ->with('name',$name);
+    }
+
+    public function getZoneData($id)
+    {
+        $zone = DB::table('KH_ZONE')
+            ->where('ID','=',$id)
+            ->get();
+        return $zone;
+    }
+
+    public function getBranch()
     {
 
     }
@@ -262,7 +310,6 @@ class AdminController extends Controller
 
     public function catalogueEdit($id=null)
     {
-
         $data= null;
         $name='Catalogue Setting->เพิ่ม Catalogue';
         if($id!=null){
@@ -402,6 +449,14 @@ class AdminController extends Controller
             Session::flash('alert-success', 'อัพเดตเรียบร้อย');
             return redirect('admin/catalogue/');
         }
+    }
+
+    public function catalogueDelete($id)
+    {
+        $data = DB::table('KH_CATALOGUE')
+            ->where('CATALOGUE_ID','=',$id)
+            ->update(['CATALOGUE_DELETE_STATUS'=>'1']);
+        return redirect('admin/catalogue');
     }
 
     public function bannerEdit($id=null){
