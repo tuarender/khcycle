@@ -66,10 +66,21 @@ class AdminController extends Controller
     }
 
     public function getCatalogue(){
-        $data =  DB::table('KH_CATALOGUE')->get();
+        $data =  DB::table('KH_CATALOGUE')
+            ->where('CATALOGUE_DELETE_STATUS','<>','1')
+            ->get();
         $menu ="CATALOGUE SETTING";
         return view('admin.catalogue',['name'=>$menu,'data'=>$data]);
     }
+
+    public function getCatalogueData($id)
+    {
+        $catalogue = DB::table('KH_CATALOGUE')
+            ->where('CATALOGUE_ID','=',$id)
+            ->get();
+        return $catalogue;
+    }
+
 
     public function getProduct(){
         $data = null;
@@ -90,8 +101,6 @@ class AdminController extends Controller
         return redirect('admin/contact');
     }
 
-
-
     private function getBanner($id){
         $banner = DB::table('KH_BANNER')
                 ->where('BANNER_ID', '=', $id)
@@ -99,7 +108,7 @@ class AdminController extends Controller
         return $banner;
     }
 
-    public function zoneIndex()
+    public function getZone()
     {
         $name= 'ZONE MANAGE';
         $data = DB::table('KH_ZONE')
@@ -111,37 +120,94 @@ class AdminController extends Controller
         return view('admin/zone',['name'=>$name,'data'=>$data]);
     }
 
-    public function zoneCreate(Request $request)
+    public function zoneDelete($id)
     {
-        if($request->isMethod('post'))
-        {
+        $data = DB::table('KH_ZONE')
+            ->where('ID','=',$id)
+            ->update(['ZONE_DELETE_STATUS'=>'1']);
+        return redirect('admin/zone');
+    }
+
+    public function zoneUpdate(Request $request,$id)
+    {
+        $rules = [
+            'zone_name' =>'required'
+        ];
+        $message =[
+            'zone_name.required'=>'กรุณาระบุ Zone'
+        ];
+
+        $validator = Validator::make($request->all(),$rules,$message);
+        if($validator->fails()) {
+            Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาตรวจสอบ');
+            return redirect('admin/zone/edit/' . $id)->withErrors($validator)->withInput();
+        }else{
             $zone_name = $request->input('zone_name');
-            DB::table('KH_ZONE')->insert([
-                'ZONE_NAME'=>$zone_name
-            ]);
-
-            $name= 'ZONE MANAGE';
             $data = DB::table('KH_ZONE')
-                ->select(
-                    'ID',
-                    'ZONE_NAME')
-                ->where('ZONE_DELETE_STATUS','<>','1')
-                ->get();
-            return redirect('admin/zone')->with(['name'=>$name,'data'=>$data]);
+                ->where('ID','=',$id)
+                ->update(['ZONE_NAME'=>$zone_name]);
+            Session::flash('alert-success', 'อัพเดตค่า เรียบร้อย');
+            return redirect('admin/zone');
         }
-        $name = 'Zone Add';
-        return view('admin/zoneEdit',[
-            'name'=>$name]);
     }
 
-    public function zoneEdit($id)
+    public function zoneAdd(Request $request)
     {
+        $rules = [
+            'zone_name' =>'required'
+        ];
+        $message =[
+            'zone_name.required'=>'กรุณาระบุ Zone'
+        ];
 
+        $validator = Validator::make($request->all(),$rules,$message);
+        if($validator->fails()) {
+            Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาตรวจสอบ');
+            return redirect('admin/zone/edit/')->withErrors($validator)->withInput();
+        }else{
+            $zone_name = $request->input('zone_name');
+            $data = DB::table('KH_ZONE')
+                ->insert(['ZONE_NAME'=>$zone_name]);
+            Session::flash('alert-success', 'อัพเดตค่า เรียบร้อย');
+            return redirect('admin/zone');
+        }
     }
 
-    public function branchIndex()
+    public function zoneEdit($id=null)
+    {
+        $data= null;
+        $name='Zone Setting->เพิ่ม Zone';
+        if($id!=null){
+            $data = $this->getZoneData($id);
+            $name = 'Zone Setting->แก้ไขข้อมูล Zone';
+        }
+        return view('admin/zoneEdit')
+            ->with('data',$data)
+            ->with('name',$name);
+    }
+
+    public function getZoneData($id)
+    {
+        $zone = DB::table('KH_ZONE')
+            ->where('ID','=',$id)
+            ->get();
+        return $zone;
+    }
+
+    public function getBranch()
     {
 
+        $name= 'BRANCH MANAGE';
+        $data = DB::table('KH_BRANCH as br')
+            ->join('KH_ZONE AS zone','br.BRANCH_ZONE','=','zone.ID')
+            ->select('zone.ZONE_NAME',
+                'br.BRANCH_ID',
+                'br.BRANCH_SHOP',
+                'br.BRANCH_ADDR',
+                'br.BRANCH_EMAIL')
+            ->where('BRANCH_DELETE_STATUS','<>','1')
+            ->get();
+        return view('admin/branch',['name'=>$name,'data'=>$data]);
     }
 
     private function getBannerList(){
@@ -252,17 +318,157 @@ class AdminController extends Controller
         }
     }
 
-    public function catalogueEdit($id)
+    public function catalogueEdit($id=null)
     {
-
+        $data= null;
+        $name='Catalogue Setting->เพิ่ม Catalogue';
+        if($id!=null){
+            $data = $this->getCatalogueData($id);
+            $name = 'Catalogue Setting->แก้ไขข้อมูล Catalogue';
+        }
+        return view('admin/catalogueEdit')
+            ->with('data',$data)
+            ->with('name',$name);
     }
 
+    public function catalogueUpdate(Request $request,$id)
+    {
+        $rules=[
+            'CATALOGUE_NAME' =>'required',
+            'filecover' =>'image|max:1024',
+            'filepdf'=>'mimes:pdf|max:2048'
+        ];
+        $message = [
+            'CATALOGUE_NAME.required'=>'กรุณาระบุ CATALOGUE',
+            'filecover.image' =>'กรุณาระบุประเภทรูปภาพให้ถูกต้อง',
+            'filecover.size' =>'ขนาดของรูปภาพต้องไม่เกิน 1MB',
+            'filepdf.mimes' =>'ไฟล์ต้องเป็น .PDF เท่านั้น',
+            'filepdf.size' =>'ขนาดของไฟล์ต้องไม่เกิน 2MB'
+        ];
 
+        $validator = Validator::make($request->all(),$rules,$message);
+        if($validator->fails()){
+            Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาตรวจสอบ');
+            return redirect('admin/catalogue/edit/'.$id)->withErrors($validator)->withInput();
+        }else{
+            $namecatalogue = $request->input('CATALOGUE_NAME');
+            $data = DB::table('KH_CATALOGUE')
+                ->where('CATALOGUE_ID','=',$id)
+                ->update(['CATALOGUE_NAME'=>$namecatalogue]);
+
+            if(Input::hasFile('filecover'))
+            {
+                $file = Input::file('filecover');
+                $destination = 'cover';
+                $extension  = $file->getClientOriginalExtension();
+                $fileName = rand(11111,99999)."_".$id;
+                $fullname = $fileName.".".$extension;
+                $fileMoved = $file->move($destination, $fullname);
+                if (File::exists($fileMoved->getRealPath())){
+                    $data = DB::table('KH_CATALOGUE')
+                        ->where('CATALOGUE_ID','=',$id)
+                        ->update(['CATALOGUE_COVER_PIC'=>$fullname]);
+                }
+                else{
+                    Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาติดต่อผู้ดูแลระบบ');
+                    return redirect('admin/catalogue/');
+                }
+            }
+            if(Input::hasFile('filepdf'))
+            {
+                $file = Input::file('filepdf');
+                $destination = 'cover';
+                $fileName = rand(11111,99999)."_".$id;
+                $fullname = $fileName.".pdf";
+                $fileMoved = $file->move($destination, $fullname);
+                if (File::exists($fileMoved->getRealPath())){
+                    $data = DB::table('KH_CATALOGUE')
+                        ->where('CATALOGUE_ID','=',$id)
+                        ->update(['CATALOGUE_PATH_PDF'=>$fullname]);
+                }
+                else{
+                    Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาติดต่อผู้ดูแลระบบ');
+                    return redirect('admin/catalogue/');
+                }
+
+            }
+            Session::flash('alert-success', 'อัพเดตเรียบร้อย');
+            return redirect('admin/catalogue/');
+        }
+    }
 
     public function catalogueAdd(Request $request)
     {
+        $rules=[
+            'CATALOGUE_NAME' =>'required',
+            'filecover' =>'image|max:1024',
+            'filepdf'=>'mimes:pdf|max:2048'
+        ];
+        $message = [
+            'CATALOGUE_NAME.required'=>'กรุณาระบุ CATALOGUE',
+            'filecover.image' =>'กรุณาระบุประเภทรูปภาพให้ถูกต้อง',
+            'filecover.size' =>'ขนาดของรูปภาพต้องไม่เกิน 1MB',
+            'filepdf.mimes' =>'ไฟล์ต้องเป็น .PDF เท่านั้น',
+            'filepdf.size' =>'ขนาดของไฟล์ต้องไม่เกิน 2MB'
+        ];
 
+        $validator = Validator::make($request->all(),$rules,$message);
+        if($validator->fails()){
+            Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาตรวจสอบ');
+            return redirect('admin/catalogue/edit/')->withErrors($validator)->withInput();
+        }else{
+            $namecatalogue = $request->input('CATALOGUE_NAME');
+
+            if(Input::hasFile('filecover'))
+            {
+                $file = Input::file('filecover');
+                $destination = 'cover';
+                $extension  = $file->getClientOriginalExtension();
+                $fileName = rand(11111,99999);
+                $fullname = $fileName.".".$extension;
+                $fileMoved = $file->move($destination, $fullname);
+                if (File::exists($fileMoved->getRealPath())){
+                    $pathpic = $fileName;
+                }
+                else{
+                    Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาติดต่อผู้ดูแลระบบ');
+                    return redirect('admin/catalogue/');
+                }
+            }else{
+                $pathpic = '';
+            }
+            if(Input::hasFile('filepdf'))
+            {
+                $file = Input::file('filepdf');
+                $destination = 'cover';
+                $extension  = $file->getClientOriginalExtension();
+                $fileName = rand(11111,99999);
+                $fullname = $fileName.".".$extension;
+                $fileMoved = $file->move($destination, $fullname);
+                if (File::exists($fileMoved->getRealPath())){
+                    $pathpdf = $fullname;
+                }
+                else{
+                    Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาติดต่อผู้ดูแลระบบ');
+                    return redirect('admin/catalogue/');
+                }
+            }else{
+                $pathpdf='';
+            }
+            $sqlcommand = DB::insert('insert into KH_CATALOGUE (CATALOGUE_NAME,CATALOGUE_COVER_PIC,CATALOGUE_PATH_PDF) value (?,?,?)',[$namecatalogue,$pathpic,$pathpdf]);
+            Session::flash('alert-success', 'อัพเดตเรียบร้อย');
+            return redirect('admin/catalogue/');
+        }
     }
+
+    public function catalogueDelete($id)
+    {
+        $data = DB::table('KH_CATALOGUE')
+            ->where('CATALOGUE_ID','=',$id)
+            ->update(['CATALOGUE_DELETE_STATUS'=>'1']);
+        return redirect('admin/catalogue');
+    }
+
     public function bannerEdit($id=null){
         $data = null;
         $name = 'Home Setting->เพิ่มแบนเนอร์';

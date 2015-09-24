@@ -12,7 +12,7 @@
         @include('partials.flashmessage')
         <div class="container">
             <div class="row" style="text-align: right;padding-right: 15px">
-                <button type="button" onclick="getSetting('catalogue/add',true)" class="btn btn-primary">เพิ่ม CATALOGUE</button>
+                <a href="admin/catalogue/edit" class="btn btn-primary">เพิ่ม CATALOGUE</a>
             </div>
             <div class="table-responsive">
                 <table class="table table-bordered">
@@ -28,9 +28,13 @@
                         <td></td>
                         <td>{{ $i }}</td>
                         <td>{{$catalogue['CATALOGUE_NAME']}}</td>
-                        <td><button onclick="getSetting('catalogue/edit/{{ $catalogue['CATALOGUE_ID'] }}',true)" class="btn btn-warning"><span class='glyphicon glyphicon-edit' aria-hidden='true'></span> แก้ไข</button> &nbsp;&nbsp;
-                            <button id="catalogue/delete/{{ $catalogue['CATALOGUE_ID'] }}" onclick="getSetting(this.id)" class="btn btn-danger">
-                                <span class='glyphicon glyphicon-remove-sign' aria-hidden='true'></span> ลบ</button></td>
+                        <td>
+                            {{--<button onclick="getSetting('catalogue/edit/{{ $catalogue['CATALOGUE_ID'] }}',true)" class="btn btn-warning"><span class='glyphicon glyphicon-edit' aria-hidden='true'></span> แก้ไข</button> &nbsp;&nbsp;--}}
+                            <a href="admin/catalogue/edit/{{$catalogue['CATALOGUE_ID']}}" class="btn btn-warning" ><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> แก้ไข </a>
+                            <a href="admin/catalogue/delete/{{$catalogue['CATALOGUE_ID']}}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?');">
+                                <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> ลบ </a>
+                            {{--<button id="catalogue/delete/{{ $catalogue['CATALOGUE_ID'] }}" onclick="getSetting(this.id)" class="btn btn-danger">--}}
+                                {{--<span class='glyphicon glyphicon-remove-sign' aria-hidden='true'></span> ลบ</button></td>--}}
                         {{-- */$i++;/* --}}
                     </tr>
                     @endforeach
