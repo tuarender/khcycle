@@ -148,7 +148,6 @@ class AdminController extends Controller
         $bannerList = DB::table('KH_BANNER')
                     ->where('BANNER_IS_DELETED', '<>', 1)
                     ->orderBy('BANNER_ORDER', 'DESC')
-                    ->orderBy('BANNER_ID','ASC')
                     ->get();
         return $bannerList;
     }
@@ -332,6 +331,50 @@ class AdminController extends Controller
 
         }
 
+    }
+
+    function orderBanner($id,$order){
+        /*$function = strtoupper($function);
+        if($function=='UP'||$function='DOWN'){*/
+            /*$sql = "SELECT A.BANNER_ID,A.BANNER_ORDER FROM KH_BANNER A,
+                    (SELECT BANNER_ID,BANNER_ORDER FROM KH_BANNER WHERE BANNER_ID=2) B
+                    WHERE A.BANNER_ID=B.BANNER_ID 
+                        OR A.BANNER_ORDER = B.BANNER_ORDER+1 
+                        OR A.BANNER_ORDER = B.BANNER_ORDER-1
+                    ORDER BY CASE WHEN A.BANNER_ID=? THEN 0 ELSE 1 END,BANNER_ORDER";*/
+            //order of selected banner id
+            $sql = "SELECT BANNER_ID,BANNER_ORDER FROM KH_BANNER WHERE BANNER_ID = ?";
+            $queryParam = array($id);
+            $data = DB::select($sql,$queryParam);
+
+            if(count($data)>0){
+
+                $sqlReplace = "SELECT BANNER_ID,BANNER_ORDER FROM KH_BANNER WHERE BANNER_ORDER = ?";
+                $queryReplaceParam = array($order);
+                $dataReplace = DB::select($sqlReplace,$queryReplaceParam);
+                if(count($dataReplace)==1){
+                    //replace after order with current banner order
+                    $sqlUpdateReplace = "UPDATE KH_BANNER SET BANNER_ORDER = ? WHERE BANNER_ORDER = ?";
+                    $updateReplaceParam = array($data[0]['BANNER_ORDER'],$order);
+                    DB::update($sqlUpdateReplace,$updateReplaceParam);
+
+                    //update current banner with specific order order
+                    $sqlUpdateOder = "UPDATE KH_BANNER SET BANNER_ORDER = ? WHERE BANNER_ID = ?";
+                    $updateCurrentParam = array($order,$id);
+                    DB::update($sqlUpdateOder,$updateCurrentParam);
+                    return redirect('admin/home/');
+                }
+                else{
+                    return redirect('home');
+                }
+            }
+            else{
+                return redirect('home');
+            }
+/*        }
+        else{
+            return redirect('home');
+        }*/
     }
 
 }

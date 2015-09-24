@@ -37,10 +37,10 @@
 			echo "<tr>";
 			echo "<td class='tdCenter tdGryph'>";
 			if($i!=0){
-				echo "<div><span class='glyphicon glyphicon-chevron-up' aria-hidden='true'></span></div>";
+				echo "<a href='admin/home/moveBanner/order/".$data[$i]['BANNER_ID']."/".$data[$i-1]['BANNER_ORDER']."'><div><span class='glyphicon glyphicon-chevron-up' aria-hidden='true'></span></div></a>";
 			}
 			if($i!=count($data)-1){
-				echo "<div><span class='glyphicon glyphicon-chevron-down' aria-hidden='true'></span></div>";
+				echo "<a href='admin/home/moveBanner/order/".$data[$i]['BANNER_ID']."/".$data[$i+1]['BANNER_ORDER']."'><div><span class='glyphicon glyphicon-chevron-down' aria-hidden='true'></span></div></a>";
 			}
 			echo "</td>";
 			echo "<td class='tdCenter'>".$data[$i]['BANNER_ORDER']."</td>";
