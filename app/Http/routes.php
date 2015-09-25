@@ -69,6 +69,10 @@ Route::get('admin/zone','AdminController@getZone');
 Route::get('admin/zone/edit','AdminController@zoneEdit');
 Route::get('admin/zone/edit/{id?}','AdminController@zoneEdit');
 Route::get('admin/zone/delete/{id}','AdminController@zoneDelete');
+Route::get('admin/branch','AdminController@getBranch');
+Route::get('admin/branch/edit','AdminController@branchEdit');
+Route::get('admin/branch/edit/{id?}','AdminController@branchEdit');
+Route::get('admin/branch/delete/{id}','AdminController@branchDelete');
 
 Route::get('admin/home/moveBanner/order/{id}/{order}','AdminController@orderBanner');
 //--post
