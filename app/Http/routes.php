@@ -62,6 +62,13 @@ Route::get('listmember','AdminController@listmember');
 Route::get('admin/setting/zone/index','AdminController@zoneIndex');
 Route::get('admin/setting/zone/create','AdminController@zoneCreate');
 Route::get('admin/setting/branch/index','AdminController@branchIndex');
+Route::get('admin/catalogue/edit','AdminController@catalogueEdit');
+Route::get('admin/catalogue/edit/{id?}','AdminController@catalogueEdit');
+Route::get('admin/catalogue/delete/{id}','AdminController@catalogueDelete');
+Route::get('admin/zone','AdminController@getZone');
+Route::get('admin/zone/edit','AdminController@zoneEdit');
+Route::get('admin/zone/edit/{id?}','AdminController@zoneEdit');
+Route::get('admin/zone/delete/{id}','AdminController@zoneDelete');
 
 Route::get('admin/home/moveBanner/order/{id}/{order}','AdminController@orderBanner');
 //--post
