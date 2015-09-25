@@ -196,7 +196,6 @@ class AdminController extends Controller
 
     public function getBranch()
     {
-
         $name= 'BRANCH MANAGE';
         $data = DB::table('KH_BRANCH as br')
             ->join('KH_ZONE AS zone','br.BRANCH_ZONE','=','zone.ID')
@@ -208,6 +207,77 @@ class AdminController extends Controller
             ->where('BRANCH_DELETE_STATUS','<>','1')
             ->get();
         return view('admin/branch',['name'=>$name,'data'=>$data]);
+    }
+
+    private function getBranchData($id)
+    {
+        $branch = DB::table('KH_BRANCH as br')
+            ->leftjoin('KH_ZONE as z','br.BRANCH_ZONE','=','z.ID')
+            ->select(
+                'z.ID',
+                'z.ZONE_NAME',
+                'br.BRANCH_ID',
+                'br.BRANCH_SHOP',
+                'br.BRANCH_ADDR',
+                'br.BRANCH_EMAIL'
+            )
+            ->where('BRANCH_ID','=',$id)
+            ->get();
+        return $branch;
+    }
+
+    public function branchAdd(Request $request)
+    {
+        $rules = [
+            'BRANCH_SHOP'=>'required',
+            'BRANCH_ADDR'=>'required',
+            'BRANCH_EMAIL'=>'required',
+            'BRANCH_ZONE'=>'required'
+        ];
+
+        $message =[
+            'BRANCH_SHOP.required'=>'กรุณาระบุ ชื่อ SHOP',
+            'BRANCH_ADDR.required'=>'กรุณาระบุ ที่อยู่',
+            'BRANCH_EMAIL.required'=>'กรุณาระบุ EMAIL',
+            'BRANCH_ZONE.required'=>'กรุณาเลือก Zone'
+        ];
+
+        $validator = Validator::make($request->all(),$rules,$message);
+        if($validator->fails()){
+            Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาตรวจสอบ');
+            return redirect('admin/branch/edit/')->withErrors($validator)->withInput();
+        }else {
+            $nameshop = $request->input('BRANCH_SHOP');
+            $addrshop = $request->input('BRANCH_ADDR');
+            $emailshop = $request->input('BRANCH_EMAIL');
+            $valuezone = $request->get('BRANCH_ZONE');
+            DB::table('KH_BRANCH')->insert([
+                'BRANCH_ZONE' => $valuezone,
+                'BRANCH_SHOP' => $nameshop,
+                'BRANCH_ADDR' => $addrshop,
+                "BRANCH_EMAIL" => $emailshop,
+            ]);
+
+            Session::flash('alert-success', 'อัพเดตเรียบร้อย');
+            return redirect('admin/branch/');
+        }
+    }
+
+    public function branchEdit($id=null)
+    {
+        $data= null;
+        $name='Branch Setting->เพิ่ม Branch';
+        $zone = DB::table('KH_ZONE')
+            ->orderBy('ID','ASC')
+            ->get();
+        if($id!=null){
+            $data = $this->getBranchData($id);
+            $name = 'Branch Setting->แก้ไขข้อมูล Branch';
+        }
+        return view('admin/branchEdit')
+            ->with('data',$data)
+            ->with('name',$name)
+            ->with('zone',$zone);
     }
 
     private function getBannerList(){

@@ -86,5 +86,5 @@ Route::post('admin/catalogue/edit','AdminController@catalogueAdd');
 Route::post('admin/catalogue/edit/{id}','AdminController@catalogueUpdate');
 Route::post('admin/zone/edit','AdminController@zoneAdd');
 Route::post('admin/zone/edit/{id}','AdminController@zoneUpdate');
-Route::post('admin/branch/edit','AdminController@zoneAdd');
-Route::post('admin/branch/edit/{id}','AdminController@zoneUpdate');
+Route::post('admin/branch/edit','AdminController@branchAdd');
+Route::post('admin/branch/edit/{id}','AdminController@branchUpdate');
