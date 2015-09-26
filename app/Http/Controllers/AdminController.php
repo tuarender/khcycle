@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
 {
+    const BANNER_PATH = 'images/banner';
     /**
      * Display a listing of the resource.
      *
@@ -54,9 +55,24 @@ class AdminController extends Controller
     }
 
     public function getNews(){
-        $data = null;
-        $menu = "News Setting";
+        $sql = "SELECT NEWS_ID, NEWS_ORDER, NEWS_TITLE,NEWS_IS_YOUTUBE FROM KH_NEWS WHERE NEWS_DELETE_STATUS <> 1 AND NEWS_ACTIVE_STATUS = 1 ORDER BY NEWS_ORDER DESC,NEWS_CREATE_DATE DESC";
+        $data = DB::select($sql);
+        $menu = "News/Articles Setting";
         return view('admin.news',['name'=>$menu,'data'=>$data]);
+    }
+
+    public function getNewsEdit($id=null){
+        $data = null;
+        $name = 'Home Setting->เพิ่ม News/Articles';
+        //edit case
+        if($id!=null){
+            $data = $this->getNewsById($id);
+            $name = 'Home Setting->แก้ไขข้อมูล News/Articles';
+        }
+        
+        return  view('admin/newsEdit')
+                ->with('data',$data)
+                ->with('name',$name);
     }
 
     public function getMember(){
@@ -106,6 +122,13 @@ class AdminController extends Controller
                 ->where('BANNER_ID', '=', $id)
                 ->get();
         return $banner;
+    }
+
+    private function getNewsById($id){
+        $news = DB::table('KH_NEWS')
+                ->where('NEWS_ID', '=', $id)
+                ->get();
+        return $news;
     }
 
     public function getZone()
@@ -503,10 +526,10 @@ class AdminController extends Controller
             Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาตรวจสอบ');
             return redirect('admin/home/banner/'.$id)->withErrors($validator)->withInput();
         }else {
-
             $file = Input::file('bannerImage');
+            $youtubeUri = "";
             if ($file!=null&&$file->isValid()) {
-                $destinationPath = 'images/banner'; 
+                $destinationPath = self::BANNER_PATH; 
                 $extension = $file->getClientOriginalExtension(); 
                 $fileName = rand(11111,99999)."_".$id; 
                 $fileNameFull = $fileName.".".$extension;
@@ -515,7 +538,10 @@ class AdminController extends Controller
                     $bannerType = $request->input('bannerType', '0');
                     $url = $request->input('url');
                     $sqlUpdate = "UPDATE KH_BANNER SET BANNER_IMAGE=?,BANNER_IMAGE_EXT=?, BANNER_URL=?, BANNER_IS_YOUTUBE=?,BANNER_YOUTUBE_URI=? WHERE BANNER_ID=?";
-                    $youtubeUri = $bannerType==1?$url:"";
+                    if($bannerType==1){
+                        $youtubeUri = $url;
+                        $url = "";
+                    }
                     $updateParam = array($fileName,$extension,$url,$bannerType,$youtubeUri,$id);
                     $data = DB::update($sqlUpdate,$updateParam);
                     Session::flash('alert-success', 'อัพเดทสำเร็จ ');
@@ -527,7 +553,16 @@ class AdminController extends Controller
                 }
             }
             else if($file==null){
-                Session::flash('alert-success', 'อัพเดทสำเร็จ');
+                $bannerType = $request->input('bannerType', '0');
+                $url = $request->input('url');
+                if($bannerType==1){
+                    $youtubeUri = $url;
+                    $url = "";
+                }
+                $sqlUpdate = "UPDATE KH_BANNER SET BANNER_URL=?, BANNER_IS_YOUTUBE=?,BANNER_YOUTUBE_URI=? WHERE BANNER_ID=?";
+                $updateParam = array($url,$bannerType,$youtubeUri,$id);
+                DB::update($sqlUpdate,$updateParam);
+                Session::flash('alert-success', 'อัพเดทสำเร็จ ');
                 return redirect('admin/home/');
             }
             else {
@@ -539,48 +574,155 @@ class AdminController extends Controller
 
     }
 
-    function orderBanner($id,$order){
-        /*$function = strtoupper($function);
-        if($function=='UP'||$function='DOWN'){*/
-            /*$sql = "SELECT A.BANNER_ID,A.BANNER_ORDER FROM KH_BANNER A,
-                    (SELECT BANNER_ID,BANNER_ORDER FROM KH_BANNER WHERE BANNER_ID=2) B
-                    WHERE A.BANNER_ID=B.BANNER_ID 
-                        OR A.BANNER_ORDER = B.BANNER_ORDER+1 
-                        OR A.BANNER_ORDER = B.BANNER_ORDER-1
-                    ORDER BY CASE WHEN A.BANNER_ID=? THEN 0 ELSE 1 END,BANNER_ORDER";*/
-            //order of selected banner id
-            $sql = "SELECT BANNER_ID,BANNER_ORDER FROM KH_BANNER WHERE BANNER_ID = ?";
-            $queryParam = array($id);
-            $data = DB::select($sql,$queryParam);
+    public function bannerAdd(Request $request){
+        $rules=[
+            'bannerType'=>'required',
+            'url'=>'required|url',
+            'bannerImage'=>'required|image|max:1024',
+        ];
+        $messages = [
+            'bannerType.required'=>'กรุณาระบุชื่อ-นามสกุล',
+            'url.required'=>'กรุณาระบุลิงค์',
+            'url.url'=>'ลิงค์ไม่ถูกต้อง',
+            'bannerImage.required'=>'กรุณาระบุภาพ',
+            'bannerImage.image'=>'กรุณาระบุประเภทของรูปภาพให้ถูกต้อง',
+            'bannerImage.size'=>'ขนาดของรูปภาพต้องไม่เกิน 1MB',
+        ];
 
-            if(count($data)>0){
+        $validator = Validator::make($request->all(),$rules,$messages);
+        if($validator->fails()){
+            Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาตรวจสอบ');
+            return redirect('admin/home/banner')->withErrors($validator)->withInput();
+        }else {
+            $file = Input::file('bannerImage');
+            $youtubeUri = "";
+            if ($file!=null&&$file->isValid()) {
+                /** DO INSERT FIRST **/
+                //getMaxOrder
+                $sqlMaxOrder = "SELECT MAX(BANNER_ORDER) AS MAX_ORDER FROM KH_BANNER WHERE BANNER_IS_DELETED <> 1";
+                $dataMaxOrder = DB::select($sqlMaxOrder);
+                $maxOrder = 0;
+                if(count($sqlMaxOrder)>0){
+                    $maxOrder = $dataMaxOrder[0]['MAX_ORDER']+1;
+                }
 
-                $sqlReplace = "SELECT BANNER_ID,BANNER_ORDER FROM KH_BANNER WHERE BANNER_ORDER = ?";
-                $queryReplaceParam = array($order);
-                $dataReplace = DB::select($sqlReplace,$queryReplaceParam);
-                if(count($dataReplace)==1){
-                    //replace after order with current banner order
-                    $sqlUpdateReplace = "UPDATE KH_BANNER SET BANNER_ORDER = ? WHERE BANNER_ORDER = ?";
-                    $updateReplaceParam = array($data[0]['BANNER_ORDER'],$order);
-                    DB::update($sqlUpdateReplace,$updateReplaceParam);
-
-                    //update current banner with specific order order
-                    $sqlUpdateOder = "UPDATE KH_BANNER SET BANNER_ORDER = ? WHERE BANNER_ID = ?";
-                    $updateCurrentParam = array($order,$id);
-                    DB::update($sqlUpdateOder,$updateCurrentParam);
-                    return redirect('admin/home/');
+                //insert
+                $bannerType = $request->input('bannerType', '0');
+                $url = $request->input('url');
+                $sqlInsert = "INSERT INTO KH_BANNER(BANNER_ORDER,BANNER_URL,BANNER_IS_YOUTUBE,BANNER_YOUTUBE_URI) VALUES(?,?,?,?)";
+                if($bannerType==1){
+                    $youtubeUri = $url;
+                    $url = "";
+                }
+                $insertParam = array($maxOrder,$url,$bannerType,$youtubeUri);
+                DB::insert($sqlInsert,$insertParam);
+                $id = DB::getPdo()->lastInsertId();
+                if($id>0){
+                    $destinationPath = self::BANNER_PATH; 
+                    $extension = $file->getClientOriginalExtension(); 
+                    $fileName = rand(11111,99999)."_".$id; 
+                    $fileNameFull = $fileName.".".$extension;
+                    $fileMoved = $file->move($destinationPath, $fileNameFull);
+                    if (File::exists($fileMoved->getRealPath())){
+                        $sqlUpdate = "UPDATE KH_BANNER SET BANNER_IMAGE=?, BANNER_IMAGE_EXT=? WHERE BANNER_ID=?";
+                        $updateParam = array($fileName,$extension,$id);
+                        DB::update($sqlUpdate,$updateParam);
+                        Session::flash('alert-success', 'บันทึกข้อมูลสำเร็จ ');
+                        return redirect('admin/home/');
+                    }
+                    else{
+                        Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาติดต่อผู้ดูแลระบบ');
+                        return redirect('admin/home/');
+                    }
                 }
                 else{
-                    return redirect('home');
+                    Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาติดต่อผู้ดูแลระบบ');
+                    return redirect('admin/home/');
                 }
+            }
+            else {
+                Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาติดต่อผู้ดูแลระบบ');
+                return redirect('admin/home/');
+            }
+
+        }
+
+    }
+
+    function orderBanner($id,$order){
+        //order of selected banner id
+        $sql = "SELECT BANNER_ID,BANNER_ORDER FROM KH_BANNER WHERE BANNER_ID = ?";
+        $queryParam = array($id);
+        $data = DB::select($sql,$queryParam);
+
+        if(count($data)>0){
+            $sqlReplace = "SELECT BANNER_ID,BANNER_ORDER FROM KH_BANNER WHERE BANNER_ORDER = ?";
+            $queryReplaceParam = array($order);
+            $dataReplace = DB::select($sqlReplace,$queryReplaceParam);
+            if(count($dataReplace)==1){
+                //replace after order with current banner order
+                $sqlUpdateReplace = "UPDATE KH_BANNER SET BANNER_ORDER = ? WHERE BANNER_ORDER = ?";
+                $updateReplaceParam = array($data[0]['BANNER_ORDER'],$order);
+                DB::update($sqlUpdateReplace,$updateReplaceParam);
+
+                //update current banner with specific order order
+                $sqlUpdateOder = "UPDATE KH_BANNER SET BANNER_ORDER = ? WHERE BANNER_ID = ?";
+                $updateCurrentParam = array($order,$id);
+                DB::update($sqlUpdateOder,$updateCurrentParam);
+                return redirect('admin/home/');
             }
             else{
                 return redirect('home');
             }
-/*        }
+        }
         else{
             return redirect('home');
-        }*/
+        }
+    }
+
+    function deleteBanner($id){
+        $sqlDelete = "UPDATE KH_BANNER SET BANNER_IS_DELETED = 1 WHERE BANNER_ID = ?";
+        $deleteParam = array($id);
+        DB::update($sqlDelete,$deleteParam);
+        return redirect('admin/home');
+    }
+
+    function orderNews($id,$order){
+        //order of selected news id
+        $sql = "SELECT NEWS_ID,NEWS_ORDER FROM KH_NEWS WHERE NEWS_ID = ?";
+        $queryParam = array($id);
+        $data = DB::select($sql,$queryParam);
+
+        if(count($data)>0){
+            $sqlReplace = "SELECT NEWS_ID,NEWS_ORDER FROM KH_NEWS WHERE NEWS_ORDER = ?";
+            $queryReplaceParam = array($order);
+            $dataReplace = DB::select($sqlReplace,$queryReplaceParam);
+            if(count($dataReplace)==1){
+                //replace after order with current news order
+                $sqlUpdateReplace = "UPDATE KH_NEWS SET NEWS_ORDER = ? WHERE NEWS_ORDER = ?";
+                $updateReplaceParam = array($data[0]['NEWS_ORDER'],$order);
+                DB::update($sqlUpdateReplace,$updateReplaceParam);
+
+                //update current banner with specific order order
+                $sqlUpdateOder = "UPDATE KH_NEWS SET NEWS_ORDER = ? WHERE NEWS_ID = ?";
+                $updateCurrentParam = array($order,$id);
+                DB::update($sqlUpdateOder,$updateCurrentParam);
+                return redirect('admin/news/');
+            }
+            else{
+                return redirect('home');
+            }
+        }
+        else{
+            return redirect('home');
+        }
+    }
+
+    function deleteNews($id){
+        $sqlDelete = "UPDATE KH_NEWS SET NEWS_DELETED_STATUS = 1 WHERE NEWS_ID = ?";
+        $deleteParam = array($id);
+        DB::update($sqlDelete,$deleteParam);
+        return redirect('admin/news');
     }
 
 }

@@ -49,7 +49,7 @@
 			echo "<td class='tdCenter'>";
 			echo "<div class='btn-group' role='group'>";
 			echo "  <a href='admin/home/banner/".$data[$i]['BANNER_ID']."' class='btn btn-warning'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span> แก้ไข</a>";
-			echo "  <a href='admin/home/banner/".$data[$i]['BANNER_ID']."' class='btn btn-danger'><span class='glyphicon glyphicon-remove-sign' aria-hidden='true'></span> ลบ</a>";
+			echo "  <a  href='#'' data-href='admin/home/deleteBanner/".$data[$i]['BANNER_ID']."' class='btn btn-danger' data-toggle='modal' data-target='#confirm-delete'><span class='glyphicon glyphicon-remove-sign' aria-hidden='true'></span> ลบ</a>";
 			echo "</div>";
 			echo "</td>";
 			echo "</tr>";

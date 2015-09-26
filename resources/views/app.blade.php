@@ -13,6 +13,7 @@
     <link href="css/fotorama.css" rel="stylesheet">
     <link href="css/ekko-lightbox.css" rel="stylesheet">
     <link href="css/signin.css" rel="stylesheet">
+    <link href="css/summernote.css" rel="stylesheet">
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->

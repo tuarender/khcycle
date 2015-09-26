@@ -8,7 +8,9 @@
 	$formAction = "admin/home/banner";
 	$isYoutube = "";
 	$bannerUrl ="";
+	$requireImage = "<font color='red'>*</font>";
 	if(isset($data)){
+		$requireImage = "";
 		$formAction.="/".$data[0]["BANNER_ID"];
 		$isYoutube = $data[0]['BANNER_IS_YOUTUBE']==1?"selected":"";
 		$bannerUrl = $data[0]['BANNER_IS_YOUTUBE']==1?$data[0]['BANNER_YOUTUBE_URI']:$data[0]['BANNER_URL'];
@@ -44,10 +46,10 @@
 	}
 ?>
 		<div class="form-group @if ($errors->has('bannerImage')) has-error @endif">
-			<label for="bannerImage" class="col-sm-3 control-label">แนบภาพหน้าปก</label>
+			<label for="bannerImage" class="col-sm-3 control-label"><?=$requireImage?>แนบภาพหน้าปก</label>
 			<div class="col-sm-5">
 				<input type="file" name="bannerImage" id="bannerImage">
-				<p class="help-block">.jpg and .png, Limit size &lt; 2MB</p>
+				<p class="help-block">.jpg and .png, Limit size &lt; 1MB</p>
 				@if($errors->has('bannerImage')) 
                 <p class="help-block">{{$errors->first('bannerImage')}}</p>@endif
 			</div>
