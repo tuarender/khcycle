@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Validator;
 class AdminController extends Controller
 {
     const BANNER_PATH = 'images/banner';
+    const NEWS_PATH = 'images/news';
     /**
      * Display a listing of the resource.
      *
@@ -584,11 +585,11 @@ class AdminController extends Controller
             'bannerImage'=>'image|max:1024',
         ];
         $messages = [
-            'bannerType.required'=>'กรุณาระบุชื่อ-นามสกุล',
+            'bannerType.required'=>'กรุณาระบุประเภทของแบนเนอร์',
             'url.required'=>'กรุณาระบุลิงค์',
             'url.url'=>'ลิงค์ไม่ถูกต้อง',
             'bannerImage.image'=>'กรุณาระบุประเภทของรูปภาพให้ถูกต้อง',
-            'bannerImage.size'=>'ขนาดของรูปภาพต้องไม่เกิน 1MB',
+            'bannerImage.max'=>'ขนาดของรูปภาพต้องไม่เกิน 1MB',
         ];
 
         $validator = Validator::make($request->all(),$rules,$messages);
@@ -651,12 +652,12 @@ class AdminController extends Controller
             'bannerImage'=>'required|image|max:1024',
         ];
         $messages = [
-            'bannerType.required'=>'กรุณาระบุชื่อ-นามสกุล',
+            'bannerType.required'=>'กรุณาระบุประเภทของแบนเนอร์',
             'url.required'=>'กรุณาระบุลิงค์',
             'url.url'=>'ลิงค์ไม่ถูกต้อง',
             'bannerImage.required'=>'กรุณาระบุภาพ',
             'bannerImage.image'=>'กรุณาระบุประเภทของรูปภาพให้ถูกต้อง',
-            'bannerImage.size'=>'ขนาดของรูปภาพต้องไม่เกิน 1MB',
+            'bannerImage.max'=>'ขนาดของรูปภาพต้องไม่เกิน 1MB',
         ];
 
         $validator = Validator::make($request->all(),$rules,$messages);
@@ -757,6 +758,105 @@ class AdminController extends Controller
         return redirect('admin/home');
     }
 
+    public function newsAdd(Request $request){
+        $rules=[
+            'newsTitle'=>'required|max:100',
+            'newsType'=>'required',
+            'youTubeUrl'=>'url|required_if:newsType,1',
+            'newsImage'=>'image|max:1024|required_if:newsType,0',
+            'sample'=>'required|max:500|not_in:<p>&nbsp; &nbsp;</p>',
+            'content'=>'required|max:4000|not_in:<p>&nbsp; &nbsp;</p>'
+        ];
+        $messages = [
+            'newsTitle.required'=>'กรุณาระบุชื่อ News/Articles',
+            'newsTitle.max'=>'News/Articles ต้องยาวไม่เกิน 100 ตัวอักษร',
+            'newsType.required'=>'กรุณาระบุประเภทของแบนเนอร์',
+            'youTubeUrl.required_if'=>'กรุณาระบุลิงค์',
+            'youTubeUrl.url'=>'ลิงค์ไม่ถูกต้อง',
+            'youTubeUrl.active_url'=>'ไม่สามารถติดต่อลิงค์ดังกล่าวได้',
+            'newsImage.required_if'=>'กรุณาระบุภาพ',
+            'newsImage.image'=>'กรุณาระบุประเภทของรูปภาพให้ถูกต้อง',
+            'newsImage.max'=>'ขนาดของรูปภาพต้องไม่เกิน 1MB',
+            'sample.required'=>'กรุณาระบุรายละเอียดโดยย่อ',
+            'sample.max'=>'รายละเอียดโดยย่อต้องยาวไม่เกิน 500ตัวอักษร',
+            'content.required'=>'กรุณาระบุรายละเอียด',
+            'content.max'=>'รายละเอียดต้องยาวไม่เกิน4000ตัวอักษร'
+        ];
+        //set more validate rule
+        
+        //$data = array($request->input('sample'),$request->input('content'));
+        //return  view('admin/newsEdit',['name'=>'jaja','jaja'=>$data]);
+
+        $validator = Validator::make($request->all(),$rules,$messages);
+        if($validator->fails()){
+            Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาตรวจสอบ');
+            return redirect('admin/news/news')->withErrors($validator)->withInput();
+        }else {
+            $newsType = $request->input('newsType');
+            $sample = $request->input('sample');
+            $content = $request->input('content');
+            $title = $request->input('newsTitle');
+            $youtubeUri = "";
+
+            $sqlMaxOrder = "SELECT MAX(NEWS_ORDER) AS MAX_ORDER FROM KH_NEWS WHERE NEWS_DELETE_STATUS <> 1";
+            $dataMaxOrder = DB::select($sqlMaxOrder);
+            $maxOrder = 0;
+            if(count($sqlMaxOrder)>0){
+                $maxOrder = $dataMaxOrder[0]['MAX_ORDER']+1;
+            }
+
+            if($newsType==0){
+                //picture case
+                $file = Input::file('newsImage');
+                if ($file!=null&&$file->isValid()) {
+                    /** DO INSERT FIRST **/
+                    //insert
+                    $sqlInsert = "INSERT INTO KH_NEWS(NEWS_ORDER,NEWS_TITLE,NEWS_CONTENT,NEWS_SAMPLE,NEWS_IS_YOUTUBE) VALUES(?,?,?,?,0)";
+                    $insertParam = array($maxOrder,$title,htmlentities($content),htmlentities($sample));
+                    DB::insert($sqlInsert,$insertParam);
+                    $id = DB::getPdo()->lastInsertId();
+                    if($id>0){
+                        $destinationPath = self::NEWS_PATH; 
+                        $extension = $file->getClientOriginalExtension(); 
+                        $fileName = rand(11111,99999)."_".$id; 
+                        $fileNameFull = $fileName.".".$extension;
+                        $fileMoved = $file->move($destinationPath, $fileNameFull);
+                        if (File::exists($fileMoved->getRealPath())){
+                            //update after moved file
+                            $sqlUpdate = "UPDATE KH_NEWS SET NEWS_IMAGE_TITLE_NAME=?, NEWS_IMAGE_TITLE_EXT=? WHERE NEWS_ID=?";
+                            $updateParam = array($fileName,$extension,$id);
+                            DB::update($sqlUpdate,$updateParam);
+                            Session::flash('alert-success', 'บันทึกข้อมูลสำเร็จ ');
+                            return redirect('admin/news/');
+                        }
+                        else{
+                            Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาติดต่อผู้ดูแลระบบ');
+                            return redirect('admin/news/');
+                        }
+                    }
+                    else{
+                        Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาติดต่อผู้ดูแลระบบ');
+                        return redirect('admin/news/');
+                    }
+                }
+                else {
+                    Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาติดต่อผู้ดูแลระบบ');
+                    return redirect('admin/news/');
+                }
+            }
+            else{
+                //youtube case
+                $youtubeUri = $request->input('youTubeUrl');
+                $sqlInsert = "INSERT INTO KH_NEWS(NEWS_ORDER,NEWS_TITLE,NEWS_CONTENT,NEWS_SAMPLE,NEWS_IS_YOUTUBE,NEWS_YOUTUBE_URI) VALUES(?,?,?,?,1,?)";
+                $insertParam = array($maxOrder,$title,htmlentities($content),htmlentities($sample),$youtubeUri);
+                DB::insert($sqlInsert,$insertParam);
+                Session::flash('alert-success', 'บันทึกข้อมูลสำเร็จ ');
+                return redirect('admin/news/');
+            }
+        }
+
+    }
+
     function orderNews($id,$order){
         //order of selected news id
         $sql = "SELECT NEWS_ID,NEWS_ORDER FROM KH_NEWS WHERE NEWS_ID = ?";
@@ -789,7 +889,7 @@ class AdminController extends Controller
     }
 
     function deleteNews($id){
-        $sqlDelete = "UPDATE KH_NEWS SET NEWS_DELETED_STATUS = 1 WHERE NEWS_ID = ?";
+        $sqlDelete = "UPDATE KH_NEWS SET NEWS_DELETE_STATUS = 1 WHERE NEWS_ID = ?";
         $deleteParam = array($id);
         DB::update($sqlDelete,$deleteParam);
         return redirect('admin/news');

@@ -8,16 +8,19 @@
 	$formAction = "admin/news/news";
 	$isYoutube = "";
 	$youTubeUrl = "";
-	$requireImage = "<font color='red'>*</font>";
+	$requireImage = "<font id='newsImageRequired' color='red'>*</font>";
 	if(isset($data)){
 		$requireImage="";
 		$formAction.="/".$data[0]["NEWS_ID"];
 		$isYoutube = $data[0]['NEWS_IS_YOUTUBE']==1?"selected":"";
 		$youTubeUrl = $data[0]['NEWS_IS_YOUTUBE']==1?$data[0]['NEWS_YOUTUBE_URI']:"";
-		$isYoutubeOld = Input::old("newsType");
-		if($isYoutubeOld!=null&&$isYoutubeOld!=""){
-			$isYoutube = $isYoutubeOld==1?"selected":"";
-		}
+	}
+	if(isset($jaja)){
+		print_r($jaja);
+	}
+	$isYoutubeOld = Input::old("newsType");
+	if($isYoutubeOld!=null&&$isYoutubeOld!=""){
+		$isYoutube = $isYoutubeOld==1?"selected":"";
 	}
 
 ?>
@@ -25,10 +28,18 @@
 	@include('partials.flashmessage')
 	<form id="newsForm" class="form-horizontal" role="form" method="post" action="<?=$formAction?>"  enctype="multipart/form-data">
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
+		<div class="form-group @if ($errors->has('newsTitle')) has-error @endif">
+            <label for="newsTitle" class="col-sm-3 control-label"><font color="red">*</font>ชื่อ News/Articles</label>
+            <div class="col-sm-5">
+                <input id="newsTitle" type="text" class="form-control" name="newsTitle" value="{{old('newsTitle')}}">
+                @if($errors->has('newsTitle')) 
+                <p class="help-block">{{$errors->first('newsTitle')}}</p>@endif
+            </div>
+        </div>
 		<div class="form-group">
 			<label for="newsType" class="col-sm-3 control-label"><font color="red">*</font>ระบุชนิดภาพหลัก</label>
 			<div class="col-sm-3">
-				<select name="newsType" class="form-control">
+				<select name="newsType" id="newsType" class="form-control">
 				  	<option value="0">ภาพ</option>
 				  	<option value="1" <?=$isYoutube?>>วีดีโอ</option>
 				</select>
@@ -40,11 +51,11 @@
 		echo "<div class='form-group'>";
 		echo " <label class='col-sm-3 control-label'>ตัวอย่างภาพหน้าปก</label>";
 		echo " <div class='col-sm-3'>";
-		if($data[0]['NEWS_IS_YOUTUBE']==1){
+		if($data[0]['NEWS_IS_YOUTUBE']==0){
 			echo "<img class='img-responsive' src='images/news/".$data[0]['NEWS_IMAGE'].".".$data[0]['NEWS_IMAGE_EXT']."'>";
 		}
 		else{
-			echo "<div class='videoWrapper'><iframe src='".$news['NEWS_YOUTUBE_URI']."' frameborder='0' allowfullscreen></iframe></div>";
+			echo "<div class='videoWrapper'><iframe src='".$data[0]['NEWS_YOUTUBE_URI']."' frameborder='0' allowfullscreen></iframe></div>";
 		}
 		echo " </div>";
 		echo "</div>";
@@ -53,16 +64,16 @@
 		<div class="form-group @if ($errors->has('newsImage')) has-error @endif">
 			<label for="newsImage" class="col-sm-3 control-label"><?=$requireImage?>แนบภาพหลัก</label>
 			<div class="col-sm-5">
-				<input type="file" name="newsImage" id="newsImage">
+				<input id="newsImage" type="file" name="newsImage" id="newsImage" disabled>
 				<p class="help-block">.jpg and .png, Limit size &lt; 1MB</p>
 				@if($errors->has('newsImage')) 
                 <p class="help-block">{{$errors->first('newsImage')}}</p>@endif
 			</div>
 		</div>
 		<div class="form-group @if ($errors->has('youTubeUrl')) has-error @endif">
-            <label for="youTubeUrl" class="col-sm-3 control-label"><font color="red">*</font>ระบุลิงค์ Youtube</label>
+            <label for="youTubeUrl" class="col-sm-3 control-label"><font  id='youTubeUrlRequired' color="red">*</font>ระบุลิงค์ Youtube</label>
             <div class="col-sm-5">
-                <input type="text" class="form-control" name="youTubeUrl" value="{{old('youTubeUrl',$youTubeUrl)}}" >
+                <input id="youTubeUrl" type="text" class="form-control" name="youTubeUrl" value="{{old('youTubeUrl',$youTubeUrl)}}" disabled>
                 @if($errors->has('youTubeUrl')) 
                 <p class="help-block">{{$errors->first('youTubeUrl')}}</p>@endif
             </div>
@@ -70,7 +81,7 @@
         <div class="form-group @if ($errors->has('sample')) has-error @endif">
         	<label for="sample" class="col-sm-3 control-label"><font color="red">*</font>รายละเอียดโดยย่อ</label>
             <div class="col-sm-5">
-                <div class="summernoteSample"></div>
+            	<textarea name="sample" class="summernoteSample">{{old('sample')}}</textarea>
                 @if($errors->has('sample')) 
                 <p class="help-block">{{$errors->first('sample')}}</p>@endif
             </div>
@@ -78,7 +89,7 @@
         <div class="form-group @if ($errors->has('content')) has-error @endif">
         	<label for="content" class="col-sm-3 control-label"><font color="red">*</font>รายละเอียด</label>
             <div class="col-sm-8">
-                <div class="summernoteContent"></div>
+                <textarea name="content" class="summernoteContent">{{old('content')}}</textarea>
                 @if($errors->has('content')) 
                 <p class="help-block">{{$errors->first('content')}}</p>@endif
             </div>
@@ -100,11 +111,16 @@
 <script src="js/summernote.js"></script>
 <script>
 	$(document).ready(function() {
+		toggleNewsType();
+
+		$('#newsType').change(function(){
+			toggleNewsType();
+		});
+
 	  	$('.summernoteSample').summernote({
   			height: 130,                
   			minHeight: null,             
   			maxHeight: null,            
-  			focus: true,
   			toolbar: [
 			    ['style', ['bold', 'italic', 'underline', 'clear']],
 			    ['font', ['strikethrough', 'superscript', 'subscript']],
@@ -116,10 +132,25 @@
 		$('.summernoteContent').summernote({
   			height: 220,                
   			minHeight: null,             
-  			maxHeight: null,            
-  			focus: true                
+  			maxHeight: null              
 		});
 
 	});
+
+	function toggleNewsType(){
+		if($('#newsType').val()==1){
+			$('#youTubeUrl').prop('disabled',false);
+			$('#newsImage').prop('disabled',true);
+			$('#youTubeUrlRequired').show();
+			$('#newsImageRequired').hide();
+		}
+		else{
+			$('#newsImage').prop('disabled',false);
+			$('#youTubeUrl').prop('disabled',true);
+			$('#newsImageRequired').show();
+			$('#youTubeUrlRequired').hide();
+		}
+	}
+
 </script>
 @endsection
