@@ -10,6 +10,7 @@
             </div>
 
             <div class="container">
+                @include('partials.flashmessage')
                 <div class="row" style="text-align: right;padding-right: 15px">
                     <a type="button" href="admin/branch/edit" class="btn btn-primary">เพิ่ม SHOP</a>
                 </div>
@@ -17,9 +18,9 @@
                     <table class="table table-bordered">
                         <tr bgcolor="#6495ed">
                             <th width="20%">ZONE NAME</th>
-                            <th width="30%">BRANCH SHOP</th>
+                            <th width="20%">BRANCH SHOP</th>
                             <th width="40%">BRANCH ADDR</th>
-                            <th width="10%"></th>
+                            <th width="20%"></th>
                         </tr>
                         @foreach($data as $branch)
                         <tr>
