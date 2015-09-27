@@ -10,10 +10,15 @@
 	echo "<h1>".$news[0]['NEWS_TITLE']."</h1>";
 	echo "</div>";
 	echo "<div class='row'>";
-	echo "<img src='images/news/".$news[0]['NEWS_IMAGE_TITLE_NAME'].".".$news[0]['NEWS_IMAGE_TITLE_EXT']."' class='img-responsive imageTitleNews'>";
+	if($news[0]['NEWS_IS_YOUTUBE']==0){
+		echo "<img src='images/news/".$news[0]['NEWS_IMAGE_TITLE_NAME'].".".$news[0]['NEWS_IMAGE_TITLE_EXT']."' class='img-responsive imageTitleNews'>";
+	}
+	else{
+		echo "<div class='videoWrapper'><iframe src='".$news[0]['NEWS_YOUTUBE_URI']."' frameborder='0' allowfullscreen></iframe></div>";
+	}
 	echo "</div>";
 	echo "<div class='row topBuffer'>";
-	echo "<p  class='news'>".$news[0]['NEWS_CONTENT']."</p>";
+	echo "<p  class='news'>".html_entity_decode($news[0]['NEWS_CONTENT'])."</p>";
 	echo "</div>";
 ?>
 </div>

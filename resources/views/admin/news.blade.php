@@ -41,7 +41,7 @@
                 echo "<a href='admin/news/moveNews/order/".$data[$i]['NEWS_ID']."/".$data[$i+1]['NEWS_ORDER']."'><div><span class='glyphicon glyphicon-chevron-down' aria-hidden='true'></span></div></a>";
             }
             echo "</td>";
-            echo "<td class='tdCenter'>".$data[$i]['NEWS_ORDER']."</td>";
+            echo "<td class='tdCenter'>".($i+1)."</td>";
             echo "<td class='tdCenter'>".$newsType."</td>";
             echo "<td>".$data[$i]['NEWS_TITLE']."</td>";
             echo "<td class='tdCenter'>";

@@ -9,14 +9,17 @@
 	$isYoutube = "";
 	$youTubeUrl = "";
 	$requireImage = "<font id='newsImageRequired' color='red'>*</font>";
+	$newsTitle = "";
+	$newsSample = "";
+	$newsContent = "";
 	if(isset($data)){
 		$requireImage="";
 		$formAction.="/".$data[0]["NEWS_ID"];
 		$isYoutube = $data[0]['NEWS_IS_YOUTUBE']==1?"selected":"";
 		$youTubeUrl = $data[0]['NEWS_IS_YOUTUBE']==1?$data[0]['NEWS_YOUTUBE_URI']:"";
-	}
-	if(isset($jaja)){
-		print_r($jaja);
+		$newsTitle = $data[0]['NEWS_TITLE'];
+		$newsSample = $data[0]['NEWS_SAMPLE'];
+		$newsContent = $data[0]['NEWS_CONTENT'];
 	}
 	$isYoutubeOld = Input::old("newsType");
 	if($isYoutubeOld!=null&&$isYoutubeOld!=""){
@@ -31,7 +34,7 @@
 		<div class="form-group @if ($errors->has('newsTitle')) has-error @endif">
             <label for="newsTitle" class="col-sm-3 control-label"><font color="red">*</font>ชื่อ News/Articles</label>
             <div class="col-sm-5">
-                <input id="newsTitle" type="text" class="form-control" name="newsTitle" value="{{old('newsTitle')}}">
+                <input id="newsTitle" type="text" class="form-control" name="newsTitle" value="{{old('newsTitle',$newsTitle)}}">
                 @if($errors->has('newsTitle')) 
                 <p class="help-block">{{$errors->first('newsTitle')}}</p>@endif
             </div>
@@ -52,7 +55,7 @@
 		echo " <label class='col-sm-3 control-label'>ตัวอย่างภาพหน้าปก</label>";
 		echo " <div class='col-sm-3'>";
 		if($data[0]['NEWS_IS_YOUTUBE']==0){
-			echo "<img class='img-responsive' src='images/news/".$data[0]['NEWS_IMAGE'].".".$data[0]['NEWS_IMAGE_EXT']."'>";
+			echo "<img class='img-responsive' src='images/news/".$data[0]['NEWS_IMAGE_TITLE_NAME'].".".$data[0]['NEWS_IMAGE_TITLE_EXT']."'>";
 		}
 		else{
 			echo "<div class='videoWrapper'><iframe src='".$data[0]['NEWS_YOUTUBE_URI']."' frameborder='0' allowfullscreen></iframe></div>";
@@ -81,7 +84,7 @@
         <div class="form-group @if ($errors->has('sample')) has-error @endif">
         	<label for="sample" class="col-sm-3 control-label"><font color="red">*</font>รายละเอียดโดยย่อ</label>
             <div class="col-sm-5">
-            	<textarea name="sample" class="summernoteSample">{{old('sample')}}</textarea>
+            	<textarea name="sample" class="sampleTextArea">{{old('sample',$newsSample)}}</textarea>
                 @if($errors->has('sample')) 
                 <p class="help-block">{{$errors->first('sample')}}</p>@endif
             </div>
@@ -89,7 +92,7 @@
         <div class="form-group @if ($errors->has('content')) has-error @endif">
         	<label for="content" class="col-sm-3 control-label"><font color="red">*</font>รายละเอียด</label>
             <div class="col-sm-8">
-                <textarea name="content" class="summernoteContent">{{old('content')}}</textarea>
+                <textarea name="content" class="summernoteContent">{{old('content',$newsContent)}}</textarea>
                 @if($errors->has('content')) 
                 <p class="help-block">{{$errors->first('content')}}</p>@endif
             </div>
@@ -117,7 +120,7 @@
 			toggleNewsType();
 		});
 
-	  	$('.summernoteSample').summernote({
+/*	  	$('.summernoteSample').summernote({
   			height: 130,                
   			minHeight: null,             
   			maxHeight: null,            
@@ -128,7 +131,7 @@
 			    ['color', ['color']],
 			    ['para', ['ul', 'ol', 'paragraph']]
 			]                 
-		});
+		});*/
 		$('.summernoteContent').summernote({
   			height: 220,                
   			minHeight: null,             

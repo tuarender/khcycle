@@ -14,7 +14,7 @@
 
 				echo '<div class="row">';
 				$content = "<h2>".$news['NEWS_TITLE']."</h2>";
-				$content.= "<p class='news'>".$news['NEWS_CONTENT_SUB']."</p>";
+				$content.= "<p class='news'>".html_entity_decode($news['NEWS_SAMPLE'])."</p>";
 				$content.= "<a href='news/".$news['NEWS_ID']."' class='btn btn-info btn-lg readmoreBtn'><span class='glyphicon glyphicon-eye-open'></span> Read more</a>";
         
 				$display = "<div id='display".$indicator."' class='col-sm-8'>".$display."</div>";

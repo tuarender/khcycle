@@ -4,13 +4,12 @@
     <div id="detail" class="detail" style="display:none;">
       <div class="container-fluid">
         <div class="col-sm-4 catalogue">
-          <div class="head1">Lastest Catalogue</div>
           <div class="lastestCatalogue">
 <?php
   if(isset($catalogue)){
     if(!is_null($catalogue[0])){
       echo "<a href='pdf/".$catalogue[0]['CATALOGUE_PATH_PDF']."' target='_blank'>";
-      echo "<img src='cover/".$catalogue[0]['CATALOGUE_COVER_PIC'].".jpg' class='img-responsive catalogueHome' style='background-image: url(cover/".$catalogue[0]['CATALOGUE_COVER_PIC'].".jpg)'/></a>";
+      //echo "<img src='cover/".$catalogue[0]['CATALOGUE_COVER_PIC'].".jpg' class='img-responsive catalogueHome' style='background-image: url(cover/".$catalogue[0]['CATALOGUE_COVER_PIC'].".jpg)'/></a>";
       echo "<div class='catalogueDetail'><a class='linkCatalogue' href='pdf/".$catalogue[0]['CATALOGUE_PATH_PDF']."' target='_blank'>".$catalogue[0]['CATALOGUE_NAME']."</a>";
       echo "&nbsp;&nbsp;<a class='linkViewMoreCatalogue' href='catalogue'>View more..</a></div>";
     }
@@ -19,16 +18,13 @@
           </div>
         </div>
         <div class="col-sm-8 brand head1">
-          <div class='row'>
-              KH Product
-          </div>
           <div id="brandHome" data-width="100%" data-ratio="208/58" data-autoplay="3000" data-stopautoplayontouch="false" class='row'>
         <?php
           if(isset($brand)){
             foreach($brand as $eachBrand){
-              echo "<div id='".$eachBrand["BRAND_ID"]."' class='col-xs-12 col-sm-6 col-md-4 col-lg-3 brandList' style='text-align:right'>";
+              echo "<div id='".$eachBrand["BRAND_ID"]."' class='col-xs-12 col-sm-4 col-md-2 col-lg-2 brandList' style='text-align:right'>";
               echo "<a href='product/brand/".$eachBrand["BRAND_ID"]."'>";
-              echo "<img onerror='this.src=\"images/brand/product/default.png\"' id='logoBrand".$eachBrand["BRAND_ID"]."' src='images/brand/product/sample".$eachBrand["BRAND_ID"].".jpg'";
+              echo "<img onerror='this.src=\"images/brand/default.png\"' id='logoBrand".$eachBrand["BRAND_ID"]."' src='images/brand/product/sample".$eachBrand["BRAND_ID"].".jpg'";
               echo " class='brandLogo_home img-responsive"; 
                 if(isset($brandId)&&!is_null($brandId)&&$brandId==$eachBrand["BRAND_ID"]){
                   echo " brandLogoActive";

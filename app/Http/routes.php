@@ -50,8 +50,9 @@ Route::get('admin/home','AdminController@getHome');
 Route::get('admin/contact','AdminController@getContact');
 Route::get('admin/member','AdminController@getMember');
 Route::get('admin/catalogue','AdminController@getCatalogue');
-Route::get('admin/product','AdminController@getProduct');
+Route::get('admin/product','AdminController@getBrand');
 Route::get('admin/news','AdminController@getNews');
+Route::get('admin/product/productOf/{id}','AdminController@getProduct');
 
 Route::get('admin/home/banner','AdminController@getBannerEdit');
 Route::get('admin/home/banner/{id?}','AdminController@getBannerEdit');
@@ -75,11 +76,16 @@ Route::get('admin/branch','AdminController@getBranch');
 Route::get('admin/branch/edit','AdminController@branchEdit');
 Route::get('admin/branch/edit/{id?}','AdminController@branchEdit');
 Route::get('admin/branch/delete/{id}','AdminController@branchDelete');
-
+//delete
 Route::get('admin/home/deleteBanner/{id}','AdminController@deleteBanner');
 Route::get('admin/news/deleteNews/{id}','AdminController@deleteNews');
+Route::get('admin/product/deleteBrand/{id}','AdminController@deleteBrand');
+Route::get('admin/product/deleteProduct/{idBrand}/{id}','AdminController@deleteProduct');
+//move
 Route::get('admin/home/moveBanner/order/{id}/{order}','AdminController@orderBanner');
 Route::get('admin/news/moveNews/order/{id}/{order}','AdminController@orderNews');
+Route::get('admin/product/moveBrand/order/{id}/{order}','AdminController@orderBrand');
+Route::get('admin/product/moveProduct/order/{idBrand}/{id}/{order}','AdminController@orderProduct');
 //--post
 Route::post('postcontact','AdminController@postContact');
 Route::post('listmember','AdminController@listmember');

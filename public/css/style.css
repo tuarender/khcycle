@@ -23,6 +23,7 @@ p.news {
     text-indent: 50px;
 }
 p.newsList {
+	word-wrap: break-word;
 	font-family: OpenSans;
 	font-style: normal;
 	font-weight: 300;
@@ -61,7 +62,6 @@ div.error{
 div.detail{
 	background-color: #E0E0E0;
 	width: 100%;
-	min-height: 180px;
 }
 
 div.detail >div{
@@ -266,6 +266,7 @@ div.brand{
 	color:#F2F100;
 }
 .newsInnerRow{
+	word-wrap: break-word;
 	margin-left:10px;
 	margin-right:10px;
 	margin-top:20px;
@@ -468,6 +469,17 @@ div.newsEnd{
 .productImgDiv{
 	padding-right: 0px;
 }
+.sampleTextArea{
+	width: 100%;
+    height: 150px;
+}
+.productThumb{
+	max-width: 230px;
+}
+.adminProductImg{
+	margin-right: auto;
+	margin-left: auto;
+}
 @media screen and (max-width: 767px){
 	#brandHome{
 		margin-left: 0px;
@@ -577,7 +589,7 @@ div.newsEnd{
 }
 @media screen and (min-width: 1500px) {
 	div.detail >div{
-		width: 80%;
+		width: 85%;
 	}
 	.newsHome{
 		max-width:70%
@@ -603,6 +615,7 @@ div.newsEnd{
 }
 .tableAdmin .tdCenter{
 	text-align: center;
+	vertical-align: middle;
 }
 .tableAdmin .tdGryph{
 	font-size: 20px;

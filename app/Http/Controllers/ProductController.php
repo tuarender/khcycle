@@ -15,7 +15,7 @@ class ProductController extends Controller
 {
 
     public function index($brandId=null){
-        $sql = "SELECT BRAND_ID,BRAND_ORDER,BRAND_NAME,BRAND_LOGO_NAME FROM KH_BRAND WHERE BRAND_DELETE_STATUS <> 1 ORDER BY BRAND_ORDER";
+        $sql = "SELECT BRAND_ID,BRAND_ORDER,BRAND_NAME,BRAND_LOGO_NAME,BRAND_LOGO_EXT FROM KH_BRAND WHERE BRAND_DELETE_STATUS <> 1 ORDER BY BRAND_ORDER";
         $brand = DB::select($sql);
 
         return view('product.product', ['brand' => $brand,'brandId' => $brandId,'name' => "Product"]);

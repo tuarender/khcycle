@@ -17,6 +17,8 @@ class AdminController extends Controller
 {
     const BANNER_PATH = 'images/banner';
     const NEWS_PATH = 'images/news';
+    const BRAND_PATH = 'images/brand';
+    const PRODUCT_PATH = 'images/product';
     /**
      * Display a listing of the resource.
      *
@@ -99,9 +101,35 @@ class AdminController extends Controller
     }
 
 
-    public function getProduct(){
-        $data = null;
+    public function getBrand(){
+        $sql = "SELECT BRAND_ID,BRAND_NAME, BRAND_ORDER FROM KH_BRAND WHERE BRAND_DELETE_STATUS <> 1 ORDER BY BRAND_ORDER DESC, BRAND_CREATE_DATE_TIME DESC";
+        $data = DB::select($sql);
         $menu = "Product Setting";
+        return view('admin.brand',['name'=>$menu,'data'=>$data]);
+
+    }
+
+    public function getProduct($id){
+        $sql = "SELECT PRODUCT_ID,
+                    PRODUCT_BRAND_ID,
+                    PRODUCT_GROUP_ID,
+                    GROUP_NAME,
+                    PRODUCT_ORDER,
+                    PRODUCT_NAME,
+                    PRODUCT_MIN_FILE_NAME,
+                    PRODUCT_MIN_EXT,
+                    PRODUCT_FULL_FILE_NAME,
+                    PRODUCT_FULL_EXT 
+                FROM KH_PRODUCT A,KH_GROUP B
+                WHERE 
+                    A.PRODUCT_GROUP_ID = B.GROUP_ID
+                    AND PRODUCT_BRAND_ID =?
+                    AND PRODUCT_DELETE_STATUS <> 1 
+                ORDER BY PRODUCT_ORDER DESC, 
+                    PRODUCT_CREATE_DATE_TIME DESC";
+        $queryParam = array($id);
+        $data = DB::select($sql,$queryParam);
+        $menu = "Product Setting > จัดการสินค้าในแบรนด์";
         return view('admin.product',['name'=>$menu,'data'=>$data]);
 
     }
@@ -854,6 +882,85 @@ class AdminController extends Controller
                 return redirect('admin/news/');
             }
         }
+    }
+
+    public function newsUpdate(Request $request,$id){
+        $rules=[
+            'newsTitle'=>'required|max:100',
+            'newsType'=>'required',
+            'youTubeUrl'=>'url|required_if:newsType,1',
+            'newsImage'=>'image|max:1024',
+            'sample'=>'required|max:500|not_in:<p>&nbsp; &nbsp;</p>',
+            'content'=>'required|max:4000|not_in:<p>&nbsp; &nbsp;</p>'
+        ];
+        $messages = [
+            'newsTitle.required'=>'กรุณาระบุชื่อ News/Articles',
+            'newsTitle.max'=>'News/Articles ต้องยาวไม่เกิน 100 ตัวอักษร',
+            'newsType.required'=>'กรุณาระบุประเภทของแบนเนอร์',
+            'youTubeUrl.required_if'=>'กรุณาระบุลิงค์',
+            'youTubeUrl.url'=>'ลิงค์ไม่ถูกต้อง',
+            'youTubeUrl.active_url'=>'ไม่สามารถติดต่อลิงค์ดังกล่าวได้',
+            'newsImage.image'=>'กรุณาระบุประเภทของรูปภาพให้ถูกต้อง',
+            'newsImage.max'=>'ขนาดของรูปภาพต้องไม่เกิน 1MB',
+            'sample.required'=>'กรุณาระบุรายละเอียดโดยย่อ',
+            'sample.max'=>'รายละเอียดโดยย่อต้องยาวไม่เกิน 500ตัวอักษร',
+            'content.required'=>'กรุณาระบุรายละเอียด',
+            'content.max'=>'รายละเอียดต้องยาวไม่เกิน4000ตัวอักษร'
+        ];
+        //set more validate rule
+        $validator = Validator::make($request->all(),$rules,$messages);
+        if($validator->fails()){
+            Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาตรวจสอบ');
+            return redirect('admin/news/news')->withErrors($validator)->withInput();
+        }else {
+            $newsType = $request->input('newsType');
+            $sample = $request->input('sample');
+            $content = $request->input('content');
+            $title = $request->input('newsTitle');
+            $youtubeUri = "";
+
+            if($newsType==0){
+                //update picture case
+                $file = Input::file('newsImage');
+                if ($file!=null&&$file->isValid()) {
+                    //update
+                    $destinationPath = self::NEWS_PATH; 
+                    $extension = $file->getClientOriginalExtension(); 
+                    $fileName = rand(11111,99999)."_".$id; 
+                    $fileNameFull = $fileName.".".$extension;
+                    $fileMoved = $file->move($destinationPath, $fileNameFull);
+                    if (File::exists($fileMoved->getRealPath())){
+                        //update after moved file
+                        $sqlUpdate = "UPDATE KH_NEWS SET NEWS_TITLE=?,NEWS_IMAGE_TITLE_NAME=?, NEWS_IMAGE_TITLE_EXT=?,NEWS_SAMPLE=?,NEWS_CONTENT=?,NEWS_IS_YOUTUBE=0 WHERE NEWS_ID=?";
+                        $updateParam = array($title,$fileName,$extension,$sample,$content,$id);
+                        DB::update($sqlUpdate,$updateParam);
+                        Session::flash('alert-success', 'อัพเดทข้อมูลสำเร็จ ');
+                        return redirect('admin/news/');
+                    }
+                    else{
+                        Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาติดต่อผู้ดูแลระบบ');
+                        return redirect('admin/news/');
+                    }
+                }
+                else {
+                    //update without change images
+                    $sqlUpdate = "UPDATE KH_NEWS SET NEWS_TITLE=?,NEWS_SAMPLE=?,NEWS_CONTENT=?,NEWS_IS_YOUTUBE=0 WHERE NEWS_ID=?";
+                    $updateParam = array($title,$sample,$content,$id);
+                    DB::update($sqlUpdate,$updateParam);
+                    Session::flash('alert-success', 'อัพเดทข้อมูลสำเร็จ ');
+                    return redirect('admin/news/');
+                }
+            }
+            else{
+                //update youtube case
+                $youtubeUri = $request->input('youTubeUrl');
+                $sqlUpdate = "UPDATE KH_NEWS SET NEWS_TITLE=?,NEWS_SAMPLE=?,NEWS_CONTENT=?,NEWS_IS_YOUTUBE=1,NEWS_YOUTUBE_URI=? WHERE NEWS_ID=?";
+                $updateParam = array($title,$sample,$content,$youtubeUri,$id);
+                DB::update($sqlUpdate,$updateParam);
+                Session::flash('alert-success', 'อัพเดทข้อมูลสำเร็จ ');
+                return redirect('admin/news/');
+            }
+        }
 
     }
 
@@ -893,6 +1000,84 @@ class AdminController extends Controller
         $deleteParam = array($id);
         DB::update($sqlDelete,$deleteParam);
         return redirect('admin/news');
+    }
+
+    function orderBrand($id,$order){
+        //order of selected brand id
+        $sql = "SELECT BRAND_ID,BRAND_ORDER FROM KH_BRAND WHERE BRAND_ID = ?";
+        $queryParam = array($id);
+        $data = DB::select($sql,$queryParam);
+
+        if(count($data)>0){
+            $sqlReplace = "SELECT BRAND_ID,BRAND_ORDER FROM KH_BRAND WHERE BRAND_ORDER = ?";
+            $queryReplaceParam = array($order);
+            $dataReplace = DB::select($sqlReplace,$queryReplaceParam);
+            if(count($dataReplace)==1){
+                //replace after order with current brand order
+                $sqlUpdateReplace = "UPDATE KH_BRAND SET BRAND_ORDER = ? WHERE BRAND_ORDER = ?";
+                $updateReplaceParam = array($data[0]['BRAND_ORDER'],$order);
+                DB::update($sqlUpdateReplace,$updateReplaceParam);
+
+                //update current brand with specific order order
+                $sqlUpdateOder = "UPDATE KH_BRAND SET BRAND_ORDER = ? WHERE BRAND_ID = ?";
+                $updateCurrentParam = array($order,$id);
+                DB::update($sqlUpdateOder,$updateCurrentParam);
+                return redirect('admin/product');
+            }
+            else{
+                return redirect('home');
+            }
+        }
+        else{
+            return redirect('home');
+        }
+    }
+
+    function deleteBrand($id){
+        $sqlDelete = "UPDATE KH_BRAND SET BRAND_DELETE_STATUS = 1 WHERE BRAND_ID = ?";
+        $deleteParam = array($id);
+        DB::update($sqlDelete,$deleteParam);
+        return redirect('admin/product');
+    }
+
+    function orderProduct($idBrand,$id,$order){
+        //order of selected product id
+        $sql = "SELECT PRODUCT_ID,PRODUCT_ORDER FROM KH_PRODUCT WHERE PRODUCT_ID = ?";
+        $queryParam = array($id);
+        $data = DB::select($sql,$queryParam);
+
+        if(count($data)>0){
+            $sqlReplace = "SELECT PRODUCT_ID,PRODUCT_ORDER FROM KH_PRODUCT WHERE PRODUCT_ORDER = ?";
+            $queryReplaceParam = array($order);
+            $dataReplace = DB::select($sqlReplace,$queryReplaceParam);
+            if(count($dataReplace)==1){
+                //replace after order with current product order
+                $sqlUpdateReplace = "UPDATE KH_PRODUCT SET PRODUCT_ORDER = ? WHERE PRODUCT_ORDER = ?";
+                $updateReplaceParam = array($data[0]['PRODUCT_ORDER'],$order);
+                DB::update($sqlUpdateReplace,$updateReplaceParam);
+
+                //update current product with specific order order
+                $sqlUpdateOder = "UPDATE KH_PRODUCT SET PRODUCT_ORDER = ? WHERE PRODUCT_ID = ?";
+                $updateCurrentParam = array($order,$id);
+                DB::update($sqlUpdateOder,$updateCurrentParam);
+                return redirect('admin/product/productOf/'.$idBrand);
+            }
+            else{
+                Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาติดต่อผู้ดูแลระบบ');
+                return redirect('admin/product/productOf/'.$idBrand);
+            }
+        }
+        else{
+            Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาติดต่อผู้ดูแลระบบ');
+            return redirect('admin/product/productOf/'.$idBrand);
+        }
+    }
+
+    function deleteProduct($idBrand,$id){
+        $sqlDelete = "UPDATE KH_PRODUCT SET PRODUCT_DELETE_STATUS = 1 WHERE PRODUCT_ID = ?";
+        $deleteParam = array($id);
+        DB::update($sqlDelete,$deleteParam);
+        return redirect('admin/product/productOf/'.$idBrand);
     }
 
 }

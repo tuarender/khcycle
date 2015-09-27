@@ -43,7 +43,7 @@
 				echo "<a href='admin/home/moveBanner/order/".$data[$i]['BANNER_ID']."/".$data[$i+1]['BANNER_ORDER']."'><div><span class='glyphicon glyphicon-chevron-down' aria-hidden='true'></span></div></a>";
 			}
 			echo "</td>";
-			echo "<td class='tdCenter'>".$data[$i]['BANNER_ORDER']."</td>";
+			echo "<td class='tdCenter'>".($i+1)."</td>";
 			echo "<td class='tdCenter'>".$bannerType."</td>";
 			echo "<td>".$bannerUri."</td>";
 			echo "<td class='tdCenter'>";
