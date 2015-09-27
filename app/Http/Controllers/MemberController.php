@@ -355,7 +355,7 @@ class MemberController extends Controller
                         Session::put('user',Auth::user());
 
 
-                       return redirect('profile');
+                       return redirect('admin');
                     }else{
                         Session::flash('alert-danger', 'False');
                         return redirect('member');

@@ -28,6 +28,37 @@
                 <img id="imgcontact" src="images/contact/contact.png" class="img-responsive"/>
             </div>
         </div>
+        <br>
+        <div class="row">
+            @foreach($zone as $datazone)
+                <ul>
+                    {{$datazone['ZONE_NAME']}}
+                   @foreach($zonesub as $sub)
+                       @if($sub['ZONE_NAME']==$datazone['ZONE_NAME'])
+                            <li><a href="#" data-toggle="modal" data-target="#shopModal" data-whatever="{{$sub['BRANCH_SHOP']}}" data-body="{{ nl2br($sub['BRANCH_ADDR'])}}"
+                                        data-email="{{$sub['BRANCH_EMAIL']}}">
+                                    {{$sub['BRANCH_SHOP']}} </a></li>
+                        @endif
+                    @endforeach
+                </ul>
+            @endforeach
+        </div>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#shopModal" data-whatever="@mdo">Open modal for @mdo</button>
+    </div>
+    </div>
+
+
+    <div class="modal fade" id="shopModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">New message</h4>
+            </div>
+            <div class="modal-body">
+
+            </div>
+        </div>
     </div>
     </div>
 
@@ -83,6 +114,20 @@
             //           alert( imgpic);
             }
         };
+
+
+        $('#shopModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var recipient = button.data('whatever') // Extract info from data-* attributes
+            var address = button.data('body')
+            var email = button.data('email')
+            var body = "<div>"+address+"</div><div>EMAIL: "+email+"</div>"
+            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            var modal = $(this)
+            modal.find('.modal-title').text(recipient)
+            modal.find('.modal-body').html(body)
+        })
     </script>
 
 @endsection

@@ -46,6 +46,7 @@ Route::get('search/{keyword}','SearchController@searchProduct');
 
 //admin
 //--get
+Route::get('admin','AdminController@index');
 Route::get('admin/home','AdminController@getHome');
 Route::get('admin/contact','AdminController@getContact');
 Route::get('admin/member','AdminController@getMember');
@@ -93,5 +94,6 @@ Route::post('admin/zone/edit','AdminController@zoneAdd');
 Route::post('admin/zone/edit/{id}','AdminController@zoneUpdate');
 Route::post('admin/branch/edit','AdminController@branchAdd');
 Route::post('admin/branch/edit/{id}','AdminController@branchUpdate');
+Route::post('admin/branch','AdminController@getBranch');
 Route::post('admin/news/news','AdminController@newsAdd');
 Route::post('admin/news/news/{id}','AdminController@newsUpdate');

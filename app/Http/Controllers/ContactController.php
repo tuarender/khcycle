@@ -22,9 +22,30 @@ class ContactController extends Controller
         //
         $data = DB::table('KH_CONTACTUS')->get();
 
+        $zone = DB::table('KH_ZONE as zone')
+            ->join('KH_BRANCH as br','zone.ID','=','br.BRANCH_ZONE')
+            ->where('br.BRANCH_DELETE_STATUS','<>','1')
+            ->distinct()
+            ->select('zone.ZONE_NAME')
+            ->get();
+
+
+        $zonesub = DB::table('KH_BRANCH as br')
+            ->join('KH_ZONE AS zone', 'br.BRANCH_ZONE', '=', 'zone.ID')
+            ->select('zone.ZONE_NAME',
+                'br.BRANCH_ZONE',
+                'br.BRANCH_ID',
+                'br.BRANCH_SHOP',
+                'br.BRANCH_ADDR',
+                'br.BRANCH_EMAIL')
+            ->where('BRANCH_DELETE_STATUS', '<>', '1')
+            ->get();
+
         return View::make('contact.contact')->with('name','Contact')
             ->with('admin','admin/contact')
-            ->with('data',$data);
+            ->with('data',$data)
+            ->with('zone',$zone)
+            ->with('zonesub',$zonesub);
     }
 
     /**
