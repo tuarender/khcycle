@@ -62,7 +62,7 @@
     		$('.adminMain').fadeIn('2000',function(){
     			$('#footer').fadeIn('slow');
     		});*/
-		}); 
+		});
 
 		function getSetting(page ,isMainPage){
 

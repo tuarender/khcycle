@@ -25,6 +25,11 @@ class AdminController extends Controller
      * @return Response
      */
 
+    public function index()
+    {
+        return view('admin.admin');
+    }
+
     public function getSetting($pageSetting=null)
     {
         $data = DB::table('KH_CONTACTUS')->get();
@@ -246,19 +251,50 @@ class AdminController extends Controller
         return $zone;
     }
 
-    public function getBranch()
+    public function getBranch(Request $request)
     {
+        if($request->isMethod('post'))
+        {
+            $datazone = $request->input('BRANCH_ZONE');
+            if($datazone==0) {
+                $data = DB::table('KH_BRANCH as br')
+                    ->join('KH_ZONE AS zone', 'br.BRANCH_ZONE', '=', 'zone.ID')
+                    ->select('zone.ZONE_NAME',
+                        'br.BRANCH_ID',
+                        'br.BRANCH_SHOP',
+                        'br.BRANCH_ADDR',
+                        'br.BRANCH_EMAIL')
+                    ->where('BRANCH_DELETE_STATUS', '<>', '1')
+                    ->get();
+            }else{
+                $data = DB::table('KH_BRANCH as br')
+                    ->join('KH_ZONE AS zone', 'br.BRANCH_ZONE', '=', 'zone.ID')
+                    ->select('zone.ZONE_NAME',
+                        'br.BRANCH_ID',
+                        'br.BRANCH_SHOP',
+                        'br.BRANCH_ADDR',
+                        'br.BRANCH_EMAIL')
+                    ->where('BRANCH_DELETE_STATUS', '<>', '1')
+                    ->where('BRANCH_ZONE', '=', $datazone)
+                    ->get();
+            }
+        }
+        else
+        {
+            $data = DB::table('KH_BRANCH as br')
+                ->join('KH_ZONE AS zone','br.BRANCH_ZONE','=','zone.ID')
+                ->select('zone.ZONE_NAME',
+                    'br.BRANCH_ID',
+                    'br.BRANCH_SHOP',
+                    'br.BRANCH_ADDR',
+                    'br.BRANCH_EMAIL')
+                ->where('BRANCH_DELETE_STATUS','<>','1')
+                ->get();
+        }
         $name= 'BRANCH MANAGE';
-        $data = DB::table('KH_BRANCH as br')
-            ->join('KH_ZONE AS zone','br.BRANCH_ZONE','=','zone.ID')
-            ->select('zone.ZONE_NAME',
-                'br.BRANCH_ID',
-                'br.BRANCH_SHOP',
-                'br.BRANCH_ADDR',
-                'br.BRANCH_EMAIL')
-            ->where('BRANCH_DELETE_STATUS','<>','1')
-            ->get();
-        return view('admin/branch',['name'=>$name,'data'=>$data]);
+        $zone = DB::table('KH_ZONE')->get();
+
+        return view('admin/branch',['name'=>$name,'data'=>$data,'zone'=>$zone]);
     }
 
     private function getBranchData($id)
@@ -313,6 +349,53 @@ class AdminController extends Controller
             Session::flash('alert-success', 'อัพเดตเรียบร้อย');
             return redirect('admin/branch/');
         }
+    }
+
+    public function branchUpdate(Request $request,$id)
+    {
+        $rules = [
+            'BRANCH_SHOP'=>'required',
+            'BRANCH_ADDR'=>'required',
+            'BRANCH_EMAIL'=>'required',
+            'BRANCH_ZONE'=>'required'
+        ];
+
+        $message =[
+            'BRANCH_SHOP.required'=>'กรุณาระบุ ชื่อ SHOP',
+            'BRANCH_ADDR.required'=>'กรุณาระบุ ที่อยู่',
+            'BRANCH_EMAIL.required'=>'กรุณาระบุ EMAIL',
+            'BRANCH_ZONE.required'=>'กรุณาเลือก Zone'
+        ];
+
+        $validator = Validator::make($request->all(),$rules,$message);
+        if($validator->fails()){
+            Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาตรวจสอบ');
+            return redirect('admin/branch/edit/'.$id)->withErrors($validator)->withInput();
+        }else {
+            $nameshop = $request->input('BRANCH_SHOP');
+            $addrshop = $request->input('BRANCH_ADDR');
+            $emailshop = $request->input('BRANCH_EMAIL');
+            $valuezone = $request->get('BRANCH_ZONE');
+            DB::table('KH_BRANCH')
+                ->where('BRANCH_ID','=',$id)
+                ->update([
+                'BRANCH_ZONE' => $valuezone,
+                'BRANCH_SHOP' => $nameshop,
+                'BRANCH_ADDR' => $addrshop,
+                "BRANCH_EMAIL" => $emailshop,
+            ]);
+
+            Session::flash('alert-success', 'อัพเดตเรียบร้อย');
+            return redirect('admin/branch/');
+        }
+    }
+
+    public function branchDelete($id)
+    {
+        $data = DB::table('KH_BRANCH')
+            ->where('BRANCH_ID','=',$id)
+            ->update(['BRANCH_DELETE_STATUS'=>'1']);
+        return redirect('admin/branch');
     }
 
     public function branchEdit($id=null)

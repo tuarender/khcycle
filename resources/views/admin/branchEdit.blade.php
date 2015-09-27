@@ -13,7 +13,7 @@
 
     <div class="container-fluid">
         @include('partials.flashmessage')
-        <form id="bannerForm" class="form-horizontal" role="form" method="post" action="<?=$formAction?>"  enctype="multipart/form-data">
+        <form id="bannerForm" class="form-horizontal" role="form" method="post" action="<?=$formAction?>">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
             <div class="form-group @if ($errors->has('BRANCH_ZONE')) has-error @endif">
@@ -21,9 +21,9 @@
                 <div class="col-sm-5">
 
                     <select class="form-control" name="BRANCH_ZONE">
-                        <option selected disabled>--Please Select Zone--</option>
+                        <option selected disabled value="0">--ZONE SEARCH--</option>
                         @foreach($zone as $sz)
-                            <option value="{{old('BRANCH_ZONE',$sz['ID'])}}">{{$sz['ZONE_NAME']}}</option>
+                            <option @if($sz['ID']==$data[0]['ID'])selected="selected" @endif value="{{old('BRANCH_ZONE',$sz['ID'])}}">{{$sz['ZONE_NAME']}}</option>
                         @endforeach
                     </select>
                     @if($errors->has('BRANCH_ZONE'))
