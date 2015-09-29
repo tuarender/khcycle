@@ -11,7 +11,7 @@
     @include('partials.flashmessage')
     <div class="row">
         <div class='col-xs-12' style="text-align:right">
-        <a href="admin/product/product" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> เพิ่มสินค้า</a>
+        <a href="admin/product/product" class="btn btn-primary btn-sm disabled"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> เพิ่มสินค้า</a>
         </div>
     </div>
 <?php
@@ -50,7 +50,7 @@
             echo "<td class='tdCenter'>".$data[$i]['GROUP_NAME']."</td>";
             echo "<td class='tdCenter'>";
             echo "<div class='btn-group' role='group'>";
-            echo "  <a href='admin/product/product/".$data[$i]['PRODUCT_ID']."' class='btn btn-warning'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span> แก้ไข</a>";
+            echo "  <a href='admin/product/product/".$data[$i]['PRODUCT_ID']."' class='btn btn-warning disabled'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span> แก้ไข</a>";
             echo "  <a  href='#'' data-href='admin/product/deleteProduct/".$data[$i]['PRODUCT_BRAND_ID']."/".$data[$i]['PRODUCT_ID']."' class='btn btn-danger' data-toggle='modal' data-target='#confirm-delete'><span class='glyphicon glyphicon-remove-sign' aria-hidden='true'></span> ลบ</a>";
             echo "</div>";
             echo "</td>";

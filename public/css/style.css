@@ -68,6 +68,11 @@ div.detail >div{
 	width: 100%;
 }
 
+ul.adminGroupList{
+	list-style: none;
+	padding: 0;
+}
+
 ul#horizontal-list {
 	max-width: 100%;
 	list-style: none;
@@ -99,12 +104,18 @@ div.brand{
 	text-shadow: 2px 2px #888888;
 }
 .linkCatalogue{
+	background-color: #080808;
 	font-family: CSChatThai;
 	font-size: 18px;
-	color: #424242;
+	color: #F2F100;
 	font-weight: bold;
+	border-width: 0px;
+}
+.linkCatalogue:focus,.linkCatalogue:hover {
+	color: #FFFFFF;
 }
 .linkViewMoreCatalogue{
+	padding-left: 90px;
 	font-family: CSChatThai;
 	font-weight: bold;
 	font-size: 14px;

@@ -105,13 +105,28 @@ class AdminController extends Controller
         return $catalogue;
     }
 
-
     public function getBrand(){
         $sql = "SELECT BRAND_ID,BRAND_NAME, BRAND_ORDER FROM KH_BRAND WHERE BRAND_DELETE_STATUS <> 1 ORDER BY BRAND_ORDER DESC, BRAND_CREATE_DATE_TIME DESC";
         $data = DB::select($sql);
         $menu = "Product Setting";
         return view('admin.brand',['name'=>$menu,'data'=>$data]);
+    }
 
+    public function getBrandEdit($id=null){
+        $data = null;
+        $dataGroup = null;
+        $name = 'Home Setting->เพิ่มแบรนด์สินค้า';
+        //edit case
+        if($id!=null){
+            $data = $this->getBrandById($id);
+            $dataGroup = $this->getGroupByBrandId($id);
+            $name = 'Home Setting->แก้ไขข้อมูลแบรนด์สินค้า';
+        }
+        
+        return  view('admin/brandEdit')
+                ->with('data',$data)
+                ->with('dataGroup',$dataGroup)
+                ->with('name',$name);
     }
 
     public function getProduct($id){
@@ -163,6 +178,20 @@ class AdminController extends Controller
                 ->where('NEWS_ID', '=', $id)
                 ->get();
         return $news;
+    }
+
+    private function getBrandById($id){
+        $brand = DB::table('KH_BRAND')
+                ->where('BRAND_ID', '=', $id)
+                ->get();
+        return $brand;
+    }
+
+    private function getGroupByBrandId($id){
+        $sql = "SELECT A.GROUP_ID,A.GROUP_NAME FROM KH_GROUP A,KH_BRAND_GROUP B WHERE A.GROUP_ID = B.GROUP_ID AND BRAND_ID = ? AND GROUP_DELETE_STATUS <> 1 ORDER BY GROUP_NAME";
+        $groupQueryParam = array($id);
+        $brand = DB::select($sql,$groupQueryParam);
+        return $brand;
     }
 
     public function getZone()
@@ -688,7 +717,6 @@ class AdminController extends Controller
                 ->with('name',$name);
     }
 
-
     public function bannerUpdate(Request $request,$id){
         $rules=[
             'bannerType'=>'required',
@@ -751,9 +779,7 @@ class AdminController extends Controller
                 Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาติดต่อผู้ดูแลระบบ');
                 return redirect('admin/home/');
             }
-
         }
-
     }
 
     public function bannerAdd(Request $request){
@@ -893,10 +919,6 @@ class AdminController extends Controller
             'content.required'=>'กรุณาระบุรายละเอียด',
             'content.max'=>'รายละเอียดต้องยาวไม่เกิน4000ตัวอักษร'
         ];
-        //set more validate rule
-        
-        //$data = array($request->input('sample'),$request->input('content'));
-        //return  view('admin/newsEdit',['name'=>'jaja','jaja'=>$data]);
 
         $validator = Validator::make($request->all(),$rules,$messages);
         if($validator->fails()){
@@ -994,7 +1016,7 @@ class AdminController extends Controller
         $validator = Validator::make($request->all(),$rules,$messages);
         if($validator->fails()){
             Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาตรวจสอบ');
-            return redirect('admin/news/news')->withErrors($validator)->withInput();
+            return redirect('admin/news/news/'.$id)->withErrors($validator)->withInput();
         }else {
             $newsType = $request->input('newsType');
             $sample = $request->input('sample');
@@ -1083,6 +1105,56 @@ class AdminController extends Controller
         $deleteParam = array($id);
         DB::update($sqlDelete,$deleteParam);
         return redirect('admin/news');
+    }
+
+    public function brandUpdate(Request $request,$id){
+        $rules=[
+            'brandName'=>'required',
+            'brandImage'=>'image|max:1024',
+        ];
+        $messages = [
+            'brandName.required'=>'กรุณาระบุประเภทของแบนเนอร์',
+            'brandImage.image'=>'กรุณาระบุประเภทของรูปภาพให้ถูกต้อง',
+            'brandImage.max'=>'ขนาดของรูปภาพต้องไม่เกิน 1MB',
+        ];
+
+        $validator = Validator::make($request->all(),$rules,$messages);
+        if($validator->fails()){
+            Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาตรวจสอบ');
+            return redirect('admin/product/brand/'.$id)->withErrors($validator)->withInput();
+        }else {
+            $file = Input::file('brandImage');
+            $brandName = $request->input('brandName');
+            if ($file!=null&&$file->isValid()) {
+                $destinationPath = self::BRAND_PATH; 
+                $extension = $file->getClientOriginalExtension(); 
+                $fileName = rand(11111,99999)."_".$id; 
+                $fileNameFull = $fileName.".".$extension;
+                $fileMoved = $file->move($destinationPath, $fileNameFull);
+                if (File::exists($fileMoved->getRealPath())){
+                    $sqlUpdate = "UPDATE KH_BRAND SET BRAND_NAME=?, BRAND_LOGO_NAME=?, BRAND_LOGO_EXT=? WHERE BRAND_ID=?";
+                    $updateParam = array($brandName,$fileName,$extension,$id);
+                    $data = DB::update($sqlUpdate,$updateParam);
+                    Session::flash('alert-success', 'อัพเดทสำเร็จ ');
+                    return redirect('admin/product/');
+                }
+                else{
+                    Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาติดต่อผู้ดูแลระบบ');
+                    return redirect('admin/product/');
+                }
+            }
+            else if($file==null){
+                $sqlUpdate = "UPDATE KH_BRAND SET BRAND_NAME=? WHERE BRAND_ID=?";
+                $updateParam = array($brandName,$id);
+                DB::update($sqlUpdate,$updateParam);
+                Session::flash('alert-success', 'อัพเดทสำเร็จ ');
+                return redirect('admin/product/');
+            }
+            else {
+                Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาติดต่อผู้ดูแลระบบ');
+                return redirect('admin/product/');
+            }
+        }
     }
 
     function orderBrand($id,$order){
