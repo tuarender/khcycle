@@ -49,11 +49,9 @@
   <div class="row">
     <div class="col-md-4">
       <div class="jumbotron">
-        <b>KHCYCLE BIKE STUDIO</b><br>
-
-        <b>เลขที่ 29 ถนนประเสริฐมนูญกิจ แขวงคลองกุ่ม กรุงเทพฯ 10240</b><br>
-        <b>โทร: 0-2510-1906</b><br>
-        <b>Email:Sales@khcycle.com</b><br>
+        @foreach($contact as $contacts)
+          <b> <?php echo nl2br($contacts['KH_CONTACTUS']) ?></b>
+        @endforeach
       </div>
       <div id="googleMap" style="width:100%;margin-left:auto;margin-right:auto"></div>
     </div>

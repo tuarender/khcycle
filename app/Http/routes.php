@@ -103,3 +103,4 @@ Route::post('admin/branch/edit/{id}','AdminController@branchUpdate');
 Route::post('admin/branch','AdminController@getBranch');
 Route::post('admin/news/news','AdminController@newsAdd');
 Route::post('admin/news/news/{id}','AdminController@newsUpdate');
+Route::post('admin/member','AdminController@getMember');

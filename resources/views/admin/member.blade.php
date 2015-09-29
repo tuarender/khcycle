@@ -3,8 +3,8 @@
 @include('admin.partials.adminSubHeader')
     <div class="adminContainer">
             <div class="membercontainer">
-                {{$name}}
-                <hr style='width:100%;margin:15px 0px;border-color:#E7E7E7'>
+                {{--{{$name}}--}}
+                {{--<hr style='width:100%;margin:15px 0px;border-color:#E7E7E7'>--}}
 
                 <div class="sessionContainer" style="width: 90%">
                     Log in as:{{ Session::get('user')->KH_MEMBER_LOGIN_USERNAME }}<a href="logout">ออกจากระบบ</a>
@@ -12,7 +12,7 @@
 
 
             <div class="row" style="width: 100%">
-                    <form class="form-group" role="form" method="post" action="member">
+                    <form class="form-group" role="form" method="post" action="admin/member">
                         {{ csrf_field() }}
                         <div class="col-xs-2">
                             <label>ค้นหาสมาชิก:</label>
