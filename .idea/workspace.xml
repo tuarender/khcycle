@@ -3,15 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="5970b3a4-5267-4b5c-85c9-b90e5acb2c62" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ContactController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ContactController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/MemberController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/MemberController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/admin.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/admin.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/branch.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/branch.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/branchEdit.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/branchEdit.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/catalogue.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/catalogue.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/contact.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/contact.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/contact/contact.blade.php" afterPath="$PROJECT_DIR$/resources/views/contact/contact.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/home/home.blade.php" afterPath="$PROJECT_DIR$/resources/views/home/home.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/member.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/member.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/style.css" afterPath="$PROJECT_DIR$/public/css/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/zone.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/zone.blade.php" />
     </list>
     <ignored path="khcycle.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,54 +38,46 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.576923">
-              <caret line="48" column="44" selection-start-line="48" selection-start-column="44" selection-end-line="48" selection-end-column="44" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="AdminController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AdminController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.769231">
-              <caret line="27" column="32" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="32" />
+            <state vertical-scroll-proportion="-19.884615">
+              <caret line="87" column="30" selection-start-line="87" selection-start-column="30" selection-end-line="87" selection-end-column="30" />
               <folding>
-                <marker date="1443368137938" expanded="true" signature="1578:1749" placeholder="SELECT NEWS_..KH_NEWS..." />
-                <marker date="1443368137938" expanded="true" signature="22114:22208" placeholder="insert into ..." />
-                <marker date="1443368137938" expanded="true" signature="24478:24606" placeholder="UPDATE KH_BA..." />
-                <marker date="1443368137938" expanded="true" signature="25553:25646" placeholder="UPDATE KH_BA..." />
-                <marker date="1443368137938" expanded="true" signature="27180:27261" placeholder="SELECT MAX(B..KH_BANNER..." />
-                <marker date="1443368137938" expanded="true" signature="27648:27747" placeholder="INSERT INTO ..." />
-                <marker date="1443368137938" expanded="true" signature="28520:28593" placeholder="UPDATE KH_BA..." />
-                <marker date="1443368137938" expanded="true" signature="29586:29650" placeholder="SELECT BANNE..KH_BANNER..." />
-                <marker date="1443368137938" expanded="true" signature="29789:29856" placeholder="SELECT BANNE..KH_BANNER..." />
-                <marker date="1443368137938" expanded="true" signature="30119:30179" placeholder="UPDATE KH_BA..." />
-                <marker date="1443368137938" expanded="true" signature="30428:30485" placeholder="UPDATE KH_BA..." />
-                <marker date="1443368137938" expanded="true" signature="30876:30938" placeholder="UPDATE KH_BA..." />
-                <marker date="1443368137938" expanded="true" signature="33073:33151" placeholder="SELECT MAX(N..KH_NEWS..." />
-                <marker date="1443368137938" expanded="true" signature="33621:33722" placeholder="INSERT INTO ..." />
-                <marker date="1443368137938" expanded="true" signature="34489:34571" placeholder="UPDATE KH_NE..." />
-                <marker date="1443368137938" expanded="true" signature="35683:35803" placeholder="INSERT INTO ..." />
-                <marker date="1443368137938" expanded="true" signature="36212:36268" placeholder="SELECT NEWS_..KH_NEWS..." />
-                <marker date="1443368137938" expanded="true" signature="36407:36466" placeholder="SELECT NEWS_..KH_NEWS..." />
-                <marker date="1443368137938" expanded="true" signature="36727:36781" placeholder="UPDATE KH_NE..." />
-                <marker date="1443368137938" expanded="true" signature="37028:37079" placeholder="UPDATE KH_NE..." />
-                <marker date="1443368137938" expanded="true" signature="37468:37527" placeholder="UPDATE KH_NE..." />
+                <element signature="e#4993#5162#0#PHP" expanded="false" />
+                <element signature="e#5168#5482#0#PHP" expanded="false" />
+                <element signature="e#5488#5692#0#PHP" expanded="false" />
+                <element signature="e#5698#6503#0#PHP" expanded="false" />
+                <element signature="e#6509#7263#0#PHP" expanded="false" />
+                <element signature="e#7785#9546#0#PHP" expanded="false" />
+                <element signature="e#9552#10024#0#PHP" expanded="false" />
+                <element signature="e#10030#11399#0#PHP" expanded="false" />
+                <element signature="e#11405#12847#0#PHP" expanded="false" />
+                <element signature="e#12853#13072#0#PHP" expanded="false" />
+                <element signature="e#13078#13563#0#PHP" expanded="false" />
+                <element signature="e#13569#13822#0#PHP" expanded="false" />
+                <marker date="1443538791653" expanded="true" signature="1578:1749" placeholder="SELECT NEWS_..KH_NEWS..." />
+                <marker date="1443538791653" expanded="true" signature="23488:23582" placeholder="insert into ..." />
+                <marker date="1443538791653" expanded="true" signature="25852:25980" placeholder="UPDATE KH_BA..." />
+                <marker date="1443538791653" expanded="true" signature="26927:27020" placeholder="UPDATE KH_BA..." />
+                <marker date="1443538791653" expanded="true" signature="28554:28635" placeholder="SELECT MAX(B..KH_BANNER..." />
+                <marker date="1443538791653" expanded="true" signature="29022:29121" placeholder="INSERT INTO ..." />
+                <marker date="1443538791653" expanded="true" signature="29894:29967" placeholder="UPDATE KH_BA..." />
+                <marker date="1443538791653" expanded="true" signature="30960:31024" placeholder="SELECT BANNE..KH_BANNER..." />
+                <marker date="1443538791653" expanded="true" signature="31163:31230" placeholder="SELECT BANNE..KH_BANNER..." />
+                <marker date="1443538791653" expanded="true" signature="31493:31553" placeholder="UPDATE KH_BA..." />
+                <marker date="1443538791653" expanded="true" signature="31802:31859" placeholder="UPDATE KH_BA..." />
+                <marker date="1443538791653" expanded="true" signature="32250:32312" placeholder="UPDATE KH_BA..." />
+                <marker date="1443538791653" expanded="true" signature="34447:34525" placeholder="SELECT MAX(N..KH_NEWS..." />
+                <marker date="1443538791653" expanded="true" signature="34995:35096" placeholder="INSERT INTO ..." />
+                <marker date="1443538791653" expanded="true" signature="35863:35945" placeholder="UPDATE KH_NE..." />
+                <marker date="1443538791653" expanded="true" signature="37057:37177" placeholder="INSERT INTO ..." />
+                <marker date="1443538791653" expanded="true" signature="37586:37642" placeholder="SELECT NEWS_..KH_NEWS..." />
+                <marker date="1443538791653" expanded="true" signature="37781:37840" placeholder="SELECT NEWS_..KH_NEWS..." />
+                <marker date="1443538791653" expanded="true" signature="38101:38155" placeholder="UPDATE KH_NE..." />
+                <marker date="1443538791653" expanded="true" signature="38402:38453" placeholder="UPDATE KH_NE..." />
+                <marker date="1443538791653" expanded="true" signature="38842:38901" placeholder="UPDATE KH_NE..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="branchEdit.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/admin/branchEdit.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.6153846">
-              <caret line="23" column="73" selection-start-line="23" selection-start-column="73" selection-end-line="23" selection-end-column="73" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -92,8 +85,8 @@
       <file leaf-file-name="branch.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/admin/branch.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-23.23077">
-              <caret line="53" column="178" selection-start-line="53" selection-start-column="129" selection-end-line="53" selection-end-column="178" />
+            <state vertical-scroll-proportion="-9.807693">
+              <caret line="15" column="41" selection-start-line="15" selection-start-column="41" selection-end-line="15" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -102,29 +95,28 @@
       <file leaf-file-name="contact.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/contact/contact.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-61.46154">
-              <caret line="123" column="58" selection-start-line="123" selection-start-column="58" selection-end-line="123" selection-end-column="58" />
-              <folding>
-                <marker date="1443367262734" expanded="true" signature="3045:3268" placeholder="..." />
-                <marker date="1443367262734" expanded="false" signature="3056:3267" placeholder="..." />
-                <marker date="1443367262734" expanded="true" signature="3190:3256" placeholder="..." />
-                <marker date="1443367262734" expanded="true" signature="3211:3255" placeholder="..." />
-                <marker date="1443367262734" expanded="false" signature="3390:3798" placeholder="{...}" />
-                <marker date="1443367262734" expanded="true" signature="3847:4035" placeholder="..." />
-                <marker date="1443367262734" expanded="true" signature="3877:4034" placeholder="..." />
-                <marker date="1443367262734" expanded="false" signature="4185:4466" placeholder="..." />
-                <marker date="1443367262734" expanded="true" signature="4224:4297" placeholder="{...}" />
-                <marker date="1443367262734" expanded="true" signature="4302:4456" placeholder="..." />
-              </folding>
+            <state vertical-scroll-proportion="-11.769231">
+              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="20" selection-end-column="31" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MemberController.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MemberController.php">
+      <file leaf-file-name="catalogue.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/admin/catalogue.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6282195">
-              <caret line="342" column="39" selection-start-line="342" selection-start-column="39" selection-end-line="342" selection-end-column="39" />
+            <state vertical-scroll-proportion="-5.230769">
+              <caret line="8" column="76" selection-start-line="7" selection-start-column="11" selection-end-line="8" selection-end-column="76" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="home.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/home/home.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.32448035">
+              <caret line="57" column="19" selection-start-line="57" selection-start-column="19" selection-end-line="57" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -133,20 +125,8 @@
       <file leaf-file-name="admin.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/admin/admin.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-16.037735">
-              <caret line="50" column="6" selection-start-line="50" selection-start-column="6" selection-end-line="50" selection-end-column="6" />
-              <folding>
-                <element signature="e#1763#1787#0#HTML" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/css/style.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.107142">
-              <caret line="165" column="26" selection-start-line="165" selection-start-column="26" selection-end-line="165" selection-end-column="26" />
+            <state vertical-scroll-proportion="-18.961538">
+              <caret line="29" column="14" selection-start-line="29" selection-start-column="14" selection-end-line="29" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -196,7 +176,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Http/Controllers/CategoryController.php" />
         <option value="$PROJECT_DIR$/resources/views/category/category.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/CatalogueController.php" />
         <option value="$PROJECT_DIR$/vendor/composer/autoload_real.php" />
@@ -230,23 +209,24 @@
         <option value="$PROJECT_DIR$/resources/views/admin/listmember.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/product/product.blade.php" />
         <option value="$PROJECT_DIR$/config/database.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/member.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/memberdetail.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/home/home.blade.php" />
         <option value="$PROJECT_DIR$/app/Zone.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/catalogue.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/zoneEdit.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/zone.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/contact.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/branch.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/branchEdit.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ContactController.php" />
         <option value="$PROJECT_DIR$/public/css/style.css" />
-        <option value="$PROJECT_DIR$/resources/views/contact/contact.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/admin.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/MemberController.php" />
+        <option value="$PROJECT_DIR$/app/Http/routes.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" />
+        <option value="$PROJECT_DIR$/resources/views/contact/contact.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/member.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/zone.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/branch.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/contact.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/catalogue.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
+        <option value="$PROJECT_DIR$/resources/views/home/home.blade.php" />
       </list>
     </option>
   </component>
@@ -372,8 +352,8 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -445,28 +425,6 @@
               <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="khcycle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="khcycle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -511,28 +469,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Http" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="khcycle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="khcycle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Http" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Controllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -667,7 +603,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="13" />
+      <option name="time" value="18" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -684,20 +620,6 @@
     </PATH>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/app.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/partials/nav.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.769231">
-          <caret line="18" column="91" selection-start-line="18" selection-start-column="91" selection-end-line="18" selection-end-column="91" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/css/signin.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -911,20 +833,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/member.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.0">
-          <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="47" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/home/home.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.622642">
-          <caret line="95" column="21" selection-start-line="95" selection-start-column="21" selection-end-line="95" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Zone.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2094065">
@@ -946,66 +854,65 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/catalogue.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ContactController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="49" selection-start-line="25" selection-start-column="49" selection-end-line="25" selection-end-column="49" />
+        <state vertical-scroll-proportion="-13.730769">
+          <caret line="26" column="31" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MemberController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-217.73077">
+          <caret line="342" column="39" selection-start-line="342" selection-start-column="39" selection-end-line="342" selection-end-column="39" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/zone.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="32" column="42" selection-start-line="28" selection-start-column="35" selection-end-line="32" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/catalogueEdit.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="56" column="54" selection-start-line="0" selection-start-column="0" selection-end-line="67" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/contact.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="30" column="29" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="29" />
+        <state vertical-scroll-proportion="-36.307693">
+          <caret line="99" column="56" selection-start-line="99" selection-start-column="56" selection-end-line="99" selection-end-column="56" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.107142">
+        <state vertical-scroll-proportion="0.0">
           <caret line="165" column="26" selection-start-line="165" selection-start-column="26" selection-end-line="165" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/catalogueEdit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.5384617">
+          <caret line="32" column="31" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="31" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/branchEdit.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.6153846">
+        <state vertical-scroll-proportion="0.0">
           <caret line="23" column="73" selection-start-line="23" selection-start-column="73" selection-end-line="23" selection-end-column="73" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ContactController.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/zone.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.730769">
-          <caret line="26" column="31" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.03807391">
+          <caret line="2" column="4" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="4" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/branch.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/home.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-23.23077">
-          <caret line="53" column="178" selection-start-line="53" selection-start-column="129" selection-end-line="53" selection-end-column="178" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1018,77 +925,112 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/contact/contact.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/contact.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-61.46154">
-          <caret line="123" column="58" selection-start-line="123" selection-start-column="58" selection-end-line="123" selection-end-column="58" />
+        <state vertical-scroll-proportion="0.28555432">
+          <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/catalogue.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.230769">
+          <caret line="8" column="76" selection-start-line="7" selection-start-column="11" selection-end-line="8" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34266517">
+          <caret line="22" column="120" selection-start-line="22" selection-start-column="120" selection-end-line="22" selection-end-column="120" />
           <folding>
-            <marker date="1443367262734" expanded="true" signature="3045:3268" placeholder="..." />
-            <marker date="1443367262734" expanded="false" signature="3056:3267" placeholder="..." />
-            <marker date="1443367262734" expanded="true" signature="3190:3256" placeholder="..." />
-            <marker date="1443367262734" expanded="true" signature="3211:3255" placeholder="..." />
-            <marker date="1443367262734" expanded="false" signature="3390:3798" placeholder="{...}" />
-            <marker date="1443367262734" expanded="true" signature="3847:4035" placeholder="..." />
-            <marker date="1443367262734" expanded="true" signature="3877:4034" placeholder="..." />
-            <marker date="1443367262734" expanded="false" signature="4185:4466" placeholder="..." />
-            <marker date="1443367262734" expanded="true" signature="4224:4297" placeholder="{...}" />
-            <marker date="1443367262734" expanded="true" signature="4302:4456" placeholder="..." />
+            <marker date="1443539580325" expanded="true" signature="-1:-1" placeholder="SELECT CATAL..KH_CATALOGUE..." />
+            <marker date="1443539580325" expanded="true" signature="-1:-1" placeholder="SELECT BANNE..KH_BANNER..." />
+            <marker date="1443539580325" expanded="true" signature="-1:-1" placeholder="SELECT BRAND..KH_BRAND..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/member.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.576923">
-          <caret line="48" column="44" selection-start-line="48" selection-start-column="44" selection-end-line="48" selection-end-column="44" />
+        <state vertical-scroll-proportion="0.03807391">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="41" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/admin.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.037735">
-          <caret line="50" column="6" selection-start-line="50" selection-start-column="6" selection-end-line="50" selection-end-column="6" />
-          <folding>
-            <element signature="e#1763#1787#0#HTML" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="-18.961538">
+          <caret line="29" column="14" selection-start-line="29" selection-start-column="14" selection-end-line="29" selection-end-column="14" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AdminController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.769231">
-          <caret line="27" column="32" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="32" />
+        <state vertical-scroll-proportion="-19.884615">
+          <caret line="87" column="30" selection-start-line="87" selection-start-column="30" selection-end-line="87" selection-end-column="30" />
           <folding>
-            <marker date="1443368137938" expanded="true" signature="1578:1749" placeholder="SELECT NEWS_..KH_NEWS..." />
-            <marker date="1443368137938" expanded="true" signature="22114:22208" placeholder="insert into ..." />
-            <marker date="1443368137938" expanded="true" signature="24478:24606" placeholder="UPDATE KH_BA..." />
-            <marker date="1443368137938" expanded="true" signature="25553:25646" placeholder="UPDATE KH_BA..." />
-            <marker date="1443368137938" expanded="true" signature="27180:27261" placeholder="SELECT MAX(B..KH_BANNER..." />
-            <marker date="1443368137938" expanded="true" signature="27648:27747" placeholder="INSERT INTO ..." />
-            <marker date="1443368137938" expanded="true" signature="28520:28593" placeholder="UPDATE KH_BA..." />
-            <marker date="1443368137938" expanded="true" signature="29586:29650" placeholder="SELECT BANNE..KH_BANNER..." />
-            <marker date="1443368137938" expanded="true" signature="29789:29856" placeholder="SELECT BANNE..KH_BANNER..." />
-            <marker date="1443368137938" expanded="true" signature="30119:30179" placeholder="UPDATE KH_BA..." />
-            <marker date="1443368137938" expanded="true" signature="30428:30485" placeholder="UPDATE KH_BA..." />
-            <marker date="1443368137938" expanded="true" signature="30876:30938" placeholder="UPDATE KH_BA..." />
-            <marker date="1443368137938" expanded="true" signature="33073:33151" placeholder="SELECT MAX(N..KH_NEWS..." />
-            <marker date="1443368137938" expanded="true" signature="33621:33722" placeholder="INSERT INTO ..." />
-            <marker date="1443368137938" expanded="true" signature="34489:34571" placeholder="UPDATE KH_NE..." />
-            <marker date="1443368137938" expanded="true" signature="35683:35803" placeholder="INSERT INTO ..." />
-            <marker date="1443368137938" expanded="true" signature="36212:36268" placeholder="SELECT NEWS_..KH_NEWS..." />
-            <marker date="1443368137938" expanded="true" signature="36407:36466" placeholder="SELECT NEWS_..KH_NEWS..." />
-            <marker date="1443368137938" expanded="true" signature="36727:36781" placeholder="UPDATE KH_NE..." />
-            <marker date="1443368137938" expanded="true" signature="37028:37079" placeholder="UPDATE KH_NE..." />
-            <marker date="1443368137938" expanded="true" signature="37468:37527" placeholder="UPDATE KH_NE..." />
+            <element signature="e#4993#5162#0#PHP" expanded="false" />
+            <element signature="e#5168#5482#0#PHP" expanded="false" />
+            <element signature="e#5488#5692#0#PHP" expanded="false" />
+            <element signature="e#5698#6503#0#PHP" expanded="false" />
+            <element signature="e#6509#7263#0#PHP" expanded="false" />
+            <element signature="e#7785#9546#0#PHP" expanded="false" />
+            <element signature="e#9552#10024#0#PHP" expanded="false" />
+            <element signature="e#10030#11399#0#PHP" expanded="false" />
+            <element signature="e#11405#12847#0#PHP" expanded="false" />
+            <element signature="e#12853#13072#0#PHP" expanded="false" />
+            <element signature="e#13078#13563#0#PHP" expanded="false" />
+            <element signature="e#13569#13822#0#PHP" expanded="false" />
+            <marker date="1443538791653" expanded="true" signature="1578:1749" placeholder="SELECT NEWS_..KH_NEWS..." />
+            <marker date="1443538791653" expanded="true" signature="23488:23582" placeholder="insert into ..." />
+            <marker date="1443538791653" expanded="true" signature="25852:25980" placeholder="UPDATE KH_BA..." />
+            <marker date="1443538791653" expanded="true" signature="26927:27020" placeholder="UPDATE KH_BA..." />
+            <marker date="1443538791653" expanded="true" signature="28554:28635" placeholder="SELECT MAX(B..KH_BANNER..." />
+            <marker date="1443538791653" expanded="true" signature="29022:29121" placeholder="INSERT INTO ..." />
+            <marker date="1443538791653" expanded="true" signature="29894:29967" placeholder="UPDATE KH_BA..." />
+            <marker date="1443538791653" expanded="true" signature="30960:31024" placeholder="SELECT BANNE..KH_BANNER..." />
+            <marker date="1443538791653" expanded="true" signature="31163:31230" placeholder="SELECT BANNE..KH_BANNER..." />
+            <marker date="1443538791653" expanded="true" signature="31493:31553" placeholder="UPDATE KH_BA..." />
+            <marker date="1443538791653" expanded="true" signature="31802:31859" placeholder="UPDATE KH_BA..." />
+            <marker date="1443538791653" expanded="true" signature="32250:32312" placeholder="UPDATE KH_BA..." />
+            <marker date="1443538791653" expanded="true" signature="34447:34525" placeholder="SELECT MAX(N..KH_NEWS..." />
+            <marker date="1443538791653" expanded="true" signature="34995:35096" placeholder="INSERT INTO ..." />
+            <marker date="1443538791653" expanded="true" signature="35863:35945" placeholder="UPDATE KH_NE..." />
+            <marker date="1443538791653" expanded="true" signature="37057:37177" placeholder="INSERT INTO ..." />
+            <marker date="1443538791653" expanded="true" signature="37586:37642" placeholder="SELECT NEWS_..KH_NEWS..." />
+            <marker date="1443538791653" expanded="true" signature="37781:37840" placeholder="SELECT NEWS_..KH_NEWS..." />
+            <marker date="1443538791653" expanded="true" signature="38101:38155" placeholder="UPDATE KH_NE..." />
+            <marker date="1443538791653" expanded="true" signature="38402:38453" placeholder="UPDATE KH_NE..." />
+            <marker date="1443538791653" expanded="true" signature="38842:38901" placeholder="UPDATE KH_NE..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MemberController.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/branch.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6282195">
-          <caret line="342" column="39" selection-start-line="342" selection-start-column="39" selection-end-line="342" selection-end-column="39" />
+        <state vertical-scroll-proportion="-9.807693">
+          <caret line="15" column="41" selection-start-line="15" selection-start-column="41" selection-end-line="15" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/contact/contact.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.769231">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="20" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/home/home.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.32448035">
+          <caret line="57" column="19" selection-start-line="57" selection-start-column="19" selection-end-line="57" selection-end-column="19" />
           <folding />
         </state>
       </provider>

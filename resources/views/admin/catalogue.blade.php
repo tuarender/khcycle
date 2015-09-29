@@ -1,10 +1,12 @@
 @extends('admin.admin')
 @section('adminContent')
+
+    @include('admin.partials.adminSubHeader')
 <div class="adminContainer">
     <div class="col-md-10 col-lg-10">
         <div class="container">
-            {{$name}}
-            <hr style='width:100%;margin:15px 0px;border-color:#E7E7E7'>
+            {{--{{$name}}--}}
+            {{--<hr style='width:100%;margin:15px 0px;border-color:#E7E7E7'>--}}
         </div>
         <div class="sessionContainer" style="width: 90%">
             Log in as:{{ Session::get('user')->KH_MEMBER_LOGIN_USERNAME }} <a href="logout">ออกจากระบบ</a>
@@ -31,10 +33,11 @@
                         <td>
                             {{--<button onclick="getSetting('catalogue/edit/{{ $catalogue['CATALOGUE_ID'] }}',true)" class="btn btn-warning"><span class='glyphicon glyphicon-edit' aria-hidden='true'></span> แก้ไข</button> &nbsp;&nbsp;--}}
                             <a href="admin/catalogue/edit/{{$catalogue['CATALOGUE_ID']}}" class="btn btn-warning" ><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> แก้ไข </a>
-                            <a href="admin/catalogue/delete/{{$catalogue['CATALOGUE_ID']}}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?');">
+                            {{--<a href="admin/catalogue/delete/{{$catalogue['CATALOGUE_ID']}}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?');">--}}
+                                {{--<span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> ลบ </a>--}}
+
+                            <a href='#' data-href="admin/catalogue/delete/{{$catalogue['CATALOGUE_ID']}}" class="btn btn-danger" data-toggle='modal' data-target='#confirm-delete'>
                                 <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> ลบ </a>
-                            {{--<button id="catalogue/delete/{{ $catalogue['CATALOGUE_ID'] }}" onclick="getSetting(this.id)" class="btn btn-danger">--}}
-                                {{--<span class='glyphicon glyphicon-remove-sign' aria-hidden='true'></span> ลบ</button></td>--}}
                         {{-- */$i++;/* --}}
                     </tr>
                     @endforeach

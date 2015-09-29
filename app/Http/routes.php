@@ -108,3 +108,4 @@ Route::post('admin/news/news','AdminController@newsAdd');
 Route::post('admin/news/news/{id}','AdminController@newsUpdate');
 Route::post('admin/product/brand','AdminController@brandUpdate');
 Route::post('admin/product/brand/{id?}','AdminController@brandUpdate');
+Route::post('admin/member','AdminController@getMember');

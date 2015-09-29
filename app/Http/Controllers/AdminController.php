@@ -83,10 +83,46 @@ class AdminController extends Controller
                 ->with('name',$name);
     }
 
-    public function getMember(){
-        $data =  $this->listmember();
+    public function getMember(Request $request)
+    {
+        if($request->isMethod('post'))
+        {
+            if($request->has('sch_name'))
+            {
+                $name = '%'.$request->input('sch_name').'%';
+            }else{
+                $name = '%';
+            }
+            if($request->has('sch_tel'))
+            {
+                $tel = '%'.$request->input('sch_tel').'%';
+            }else{
+                $tel = '%';
+            }
+            $data = DB::table('KH_MEMBER_LOGIN AS login ')
+                ->leftjoin('KH_INFORMATION AS info','login.ID','=','info.KH_INFORMATION_MEMBER')
+                ->leftjoin('KH_CONTACT AS contact','login.ID','=','contact.KH_CONTACT_MEMBER')
+                ->select(
+                    'login.ID',
+                    'login.KH_MEMBER_LOGIN_USERNAME',
+                    'contact.KH_CONTACT_NAME',
+                    'contact.KH_CONTACT_EMAIL',
+                    'contact.KH_CONTACT_TEL',
+                    'info.KH_INFORMATION_HEIGHT',
+                    'info.KH_INFORMATION_WEIGHT',
+                    'info.KH_INFORMATION_SHOE',
+                    'contact.KH_CONTACT_ADDR')
+                ->where('login.KH_MEMBER_RULE','<>','ADMIN')
+                ->where('contact.KH_CONTACT_NAME','like',$name)
+                ->where('contact.KH_CONTACT_TEL','like',$tel)
+                ->get();
+        }
+        else{
+            $data =  $this->listmember();
+        }
         $menu = "ADMIN SETTING";
         return view('admin.member',['name'=>$menu,'data'=>$data]);
+
     }
 
     public function getCatalogue(){

@@ -18,7 +18,8 @@ class HomeController extends Controller
         $catalogue = DB::select($sqlCatalouge);
         $brand = DB::select($sqlBrand);
         $banners = DB::select($sqlBanner);
+        $contact = DB::table('KH_CONTACTUS')->get();
 
-        return view('home.home', ['brand' => $brand,'catalogue' => $catalogue,'banners' => $banners ]);
+        return view('home.home', ['brand' => $brand,'catalogue' => $catalogue,'banners' => $banners ,'contact'=>$contact ]);
     }
 }
