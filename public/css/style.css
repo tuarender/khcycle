@@ -142,7 +142,7 @@ div.brand{
 .subheaderContainer label{
 	padding-left: 20px;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size: 20px;
+	font-size: 18px;
 	vertical-align: bottom;
 }
 .sessionContainer{
@@ -152,7 +152,7 @@ div.brand{
 }
 .subheaderContact label{
 	font-family: CSChatThai !important;
-	font-size: 26px;
+	font-size: 22px;
 	line-height: 32px;
 }
 .contactContainer{
@@ -542,7 +542,7 @@ div.newsEnd{
 		float: right;
 	}
 	.productMain,.adminMain{
-		max-width: 80%;
+		max-width: 85%;
 	}
 	.tag{
 		color:#FFFFFF;
@@ -584,7 +584,7 @@ div.newsEnd{
 
 @media screen and (min-width: 992px) {
 	.productMain,.adminMain{
-		max-width: 75%;
+		max-width: 80%;
 	}
 	div.detail >div{
 		width: 90%;

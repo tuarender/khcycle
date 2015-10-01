@@ -7,7 +7,7 @@
 ?>
 <div class="adminMain container-fluid" style="">
 	<div class="row">
-		<div class="col-sm-2 col-lg-2">
+		<div class="col-sm-3 col-lg-3 col-lg-2">
 			<div class="adminMenuSubheader">
 				<span>Setting</span>
 				<hr style='width:100%;margin:10px 0px;border-color:#D7D7D7'>
@@ -31,7 +31,7 @@
 				<a href="admin/catalogue" class="btn-block btn-default btn-lg">Catalogue Setting</a>
 			</div>
 		</div>
-		<div id="adminDetail" class="col-sm-10 col-lg-10 adminDetailContainer" style="text-align:left">
+		<div id="adminDetail" class="col-sm-9 col-md-9 col-lg-10 adminDetailContainer" style="text-align:left">
 		@yield('adminContent')
 		</div>
 	</div>

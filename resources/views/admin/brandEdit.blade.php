@@ -45,23 +45,6 @@
                 <p class="help-block">{{$errors->first('bannerImage')}}</p>@endif
 			</div>
 		</div>
-		<div class="form-group">
-            <label for="url" class="col-sm-3 control-label">หมวดหมู่</label>
-            <div id="groupDiv" class="col-sm-5" style="padding-top:10px">
-            	<ul class="adminGroupList">
-            		<li>All</li>
-<?
-	if(isset($dataGroup)){
-		foreach ($dataGroup as $group) {
-
-			echo "<li>".$group['GROUP_NAME']."&nbsp;&nbsp;<a href='admin/product/deleteGroup/".$group['GROUP_ID']."'><span class='glyphicon glyphicon-remove' ></span>ลบ</a></li>";
-		}
-	}
-?>
-					
-				</ul>
-            </div>
-        </div>
         <div class="form-group">
             <div class="col-sm-6 col-sm-offset-4">
                 <button type="submit" class="btn btn-primary btnKhcycle">

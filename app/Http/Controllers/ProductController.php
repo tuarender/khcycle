@@ -15,7 +15,7 @@ class ProductController extends Controller
 {
 
     public function index($brandId=null){
-        $sql = "SELECT BRAND_ID,BRAND_ORDER,BRAND_NAME,BRAND_LOGO_NAME,BRAND_LOGO_EXT FROM KH_BRAND WHERE BRAND_DELETE_STATUS <> 1 ORDER BY BRAND_ORDER";
+        $sql = "SELECT BRAND_ID,BRAND_ORDER,BRAND_NAME,BRAND_LOGO_NAME,BRAND_LOGO_EXT FROM KH_BRAND WHERE BRAND_DELETE_STATUS <> 1 ORDER BY BRAND_ORDER DESC";
         $brand = DB::select($sql);
 
         return view('product.product', ['brand' => $brand,'brandId' => $brandId,'name' => "Product"]);
@@ -40,7 +40,7 @@ class ProductController extends Controller
 
         //Order
         $sqlGroup.=" ORDER BY GROUP_NAME";
-        $sqlProduct.=" ORDER BY PRODUCT_ORDER,PRODUCT_NAME";
+        $sqlProduct.=" ORDER BY PRODUCT_ORDER DESC,PRODUCT_NAME";
 
         //execute
         $groups = DB::select($sqlGroup,$groupQueryParam);

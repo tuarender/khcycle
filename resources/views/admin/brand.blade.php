@@ -11,7 +11,8 @@
     @include('partials.flashmessage')
     <div class="row">
         <div class='col-xs-12' style="text-align:right">
-        <a href="admin/product/brand" class="btn btn-primary btn-sm disabled"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> เพิ่มแบรนด์สินค้า</a>
+        <a href="admin/product/brand" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> เพิ่มแบรนด์สินค้า</a>
+        <a href="admin/product/group" class="btn btn-info btn-sm"><span class="glyphicon glyphicon glyphicon-th-list" aria-hidden="true"></span> จัดการกลุ่มสินค้า</a>
         </div>
     </div>
 <?php
@@ -46,7 +47,7 @@
             echo "<td class='tdCenter'><a href='admin/product/productOf/".$data[$i]['BRAND_ID']."' class='btn btn-primary btn-sm'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span> กดเพื่อจัดการสินค้า</a></td>";
             echo "<td class='tdCenter'>";
             echo "<div class='btn-group' role='group'>";
-            echo "  <a href='admin/product/brand/".$data[$i]['BRAND_ID']."' class='btn btn-warning disabled'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span> แก้ไข</a>";
+            echo "  <a href='admin/product/brand/".$data[$i]['BRAND_ID']."' class='btn btn-warning'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span> แก้ไข</a>";
             echo "  <a  href='#'' data-href='admin/product/deleteBrand/".$data[$i]['BRAND_ID']."' class='btn btn-danger' data-toggle='modal' data-target='#confirm-delete'><span class='glyphicon glyphicon-remove-sign' aria-hidden='true'></span> ลบ</a>";
             echo "</div>";
             echo "</td>";

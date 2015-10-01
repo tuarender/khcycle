@@ -155,7 +155,7 @@ class AdminController extends Controller
         //edit case
         if($id!=null){
             $data = $this->getBrandById($id);
-            $dataGroup = $this->getGroupByBrandId($id);
+            //$dataGroup = $this->getGroupByBrandId($id);
             $name = 'Home Setting->แก้ไขข้อมูลแบรนด์สินค้า';
         }
         
@@ -1141,6 +1141,70 @@ class AdminController extends Controller
         $deleteParam = array($id);
         DB::update($sqlDelete,$deleteParam);
         return redirect('admin/news');
+    }
+
+    public function brandAdd(Request $request){
+        $rules=[
+            'brandName'=>'required',
+            'brandImage'=>'required|image|max:1024',
+        ];
+        $messages = [
+            'brandName.required'=>'กรุณาระบุประเภทของแบนเนอร์',
+            'brandImage.required'=>'กรุณาระบุภาพ',
+            'brandImage.image'=>'กรุณาระบุประเภทของรูปภาพให้ถูกต้อง',
+            'brandImage.max'=>'ขนาดของรูปภาพต้องไม่เกิน 1MB',
+        ];
+
+        $validator = Validator::make($request->all(),$rules,$messages);
+        if($validator->fails()){
+            Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาตรวจสอบ');
+            return redirect('admin/product/brand')->withErrors($validator)->withInput();
+        }else {
+            $file = Input::file('brandImage');
+            $brandName = $request->input('brandName');
+            if ($file!=null&&$file->isValid()) {
+                /** DO INSERT FIRST **/
+                //getMaxOrder
+                $sqlMaxOrder = "SELECT MAX(BRAND_ORDER) AS MAX_ORDER FROM KH_BRAND WHERE BRAND_DELETE_STATUS <> 1";
+                $dataMaxOrder = DB::select($sqlMaxOrder);
+                $maxOrder = 0;
+                if(count($sqlMaxOrder)>0){
+                    $maxOrder = $dataMaxOrder[0]['MAX_ORDER']+1;
+                }
+
+                //insert
+                $sqlInsert = "INSERT INTO KH_BRAND(BRAND_ORDER,BRAND_NAME) VALUES(?,?)";
+                $insertParam = array($maxOrder,$brandName);
+                DB::insert($sqlInsert,$insertParam);
+                $id = DB::getPdo()->lastInsertId();
+                if($id>0){
+                    $destinationPath = self::BRAND_PATH; 
+                    $extension = $file->getClientOriginalExtension(); 
+                    $fileName = rand(11111,99999)."_".$id; 
+                    $fileNameFull = $fileName.".".$extension;
+                    $fileMoved = $file->move($destinationPath, $fileNameFull);
+                    if (File::exists($fileMoved->getRealPath())){
+                        $sqlUpdate = "UPDATE KH_BRAND SET BRAND_LOGO_NAME=?, BRAND_LOGO_EXT=? WHERE BRAND_ID=?";
+                        $updateParam = array($fileName,$extension,$id);
+                        $data = DB::update($sqlUpdate,$updateParam);
+                        Session::flash('alert-success', 'บันทึกข้อมูลสำเร็จ ');
+                        return redirect('admin/product/');
+                    }
+                    else{
+                        Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาติดต่อผู้ดูแลระบบ');
+                        return redirect('admin/product');
+                    }
+                }
+                else{
+                    Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาติดต่อผู้ดูแลระบบ');
+                    return redirect('admin/product');
+                }
+            }
+            else {
+                Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาติดต่อผู้ดูแลระบบ');
+                return redirect('admin/product');
+            }
+        }
     }
 
     public function brandUpdate(Request $request,$id){
