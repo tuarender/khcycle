@@ -641,7 +641,7 @@ div.newsEnd{
 }
 .tableAdmin .tdCenter{
 	text-align: center;
-	vertical-align: middle;
+	/*vertical-align: middle;*/
 }
 .tableAdmin .tdGryph{
 	font-size: 20px;

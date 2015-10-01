@@ -144,8 +144,18 @@ class AdminController extends Controller
     public function getBrand(){
         $sql = "SELECT BRAND_ID,BRAND_NAME, BRAND_ORDER FROM KH_BRAND WHERE BRAND_DELETE_STATUS <> 1 ORDER BY BRAND_ORDER DESC, BRAND_CREATE_DATE_TIME DESC";
         $data = DB::select($sql);
+        $sqlGroup = "SELECT GROUP_ID,GROUP_NAME FROM KH_GROUP WHERE GROUP_DELETE_STATUS <> 1 ORDER BY GROUP_NAME";
+        $dataGroup = DB::select($sqlGroup);
+        for($i=0;$i<count($data);$i++){
+            $sqlGroupList = "SELECT A.GROUP_ID,GROUP_NAME FROM KH_GROUP A,KH_BRAND_GROUP B WHERE A.GROUP_ID = B.GROUP_ID AND B.BRAND_ID = ? AND GROUP_DELETE_STATUS <> 1 ORDER BY GROUP_NAME";
+            $queryParam = array($data[$i]['BRAND_ID']);
+            $groupData = DB::select($sqlGroupList,$queryParam);
+            if(count($groupData)>0){
+                $data[$i]['GROUP_LIST'] = $groupData;
+            }
+        }
         $menu = "Product Setting";
-        return view('admin.brand',['name'=>$menu,'data'=>$data]);
+        return view('admin.brand',['name'=>$menu,'data'=>$data,'dataGroup'=>$dataGroup]);
     }
 
     public function getBrandEdit($id=null){
@@ -888,9 +898,7 @@ class AdminController extends Controller
                 Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาติดต่อผู้ดูแลระบบ');
                 return redirect('admin/home/');
             }
-
         }
-
     }
 
     function orderBanner($id,$order){
@@ -1292,6 +1300,20 @@ class AdminController extends Controller
         $sqlDelete = "UPDATE KH_BRAND SET BRAND_DELETE_STATUS = 1 WHERE BRAND_ID = ?";
         $deleteParam = array($id);
         DB::update($sqlDelete,$deleteParam);
+        return redirect('admin/product');
+    }
+
+    function addGroupToBrand($idBrand,$idGroup){
+        $sqlAdd = "INSERT INTO KH_BRAND_GROUP(BRAND_ID,GROUP_ID) VALUES(?,?)";
+        $queryParam = array($idBrand,$idGroup);
+        DB::insert($sqlAdd,$queryParam);
+        return redirect('admin/product');
+    }
+
+    function deleteGroupFromBrand($idBrand,$idGroup){
+        $sqlDelete = "DELETE FROM KH_BRAND_GROUP WHERE BRAND_ID = ? AND GROUP_ID = ?";
+        $deleteParam = array($idBrand,$idGroup);
+        DB::delete($sqlDelete,$deleteParam);
         return redirect('admin/product');
     }
 

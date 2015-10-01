@@ -79,12 +79,15 @@ Route::get('admin/branch','AdminController@getBranch');
 Route::get('admin/branch/edit','AdminController@branchEdit');
 Route::get('admin/branch/edit/{id?}','AdminController@branchEdit');
 Route::get('admin/branch/delete/{id}','AdminController@branchDelete');
+//add
+Route::get('admin/product/addGroupToBrand/{idBrand}/{IdGroup}','AdminController@addGroupToBrand');
 //delete
 Route::get('admin/home/deleteBanner/{id}','AdminController@deleteBanner');
 Route::get('admin/news/deleteNews/{id}','AdminController@deleteNews');
 Route::get('admin/product/deleteBrand/{id}','AdminController@deleteBrand');
 Route::get('admin/product/deleteProduct/{idBrand}/{id}','AdminController@deleteProduct');
 Route::get('admin/product/deleteGroup/{id}','AdminController@deleteGroup');
+Route::get('admin/product/removeGroupFromBrand/{idBrand}/{idGroup}','AdminController@deleteGroupFromBrand');
 //move
 Route::get('admin/home/moveBanner/order/{id}/{order}','AdminController@orderBanner');
 Route::get('admin/news/moveNews/order/{id}/{order}','AdminController@orderNews');
