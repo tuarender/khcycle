@@ -93,6 +93,7 @@ Route::get('admin/home/moveBanner/order/{id}/{order}','AdminController@orderBann
 Route::get('admin/news/moveNews/order/{id}/{order}','AdminController@orderNews');
 Route::get('admin/product/moveBrand/order/{id}/{order}','AdminController@orderBrand');
 Route::get('admin/product/moveProduct/order/{idBrand}/{id}/{order}','AdminController@orderProduct');
+Route::get('admin/catalogue/moveCatalogue/order/{id}/{order}','AdminController@orderCatalogue');
 //--post
 Route::post('postcontact','AdminController@postContact');
 Route::post('listmember','AdminController@listmember');

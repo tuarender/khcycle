@@ -128,6 +128,7 @@ class AdminController extends Controller
     public function getCatalogue(){
         $data =  DB::table('KH_CATALOGUE')
             ->where('CATALOGUE_DELETE_STATUS','<>','1')
+            ->orderBy('CATALOGUE_ORDER','desc')
             ->get();
         $menu ="CATALOGUE SETTING";
         return view('admin.catalogue',['name'=>$menu,'data'=>$data]);
@@ -697,6 +698,14 @@ class AdminController extends Controller
             Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาตรวจสอบ');
             return redirect('admin/catalogue/edit/')->withErrors($validator)->withInput();
         }else{
+
+            $maxorder = DB::table('KH_CATALOGUE')
+                ->where('CATALOGUE_DELETE_STATUS','<>','1')
+                ->select('CARALOGUE_ORDER')
+                ->max('CATALOGUE_ORDER');
+
+            $maxorder +=1;
+
             $namecatalogue = $request->input('CATALOGUE_NAME');
 
             if(Input::hasFile('filecover'))
@@ -735,7 +744,7 @@ class AdminController extends Controller
             }else{
                 $pathpdf='';
             }
-            $sqlcommand = DB::insert('insert into KH_CATALOGUE (CATALOGUE_NAME,CATALOGUE_COVER_PIC,CATALOGUE_PATH_PDF) value (?,?,?)',[$namecatalogue,$pathpic,$pathpdf]);
+            $sqlcommand = DB::insert('insert into KH_CATALOGUE (CATALOGUE_NAME,CATALOGUE_COVER_PIC,CATALOGUE_PATH_PDF,CATALOGUE_ORDER) value (?,?,?,?)',[$namecatalogue,$pathpic,$pathpdf,$maxorder]);
             Session::flash('alert-success', 'อัพเดตเรียบร้อย');
             return redirect('admin/catalogue/');
         }
@@ -1355,6 +1364,38 @@ class AdminController extends Controller
         $deleteParam = array($id);
         DB::update($sqlDelete,$deleteParam);
         return redirect('admin/product/productOf/'.$idBrand);
+    }
+
+    function orderCatalogue($id,$order)
+    {
+
+        $sql = "SELECT CATALOGUE_ID,CATALOGUE_ORDER FROM KH_CATALOGUE WHERE CATALOGUE_ID = ?";
+        $queryParam = array($id);
+        $data = DB::select($sql,$queryParam);
+
+        if(count($data)>0){
+            $sqlReplace = "SELECT CATALOGUE_ID,CATALOGUE_ORDER FROM KH_CATALOGUE WHERE CATALOGUE_ORDER = ?";
+            $queryReplaceParam = array($order);
+            $dataReplace = DB::select($sqlReplace,$queryReplaceParam);
+            if(count($dataReplace)==1){
+                //replace after order with current brand order
+                $sqlUpdateReplace = "UPDATE KH_CATALOGUE SET CATALOGUE_ORDER = ? WHERE CATALOGUE_ID = ?";
+                $updateReplaceParam = array($data[0]['CATALOGUE_ORDER'],$order);
+                DB::update($sqlUpdateReplace,$updateReplaceParam);
+
+                //update current brand with specific order order
+                $sqlUpdateOder = "UPDATE KH_CATALOGUE SET CATALOGUE_ORDER = ? WHERE CATALOGUE_ID = ?";
+                $updateCurrentParam = array($order,$id);
+                DB::update($sqlUpdateOder,$updateCurrentParam);
+                return redirect('admin/catalogue');
+            }
+            else{
+                return redirect('home');
+            }
+        }
+        else{
+            return redirect('home');
+        }
     }
 
 }

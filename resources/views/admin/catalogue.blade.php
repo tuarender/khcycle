@@ -25,17 +25,21 @@
                         <th class="text-center" width="20%">จัดการ CATALOGUE</th>
                     </tr>
                     {{-- */$i=1;/* --}}
+                    {{-- */$count=count($data);/* --}}
                     @foreach($data as $catalogue)
                     <tr>
-                        <td></td>
+                        <td>
+                        @if($i!=1)
+                            <a href='admin/catalogue/moveCatalogue/order/{{$catalogue['CATALOGUE_ID']."/".$catalogue['CATALOGUE_ORDER']}}'><div><span class='glyphicon glyphicon-chevron-up' aria-hidden='true'></span></div></a>
+                            @endif
+                            @if($i!=count($data))
+                                <a href='admin/catalogue/moveCatalogue/order/{{$catalogue['CATALOGUE_ID']."/".$catalogue['CATALOGUE_ORDER']}}'><div><span class='glyphicon glyphicon-chevron-down' aria-hidden='true'></span></div></a>
+                            @endif
+                        </td>
                         <td>{{ $i }}</td>
                         <td>{{$catalogue['CATALOGUE_NAME']}}</td>
                         <td>
-                            {{--<button onclick="getSetting('catalogue/edit/{{ $catalogue['CATALOGUE_ID'] }}',true)" class="btn btn-warning"><span class='glyphicon glyphicon-edit' aria-hidden='true'></span> แก้ไข</button> &nbsp;&nbsp;--}}
-                            <a href="admin/catalogue/edit/{{$catalogue['CATALOGUE_ID']}}" class="btn btn-warning" ><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> แก้ไข </a>
-                            {{--<a href="admin/catalogue/delete/{{$catalogue['CATALOGUE_ID']}}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?');">--}}
-                                {{--<span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> ลบ </a>--}}
-
+                             <a href="admin/catalogue/edit/{{$catalogue['CATALOGUE_ID']}}" class="btn btn-warning" ><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> แก้ไข </a>
                             <a href='#' data-href="admin/catalogue/delete/{{$catalogue['CATALOGUE_ID']}}" class="btn btn-danger" data-toggle='modal' data-target='#confirm-delete'>
                                 <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> ลบ </a>
                         {{-- */$i++;/* --}}
