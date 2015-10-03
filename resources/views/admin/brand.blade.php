@@ -51,9 +51,11 @@
             echo "<td class=''>";
             if(isset($data[$i]['GROUP_LIST'])){
                 echo "<div class='form-group'>";
-                echo "<ul style='list-style-type:none'>";
+                echo "<ul class='list-group' style='text-align:right'>";
                 foreach ($data[$i]['GROUP_LIST'] as $selectedGroup) {
-                    echo "<li>".$selectedGroup['GROUP_NAME']." <a href='admin/product/removeGroupFromBrand/".$data[$i]['BRAND_ID']."/".$selectedGroup['GROUP_ID']."' style='color:#c9302c'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span> ลบ</a></li>";
+                    echo "<li class='list-group-item'>".$selectedGroup['GROUP_NAME'];
+                    echo " <a href='#'' data-href='admin/product/removeGroupFromBrand/".$data[$i]['BRAND_ID']."/".$selectedGroup['GROUP_ID']."' style='color:#c9302c' data-toggle='modal' data-target='#confirm-delete'>";
+                    echo "<span class='glyphicon glyphicon-remove' aria-hidden='true'></span> ลบ</a></li>";
                     array_push($selectedGroupArray, $selectedGroup['GROUP_ID']);
                 }
                 echo "</ul>";
@@ -82,7 +84,7 @@
             echo "<td class='tdCenter'>";
             echo "<div class='btn-group' role='group'>";
             echo "  <a href='admin/product/brand/".$data[$i]['BRAND_ID']."' class='btn btn-warning'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span> แก้ไข</a>";
-            echo "  <a  href='#'' data-href='admin/product/deleteBrand/".$data[$i]['BRAND_ID']."' class='btn btn-danger' data-toggle='modal' data-target='#confirm-delete'><span class='glyphicon glyphicon-remove-sign' aria-hidden='true'></span> ลบ</a>";
+            echo "  <a data-title='ข้อมูลสินค้าภายใต้แบรนด์ดังกล่าวจะถูกลบออกจากระบบ คุณแน่ใจหรือไม่?' href='#'' data-href='admin/product/deleteBrand/".$data[$i]['BRAND_ID']."' class='btn btn-danger' data-toggle='modal' data-target='#confirm-delete'><span class='glyphicon glyphicon-remove-sign' aria-hidden='true'></span> ลบ</a>";
             echo "</div>";
             echo "</td>";
             echo "</tr>";
@@ -100,15 +102,4 @@
         echo "error occered";
     }
 ?>
-@endsection
-@section('scripts')
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $('.selectGroup').change(function(){
-                if($(this).val()){
-                    window.location.href = 'admin/product/addGroupToBrand/'+$(this).val();
-                }
-            });
-        });
-    </script>
 @endsection
