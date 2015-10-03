@@ -30,10 +30,10 @@
                     <tr>
                         <td>
                         @if($i!=1)
-                            <a href='admin/catalogue/moveCatalogue/order/{{$catalogue['CATALOGUE_ID']."/".$catalogue['CATALOGUE_ORDER']}}'><div><span class='glyphicon glyphicon-chevron-up' aria-hidden='true'></span></div></a>
+                            <a href='admin/catalogue/moveCatalogue/order/{{$catalogue['CATALOGUE_ID']."/".($catalogue['CATALOGUE_ORDER']+1)}}'><div><span class='glyphicon glyphicon-chevron-up' aria-hidden='true'></span></div></a>
                             @endif
                             @if($i!=count($data))
-                                <a href='admin/catalogue/moveCatalogue/order/{{$catalogue['CATALOGUE_ID']."/".$catalogue['CATALOGUE_ORDER']}}'><div><span class='glyphicon glyphicon-chevron-down' aria-hidden='true'></span></div></a>
+                                <a href='admin/catalogue/moveCatalogue/order/{{$catalogue['CATALOGUE_ID']."/".($catalogue['CATALOGUE_ORDER']-1)}}'><div><span class='glyphicon glyphicon-chevron-down' aria-hidden='true'></span></div></a>
                             @endif
                         </td>
                         <td>{{ $i }}</td>

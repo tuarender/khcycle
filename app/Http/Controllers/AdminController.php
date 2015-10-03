@@ -1445,7 +1445,6 @@ class AdminController extends Controller
         $sql = "SELECT CATALOGUE_ID,CATALOGUE_ORDER FROM KH_CATALOGUE WHERE CATALOGUE_ID = ?";
         $queryParam = array($id);
         $data = DB::select($sql,$queryParam);
-
         if(count($data)>0){
             $sqlReplace = "SELECT CATALOGUE_ID,CATALOGUE_ORDER FROM KH_CATALOGUE WHERE CATALOGUE_ORDER = ?";
             $queryReplaceParam = array($order);
@@ -1453,7 +1452,7 @@ class AdminController extends Controller
             if(count($dataReplace)==1){
                 //replace after order with current brand order
                 $sqlUpdateReplace = "UPDATE KH_CATALOGUE SET CATALOGUE_ORDER = ? WHERE CATALOGUE_ID = ?";
-                $updateReplaceParam = array($data[0]['CATALOGUE_ORDER'],$order);
+                $updateReplaceParam = array($data[0]['CATALOGUE_ORDER'],$dataReplace[0]['CATALOGUE_ID']);
                 DB::update($sqlUpdateReplace,$updateReplaceParam);
 
                 //update current brand with specific order order
