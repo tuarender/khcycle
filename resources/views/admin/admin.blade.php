@@ -41,6 +41,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4>ยืนยันการลบข้อมูล</h4>
+                <div id="deleteContent" style="display:none"></div>
             </div>
             <div class="modal-body" style="text-align:right">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
@@ -54,60 +55,22 @@
     <script type="text/javascript">
     	$(document).ready(function(){
     		$('#confirm-delete').on('show.bs.modal', function(e) {
+    			//console.log($(e.relatedTarget).data('title'));
+    			if($(e.relatedTarget).data('title')){
+    				$('#deleteContent').html($(e.relatedTarget).data('title')).show();
+    			}
+    			else{
+    				$('#deleteContent').hide();
+    			}
             	$(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
         	});
-/*    		if($('#page').length!=0){
-    			getSetting($('#page').val());
-    		}
-    		$('.adminMain').fadeIn('2000',function(){
-    			$('#footer').fadeIn('slow');
-    		});*/
+
+        	$('.selectGroup').change(function(){
+                if($(this).val()){
+                    window.location.href = 'admin/product/addGroupToBrand/'+$(this).val();
+                }
+            });
 		});
-
-		function getSetting(page ,isMainPage){
-
-			isMainPage = typeof isMainPage !== 'undefined'? isMainPage:false;
-			var url = "admin/setting/"+page;
-
-			if(!isMainPage){
-				if($('#'+page).length!=0){
-					$('.btn-block').removeClass("active");
-					$('#'+page).addClass("active");
-				}
-			}
-			$('#page').val(page);
-			$('#adminDetail').fadeOut(300,function(){
-				$.ajax({
-					url: url, 
-					success: function(result){
-						if(result){
-							$('#adminDetail').html(result).fadeIn(800);
-						}
-			    	}
-				});
-			});
-		}
-
-		function callSubmit(formId){
-		    $('#adminDetail').fadeOut(300,function(){
-		    	console.log($('#'+formId).serialize());
-			    $.ajax({
-			        type: "POST",
-			        url: $('#'+formId).attr('action'),
-			        data: $('#'+formId).serialize()+"&page=" + $('#page').val(),
-			        enctype: 'multipart/form-data',
-			        success: function( result ) {
-			        	if(result){
-							$('#adminDetail').html(result).fadeIn(800);
-						}
-			        }
-			    });
-		    });
-		}
-
-		function callDelete(url){
-
-		}
 
     </script>
 @endsection

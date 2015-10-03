@@ -176,6 +176,23 @@ class AdminController extends Controller
                 ->with('name',$name);
     }
 
+    public function getGroupSetting(){
+        $sqlGroup = "SELECT GROUP_ID,GROUP_NAME FROM KH_GROUP WHERE GROUP_DELETE_STATUS <> 1 ORDER BY GROUP_NAME";
+        $dataGroup = DB::select($sqlGroup);
+        $menu = "Group Setting";
+        return view('admin.group',['name'=>$menu,'dataGroup'=>$dataGroup]);
+    }
+
+    public function getGroupSettingEdit($id){
+        $sqlSelectedGroup = "SELECT GROUP_ID,GROUP_NAME FROM KH_GROUP WHERE GROUP_DELETE_STATUS <> 1 AND GROUP_ID = ?";
+        $sqlGroup = "SELECT GROUP_ID,GROUP_NAME FROM KH_GROUP WHERE GROUP_DELETE_STATUS <> 1 ORDER BY GROUP_NAME";
+        $queryParam = array($id);
+        $dataSelectedGroup = DB::select($sqlSelectedGroup,$queryParam);
+        $dataGroup = DB::select($sqlGroup);
+        $menu = "Group Setting";
+        return view('admin.group',['name'=>$menu,'data'=>$dataSelectedGroup,'dataGroup'=>$dataGroup]);
+    }
+
     public function getProduct($id){
         $sql = "SELECT PRODUCT_ID,
                     PRODUCT_BRAND_ID,
@@ -187,10 +204,18 @@ class AdminController extends Controller
                     PRODUCT_MIN_EXT,
                     PRODUCT_FULL_FILE_NAME,
                     PRODUCT_FULL_EXT 
-                FROM KH_PRODUCT A,KH_GROUP B
+                FROM KH_PRODUCT A 
+                LEFT JOIN (
+                    SELECT GROUP_NAME,G.GROUP_ID,BRAND_ID 
+                    FROM KH_GROUP G, KH_BRAND_GROUP H
+                    WHERE
+                        G.GROUP_ID = H.GROUP_ID
+                    AND GROUP_DELETE_STATUS <> 1
+                ) B
+                ON A.PRODUCT_GROUP_ID = B.GROUP_ID
+                AND A.PRODUCT_BRAND_ID = B.BRAND_ID
                 WHERE 
-                    A.PRODUCT_GROUP_ID = B.GROUP_ID
-                    AND PRODUCT_BRAND_ID =?
+                    PRODUCT_BRAND_ID =?
                     AND PRODUCT_DELETE_STATUS <> 1 
                 ORDER BY PRODUCT_ORDER DESC, 
                     PRODUCT_CREATE_DATE_TIME DESC";
@@ -1166,7 +1191,7 @@ class AdminController extends Controller
             'brandImage'=>'required|image|max:1024',
         ];
         $messages = [
-            'brandName.required'=>'กรุณาระบุประเภทของแบนเนอร์',
+            'brandName.required'=>'กรุณาระบุชื่อของแบรนด์',
             'brandImage.required'=>'กรุณาระบุภาพ',
             'brandImage.image'=>'กรุณาระบุประเภทของรูปภาพให้ถูกต้อง',
             'brandImage.max'=>'ขนาดของรูปภาพต้องไม่เกิน 1MB',
@@ -1230,7 +1255,7 @@ class AdminController extends Controller
             'brandImage'=>'image|max:1024',
         ];
         $messages = [
-            'brandName.required'=>'กรุณาระบุประเภทของแบนเนอร์',
+            'brandName.required'=>'กรุณาระบุชื่อของแบรนด์',
             'brandImage.image'=>'กรุณาระบุประเภทของรูปภาพให้ถูกต้อง',
             'brandImage.max'=>'ขนาดของรูปภาพต้องไม่เกิน 1MB',
         ];
@@ -1308,7 +1333,9 @@ class AdminController extends Controller
     function deleteBrand($id){
         $sqlDelete = "UPDATE KH_BRAND SET BRAND_DELETE_STATUS = 1 WHERE BRAND_ID = ?";
         $deleteParam = array($id);
+        $sqlDeleteProduct = "UPDATE KH_PRODUCT SET PRODUCT_DELETE_STATUS = 1 WHERE BRAND_ID = ?";
         DB::update($sqlDelete,$deleteParam);
+        DB::update($sqlDeleteProduct,$deleteParam);
         return redirect('admin/product');
     }
 
@@ -1324,6 +1351,52 @@ class AdminController extends Controller
         $deleteParam = array($idBrand,$idGroup);
         DB::delete($sqlDelete,$deleteParam);
         return redirect('admin/product');
+    }
+
+    public function groupAdd(Request $request){
+        $rules=[
+            'groupName'=>'required|max:50'
+        ];
+        $messages = [
+            'brandName.required'=>'กรุณาระบุชื่อของกลุ่ม',
+            'brandName.max'=>'ชื่อของกลุ่มต้องมีความยาวไม่เกิน 50 ตัวอักษร'
+        ];
+
+        $validator = Validator::make($request->all(),$rules,$messages);
+        if($validator->fails()){
+            Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาตรวจสอบ');
+            return redirect('admin/product/group')->withErrors($validator)->withInput();
+        }else {
+            $groupName = $request->input('groupName');
+            $sqlAdd = "INSERT INTO KH_GROUP(GROUP_NAME) VALUES(?)";
+            $addParam = array($groupName);
+            DB::insert($sqlAdd,$addParam);
+            Session::flash('alert-success', 'บันทึกข้อมูลสำเร็จ ');
+            return redirect('admin/product/group');
+        }
+    }
+
+    public function groupUpdate(Request $request,$id){
+        $rules=[
+            'groupName'=>'required|max:50'
+        ];
+        $messages = [
+            'brandName.required'=>'กรุณาระบุชื่อของกลุ่ม',
+            'brandName.max'=>'ชื่อของกลุ่มต้องมีความยาวไม่เกิน 50 ตัวอักษร'
+        ];
+
+        $validator = Validator::make($request->all(),$rules,$messages);
+        if($validator->fails()){
+            Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาตรวจสอบ');
+            return redirect('admin/product/group')->withErrors($validator)->withInput();
+        }else {
+            $groupName = $request->input('groupName');
+            $sqlUpdate = "UPDATE KH_GROUP SET GROUP_NAME = ? WHERE GROUP_ID = ?";
+            $updateParam = array($groupName,$id);
+            DB::update($sqlUpdate,$updateParam);
+            Session::flash('alert-success', 'อัพเดทสำเร็จ ');
+            return redirect('admin/product/group');
+        }
     }
 
     function orderProduct($idBrand,$id,$order){
