@@ -18,7 +18,7 @@
 	echo "</div>";
 	echo "<div class='row'>";
 	if($news[0]['NEWS_IS_YOUTUBE']==0){
-		echo "<img src='images/news/".$news[0]['NEWS_IMAGE_TITLE_NAME'].".".$news[0]['NEWS_IMAGE_TITLE_EXT']."' class='img-responsive imageTitleNews'>";
+		echo "<img onerror='this.src=\"images/news/default.png\"' src='images/news/".$news[0]['NEWS_IMAGE_TITLE_NAME'].".".$news[0]['NEWS_IMAGE_TITLE_EXT']."' class='img-responsive imageTitleNews'>";
 	}
 	else{
 		echo "<div class='videoWrapper'><iframe src='".$news[0]['NEWS_YOUTUBE_URI']."' frameborder='0' allowfullscreen></iframe></div>";

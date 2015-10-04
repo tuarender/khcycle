@@ -1,12 +1,12 @@
 <div class="container-fluid">
     <div class="row adminSubheader">
-        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-4 adminMenuSubheader">
+        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 adminMenuSubheader">
             <span>{{$name}}</span>
         </div>
-        <div class="col-xs-12 col-sm-5 col-md-5 col-lg-4 subheaderContact">
+        <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5 subheaderContact">
             <label>สนใจสินค้าติดต่อ 0-2510-1906</label>
         </div>
-        <div class="col-xs-12 col-sm-5 col-md-5 col-lg-4" style="text-align:right">
+        <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5" style="text-align:right">
             <label>Social Network:</label>
             <a href="https://www.facebook.com/KhcycleThailand" target="_blank" class="btn btn-social-icon btn-facebook">
                 <i class="fa fa-facebook"></i>

@@ -20,8 +20,8 @@ class SearchController extends Controller
     }
 
     public function searchProduct($keyword){
-    	$sqlProduct = "SELECT PRODUCT_ID,PRODUCT_NAME,PRODUCT_MIN_FILE_NAME,PRODUCT_MIN_EXT,PRODUCT_FULL_FILE_NAME,PRODUCT_FULL_EXT FROM KH_PRODUCT WHERE PRODUCT_DELETE_STATUS <> 1 AND PRODUCT_STATUS = 'ACTIVE' AND LOWER(PRODUCT_NAME) LIKE ? ORDER BY PRODUCT_ORDER DESC,PRODUCT_NAME";
-    	$sqlProduct.= " ORDER BY PRODUCT_ORDER,PRODUCT_NAME";
+    	$sqlProduct = "SELECT PRODUCT_ID,PRODUCT_NAME,PRODUCT_MIN_FILE_NAME,PRODUCT_MIN_EXT,PRODUCT_FULL_FILE_NAME,PRODUCT_FULL_EXT FROM KH_PRODUCT WHERE PRODUCT_DELETE_STATUS <> 1 AND PRODUCT_STATUS = 'ACTIVE' AND LOWER(PRODUCT_NAME) LIKE ?";
+    	$sqlProduct.= " ORDER BY PRODUCT_ORDER DESC,PRODUCT_NAME";
     	$productQueryParam = array("%".strtolower($keyword)."%");
     	$products = DB::select($sqlProduct,$productQueryParam);
     	return view('product.searchProductList', ['products' => $products,'keyword'=>$keyword,'sql'=>$sqlProduct]);

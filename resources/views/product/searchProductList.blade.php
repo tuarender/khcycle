@@ -1,9 +1,24 @@
+<div class="container-fluid">
+    <div class="row adminSubheader">
+        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 adminMenuSubheader">
+            <span>Keyword:{{$keyword}}</span>
+        </div>
+        <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5 subheaderContact">
+            <label>สนใจสินค้าติดต่อ 0-2510-1906</label>
+        </div>
+        <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5" style="text-align:right">
+            <label>Social Network:</label>
+            <a href="https://www.facebook.com/KhcycleThailand" target="_blank" class="btn btn-social-icon btn-facebook">
+                <i class="fa fa-facebook"></i>
+            </a>
+            <a class="btn btn-social-icon btn-instagram">
+                <i class="fa fa-instagram"></i>
+            </a>
+        </div>
+        <hr style='width:100%;margin:5px 0px;border-color:#D7D7D7'>
+    </div>
+</div>
 <?php
-	echo "<div class='row searchHeader'>";
-	if(isset($keyword)){
-		echo "<label>Keyword : ".$keyword."</label>";
-	}
-	echo "</div>";
 	echo "<div class='row productList'>";
 	if(isset($products)&&!empty($products)){
 		foreach($products as $product){

@@ -589,7 +589,7 @@ div.newsEnd{
 
 @media screen and (min-width: 992px) {
 	.productMain,.adminMain,.productSubheader{
-		max-width: 80%;
+		max-width: 90%;
 	}
 	div.detail >div{
 		width: 90%;
@@ -616,6 +616,11 @@ div.newsEnd{
 	}
 	.videoWrapper iframe{
 		height:100%
+	}
+}
+@media screen and (min-width: 1200px) {
+	.productMain,.adminMain,.productSubheader{
+		max-width: 80%;
 	}
 }
 @media screen and (min-width: 1500px) {
