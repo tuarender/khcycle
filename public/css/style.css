@@ -136,10 +136,13 @@ div.brand{
 	max-width:85%;
 	margin:5px auto;
 }
-.subheaderContainer row{
+.productSubheader{
+	margin: 5px auto;
+}
+.subheaderContainer,.productSubheader row{
 	display: block;
 }
-.subheaderContainer label{
+.subheaderContainer,.productSubheader label{
 	padding-left: 20px;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 18px;
@@ -149,6 +152,9 @@ div.brand{
 	text-align: right;
 	padding-right: 20px;
 	margin: 10px auto;
+}
+.subheaderContact{
+	text-align: right;
 }
 .subheaderContact label{
 	font-family: CSChatThai !important;
@@ -258,7 +264,7 @@ div.brand{
 	list-style-type: none;
     margin: 0;
     padding: 0;
-    padding-left: 10px;
+    padding-left: 30px;
 }
 .groupListContainer{
 	display:block;
@@ -298,6 +304,7 @@ div.brand{
 	margin-top:20px;
 }
 .newsInnerRow >div>h2{
+	font-size: 23px;
 	font-family: DidactGothic;
 	letter-spacing: 4px;
 	margin-top: 0px;
@@ -347,12 +354,13 @@ div.newsEnd{
 	font-family: HelveticaInseratLTStd,"Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .productListContainer,.adminDetailContainer{ 
-	padding-top: 5px;
+	padding-top: 3px;
 	padding-left: 0px
 }
 .productList{
 	padding-top: 15px;
 	padding-bottom: 15px;
+	padding-left: 30px;
 }
 .productList >div{
 	min-height: 225px;
@@ -457,7 +465,7 @@ div.newsEnd{
     border-radius: 15px;
 }
 
-.productMain,.adminMain{
+.productMain,.adminMain,.productSubheader{
 	max-width: 100%;
 }
 
@@ -538,11 +546,8 @@ div.newsEnd{
 		display: none;
 	}
 	.brandLogo{
-		max-width: 200px;
+		/*max-width: 200px;*/
 		float: right;
-	}
-	.productMain,.adminMain{
-		max-width: 85%;
 	}
 	.tag{
 		color:#FFFFFF;
@@ -583,7 +588,7 @@ div.newsEnd{
 }
 
 @media screen and (min-width: 992px) {
-	.productMain,.adminMain{
+	.productMain,.adminMain,.productSubheader{
 		max-width: 80%;
 	}
 	div.detail >div{
@@ -614,11 +619,17 @@ div.newsEnd{
 	}
 }
 @media screen and (min-width: 1500px) {
+	.productMain,.adminMain,.productSubheader{
+		max-width: 75%;
+	}
 	div.detail >div{
 		width: 85%;
 	}
 	.newsHome{
 		max-width:70%
+	}
+	.newsInnerRow >div>h2{
+		font-size: 30px;
 	}
 }
 

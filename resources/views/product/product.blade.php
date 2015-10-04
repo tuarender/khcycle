@@ -1,5 +1,4 @@
 @extends('app')
-@extends('partials.subheader')
 @section('content')
 <?php
 	$searchKeyword = "";
@@ -12,6 +11,10 @@
 <div class="productMain container-fluid" style="display:none;">
 	<div class="row">
 		<div class="col-sm-3 col-lg-3">
+			<div class="adminMenuSubheader">
+				<span>Product</span>
+				<hr style='max-width:100%;margin:10px 0px;border-color:#D7D7D7'>
+			</div>
 <?php
 	foreach($brand as $eachBrand){
 		echo "<div id='".$eachBrand["BRAND_ID"]."' class='brandDiv' style='text-align:right'>";
@@ -40,7 +43,7 @@
     	$(document).ready(function(){
     		if($('#keyword').length==0){
 	    		if(!$('.brandDiv>a>img').hasClass('brandLogoActive')){
-	    			getProduct($('.productMain').children().children().children().attr("id"),false,true);
+	    			getProduct($('.productMain').children().children().children().next().attr("id"),false,true);
 	    		}
 	    		else{
 	    			getProduct($('.brandLogoActive').parent().parent().attr('id'),false,true);

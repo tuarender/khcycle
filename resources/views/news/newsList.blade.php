@@ -15,29 +15,33 @@
 	if(isset($newsList)){
 ?>
 <div id="newsContainer" class="container-fluid" style="display:none">
-	<div class="row">
 		<?php
-			foreach($newsList as $news){
+			for($i=0;$i<count($newsList);$i++){
+				if($i%2==0){
+					echo "<div class='row'>";
+				}
 				echo "<div class='col-md-6'>";
-				echo "<div class='row newsInnerRow'>";
-				echo "<div class='col-sm-6'>";
-				if($news['NEWS_IS_YOUTUBE']==1){
-					echo "<div class='videoWrapper'><iframe src='".$news['NEWS_YOUTUBE_URI']."' frameborder='0' allowfullscreen></iframe></div>";
+				echo "	<div class='row newsInnerRow'>";
+				echo "		<div class='col-sm-6'>";
+				if($newsList[$i]['NEWS_IS_YOUTUBE']==1){
+					echo "<div class='videoWrapper'><iframe src='".$newsList[$i]['NEWS_YOUTUBE_URI']."' frameborder='0' allowfullscreen></iframe></div>";
 				}
 				else{
-					echo "<img class='img-responsive' onerror='this.src=\"images/news/default.png\"' src='images/news/".$news['NEWS_IMAGE_TITLE_NAME'].".".$news['NEWS_IMAGE_TITLE_EXT']."'>";
+					echo "<img class='img-responsive' onerror='this.src=\"images/news/default.png\"' src='images/news/".$newsList[$i]['NEWS_IMAGE_TITLE_NAME'].".".$newsList[$i]['NEWS_IMAGE_TITLE_EXT']."'>";
 				}
+				echo "		</div>";
+				echo "		<div class='col-sm-6'>";
+				echo "<h2>".$newsList[$i]['NEWS_TITLE']."</h2>";
+				echo "<p class='newsList'>".html_entity_decode($newsList[$i]['NEWS_SAMPLE'])."</p>";
+				echo "<a href='news/".$newsList[$i]['NEWS_ID']."' class='btn btn-info btn-md readmoreBtn'><span class='glyphicon glyphicon-eye-open'></span> Read more</a>";
+				echo "		</div>";
+				echo "	</div>";
 				echo "</div>";
-				echo "<div class='col-sm-6'>";
-				echo "<h2>".$news['NEWS_TITLE']."</h2>";
-				echo "<p class='newsList'>".html_entity_decode($news['NEWS_SAMPLE'])."</p>";
-				echo "<a href='news/".$news['NEWS_ID']."' class='btn btn-info btn-md readmoreBtn'><span class='glyphicon glyphicon-eye-open'></span> Read more</a>";
-				echo "</div>";
-				echo "</div>";
-				echo "</div>";
+				if($i%2==1||($i+1)==count($newsList)){
+					echo "</div>";
+				}
 			}
 		?>
-	</div>
 </div>	
 <?php
 	}
