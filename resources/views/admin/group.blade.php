@@ -15,7 +15,7 @@
 ?>
 <div class="container-fluid">
 	@include('partials.flashmessage')
-	<form id="bannerForm" class="form-horizontal" role="form" method="post" action="<?=$formAction?>" >
+	<form id="groupForm" class="form-horizontal" role="form" method="post" action="<?=$formAction?>" >
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
 		<div class="form-group @if ($errors->has('groupName')) has-error @endif">
 			<label for="groupName" class="col-md-2 control-label"><font color="red">*</font>ระบุชื่อกลุ่ม</label>
@@ -37,7 +37,7 @@
 	echo "<ul class='list-group' style='text-align:left'>";
 	foreach ($dataGroup as $group){
 		echo "<li class='list-group-item'>".$group['GROUP_NAME']."&nbsp;&nbsp;<a href='admin/product/group/".$group['GROUP_ID']."'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span> แก้ไข</a>";
-		echo "&nbsp;&nbsp;<a href='#' style='color:#c9302c'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span> ลบ</a></li>";
+		echo "&nbsp;&nbsp;<a href='#'' data-href='admin/product/deleteGroup/".$group['GROUP_ID']."' data-toggle='modal' data-target='#confirm-delete' style='color:#c9302c'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span> ลบ</a></li>";
 	}
 	echo "</ul>";
 ?>

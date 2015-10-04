@@ -1474,6 +1474,7 @@ class AdminController extends Controller
         return redirect('admin/product/productOf/'.$idBrand);
     }
 
+<<<<<<< HEAD
     public function productAdd(Request $request){
         $rules=[
             'productName'=>'required',
@@ -1599,11 +1600,10 @@ class AdminController extends Controller
                 Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาติดต่อผู้ดูแลระบบ');
                 return redirect('admin/product/productOf/'.$brandId);
             }
-        }
-    }
-
+=======
     function orderCatalogue($id,$order)
     {
+
         $sql = "SELECT CATALOGUE_ID,CATALOGUE_ORDER FROM KH_CATALOGUE WHERE CATALOGUE_ID = ?";
         $queryParam = array($id);
         $data = DB::select($sql,$queryParam);
@@ -1629,6 +1629,7 @@ class AdminController extends Controller
         }
         else{
             return redirect('home');
+>>>>>>> origin/master
         }
     }
 
