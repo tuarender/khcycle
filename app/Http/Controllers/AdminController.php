@@ -12,6 +12,7 @@ use App;
 use File;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AdminController extends Controller
 {
@@ -1632,4 +1633,47 @@ class AdminController extends Controller
         }
     }
 
+    public function generateExcel()
+    {
+        Excel::create('ExcelExport',function($excel){
+            $excel->sheet('SheetName',function($sheet){
+                // first row styling and writing content
+                $sheet->mergeCells('A1:W1');
+                $sheet->row(1,function($row){
+                    $row->setFontFamily('Comic Sans MS');
+                    $row->setFontSize(30);
+                });
+                $sheet->row(1,array('MEMBER DATA'));
+
+                // getting data to display
+                $data = DB::table('KH_MEMBER_LOGIN AS login ')
+                    ->leftjoin('KH_INFORMATION AS info','login.ID','=','info.KH_INFORMATION_MEMBER')
+                    ->leftjoin('KH_CONTACT AS contact','login.ID','=','contact.KH_CONTACT_MEMBER')
+                    ->select(
+                        'login.ID',
+                        'login.KH_MEMBER_LOGIN_USERNAME as LoginID',
+                        'contact.KH_CONTACT_NAME as Name',
+                        'contact.KH_CONTACT_EMAIL as Email',
+                        'contact.KH_CONTACT_TEL as Telephone',
+                        'info.KH_INFORMATION_HEIGHT as Height',
+                        'info.KH_INFORMATION_WEIGHT as Weight',
+                        'info.KH_INFORMATION_SHOE as ShoeNumber',
+                        'contact.KH_CONTACT_ADDR as Address')
+                    ->where('login.KH_MEMBER_RULE','<>','ADMIN')
+                    ->get();
+                // setting column names for data - you can of course set it manually
+                $sheet->appendRow(array_keys($data[0]));
+
+                // getting last row number (the one we already filled and setting it to bold
+                $sheet->row($sheet->getHighestRow(), function ($row) {
+                $row->setFontWeight('bold');
+                });
+
+                // putting users data as next rows
+                foreach ($data as $user) {
+                    $sheet->appendRow($user);
+                }
+            });
+        })->export('xls');
+    }
 }

@@ -121,3 +121,4 @@ Route::post('admin/product/group/{id?}','AdminController@groupUpdate');
 Route::post('admin/product/product/','AdminController@productAdd');
 Route::post('admin/product/product/{id?}','AdminController@productUpdate');
 Route::post('admin/member','AdminController@getMember');
+Route::get('excel','AdminController@generateExcel');
