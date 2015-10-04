@@ -175,6 +175,28 @@ class AdminController extends Controller
                 ->with('name',$name);
     }
 
+    public function getProductEdit($idBrand,$id=null){
+        $data = null;
+        $name = 'Home Setting->จัดการสินค้าในแบรนด์->เพิ่มสินค้า';
+        $sqlGroup = "SELECT A.GROUP_ID,A.GROUP_NAME FROM KH_GROUP A,KH_BRAND_GROUP B WHERE A.GROUP_ID = B.GROUP_ID AND GROUP_DELETE_STATUS <> 1 AND BRAND_ID = ? ORDER BY GROUP_NAME";
+        $sqlBrand = "SELECT BRAND_ID,BRAND_NAME FROM KH_BRAND WHERE BRAND_ID = ? AND BRAND_DELETE_STATUS <> 1";
+        $queryBrandParam = array($idBrand);
+        $dataGroup = DB::select($sqlGroup,$queryBrandParam);
+        $dataBrand = DB::select($sqlBrand,$queryBrandParam);
+
+        //edit case
+        if($id!=null){
+            $data = $this->getProductById($id);
+            $name = 'Home Setting->จัดการสินค้าในแบรนด์->แก้ไขข้อมูลสินค้า';
+        }
+        
+        return  view('admin/productEdit')
+                ->with('data',$data)
+                ->with('name',$name)
+                ->with('dataBrand',$dataBrand)
+                ->with('dataGroup',$dataGroup);
+    }
+
     public function getGroupSetting(){
         $sqlGroup = "SELECT GROUP_ID,GROUP_NAME FROM KH_GROUP WHERE GROUP_DELETE_STATUS <> 1 ORDER BY GROUP_NAME";
         $dataGroup = DB::select($sqlGroup);
@@ -221,8 +243,7 @@ class AdminController extends Controller
         $queryParam = array($id);
         $data = DB::select($sql,$queryParam);
         $menu = "Product Setting > จัดการสินค้าในแบรนด์";
-        return view('admin.product',['name'=>$menu,'data'=>$data]);
-
+        return view('admin.product',['name'=>$menu,'data'=>$data,'productId'=>$id]);
     }
 
     public function postContact(Request $request)
@@ -254,6 +275,13 @@ class AdminController extends Controller
     private function getBrandById($id){
         $brand = DB::table('KH_BRAND')
                 ->where('BRAND_ID', '=', $id)
+                ->get();
+        return $brand;
+    }
+
+    private function getProductById($id){
+        $brand = DB::table('KH_PRODUCT')
+                ->where('PRODUCT_ID', '=', $id)
                 ->get();
         return $brand;
     }
@@ -1344,6 +1372,13 @@ class AdminController extends Controller
         return redirect('admin/product');
     }
 
+    function deleteGroup($idGroup){
+        $sqlUpdate = "UPDATE KH_GROUP SET GROUP_DELETE_STATUS = 1 WHERE GROUP_ID = ?";
+        $updateParam = array($idGroup);
+        DB::delete($sqlUpdate,$updateParam);
+        return redirect('admin/product/group');
+    }
+
     public function groupAdd(Request $request){
         $rules=[
             'groupName'=>'required|max:50'
@@ -1428,6 +1463,134 @@ class AdminController extends Controller
         $deleteParam = array($id);
         DB::update($sqlDelete,$deleteParam);
         return redirect('admin/product/productOf/'.$idBrand);
+    }
+
+    public function productAdd(Request $request){
+        $rules=[
+            'productName'=>'required',
+            'productGroup'=>'required',
+            'brandId'=>'required',
+            'productImage'=>'required|image|max:1024',
+        ];
+        $messages = [
+            'productName.required'=>'กรุณาระบุข้อมูลสินค้า',
+            'productGroup.require'=>'กรุณาเลือกกลุ่มสินค้า',
+            'brandId'=>'ไม่พบข้อมูลแบรนด์',
+            'productImage.required'=>'กรุณาระบุภาพ',
+            'productImage.image'=>'กรุณาระบุประเภทของรูปภาพให้ถูกต้อง',
+            'productImage.max'=>'ขนาดของรูปภาพต้องไม่เกิน 1MB',
+        ];
+
+        $validator = Validator::make($request->all(),$rules,$messages);
+        if($validator->fails()){
+            $brandId = $request->input('brandId');
+            Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาตรวจสอบ');
+            return redirect('admin/product/product/'.$brandId)->withErrors($validator)->withInput();
+        }else {
+            $file = Input::file('productImage');
+            $brandId = $request->input('brandId');
+            $productName = $request->input('productName');
+            $productGroup = $request->input('productGroup');
+            if ($file!=null&&$file->isValid()) {
+                /** DO INSERT FIRST **/
+                //getMaxOrder
+                $sqlMaxOrder = "SELECT MAX(PRODUCT_ORDER) AS MAX_ORDER FROM KH_PRODUCT WHERE PRODUCT_DELETE_STATUS <> 1";
+                $dataMaxOrder = DB::select($sqlMaxOrder);
+                $maxOrder = 0;
+                if(count($sqlMaxOrder)>0){
+                    $maxOrder = $dataMaxOrder[0]['MAX_ORDER']+1;
+                }
+
+                //insert
+                $sqlInsert = "INSERT INTO KH_PRODUCT(PRODUCT_BRAND_ID,PRODUCT_GROUP_ID,PRODUCT_ORDER,PRODUCT_NAME,PRODUCT_STATUS) VALUES(?,?,?,?,?)";
+                $insertParam = array($brandId,$productGroup,$maxOrder,$productName,'ACTIVE');
+                DB::insert($sqlInsert,$insertParam);
+                $id = DB::getPdo()->lastInsertId();
+                if($id>0){
+                    $destinationPath = self::PRODUCT_PATH; 
+                    $extension = $file->getClientOriginalExtension(); 
+                    $fileName = rand(11111,99999)."_".$id; 
+                    $fileNameFull = $fileName.".".$extension;
+                    $fileMoved = $file->move($destinationPath, $fileNameFull);
+                    if (File::exists($fileMoved->getRealPath())){
+                        $sqlUpdate = "UPDATE KH_PRODUCT SET PRODUCT_MIN_FILE_NAME=?, PRODUCT_MIN_EXT=?,PRODUCT_FULL_FILE_NAME=?,PRODUCT_FULL_EXT=? WHERE PRODUCT_ID=?";
+                        $updateParam = array($fileName,$extension,$fileName,$extension,$id);
+                        $data = DB::update($sqlUpdate,$updateParam);
+                        Session::flash('alert-success', 'บันทึกข้อมูลสำเร็จ ');
+                        return redirect('admin/product/productOf/'.$brandId);
+                    }
+                    else{
+                        Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาติดต่อผู้ดูแลระบบ');
+                        return redirect('admin/product/productOf/'.$brandId);
+                    }
+                }
+                else{
+                    Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาติดต่อผู้ดูแลระบบ');
+                    return redirect('admin/product');
+                }
+            }
+            else {
+                Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาติดต่อผู้ดูแลระบบ');
+                return redirect('admin/product/productOf/'.$brandId);
+            }
+        }
+    }
+
+    public function productUpdate(Request $request,$id){
+        $rules=[
+            'productName'=>'required',
+            'productGroup'=>'required',
+            'brandId'=>'required',
+            'productImage'=>'image|max:1024',
+        ];
+        $messages = [
+            'productName.required'=>'กรุณาระบุข้อมูลสินค้า',
+            'productGroup.require'=>'กรุณาเลือกกลุ่มสินค้า',
+            'brandId'=>'ไม่พบข้อมูลแบรนด์',
+            'productImage.image'=>'กรุณาระบุประเภทของรูปภาพให้ถูกต้อง',
+            'productImage.max'=>'ขนาดของรูปภาพต้องไม่เกิน 1MB'
+        ];
+
+        $validator = Validator::make($request->all(),$rules,$messages);
+        if($validator->fails()){
+            $brandId = $request->input('brandId');
+            Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาตรวจสอบ');
+            return redirect('admin/product/product/'.$brandId)->withErrors($validator)->withInput();
+        }else {
+            $file = Input::file('productImage');
+            $brandId = $request->input('brandId');
+            $productName = $request->input('productName');
+            $productGroup = $request->input('productGroup');
+            if ($file!=null&&$file->isValid()) {
+                $destinationPath = self::PRODUCT_PATH; 
+                $extension = $file->getClientOriginalExtension(); 
+                $fileName = rand(11111,99999)."_".$id; 
+                $fileNameFull = $fileName.".".$extension;
+                $fileMoved = $file->move($destinationPath, $fileNameFull);
+                if (File::exists($fileMoved->getRealPath())){
+                    $sqlUpdate = "UPDATE KH_PRODUCT SET PRODUCT_NAME=?,PRODUCT_GROUP_ID=? PRODUCT_MIN_FILE_NAME=?, PRODUCT_MIN_EXT=?,PRODUCT_FULL_FILE_NAME=?,PRODUCT_FULL_EXT=? WHERE PRODUCT_ID=?";
+                    $updateParam = array($productName,$productGroup,$fileName,$extension,$fileName,$extension,$id);
+                    $data = DB::update($sqlUpdate,$updateParam);
+                    Session::flash('alert-success', 'อัพเดทสำเร็จ ');
+                    return redirect('admin/product/productOf/'.$brandId);
+                }
+                else{
+                    Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาติดต่อผู้ดูแลระบบ');
+                    return redirect('admin/product/');
+                }
+            }
+            else if($file==null){
+                $sqlUpdate = "UPDATE KH_PRODUCT SET PRODUCT_NAME=?,PRODUCT_GROUP_ID=? WHERE PRODUCT_ID=?";
+                $updateParam = array($productName,$productGroup,$id);
+                DB::update($sqlUpdate,$updateParam);
+                Session::flash('alert-success', 'อัพเดทสำเร็จ ');
+                return redirect('admin/product/productOf/'.$brandId);
+            }
+            else {
+                Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาติดต่อผู้ดูแลระบบ');
+                return redirect('admin/product/productOf/'.$brandId);
+            }
+        }
     }
 
 }
