@@ -354,8 +354,11 @@ class MemberController extends Controller
 
                         Session::put('user',Auth::user());
 
-
-                       return redirect('admin');
+                        if(Session::get('user')->KH_MEMBER_RULE =='ADMIN')
+                            return redirect('admin/member');
+                        else{
+                            return redirect('member');
+                        }
                     }else{
                         Session::flash('alert-danger', 'False');
                         return redirect('member');
