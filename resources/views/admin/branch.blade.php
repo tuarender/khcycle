@@ -33,8 +33,10 @@
 
             <div class="container">
                 @include('partials.flashmessage')
-                <div class="row" style="text-align: right;padding-right: 15px">
-                    <a type="button" href="admin/branch/edit" class="btn btn-primary">เพิ่ม SHOP</a>
+                <div class="row" style="text-align: right;">
+                    <div class="col-xs-12">
+                     <a type="button" href="admin/branch/edit" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> เพิ่ม SHOP</a>
+                    </div>
                 </div>
                 <div class="table-responsive">
                     <table class="table table-bordered table-condensed table-hover tableAdmin">

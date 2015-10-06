@@ -11,8 +11,10 @@
             </div>
 
             <div class="container">
-                <div class="row" style="text-align: right;padding-right: 15px">
-                    <a type="button" href="admin/zone/edit" class="btn btn-primary">เพิ่ม ZONE</a>
+                <div class="row" style="text-align: right;">
+                    <div class="col-xs-12">
+                        <a type="button" href="admin/zone/edit" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> เพิ่ม ZONE</a>
+                    </div>
                 </div>
                 <div class="table-responsive">
                     <table class="table table-bordered table-condensed table-hover tableAdmin">
