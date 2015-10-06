@@ -37,19 +37,22 @@
                     <a type="button" href="admin/branch/edit" class="btn btn-primary">เพิ่ม SHOP</a>
                 </div>
                 <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <tr bgcolor="#6495ed">
-                            <th width="20%">ZONE NAME</th>
-                            <th width="20%">BRANCH SHOP</th>
-                            <th width="40%">BRANCH ADDR</th>
-                            <th width="20%"></th>
+                    <table class="table table-bordered table-condensed table-hover tableAdmin">
+                        <thead>
+                        <tr class="tableHeader">
+                            <th width="20%" class="tdCenter">ZONE NAME</th>
+                            <th width="20%" class="tdCenter">BRANCH SHOP</th>
+                            <th width="40%" class="tdCenter">BRANCH ADDR</th>
+                            <th width="20%" class="tdCenter">การจัดการ</th>
                         </tr>
+                        </thead>
+                        <tbody>
                         @foreach($data as $branch)
                         <tr>
-                            <td>{{$branch['ZONE_NAME']}}</td>
-                            <td>{{$branch['BRANCH_SHOP']}}</td>
-                            <td>{{$branch['BRANCH_ADDR']}}</td>
-                            <td>
+                            <td class="tdCenter">{{$branch['ZONE_NAME']}}</td>
+                            <td class="tdCenter">{{$branch['BRANCH_SHOP']}}</td>
+                            <td class="tdCenter">{{$branch['BRANCH_ADDR']}}</td>
+                            <td class="tdCenter">
                                 <div class='btn-group' role='group'>
                                     <a class="btn btn-warning" href="admin/branch/edit/{{$branch['BRANCH_ID']}}"><span class='glyphicon glyphicon-edit' aria-hidden='true'></span> EDIT</a>
                                     <a class="btn btn-danger" href='#' data-href="admin/branch/delete/{{$branch['BRANCH_ID']}}"  data-toggle='modal' data-target='#confirm-delete'>
@@ -58,6 +61,7 @@
                             </td>
                         </tr>
                         @endforeach
+                        </tbody>
                     </table>
                 </div>
             </div>

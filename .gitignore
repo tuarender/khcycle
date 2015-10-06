@@ -5,3 +5,4 @@ Homestead.yaml
 app/Http/routes.php
 app/Http/routes.php
 resources/views/partials/footer.blade.php
+resources/views/app.blade.php

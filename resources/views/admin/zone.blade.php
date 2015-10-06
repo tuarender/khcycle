@@ -15,18 +15,20 @@
                     <a type="button" href="admin/zone/edit" class="btn btn-primary">เพิ่ม ZONE</a>
                 </div>
                 <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <tr bgcolor="#6495ed">
-                            <th>ZONE ID</th>
-                            <th>ZONE NAME</th>
-                            <th></th>
+                    <table class="table table-bordered table-condensed table-hover tableAdmin">
+                        <thead>
+                        <tr class="tableHeader">
+                            <th class="tdCenter">ZONE ID</th>
+                            <th class="tdCenter">ZONE NAME</th>
+                            <th class="tdCenter">การจัดการ</th>
                         </tr>
+                        </thead>
                         @foreach($data as $zone)
                             <tr>
-                                <td >{{$zone['ID']}}</td>
-                                <td>{{$zone['ZONE_NAME']}}</td>
+                                <td class="tdCenter">{{$zone['ID']}}</td>
+                                <td class="tdCenter">{{$zone['ZONE_NAME']}}</td>
 
-                                <td align="center">
+                                <td class="tdCenter">
                                     <div class='btn-group' role='group'>
                                     <a class="btn btn-warning" href="admin/zone/edit/{{$zone['ID']}}"><span class='glyphicon glyphicon-edit' aria-hidden='true'></span> EDIT</a>
                                     <a class="btn btn-danger" href="admin/zone/delete/{{$zone['ID']}}" onclick="return confirm('Are you sure you want to delete this item?');">
