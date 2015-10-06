@@ -6,7 +6,7 @@
         <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5 subheaderContact">
             <label>สนใจสินค้าติดต่อ 0-2510-1906</label>
         </div>
-        <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5" style="text-align:right">
+        <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5 subheaderContact">
             <label>Social Network:</label>
             <a href="https://www.facebook.com/KhcycleThailand" target="_blank" class="btn btn-social-icon btn-facebook">
                 <i class="fa fa-facebook"></i>
@@ -15,7 +15,9 @@
                 <i class="fa fa-instagram"></i>
             </a>
         </div>
-        <hr style='width:100%;margin:5px 0px;border-color:#D7D7D7'>
+        <div class="col-xs-12">
+        	<hr style='width:100%;margin:5px 0px;border-color:#D7D7D7'>
+    	</div>
     </div>
 </div>
 <?php

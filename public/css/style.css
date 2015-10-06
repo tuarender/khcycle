@@ -154,9 +154,13 @@ div.brand{
 	margin: 10px auto;
 }
 .subheaderContact{
+	display:none;
 	text-align: left;
 }
-.subheaderContact label{
+.subheaderProduct{
+	display:inline;
+}
+.subheaderContact,.subheaderProduct label{
 	font-family: CSChatThai !important;
 	font-size: 22px;
 	line-height: 32px;
@@ -539,7 +543,11 @@ div.newsEnd{
 		max-width:85%;
 	}
 	.subheaderContact{
+		display:inline;
 		text-align: right;
+	}
+	.subheaderProduct{
+		display:none;
 	}
 	.searchHeader{
 		text-align: left;

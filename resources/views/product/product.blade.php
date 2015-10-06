@@ -12,9 +12,26 @@
 	<div class="row">
 		<div class="col-sm-3 col-lg-3">
 			<div class="adminMenuSubheader">
-				<span>Product</span>
-				<hr style='max-width:100%;margin:10px 0px;border-color:#D7D7D7'>
+				<div class="col-xs-12">
+					<span>Product</span>
+				</div>
+				<div class="col-xs-12 col-sm-5 col-md-5 col-lg-5 subheaderProduct">
+		            <label>สนใจสินค้าติดต่อ 0-2510-1906</label>
+		        </div>
+		        <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5 subheaderProduct">
+		            <label>Social Network:</label>
+		            <a href="https://www.facebook.com/KhcycleThailand" target="_blank" class="btn btn-social-icon btn-facebook">
+		                <i class="fa fa-facebook"></i>
+		            </a>
+		            <a class="btn btn-social-icon btn-instagram">
+		                <i class="fa fa-instagram"></i>
+		            </a>
+		        </div>
+				<div class="col-xs-12">
+					<hr style='max-width:100%;margin:10px 0px;border-color:#D7D7D7'>
+				</div>
 			</div>
+			<div id="brandHome" data-loop="true" data-width="100%" data-ratio="208/58" data-autoplay="3000" data-stopautoplayontouch="false" class='row'>
 <?php
 	foreach($brand as $eachBrand){
 		echo "<div id='".$eachBrand["BRAND_ID"]."' class='brandDiv' style='text-align:right'>";
@@ -29,6 +46,7 @@
     	echo "</div>";
 	}		
 ?>
+			</div>
 		</div>
 		<div id="productList" class="col-sm-9 col-lg-9 productListContainer" style="text-align:left">
 		</div>
@@ -40,6 +58,8 @@
 @endsection
 @section('scripts')
     <script type="text/javascript">
+    	var isBrandSlider = false;
+
     	$(document).ready(function(){
     		if($('#keyword').length==0){
 	    		if(!$('.brandDiv>a>img').hasClass('brandLogoActive')){
@@ -55,8 +75,29 @@
 
 		   	$('.productMain').fadeIn('2000',function(){
 		   		$('#footer').fadeIn('slow');
-		   	})
+		   	});
+
+		   	brandSlider();
+		   	$(window).on('resize', function(){
+	          brandSlider();
+	        });
 		});
+
+		function brandSlider(){
+	      if ($(this).width() <=749) {
+	        if(!isBrandSlider){
+	            $('#brandHome').fotorama();
+	            isBrandSlider = true;
+	        }
+	      }
+	      else{
+	        if(isBrandSlider){
+	          $('#brandHome').data('fotorama').destroy();
+	          $('#brandHome').removeClass('fotorama');
+	          isBrandSlider = false;
+	        }
+	      }
+	    }
 
 		function searchProduct(keyword){
 			var urlSearch = "search/"+keyword;
@@ -65,13 +106,7 @@
 					url: urlSearch, 
 					success: function(result){
 						if(result){
-							$('#productList').html(result).fadeIn(800,function(){
-								if ($(window).width() <= 768){
-									$('html, body').animate({
-								        scrollTop: $("#productList").offset().top-50
-								    }, 2000);
-								}
-							});
+							$('#productList').html(result).fadeIn(800);
 						}
 			    	}
 				});
@@ -92,13 +127,7 @@
 					url: url, 
 					success: function(result){
 						if(result){
-							$('#productList').html(result).fadeIn(800,function(){
-								if ($(window).width() <= 768&&!isFirstTime){
-									$('html, body').animate({
-								        scrollTop: $("#productList").offset().top-50
-								    }, 2000);
-								}
-							});
+							$('#productList').html(result).fadeIn(800);
 						}
 			    	}
 				});

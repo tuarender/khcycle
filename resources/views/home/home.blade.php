@@ -18,7 +18,7 @@
           </div>
         </div>
         <div class="col-sm-8 brand head1">
-          <div id="brandHome" data-width="100%" data-ratio="208/58" data-autoplay="3000" data-stopautoplayontouch="false" class='row'>
+          <div id="brandHome" data-loop="true" data-width="100%" data-ratio="208/58" data-autoplay="3000" data-stopautoplayontouch="false" class='row'>
         <?php
           if(isset($brand)){
             foreach($brand as $eachBrand){
