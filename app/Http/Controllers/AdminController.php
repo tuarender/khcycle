@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\carbon;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -1635,7 +1636,9 @@ class AdminController extends Controller
 
     public function generateExcel()
     {
-        Excel::create('MemberExport',function($excel){
+        $mytime = Carbon::now();
+        $filename = 'MemberExport'."_".$mytime->toDateTimeString();
+        Excel::create($filename,function($excel){
             $excel->sheet('SheetName',function($sheet){
                 // first row styling and writing content
                 $sheet->mergeCells('A1:W1');

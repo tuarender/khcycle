@@ -9,7 +9,12 @@
                 <div class="sessionContainer" style="width: 90%">
                     Log in as:{{ Session::get('user')->KH_MEMBER_LOGIN_USERNAME }}<a href="logout">ออกจากระบบ</a>
                 </div>
-            <a class="btn btn-info" style="width: 120px" href="excel">Export Excel</a>
+                <div class="row">
+                    <div class="col-xs-12" align="right">
+                        <a class="btn btn-info btn-sm" style="width: 100px" href="excel"><span class="glyphicon glyphicon-export" aria-hidden="true"></span> Export Excel</a>
+                    </div>
+                </div>
+
 
             <div class="row" style="width: 100%">
                     <form class="form-group" role="form" method="post" action="admin/member">
@@ -30,7 +35,7 @@
                             <input type="text" class="form-control" name="sch_tel">
                         </div>
                         <div class="col-xs-2">
-                            <input type="submit" value="submit">
+                            <input type="submit" value="submit" class="btn btn-info btnKhcycle">
                         </div>
                     </form>
             </div>
@@ -44,8 +49,9 @@
         </div>
         <div class="container">
             <div class="table-responsive">
-                <table class="table table-bordered">
-                    <tr bgcolor="#6495ed">
+                <table class="table table-condensed table-hover tableAdmin">
+                    <thead>
+                    <tr class="tableHeader">
                         <th class="text-center">ลำดับ</th>
                         <th class="text-center">UserName</th>
                         <th class="text-center">ชื่อ-นามสกุล</th>
@@ -57,6 +63,8 @@
                         <th class="text-center">ที่อยู่</th>
                         <th class="text-center">จัดการ</th>
                     </tr>
+                    </thead>
+                    <tbody>
                     {{-- */$i=1;/* --}}
                     @foreach($data as $member)
                         <tr>
@@ -74,6 +82,7 @@
                             {{-- */$i++;/* --}}
                         </tr>
                     @endforeach
+                    </tbody>
                 </table>
             </div>
         </div>
