@@ -9,7 +9,7 @@
                 <div class="sessionContainer" style="width: 90%">
                     Log in as:{{ Session::get('user')->KH_MEMBER_LOGIN_USERNAME }}<a href="logout">ออกจากระบบ</a>
                 </div>
-
+            <a class="btn btn-info" style="width: 120px" href="excel">Export Excel</a>
 
             <div class="row" style="width: 100%">
                     <form class="form-group" role="form" method="post" action="admin/member">

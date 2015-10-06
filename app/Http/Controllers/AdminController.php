@@ -1635,7 +1635,7 @@ class AdminController extends Controller
 
     public function generateExcel()
     {
-        Excel::create('ExcelExport',function($excel){
+        Excel::create('MemberExport',function($excel){
             $excel->sheet('SheetName',function($sheet){
                 // first row styling and writing content
                 $sheet->mergeCells('A1:W1');
