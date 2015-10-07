@@ -114,6 +114,8 @@ Route::post('admin/branch/edit/{id}','AdminController@branchUpdate');
 Route::post('admin/branch','AdminController@getBranch');
 Route::post('admin/news/news','AdminController@newsAdd');
 Route::post('admin/news/news/{id}','AdminController@newsUpdate');
+Route::post('admin/news/preview','AdminController@newsPreview');
+Route::post('admin/news/uploadImage','AdminController@newsUploadImage');
 Route::post('admin/product/brand','AdminController@brandAdd');
 Route::post('admin/product/brand/{id?}','AdminController@brandUpdate');
 Route::post('admin/product/group','AdminController@groupAdd');

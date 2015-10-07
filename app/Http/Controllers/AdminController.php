@@ -19,6 +19,7 @@ class AdminController extends Controller
 {
     const BANNER_PATH = 'images/banner';
     const NEWS_PATH = 'images/news';
+    const NEWS_CONTENT_PATH = 'images/news/newsContent';
     const BRAND_PATH = 'images/brand';
     const PRODUCT_PATH = 'images/product';
     /**
@@ -855,6 +856,12 @@ class AdminController extends Controller
                 $fileNameFull = $fileName.".".$extension;
                 $fileMoved = $file->move($destinationPath, $fileNameFull);
                 if (File::exists($fileMoved->getRealPath())){
+                    //remove existing
+                    $sqlGetBanner = "SELECT BANNER_ID,BANNER_IMAGE,BANNER_IMAGE_EXT FROM KH_BANNER WHERE BANNER_ID = ?";
+                    $bannerToDelete = DB::select($sqlGetBanner,array($id));
+                    $fileToDeletePath = self::BANNER_PATH."/".$bannerToDelete[0]['BANNER_IMAGE'].".".$bannerToDelete[0]['BANNER_IMAGE_EXT'];
+                    File::delete($fileToDeletePath);
+
                     $bannerType = $request->input('bannerType', '0');
                     $url = $request->input('url');
                     $sqlUpdate = "UPDATE KH_BANNER SET BANNER_IMAGE=?,BANNER_IMAGE_EXT=?, BANNER_URL=?, BANNER_IS_YOUTUBE=?,BANNER_YOUTUBE_URI=? WHERE BANNER_ID=?";
@@ -972,7 +979,7 @@ class AdminController extends Controller
         $data = DB::select($sql,$queryParam);
 
         if(count($data)>0){
-            $sqlReplace = "SELECT BANNER_ID,BANNER_ORDER FROM KH_BANNER WHERE BANNER_ORDER = ?";
+            $sqlReplace = "SELECT BANNER_ID,BANNER_ORDER FROM KH_BANNER WHERE BANNER_ORDER = ? AND BANNER_IS_DELETED <> 1";
             $queryReplaceParam = array($order);
             $dataReplace = DB::select($sqlReplace,$queryReplaceParam);
             if(count($dataReplace)==1){
@@ -1177,6 +1184,119 @@ class AdminController extends Controller
 
     }
 
+    function newsUploadImage(Request $request){
+        $dateNow = date('Ymd_His');
+        $file = Input::file('fileImage');
+        if ($file!=null&&$file->isValid()) {
+            $destinationPath = self::NEWS_CONTENT_PATH; 
+            $extension = $file->getClientOriginalExtension(); 
+            $fileName = rand(111111,999999)."_".$dateNow; 
+            $fileNameFull = $fileName.".".$extension;
+            $fileMoved = $file->move($destinationPath, $fileNameFull);
+            if (File::exists($fileMoved->getRealPath())){
+                //update after moved file
+                return 'images/news/newsContent/'.$fileNameFull;
+            }
+        }
+        else{
+            return redirect('home');
+        }
+    }
+
+    function newsPreview(Request $request){
+        $rules=[
+            'newsTitle'=>'required|max:100',
+            'newsType'=>'required',
+            'youTubeUrl'=>'url|required_if:newsType,1',
+            'newsImage'=>'image|max:1024|required_if:newsType,0',
+            'sample'=>'required|max:500|not_in:<p>&nbsp; &nbsp;</p>',
+            'content'=>'required|max:4000|not_in:<p>&nbsp; &nbsp;</p>'
+        ];
+        $messages = [
+            'newsTitle.required'=>'กรุณาระบุชื่อ News/Articles',
+            'newsTitle.max'=>'News/Articles ต้องยาวไม่เกิน 100 ตัวอักษร',
+            'newsType.required'=>'กรุณาระบุประเภทของแบนเนอร์',
+            'youTubeUrl.required_if'=>'กรุณาระบุลิงค์',
+            'youTubeUrl.url'=>'ลิงค์ไม่ถูกต้อง',
+            'youTubeUrl.active_url'=>'ไม่สามารถติดต่อลิงค์ดังกล่าวได้',
+            'newsImage.required_if'=>'กรุณาระบุภาพ',
+            'newsImage.image'=>'กรุณาระบุประเภทของรูปภาพให้ถูกต้อง',
+            'newsImage.max'=>'ขนาดของรูปภาพต้องไม่เกิน 1MB',
+            'sample.required'=>'กรุณาระบุรายละเอียดโดยย่อ',
+            'sample.max'=>'รายละเอียดโดยย่อต้องยาวไม่เกิน 500ตัวอักษร',
+            'content.required'=>'กรุณาระบุรายละเอียด',
+            'content.max'=>'รายละเอียดต้องยาวไม่เกิน4000ตัวอักษร'
+        ];
+
+        $validator = Validator::make($request->all(),$rules,$messages);
+        if($validator->fails()){
+            Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาตรวจสอบ');
+            return redirect('admin/news/news')->withErrors($validator)->withInput();
+        }else {
+            $newsType = $request->input('newsType');
+            $sample = $request->input('sample');
+            $content = $request->input('content');
+            $title = $request->input('newsTitle');
+            $youtubeUri = "";
+
+            $sqlMaxOrder = "SELECT MAX(NEWS_ORDER) AS MAX_ORDER FROM KH_NEWS WHERE NEWS_DELETE_STATUS <> 1";
+            $dataMaxOrder = DB::select($sqlMaxOrder);
+            $maxOrder = 0;
+            if(count($sqlMaxOrder)>0){
+                $maxOrder = $dataMaxOrder[0]['MAX_ORDER']+1;
+            }
+
+            if($newsType==0){
+                //picture case
+                $file = Input::file('newsImage');
+                if ($file!=null&&$file->isValid()) {
+                    /** DO INSERT FIRST **/
+                    //insert
+                    $sqlInsert = "INSERT INTO KH_NEWS(NEWS_ORDER,NEWS_TITLE,NEWS_CONTENT,NEWS_SAMPLE,NEWS_IS_YOUTUBE) VALUES(?,?,?,?,0)";
+                    $insertParam = array($maxOrder,$title,htmlentities($content),htmlentities($sample));
+                    DB::insert($sqlInsert,$insertParam);
+                    $id = DB::getPdo()->lastInsertId();
+                    if($id>0){
+                        $destinationPath = self::NEWS_PATH; 
+                        $extension = $file->getClientOriginalExtension(); 
+                        $fileName = rand(11111,99999)."_".$id; 
+                        $fileNameFull = $fileName.".".$extension;
+                        $fileMoved = $file->move($destinationPath, $fileNameFull);
+                        if (File::exists($fileMoved->getRealPath())){
+                            //update after moved file
+                            $sqlUpdate = "UPDATE KH_NEWS SET NEWS_IMAGE_TITLE_NAME=?, NEWS_IMAGE_TITLE_EXT=? WHERE NEWS_ID=?";
+                            $updateParam = array($fileName,$extension,$id);
+                            DB::update($sqlUpdate,$updateParam);
+                            Session::flash('alert-success', 'บันทึกข้อมูลสำเร็จ ');
+                            return redirect('admin/news/');
+                        }
+                        else{
+                            Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาติดต่อผู้ดูแลระบบ');
+                            return redirect('admin/news/');
+                        }
+                    }
+                    else{
+                        Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาติดต่อผู้ดูแลระบบ');
+                        return redirect('admin/news/');
+                    }
+                }
+                else {
+                    Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาติดต่อผู้ดูแลระบบ');
+                    return redirect('admin/news/');
+                }
+            }
+            else{
+                //youtube case
+                $youtubeUri = $request->input('youTubeUrl');
+                $sqlInsert = "INSERT INTO KH_NEWS(NEWS_ORDER,NEWS_TITLE,NEWS_CONTENT,NEWS_SAMPLE,NEWS_IS_YOUTUBE,NEWS_YOUTUBE_URI) VALUES(?,?,?,?,1,?)";
+                $insertParam = array($maxOrder,$title,htmlentities($content),htmlentities($sample),$youtubeUri);
+                DB::insert($sqlInsert,$insertParam);
+                Session::flash('alert-success', 'บันทึกข้อมูลสำเร็จ ');
+                return redirect('admin/news/');
+            }
+        }
+    }
+
     function orderNews($id,$order){
         //order of selected news id
         $sql = "SELECT NEWS_ID,NEWS_ORDER FROM KH_NEWS WHERE NEWS_ID = ?";
@@ -1184,7 +1304,7 @@ class AdminController extends Controller
         $data = DB::select($sql,$queryParam);
 
         if(count($data)>0){
-            $sqlReplace = "SELECT NEWS_ID,NEWS_ORDER FROM KH_NEWS WHERE NEWS_ORDER = ?";
+            $sqlReplace = "SELECT NEWS_ID,NEWS_ORDER FROM KH_NEWS WHERE NEWS_ORDER = ? AND NEWS_DELETE_STATUS <> 1";
             $queryReplaceParam = array($order);
             $dataReplace = DB::select($sqlReplace,$queryReplaceParam);
             if(count($dataReplace)==1){
@@ -1336,7 +1456,7 @@ class AdminController extends Controller
         $data = DB::select($sql,$queryParam);
 
         if(count($data)>0){
-            $sqlReplace = "SELECT BRAND_ID,BRAND_ORDER FROM KH_BRAND WHERE BRAND_ORDER = ?";
+            $sqlReplace = "SELECT BRAND_ID,BRAND_ORDER FROM KH_BRAND WHERE BRAND_ORDER = ? AND BRAND_DELETE_STATUS <> 1";
             $queryReplaceParam = array($order);
             $dataReplace = DB::select($sqlReplace,$queryReplaceParam);
             if(count($dataReplace)==1){
@@ -1443,7 +1563,7 @@ class AdminController extends Controller
         $data = DB::select($sql,$queryParam);
 
         if(count($data)>0){
-            $sqlReplace = "SELECT PRODUCT_ID,PRODUCT_ORDER FROM KH_PRODUCT WHERE PRODUCT_ORDER = ?";
+            $sqlReplace = "SELECT PRODUCT_ID,PRODUCT_ORDER FROM KH_PRODUCT WHERE PRODUCT_ORDER = ? AND PRODUCT_DELETE <> 1";
             $queryReplaceParam = array($order);
             $dataReplace = DB::select($sqlReplace,$queryReplaceParam);
             if(count($dataReplace)==1){
@@ -1610,7 +1730,7 @@ class AdminController extends Controller
         $queryParam = array($id);
         $data = DB::select($sql,$queryParam);
         if(count($data)>0){
-            $sqlReplace = "SELECT CATALOGUE_ID,CATALOGUE_ORDER FROM KH_CATALOGUE WHERE CATALOGUE_ORDER = ?";
+            $sqlReplace = "SELECT CATALOGUE_ID,CATALOGUE_ORDER FROM KH_CATALOGUE WHERE CATALOGUE_ORDER = ? AND CATALOGUE_DELETE_STATUS <> 1";
             $queryReplaceParam = array($order);
             $dataReplace = DB::select($sqlReplace,$queryReplaceParam);
             if(count($dataReplace)==1){

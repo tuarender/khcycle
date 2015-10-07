@@ -10,7 +10,7 @@
     if(!is_null($catalogue[0])){
       echo "<a href='pdf/".$catalogue[0]['CATALOGUE_PATH_PDF']."' target='_blank'>";
       //echo "<img src='cover/".$catalogue[0]['CATALOGUE_COVER_PIC'].".jpg' class='img-responsive catalogueHome' style='background-image: url(cover/".$catalogue[0]['CATALOGUE_COVER_PIC'].".jpg)'/></a>";
-      echo "<div class='catalogueDetail'><a class='btn btn-md linkCatalogue' href='pdf/".$catalogue[0]['CATALOGUE_PATH_PDF']."' target='_blank'>".$catalogue[0]['CATALOGUE_NAME']."</a></div>";
+      echo "<div class='catalogueDetail'><a class='btn btn-md linkCatalogue' href='pdf/".$catalogue[0]['CATALOGUE_PATH_PDF']."' target='_blank'>Lastest Catalogue</a></div>";
       echo "<div><a class='linkViewMoreCatalogue' href='catalogue'>View more..</a></div>";
     }
   }
