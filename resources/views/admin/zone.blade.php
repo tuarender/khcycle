@@ -39,6 +39,7 @@
                                 </td>
                             </tr>
                         @endforeach
+                        {!! str_replace('/?', '?', $data->render()) !!}
                     </table>
                 </div>
             </div>

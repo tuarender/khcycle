@@ -117,7 +117,7 @@ class AdminController extends Controller
                 ->where('login.KH_MEMBER_RULE','<>','ADMIN')
                 ->where('contact.KH_CONTACT_NAME','like',$name)
                 ->where('contact.KH_CONTACT_TEL','like',$tel)
-                ->get();
+                ->simplePaginate(15);
         }
         else{
             $data =  $this->listmember();
@@ -131,7 +131,7 @@ class AdminController extends Controller
         $data =  DB::table('KH_CATALOGUE')
             ->where('CATALOGUE_DELETE_STATUS','<>','1')
             ->orderBy('CATALOGUE_ORDER','desc')
-            ->get();
+            ->simplePaginate(15);
         $menu ="CATALOGUE SETTING";
         return view('admin.catalogue',['name'=>$menu,'data'=>$data]);
     }
@@ -304,7 +304,7 @@ class AdminController extends Controller
                 'ID',
                 'ZONE_NAME')
             ->where('ZONE_DELETE_STATUS','<>','1')
-            ->get();
+            ->simplePaginate(15);
         return view('admin/zone',['name'=>$name,'data'=>$data]);
     }
 
@@ -396,7 +396,7 @@ class AdminController extends Controller
                         'br.BRANCH_ADDR',
                         'br.BRANCH_EMAIL')
                     ->where('BRANCH_DELETE_STATUS', '<>', '1')
-                    ->get();
+                    ->simplePaginate(15);
             }else{
                 $data = DB::table('KH_BRANCH as br')
                     ->join('KH_ZONE AS zone', 'br.BRANCH_ZONE', '=', 'zone.ID')
@@ -407,7 +407,7 @@ class AdminController extends Controller
                         'br.BRANCH_EMAIL')
                     ->where('BRANCH_DELETE_STATUS', '<>', '1')
                     ->where('BRANCH_ZONE', '=', $datazone)
-                    ->get();
+                    ->simplePaginate(15);
             }
         }
         else
@@ -420,7 +420,7 @@ class AdminController extends Controller
                     'br.BRANCH_ADDR',
                     'br.BRANCH_EMAIL')
                 ->where('BRANCH_DELETE_STATUS','<>','1')
-                ->get();
+                ->simplePaginate(15);
         }
         $name= 'BRANCH MANAGE';
         $zone = DB::table('KH_ZONE')->get();
@@ -571,7 +571,7 @@ class AdminController extends Controller
                     'info.KH_INFORMATION_SHOE',
                     'contact.KH_CONTACT_ADDR')
                 ->where('login.KH_MEMBER_RULE','<>','ADMIN')
-                ->get();
+                ->simplePaginate(15);
 
         return $data;
     }
