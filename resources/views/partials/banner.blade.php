@@ -2,7 +2,7 @@
 	if(isset($banners)){
 ?>
 <div class="slideContainer" style="display:none;position: relative">
-  <div class="fotorama" data-nav="false" data-width="100%" data-height="100%" data-fit="cover" data-autoplay="true"  data-click="false" data-loop="true">
+  <div class="fotorama" data-nav="false" data-width="100%" data-height="100%" data-ratio="2" data-fit="cover" data-autoplay="true"  data-click="false" data-loop="true">
 <?php
 	foreach ($banners as $banner) {
 		if($banner['BANNER_IS_YOUTUBE']==1){

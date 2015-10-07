@@ -16,7 +16,7 @@
             </a>
         </div>
         <div class="col-xs-12">
-        	<hr style='width:100%;margin:5px 0px;border-color:#D7D7D7'>
+        	<hr style='width:100%;margin:0px 0px;border-color:#D7D7D7'>
     	</div>
     </div>
 </div>

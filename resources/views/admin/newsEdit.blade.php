@@ -30,7 +30,7 @@
 <div class="container-fluid">
 	@include('partials.flashmessage')
 	<form id="newsForm" class="form-horizontal" role="form" method="post" action="<?=$formAction?>"  enctype="multipart/form-data">
-		<input type="hidden" name="_token" value="{{ csrf_token() }}">
+		<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
 		<div class="form-group @if ($errors->has('newsTitle')) has-error @endif">
             <label for="newsTitle" class="col-sm-3 control-label"><font color="red">*</font>ชื่อ News/Articles</label>
             <div class="col-sm-5">
@@ -95,6 +95,11 @@
                 <textarea name="content" class="summernoteContent">{{old('content',$newsContent)}}</textarea>
                 @if($errors->has('content')) 
                 <p class="help-block">{{$errors->first('content')}}</p>@endif
+                <div>
+	                <button id="previewNews" type="submit" class="btn btn-info">
+	                	Preview
+	                </button>
+            	</div>
             </div>
         </div>
         <div class="form-group">
@@ -120,25 +125,38 @@
 			toggleNewsType();
 		});
 
-/*	  	$('.summernoteSample').summernote({
-  			height: 130,                
-  			minHeight: null,             
-  			maxHeight: null,            
-  			toolbar: [
-			    ['style', ['bold', 'italic', 'underline', 'clear']],
-			    ['font', ['strikethrough', 'superscript', 'subscript']],
-			    ['fontsize', ['fontsize']],
-			    ['color', ['color']],
-			    ['para', ['ul', 'ol', 'paragraph']]
-			]                 
-		});*/
 		$('.summernoteContent').summernote({
   			height: 220,                
   			minHeight: null,             
-  			maxHeight: null              
+  			maxHeight: null,
+  			onImageUpload: function(files, editor, welEditable) {
+                sendFile(files[0]);
+            }              
 		});
 
+		$("#previewNews").on("click", function(e){
+		    e.preventDefault();
+		    $('#contactsForm').attr('action', "admin/news/preview").submit();
+		});
 	});
+
+	function sendFile(file, editor, welEditable) {
+		//alert("SEND FILE");
+        data = new FormData();
+        data.append("fileImage", file);
+        data.append("_token",$('#_token').val());
+        $.ajax({
+            data: data,
+            type: "POST",
+            url: "admin/news/uploadImage",
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(url) {
+            	$('.summernoteContent').summernote('editor.insertImage', url);
+            }
+        });
+    }
 
 	function toggleNewsType(){
 		if($('#newsType').val()==1){

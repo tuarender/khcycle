@@ -1208,7 +1208,6 @@ function getDataFromHtml ($el) {
     var separateThumbFLAG = imgData.thumb && imgData.img !== imgData.thumb,
         width = numberFromMeasure(imgData.width || $img.attr('width')),
         height = numberFromMeasure(imgData.height || $img.attr('height'));
-
     $.extend(imgData, {
       width: width,
       height: height,
@@ -1304,19 +1303,15 @@ function fit ($el, measuresToFit, method, position) {
         coverFLAG = method === 'cover',
         pos = parsePosition(position);
 
-
     if (biggerRatioFLAG && (fitFLAG || containFLAG) || !biggerRatioFLAG && coverFLAG) {
       width = minMaxLimit(measuresToFit.w, 0, fitFLAG ? width : Infinity);
       height = width / measures.ratio;
-      //alert(1);
     } else if (biggerRatioFLAG && coverFLAG || !biggerRatioFLAG && (fitFLAG || containFLAG)) {
       //height = minMaxLimit(measuresToFit.h, 0, fitFLAG ? height : Infinity);
       //width = height * measures.ratio;
       width = minMaxLimit(measuresToFit.w, 0, fitFLAG ? width : Infinity);
       height = width / measures.ratio;
-      //alert(2);
     }
-    //console.log(numberFromWhatever(pos.y, measuresToFit.h- height));
 
     $el.css({
       width: width,
@@ -1324,7 +1319,6 @@ function fit ($el, measuresToFit, method, position) {
       left: numberFromWhatever(pos.x, measuresToFit.w - width),
       top: 0
     });
-
     elData.l = {
       W: measures.width,
       H: measures.height,
@@ -2057,7 +2051,6 @@ jQuery.Fotorama = function ($fotorama, opts) {
   $wrap
       .addClass(CSS3 ? wrapCss3Class : wrapCss2Class)
       .toggleClass(wrapNoControlsClass, !opts.controlsonstart);
-
   fotoramaData.fotorama = this;
 
   function checkForVideo () {
@@ -2359,6 +2352,7 @@ jQuery.Fotorama = function ($fotorama, opts) {
 
       width = measureIsValid(opts.width) || measureIsValid(width) || WIDTH;
       height = measureIsValid(opts.height) || measureIsValid(height) || HEIGHT;
+
       that.resize({
         width: width,
         ratio: opts.ratio || ratio || width / height
@@ -2443,7 +2437,6 @@ jQuery.Fotorama = function ($fotorama, opts) {
         };
 
         setMeasures(imgData.measures.width, imgData.measures.height, imgData.measures.ratio, index);
-
         $img
             .off('load error')
             .addClass(imgClass + (fullFLAG ? ' ' + imgFullClass : ''))

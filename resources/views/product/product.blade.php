@@ -63,7 +63,7 @@
     	$(document).ready(function(){
     		if($('#keyword').length==0){
 	    		if(!$('.brandDiv>a>img').hasClass('brandLogoActive')){
-	    			getProduct($('.productMain').children().children().children().next().attr("id"),false,true);
+	    			getProduct($('.productMain').children().children().children().next().children().attr("id"),false,true);
 	    		}
 	    		else{
 	    			getProduct($('.brandLogoActive').parent().parent().attr('id'),false,true);
