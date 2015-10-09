@@ -55,6 +55,7 @@
 ?>          </tbody>
         </table>
     </div>
+    {!! str_replace('/?', '?', $data->render()) !!}
 </div>
 <?php
     }

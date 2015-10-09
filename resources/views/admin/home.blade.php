@@ -54,8 +54,10 @@
 			echo "</td>";
 			echo "</tr>";
 		}
-?>			</tbody>
+?>			
+			</tbody>
 		</table>
+		{!! str_replace('/?', '?', $data->render()) !!}
 	</div>
 </div>
 <?php

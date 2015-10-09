@@ -136,7 +136,7 @@
 
 		$("#previewNews").on("click", function(e){
 		    e.preventDefault();
-		    $('#contactsForm').attr('action', "admin/news/preview").submit();
+		    $('#newsForm').attr('action', "admin/news/preview").attr('target', '_blank').submit();
 		});
 	});
 

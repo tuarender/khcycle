@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
     <title>Khcycle</title>
-    <base href="/khcycle/public/" target="_top">
+    <base href="/" target="_top">
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/bootstrap-social.css" rel="stylesheet">
     <link href="css/font-awesome.css" rel="stylesheet">
@@ -31,11 +31,10 @@
 @yield('content')
 </div>
 @include('partials.footer')
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/fotorama.js"></script>
-@yield('scripts')
   </body>
+  <script src="js/jquery-1.11.3.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/fotorama.js"></script>
+@yield('scripts')
 
 </html>

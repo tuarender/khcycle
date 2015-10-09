@@ -58,6 +58,7 @@
         }
 ?>          </tbody>
         </table>
+        {!! str_replace('/?', '?', $data->render()) !!}
     </div>
 <?php
     }

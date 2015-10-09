@@ -14,6 +14,7 @@ use File;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Pagination\Paginator;
 
 class AdminController extends Controller
 {
@@ -22,6 +23,7 @@ class AdminController extends Controller
     const NEWS_CONTENT_PATH = 'images/news/newsContent';
     const BRAND_PATH = 'images/brand';
     const PRODUCT_PATH = 'images/product';
+    const NEWS_TEMP = 'images/news/temp';
     /**
      * Display a listing of the resource.
      *
@@ -66,10 +68,15 @@ class AdminController extends Controller
     }
 
     public function getNews(){
-        $sql = "SELECT NEWS_ID, NEWS_ORDER, NEWS_TITLE,NEWS_IS_YOUTUBE FROM KH_NEWS WHERE NEWS_DELETE_STATUS <> 1 AND NEWS_ACTIVE_STATUS = 1 ORDER BY NEWS_ORDER DESC,NEWS_CREATE_DATE DESC";
-        $data = DB::select($sql);
+        $newsList = DB::table('KH_NEWS')
+                    ->where('NEWS_DELETE_STATUS', '<>', 1)
+                    ->where('NEWS_ACTIVE_STATUS', '=', 1)
+                    ->orderBy('NEWS_ORDER', 'DESC')
+                    ->orderBy('NEWS_CREATE_DATE','DESC')
+                    ->simplePaginate(10);
+
         $menu = "News/Articles Setting";
-        return view('admin.news',['name'=>$menu,'data'=>$data]);
+        return view('admin.news',['name'=>$menu,'data'=>$newsList]);
     }
 
     public function getNewsEdit($id=null){
@@ -118,7 +125,7 @@ class AdminController extends Controller
                 ->where('login.KH_MEMBER_RULE','<>','ADMIN')
                 ->where('contact.KH_CONTACT_NAME','like',$name)
                 ->where('contact.KH_CONTACT_TEL','like',$tel)
-                ->simplePaginate(15);
+                ->simplePaginate(10);
         }
         else{
             $data =  $this->listmember();
@@ -132,7 +139,7 @@ class AdminController extends Controller
         $data =  DB::table('KH_CATALOGUE')
             ->where('CATALOGUE_DELETE_STATUS','<>','1')
             ->orderBy('CATALOGUE_ORDER','desc')
-            ->simplePaginate(15);
+            ->simplePaginate(10);
         $menu ="CATALOGUE SETTING";
         return view('admin.catalogue',['name'=>$menu,'data'=>$data]);
     }
@@ -218,34 +225,37 @@ class AdminController extends Controller
         return view('admin.group',['name'=>$menu,'data'=>$dataSelectedGroup,'dataGroup'=>$dataGroup]);
     }
 
+
     public function getProduct($id){
-        $sql = "SELECT PRODUCT_ID,
-                    PRODUCT_BRAND_ID,
-                    PRODUCT_GROUP_ID,
-                    GROUP_NAME,
-                    PRODUCT_ORDER,
-                    PRODUCT_NAME,
-                    PRODUCT_MIN_FILE_NAME,
-                    PRODUCT_MIN_EXT,
-                    PRODUCT_FULL_FILE_NAME,
-                    PRODUCT_FULL_EXT 
-                FROM KH_PRODUCT A 
-                LEFT JOIN (
-                    SELECT GROUP_NAME,G.GROUP_ID,BRAND_ID 
-                    FROM KH_GROUP G, KH_BRAND_GROUP H
-                    WHERE
-                        G.GROUP_ID = H.GROUP_ID
-                    AND GROUP_DELETE_STATUS <> 1
-                ) B
-                ON A.PRODUCT_GROUP_ID = B.GROUP_ID
-                AND A.PRODUCT_BRAND_ID = B.BRAND_ID
-                WHERE 
-                    PRODUCT_BRAND_ID =?
-                    AND PRODUCT_DELETE_STATUS <> 1 
-                ORDER BY PRODUCT_ORDER DESC, 
-                    PRODUCT_CREATE_DATE_TIME DESC";
-        $queryParam = array($id);
-        $data = DB::select($sql,$queryParam);
+
+        $sqlSub = DB::table('KH_GROUP AS G')
+                ->join('KH_BRAND_GROUP AS H','G.GROUP_ID', '=', 'H.GROUP_ID')
+                ->select('G.GROUP_ID','H.BRAND_ID','G.GROUP_NAME')
+                ->where('GROUP_DELETE_STATUS','<>','B.BRAND_ID');
+
+        $data = DB::table('KH_PRODUCT AS A ')
+                ->leftjoin(DB::raw("({$sqlSub->toSql()}) as `B`"),function($q) use ($sqlSub){
+                    $q->on('A.PRODUCT_GROUP_ID','=','B.GROUP_ID')
+                    ->where('A.PRODUCT_BRAND_ID','=','1');
+                })
+                //trick to swap GROUP_DELETE_STATUS WITH BRAND_ID
+                ->mergeBindings($sqlSub)
+                ->select(
+                    'PRODUCT_ID',
+                    'PRODUCT_BRAND_ID',
+                    'PRODUCT_GROUP_ID',
+                    'GROUP_NAME',
+                    'PRODUCT_ORDER',
+                    'PRODUCT_NAME',
+                    'PRODUCT_MIN_FILE_NAME',
+                    'PRODUCT_MIN_EXT',
+                    'PRODUCT_FULL_FILE_NAME',
+                    'PRODUCT_FULL_EXT')
+                ->where('PRODUCT_BRAND_ID','=',$id)
+                ->where('PRODUCT_DELETE_STATUS','<>','1')
+                ->orderBy('PRODUCT_ORDER','DESC')
+                ->orderBy('PRODUCT_CREATE_DATE_TIME','DESC')
+                ->simplePaginate(5);
         $menu = "Product Setting > จัดการสินค้าในแบรนด์";
         return view('admin.product',['name'=>$menu,'data'=>$data,'productId'=>$id]);
     }
@@ -264,8 +274,7 @@ class AdminController extends Controller
 
     private function getBanner($id){
         $banner = DB::table('KH_BANNER')
-                ->where('BANNER_ID', '=', $id)
-                ->get();
+                ->where('BANNER_ID', '=', $id);
         return $banner;
     }
 
@@ -305,7 +314,7 @@ class AdminController extends Controller
                 'ID',
                 'ZONE_NAME')
             ->where('ZONE_DELETE_STATUS','<>','1')
-            ->simplePaginate(15);
+            ->simplePaginate(10);
         return view('admin/zone',['name'=>$name,'data'=>$data]);
     }
 
@@ -397,7 +406,7 @@ class AdminController extends Controller
                         'br.BRANCH_ADDR',
                         'br.BRANCH_EMAIL')
                     ->where('BRANCH_DELETE_STATUS', '<>', '1')
-                    ->simplePaginate(15);
+                    ->simplePaginate(10);
             }else{
                 $data = DB::table('KH_BRANCH as br')
                     ->join('KH_ZONE AS zone', 'br.BRANCH_ZONE', '=', 'zone.ID')
@@ -408,7 +417,7 @@ class AdminController extends Controller
                         'br.BRANCH_EMAIL')
                     ->where('BRANCH_DELETE_STATUS', '<>', '1')
                     ->where('BRANCH_ZONE', '=', $datazone)
-                    ->simplePaginate(15);
+                    ->simplePaginate(10);
             }
         }
         else
@@ -421,7 +430,7 @@ class AdminController extends Controller
                     'br.BRANCH_ADDR',
                     'br.BRANCH_EMAIL')
                 ->where('BRANCH_DELETE_STATUS','<>','1')
-                ->simplePaginate(15);
+                ->simplePaginate(10);
         }
         $name= 'BRANCH MANAGE';
         $zone = DB::table('KH_ZONE')->get();
@@ -551,7 +560,7 @@ class AdminController extends Controller
         $bannerList = DB::table('KH_BANNER')
                     ->where('BANNER_IS_DELETED', '<>', 1)
                     ->orderBy('BANNER_ORDER', 'DESC')
-                    ->get();
+                    ->simplePaginate(10);
         return $bannerList;
     }
 
@@ -572,7 +581,7 @@ class AdminController extends Controller
                     'info.KH_INFORMATION_SHOE',
                     'contact.KH_CONTACT_ADDR')
                 ->where('login.KH_MEMBER_RULE','<>','ADMIN')
-                ->simplePaginate(15);
+                ->simplePaginate(10);
 
         return $data;
     }
@@ -1239,41 +1248,31 @@ class AdminController extends Controller
             $title = $request->input('newsTitle');
             $youtubeUri = "";
 
-            $sqlMaxOrder = "SELECT MAX(NEWS_ORDER) AS MAX_ORDER FROM KH_NEWS WHERE NEWS_DELETE_STATUS <> 1";
-            $dataMaxOrder = DB::select($sqlMaxOrder);
-            $maxOrder = 0;
-            if(count($sqlMaxOrder)>0){
-                $maxOrder = $dataMaxOrder[0]['MAX_ORDER']+1;
-            }
-
             if($newsType==0){
                 //picture case
                 $file = Input::file('newsImage');
                 if ($file!=null&&$file->isValid()) {
+                    $fileToDeletePath = self::NEWS_TEMP;
+                    File::deleteDirectory($fileToDeletePath);
+
                     /** DO INSERT FIRST **/
                     //insert
-                    $sqlInsert = "INSERT INTO KH_NEWS(NEWS_ORDER,NEWS_TITLE,NEWS_CONTENT,NEWS_SAMPLE,NEWS_IS_YOUTUBE) VALUES(?,?,?,?,0)";
-                    $insertParam = array($maxOrder,$title,htmlentities($content),htmlentities($sample));
-                    DB::insert($sqlInsert,$insertParam);
-                    $id = DB::getPdo()->lastInsertId();
-                    if($id>0){
-                        $destinationPath = self::NEWS_PATH; 
-                        $extension = $file->getClientOriginalExtension(); 
-                        $fileName = rand(11111,99999)."_".$id; 
-                        $fileNameFull = $fileName.".".$extension;
-                        $fileMoved = $file->move($destinationPath, $fileNameFull);
-                        if (File::exists($fileMoved->getRealPath())){
-                            //update after moved file
-                            $sqlUpdate = "UPDATE KH_NEWS SET NEWS_IMAGE_TITLE_NAME=?, NEWS_IMAGE_TITLE_EXT=? WHERE NEWS_ID=?";
-                            $updateParam = array($fileName,$extension,$id);
-                            DB::update($sqlUpdate,$updateParam);
-                            Session::flash('alert-success', 'บันทึกข้อมูลสำเร็จ ');
-                            return redirect('admin/news/');
-                        }
-                        else{
-                            Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาติดต่อผู้ดูแลระบบ');
-                            return redirect('admin/news/');
-                        }
+                    $destinationPath = self::NEWS_TEMP; 
+                    File::makeDirectory($destinationPath);
+                    $extension = $file->getClientOriginalExtension(); 
+                    $fileName = rand(11111,99999); 
+                    $fileNameFull = $fileName.".".$extension;
+                    $fileMoved = $file->move($destinationPath, $fileNameFull);
+                    if (File::exists($fileMoved->getRealPath())){
+                        //update after moved file
+                        $newsPreview['NEWS_TITLE'] = $title;
+                        $newsPreview['NEWS_CONTENT'] = htmlentities($content);
+                        $newsPreview['NEWS_IS_YOUTUBE'] = 0;
+                        $newsPreview['NEWS_IMAGE_TITLE_NAME'] = $fileName;
+                        $newsPreview['NEWS_IMAGE_TITLE_EXT'] = $extension;
+                        $newsPreview['NEWS_YOUTUBE_URI'] = '';
+                        $news = array($newsPreview);
+                        return view('admin.newsPreview', ['news' => $news],['name' => 'News']);
                     }
                     else{
                         Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาติดต่อผู้ดูแลระบบ');
@@ -1288,11 +1287,14 @@ class AdminController extends Controller
             else{
                 //youtube case
                 $youtubeUri = $request->input('youTubeUrl');
-                $sqlInsert = "INSERT INTO KH_NEWS(NEWS_ORDER,NEWS_TITLE,NEWS_CONTENT,NEWS_SAMPLE,NEWS_IS_YOUTUBE,NEWS_YOUTUBE_URI) VALUES(?,?,?,?,1,?)";
-                $insertParam = array($maxOrder,$title,htmlentities($content),htmlentities($sample),$youtubeUri);
-                DB::insert($sqlInsert,$insertParam);
-                Session::flash('alert-success', 'บันทึกข้อมูลสำเร็จ ');
-                return redirect('admin/news/');
+                $newsPreview['NEWS_TITLE'] = $title;
+                $newsPreview['NEWS_CONTENT'] = htmlentities($content);
+                $newsPreview['NEWS_IS_YOUTUBE'] = 1;
+                $newsPreview['NEWS_YOUTUBE_URI'] = $youtubeUri;
+
+                $news = array($newsPreview);
+
+                return view('admin.newsPreview', ['news' => $news],['name' => 'News']);
             }
         }
     }
