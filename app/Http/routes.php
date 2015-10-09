@@ -47,7 +47,7 @@ Route::get('search/{keyword}','SearchController@searchProduct');
 
 //admin
 //--get
-Route::get('admin',['middleware'=>'check'],array('uses'=>'AdminController@index'));
+Route::get('admin',array('uses'=>'AdminController@index'));
 Route::get('admin/home','AdminController@getHome');
 Route::get('admin/contact','AdminController@getContact');
 Route::get('admin/member','AdminController@getMember');

@@ -83,8 +83,8 @@
                         </tr>
                     @endforeach
                     </tbody>
-                    {!! str_replace('/?', '?', $data->render()) !!}
                 </table>
+                {!! str_replace('/?', '?', $data->render()) !!}
             </div>
         </div>
     </div>

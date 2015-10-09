@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use App;
 use File;
@@ -29,6 +30,18 @@ class AdminController extends Controller
      *
      * @return Response
      */
+
+    public function __construct()
+    {
+        if(!Session::has('user'))
+        {
+            return Redirect::to('home')->send();
+        }
+        if(!Session::get('user')->KH_MEMBER_RULE=='ADMIN')
+        {
+            return Redirect::to('home')->send();
+        }
+    }
 
     public function index()
     {
