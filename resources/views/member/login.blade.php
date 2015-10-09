@@ -45,7 +45,7 @@
                             <div class="form-group">
                                 <div class="col-sm-5 col-sm-offset-4">
                                     <button type="submit" class="btn btn-primary btnKhcycle">
-                                        เช้าสู่ระบบ
+                                        เข้าสู่ระบบ
                                     </button>
                                    <a href="register" class="btn btn-primary btnKhcycle">สมัครสมาชิก</a>
                                 </div>
