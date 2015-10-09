@@ -24,7 +24,7 @@
                            <br><?php $i=1; ?>
                         @endif
             <div class="col-sm-3">
-                <a href="pdf/{!! $data['CATALOGUE_PATH_PDF'] !!}" target="_blank">
+                <a href="PDF/{!! $data['CATALOGUE_PATH_PDF'] !!}.pdf" target="_blank">
                     <img onerror='this.src="cover/default.png"' src="cover/{!!  $data['CATALOGUE_COVER_PIC'] !!}.jpg" class="img-responsive"> </a>
                <b> <center> <p>{!! $data['CATALOGUE_NAME']  !!}</p> </center></b>
             </div>
