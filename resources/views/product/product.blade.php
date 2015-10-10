@@ -10,7 +10,7 @@
 ?>
 <div class="productMain container-fluid" style="display:none;">
 	<div class="row">
-		<div class="col-sm-3 col-lg-3">
+		<div class="col-sm-3 col-lg-2 productHeight">
 			<div class="adminMenuSubheader">
 				<div class="col-xs-12">
 					<span>Product</span>
@@ -31,7 +31,7 @@
 					<hr style='max-width:100%;margin:10px 0px;border-color:#D7D7D7'>
 				</div>
 			</div>
-			<div id="brandHome" data-loop="true" data-width="100%" data-ratio="208/58" data-autoplay="3000" data-stopautoplayontouch="false" class='row'>
+			<div id="brandHome" data-loop="true" data-width="100%" data-ratio="208/58" data-autoplay="3000" data-stopautoplayontouch="false">
 <?php
 	foreach($brand as $eachBrand){
 		echo "<div id='".$eachBrand["BRAND_ID"]."' class='brandDiv' style='text-align:right'>";
@@ -48,7 +48,7 @@
 ?>
 			</div>
 		</div>
-		<div id="productList" class="col-sm-9 col-lg-9 productListContainer" style="text-align:left">
+		<div id="productList" class="col-sm-9 col-lg-10 productListContainer" style="text-align:left">
 		</div>
 	</div>
 </div>

@@ -7,9 +7,8 @@
           <div class="lastestCatalogue">
 <?php
   if(isset($catalogue)){
-    if(!is_null($catalogue[0])){
+    if(count($catalogue)>0){
       echo "<a href='pdf/".$catalogue[0]['CATALOGUE_PATH_PDF']."' target='_blank'>";
-      //echo "<img src='cover/".$catalogue[0]['CATALOGUE_COVER_PIC'].".jpg' class='img-responsive catalogueHome' style='background-image: url(cover/".$catalogue[0]['CATALOGUE_COVER_PIC'].".jpg)'/></a>";
       echo "<div class='catalogueDetail'><a class='btn btn-md linkCatalogue' href='pdf/".$catalogue[0]['CATALOGUE_PATH_PDF']."' target='_blank'>Lastest Catalogue</a></div>";
       echo "<div><a class='linkViewMoreCatalogue' href='catalogue'>View more..</a></div>";
     }
@@ -24,7 +23,7 @@
             foreach($brand as $eachBrand){
               echo "<div id='".$eachBrand["BRAND_ID"]."' class='col-xs-12 col-sm-4 col-md-2 col-lg-2 brandList' style='text-align:right'>";
               echo "<a href='product/brand/".$eachBrand["BRAND_ID"]."'>";
-              echo "<img onerror='this.src=\"images/brand/default.png\"' id='logoBrand".$eachBrand["BRAND_ID"]."' src='images/brand/product/sample".$eachBrand["BRAND_ID"].".jpg'";
+              echo "<img onerror='this.src=\"images/brand/default.png\"' id='logoBrand".$eachBrand["BRAND_ID"]."' src='images/brand/".$eachBrand["BRAND_LOGO_NAME"].".".$eachBrand["BRAND_LOGO_EXT"]."'";
               echo " class='brandLogo_home img-responsive"; 
                 if(isset($brandId)&&!is_null($brandId)&&$brandId==$eachBrand["BRAND_ID"]){
                   echo " brandLogoActive";

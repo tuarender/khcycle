@@ -257,7 +257,7 @@ class AdminController extends Controller
                     'PRODUCT_ID',
                     'PRODUCT_BRAND_ID',
                     'PRODUCT_GROUP_ID',
-                    'GROUP_NAME',
+                    'B.GROUP_NAME',
                     'PRODUCT_ORDER',
                     'PRODUCT_NAME',
                     'PRODUCT_MIN_FILE_NAME',
@@ -268,7 +268,7 @@ class AdminController extends Controller
                 ->where('PRODUCT_DELETE_STATUS','<>','1')
                 ->orderBy('PRODUCT_ORDER','DESC')
                 ->orderBy('PRODUCT_CREATE_DATE_TIME','DESC')
-                ->simplePaginate(5);
+                ->simplePaginate(10);
         $menu = "Product Setting > จัดการสินค้าในแบรนด์";
         return view('admin.product',['name'=>$menu,'data'=>$data,'productId'=>$id]);
     }
@@ -1714,7 +1714,7 @@ class AdminController extends Controller
                 $fileNameFull = $fileName.".".$extension;
                 $fileMoved = $file->move($destinationPath, $fileNameFull);
                 if (File::exists($fileMoved->getRealPath())){
-                    $sqlUpdate = "UPDATE KH_PRODUCT SET PRODUCT_NAME=?,PRODUCT_GROUP_ID=? PRODUCT_MIN_FILE_NAME=?, PRODUCT_MIN_EXT=?,PRODUCT_FULL_FILE_NAME=?,PRODUCT_FULL_EXT=? WHERE PRODUCT_ID=?";
+                    $sqlUpdate = "UPDATE KH_PRODUCT SET PRODUCT_NAME=?,PRODUCT_GROUP_ID=?,PRODUCT_MIN_FILE_NAME=?, PRODUCT_MIN_EXT=?,PRODUCT_FULL_FILE_NAME=?,PRODUCT_FULL_EXT=? WHERE PRODUCT_ID=?";
                     $updateParam = array($productName,$productGroup,$fileName,$extension,$fileName,$extension,$id);
                     $data = DB::update($sqlUpdate,$updateParam);
                     Session::flash('alert-success', 'อัพเดทสำเร็จ ');

@@ -636,6 +636,9 @@ div.newsEnd{
 	}
 }
 @media screen and (min-width: 1200px) {
+	.productHeight{
+		min-height: 870px;
+	}
 	.productMain,.adminMain,.productSubheader{
 		max-width: 90%;
 	}

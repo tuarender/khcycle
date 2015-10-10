@@ -1,9 +1,9 @@
 <div class="container-fluid">
     <div class="row adminSubheader">
-        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 adminMenuSubheader">
+        <div class="col-xs-12 col-sm-2 col-md-3 col-lg-3 adminMenuSubheader">
             <span>{{$name}}</span>
         </div>
-        <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5 subheaderContact">
+        <div class="col-xs-12 col-sm-5 col-md-4 col-lg-4 subheaderContact">
             <label>สนใจสินค้าติดต่อ 0-2510-1906</label>
         </div>
         <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5 subheaderContact">

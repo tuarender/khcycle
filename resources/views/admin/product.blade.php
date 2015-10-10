@@ -3,6 +3,7 @@
 @include('admin.partials.adminSubHeader')
 <?php
     if(isset($data)){
+        print_r($data);
 ?>
 <div class="sessionContainer" style="width: 100%">
     Log in as:{{ Session::get('user')->KH_MEMBER_LOGIN_USERNAME }} <a href="logout">ออกจากระบบ</a>

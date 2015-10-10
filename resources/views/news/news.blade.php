@@ -13,7 +13,7 @@
 	echo "<div data-easyshare data-easyshare-http data-easyshare-url='/news/".$news[0]['NEWS_ID']."' style='margin-bottom:5px;'>";
 	echo "<button data-easyshare-button='facebook'>";
 	echo " <span class='fa fa-facebook'></span>";
-	echo " <span>Share</span> </button><span data-easyshare-button-count='facebook'>0</span>";
+	echo " <span>Share</span> </button>";
 	echo "</div>";
 	echo "</div>";
 	echo "<div class='row'>";

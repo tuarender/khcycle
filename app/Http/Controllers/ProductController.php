@@ -31,6 +31,7 @@ class ProductController extends Controller
 
         //query parameter
         $queryParam = array($brandId);
+        $productQueryParam  = array($brandId);
 
         //if have group id then add to query parameter
         if(!is_null($groupId)){
@@ -45,7 +46,7 @@ class ProductController extends Controller
         //execute
         $brand = DB::select($sqlBrand,$queryParam);
         $groups = DB::select($sqlGroup,$queryParam);
-        $products = DB::select($sqlProduct,$queryParam);
+        $products = DB::select($sqlProduct,$productQueryParam);
 
         $brandName="";
         if(count($brand)>0){

@@ -30,6 +30,7 @@
 <div class="container-fluid">
 	@include('partials.flashmessage')
 	<form id="newsForm" class="form-horizontal" role="form" method="post" action="<?=$formAction?>"  enctype="multipart/form-data">
+		<input type="hidden" id="newsAction" name="_token" value="{{$formAction}}">
 		<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
 		<div class="form-group @if ($errors->has('newsTitle')) has-error @endif">
             <label for="newsTitle" class="col-sm-3 control-label"><font color="red">*</font>ชื่อ News/Articles</label>
@@ -104,7 +105,7 @@
         </div>
         <div class="form-group">
             <div class="col-sm-6 col-sm-offset-4">
-                <button type="submit" class="btn btn-primary btnKhcycle">
+                <button id="submitNews" type="submit" class="btn btn-primary btnKhcycle">
                     ยืนยันและบันทึก
                 </button>
                 <button type="reset" class="btn btn-primary btnKhcycle">
@@ -137,6 +138,11 @@
 		$("#previewNews").on("click", function(e){
 		    e.preventDefault();
 		    $('#newsForm').attr('action', "admin/news/preview").attr('target', '_blank').submit();
+		});
+
+		$("#submitNews").on("click", function(e){
+		    e.preventDefault();
+		    $('#newsForm').attr('action', $('#newsAction').val()).attr('target', '').submit();
 		});
 	});
 
