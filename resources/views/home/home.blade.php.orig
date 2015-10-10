@@ -7,9 +7,16 @@
           <div class="lastestCatalogue">
 <?php
   if(isset($catalogue)){
+<<<<<<< HEAD
     if(count($catalogue)>0){
-      echo "<a href='PDF/".$catalogue[0]['CATALOGUE_PATH_PDF']."' target='_blank'>";
-      echo "<div class='catalogueDetail'><a class='btn btn-md linkCatalogue' href='PDF/".$catalogue[0]['CATALOGUE_PATH_PDF']."' target='_blank'>Lastest Catalogue</a></div>";
+      echo "<a href='pdf/".$catalogue[0]['CATALOGUE_PATH_PDF']."' target='_blank'>";
+      echo "<div class='catalogueDetail'><a class='btn btn-md linkCatalogue' href='pdf/".$catalogue[0]['CATALOGUE_PATH_PDF']."' target='_blank'>Lastest Catalogue</a></div>";
+=======
+    if(!is_null($catalogue[0])){
+      echo "<a href='PDF/".$catalogue[0]['CATALOGUE_PATH_PDF'].".pdf' target='_blank'>";
+      //echo "<img src='cover/".$catalogue[0]['CATALOGUE_COVER_PIC'].".jpg' class='img-responsive catalogueHome' style='background-image: url(cover/".$catalogue[0]['CATALOGUE_COVER_PIC'].".jpg)'/></a>";
+      echo "<div class='catalogueDetail'><a class='btn btn-md linkCatalogue' href='PDF/".$catalogue[0]['CATALOGUE_PATH_PDF'].".pdf' target='_blank'>Lastest Catalogue</a></div>";
+>>>>>>> 0e84decea686061613afb28c2c611581ea55f8c9
       echo "<div><a class='linkViewMoreCatalogue' href='catalogue'>View more..</a></div>";
     }
   }
