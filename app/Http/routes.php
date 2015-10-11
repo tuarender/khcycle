@@ -16,11 +16,15 @@ Route::get('home', 'HomeController@index');
 Route::get('catalogue','CatalogueController@index');
 Route::get('member','MemberController@index');
 Route::post('login','MemberController@postLogin');
-Route::get('forgetpassword','MemberController@forgetpassword');
 Route::get('profile','MemberController@profilemember');
 Route::get('logout','MemberController@logout');
+Route::get('forgotpassword','MemberController@forgotpassword');
+Route::get('password/reset/{token}', 'MemberController@getResetPassword');
 Route::post('logout','MemberController@logout');
+Route::post('forgotpassword', 'MemberController@postForgotpassword');
+Route::post('password/reset', 'MemberController@postResetPassword');
 //Route::post('updatemember/{id}','MemberController@update');
+
 
 Route::get('member/{id}','MemberController@show');
 

@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\ResetsPasswords;
 
 class MemberController extends Controller
 {
@@ -34,9 +35,9 @@ class MemberController extends Controller
         }
     }
 
-    public function forgetpassword()
+    public function forgotpassword()
     {
-        return view('member.forgetpassword')->with('name','ForgetPassword');
+        return view('member.forgotpassword')->with('name','ForgotPassword');
     }
 
     public function register()
@@ -62,7 +63,7 @@ class MemberController extends Controller
             'member_username' =>'required',
             'member_password'=>'required|confirmed',
             'member_password_confirmation'=>'required',
-            'member_email'=>'required|confirmed',
+            'member_email'=>'required|email|confirmed',
             'member_email_confirmation'=>'required',
             'member_name'=>'required',
             'member_tel'=>'required',
@@ -78,6 +79,7 @@ class MemberController extends Controller
             'member_password.confirmed'=>'กรุณาใส่ Password ให้ตรงกัน',
             'member_password_confirmation.required'=>'กรุณาระบุ Password',
             'member_email.required'=>'กรุณาระบุ Email',
+            'member_email.email'=>'Email ของคุณไม่ถูกต้อง',
             'member_email.confirmed'=>'กรุณาใส่Emailให้ตรงกัน',
             'member_email_confirmation.required'=>'กรุณาระบุ Email',
             'member_name.required'=>'กรุณาระบุชื่อ-นามสกุล',
@@ -406,12 +408,60 @@ class MemberController extends Controller
         return view('member.memberprofile')->with('name','Member')->with('data',$data);
     }
 
-
-
     public function logout()
     {
         Auth::logout();
         Session::forget('user');
         return redirect('home');
+    }
+
+    public function generateToken(){
+        return bin2hex(random_bytes($length));
+    }
+
+    public function postForgotPassword(){
+
+        $rules=[
+            'email' =>'required',
+        ];
+        
+        $messages = [
+            'email.required'=>'กรุณาระบุ email',
+        ];
+
+        $validator =  Validator::make($request->all(),$rules,$messages);
+        if($validator->fails()){
+            return redirect('forgotpassword')->withErrors($validator)->withInput();
+        }
+        else{
+            $email = $request->input('email');
+            $findUser = $this->checkemail($email);
+            if($findUser>0){
+                $token = generateToken();
+                DB::table('KH_PASSWORD_RESET')->insert([
+                    'EMAIL'=>$email,
+                    'TOKEN' =>$member_email
+                ]);
+
+                $message = "<h2>Hi!!</h2>\n
+                            Click here to reset your password.<br>
+                            <a href='http://khcycle.co.th/password/reset/".$token."'>http://khcycle.co.th/password/reset/".$token."</a>
+                            <br><br> Please note that: this url valid only 15 minute.
+                            <br><br><h3>Thank you!</h3>";
+                $rEmail = $email;
+                $headers  = "MIME-Version: 1.0\r\n";
+                $headers .= "Content-type: text/html; charset=utf8\r\n";
+                $headers .= "From: donotreply@khcycle.co.th\r\n";
+                $headers .= "X-Mailer: JOBTOPGUN.COM\r\n";
+                $subject = "=?utf-8?B?".base64_encode("Reset password")."?=";
+                mail($rEmail,$subject,$message,$headers,"-f tuarender005@gmail.com");
+                Session::flash('alert-success', 'เราได้ส่งข้อมูลไปยังอีเมล์ของท่านแล้ว');
+                return view('member.forgotpassword')->with('name','ForgotPassword');
+            }
+            else{
+                Session::flash('alert-danger', 'ไม่พบอีเมล์ดังกล่าว กรุณาตรวจสอบ');
+                return view('member.forgotpassword')->with('name','ForgotPassword');
+            }
+        }
     }
 }

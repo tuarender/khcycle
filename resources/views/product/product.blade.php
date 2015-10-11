@@ -57,6 +57,7 @@
 ?>
 @endsection
 @section('scripts')
+	<script src="js/jquery.appear.js"></script>
     <script type="text/javascript">
     	var isBrandSlider = false;
 
@@ -128,10 +129,20 @@
 					success: function(result){
 						if(result){
 							$('#productList').html(result).fadeIn(800);
+							showProduct();
 						}
 			    	}
 				});
 			});
+		}
+
+		function showProduct(){
+			$('.imageProduct').on('appear', function(event, $appread) {
+				alert("jaja");
+		    });
+		    $('.imageProduct').on('disappear', function(event, $all_disappeared_elements) {
+		    	alert("jajaja");
+		    });
 		}
     </script>
 @endsection

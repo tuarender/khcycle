@@ -241,23 +241,11 @@ class AdminController extends Controller
 
     public function getProduct($id){
 
-        $sqlSub = DB::table('KH_GROUP AS G')
-                ->join('KH_BRAND_GROUP AS H','G.GROUP_ID', '=', 'H.GROUP_ID')
-                ->select('G.GROUP_ID','H.BRAND_ID','G.GROUP_NAME')
-                ->where('GROUP_DELETE_STATUS','<>','B.BRAND_ID');
-
         $data = DB::table('KH_PRODUCT AS A ')
-                ->leftjoin(DB::raw("({$sqlSub->toSql()}) as `B`"),function($q) use ($sqlSub){
-                    $q->on('A.PRODUCT_GROUP_ID','=','B.GROUP_ID')
-                    ->where('A.PRODUCT_BRAND_ID','=','1');
-                })
-                //trick to swap GROUP_DELETE_STATUS WITH BRAND_ID
-                ->mergeBindings($sqlSub)
                 ->select(
                     'PRODUCT_ID',
                     'PRODUCT_BRAND_ID',
                     'PRODUCT_GROUP_ID',
-                    'B.GROUP_NAME',
                     'PRODUCT_ORDER',
                     'PRODUCT_NAME',
                     'PRODUCT_MIN_FILE_NAME',
@@ -269,8 +257,15 @@ class AdminController extends Controller
                 ->orderBy('PRODUCT_ORDER','DESC')
                 ->orderBy('PRODUCT_CREATE_DATE_TIME','DESC')
                 ->simplePaginate(10);
+        $groupData =    DB::table('KH_GROUP')
+                        ->where('GROUP_DELETE_STATUS','<>',1)
+                        ->get();
+        $groupDataAdjust = null;
+        foreach ($groupData as $group) {
+            $groupDataAdjust[$group['GROUP_ID']] = $group['GROUP_NAME'];
+        }
         $menu = "Product Setting > จัดการสินค้าในแบรนด์";
-        return view('admin.product',['name'=>$menu,'data'=>$data,'productId'=>$id]);
+        return view('admin.product',['name'=>$menu,'data'=>$data,'groupData'=>$groupDataAdjust,'productId'=>$id]);
     }
 
     public function postContact(Request $request)
@@ -1039,7 +1034,7 @@ class AdminController extends Controller
             'youTubeUrl'=>'url|required_if:newsType,1',
             'newsImage'=>'image|max:1024|required_if:newsType,0',
             'sample'=>'required|max:500|not_in:<p>&nbsp; &nbsp;</p>',
-            'content'=>'required|max:4000|not_in:<p>&nbsp; &nbsp;</p>'
+            'content'=>'required|max:20000|not_in:<p>&nbsp; &nbsp;</p>'
         ];
         $messages = [
             'newsTitle.required'=>'กรุณาระบุชื่อ News/Articles',
@@ -1054,7 +1049,7 @@ class AdminController extends Controller
             'sample.required'=>'กรุณาระบุรายละเอียดโดยย่อ',
             'sample.max'=>'รายละเอียดโดยย่อต้องยาวไม่เกิน 500ตัวอักษร',
             'content.required'=>'กรุณาระบุรายละเอียด',
-            'content.max'=>'รายละเอียดต้องยาวไม่เกิน4000ตัวอักษร'
+            'content.max'=>'รายละเอียดต้องยาวไม่เกิน20000ตัวอักษร'
         ];
 
         $validator = Validator::make($request->all(),$rules,$messages);
@@ -1133,7 +1128,7 @@ class AdminController extends Controller
             'youTubeUrl'=>'url|required_if:newsType,1',
             'newsImage'=>'image|max:1024',
             'sample'=>'required|max:500|not_in:<p>&nbsp; &nbsp;</p>',
-            'content'=>'required|max:4000|not_in:<p>&nbsp; &nbsp;</p>'
+            'content'=>'required|max:20000|not_in:<p>&nbsp; &nbsp;</p>'
         ];
         $messages = [
             'newsTitle.required'=>'กรุณาระบุชื่อ News/Articles',
@@ -1147,7 +1142,7 @@ class AdminController extends Controller
             'sample.required'=>'กรุณาระบุรายละเอียดโดยย่อ',
             'sample.max'=>'รายละเอียดโดยย่อต้องยาวไม่เกิน 500ตัวอักษร',
             'content.required'=>'กรุณาระบุรายละเอียด',
-            'content.max'=>'รายละเอียดต้องยาวไม่เกิน4000ตัวอักษร'
+            'content.max'=>'รายละเอียดต้องยาวไม่เกิน20000ตัวอักษร'
         ];
         //set more validate rule
         $validator = Validator::make($request->all(),$rules,$messages);
@@ -1232,7 +1227,7 @@ class AdminController extends Controller
             'youTubeUrl'=>'url|required_if:newsType,1',
             'newsImage'=>'image|max:1024|required_if:newsType,0',
             'sample'=>'required|max:500|not_in:<p>&nbsp; &nbsp;</p>',
-            'content'=>'required|max:4000|not_in:<p>&nbsp; &nbsp;</p>'
+            'content'=>'required|max:20000|not_in:<p>&nbsp; &nbsp;</p>'
         ];
         $messages = [
             'newsTitle.required'=>'กรุณาระบุชื่อ News/Articles',
@@ -1247,7 +1242,7 @@ class AdminController extends Controller
             'sample.required'=>'กรุณาระบุรายละเอียดโดยย่อ',
             'sample.max'=>'รายละเอียดโดยย่อต้องยาวไม่เกิน 500ตัวอักษร',
             'content.required'=>'กรุณาระบุรายละเอียด',
-            'content.max'=>'รายละเอียดต้องยาวไม่เกิน4000ตัวอักษร'
+            'content.max'=>'รายละเอียดต้องยาวไม่เกิน20000ตัวอักษร'
         ];
 
         $validator = Validator::make($request->all(),$rules,$messages);
