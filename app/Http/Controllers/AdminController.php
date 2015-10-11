@@ -37,8 +37,11 @@ class AdminController extends Controller
         {
             return Redirect::to('home')->send();
         }
-        if(!Session::get('user')->KH_MEMBER_RULE=='ADMIN')
+
+        if(Session::get('user')->KH_MEMBER_RULE=='ADMIN')
         {
+
+        }else{
             return Redirect::to('home')->send();
         }
     }

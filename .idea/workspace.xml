@@ -4,12 +4,7 @@
     <list default="true" id="5970b3a4-5267-4b5c-85c9-b90e5acb2c62" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/app.blade.php" afterPath="$PROJECT_DIR$/resources/views/app.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/catalogueEdit.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/catalogueEdit.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/database.php" afterPath="$PROJECT_DIR$/config/database.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/member.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/member.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/memberdetail.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/memberdetail.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="khcycle.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,76 +30,76 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="AdminController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AdminController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AdminController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-44.807693">
-              <caret line="1832" column="39" selection-start-line="1832" selection-start-column="39" selection-end-line="1832" selection-end-column="39" />
+            <state vertical-scroll-proportion="0.6282195">
+              <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
               <folding>
                 <element signature="e#40#58#0#PHP" expanded="true" />
-                <marker date="1444549462943" expanded="true" signature="5128:5267" placeholder="SELECT BRAND..KH_BRAND..." />
-                <marker date="1444549462943" expanded="true" signature="5325:5416" placeholder="SELECT GROUP..KH_GROUP..." />
-                <marker date="1444549462943" expanded="true" signature="5532:5691" placeholder="SELECT A.GRO..KH_GROUP..." />
-                <marker date="1444549462943" expanded="true" signature="6766:6925" placeholder="SELECT A.GRO..KH_GROUP..." />
-                <marker date="1444549462943" expanded="true" signature="6949:7037" placeholder="SELECT BRAND..KH_BRAND..." />
-                <marker date="1444549462943" expanded="true" signature="7672:7763" placeholder="SELECT GROUP..KH_GROUP..." />
-                <marker date="1444549462943" expanded="true" signature="8001:8089" placeholder="SELECT GROUP..KH_GROUP..." />
-                <marker date="1444549462943" expanded="true" signature="8113:8204" placeholder="SELECT GROUP..KH_GROUP..." />
-                <marker date="1444549462943" expanded="true" signature="11088:11247" placeholder="SELECT A.GRO..KH_GROUP..." />
-                <marker date="1444549462943" expanded="true" signature="29999:30111" placeholder="insert into ..." />
-                <marker date="1444549462943" expanded="true" signature="32310:32391" placeholder="SELECT BANNE..KH_BANNER..." />
-                <marker date="1444549462943" expanded="true" signature="32820:32948" placeholder="UPDATE KH_BA..." />
-                <marker date="1444549462943" expanded="true" signature="33895:33988" placeholder="UPDATE KH_BA..." />
-                <marker date="1444549462943" expanded="true" signature="35520:35601" placeholder="SELECT MAX(B..KH_BANNER..." />
-                <marker date="1444549462943" expanded="true" signature="35988:36087" placeholder="INSERT INTO ..." />
-                <marker date="1444549462943" expanded="true" signature="36860:36933" placeholder="UPDATE KH_BA..." />
-                <marker date="1444549462943" expanded="true" signature="37924:37988" placeholder="SELECT BANNE..KH_BANNER..." />
-                <marker date="1444549462943" expanded="true" signature="38127:38221" placeholder="SELECT BANNE..KH_BANNER..." />
-                <marker date="1444549462943" expanded="true" signature="38484:38544" placeholder="UPDATE KH_BA..." />
-                <marker date="1444549462943" expanded="true" signature="38793:38850" placeholder="UPDATE KH_BA..." />
-                <marker date="1444549462943" expanded="true" signature="39241:39303" placeholder="UPDATE KH_BA..." />
-                <marker date="1444549462943" expanded="true" signature="41244:41322" placeholder="SELECT MAX(N..KH_NEWS..." />
-                <marker date="1444549462943" expanded="true" signature="41792:41893" placeholder="INSERT INTO ..." />
-                <marker date="1444549462943" expanded="true" signature="42660:42742" placeholder="UPDATE KH_NE..." />
-                <marker date="1444549462943" expanded="true" signature="43854:43974" placeholder="INSERT INTO ..." />
-                <marker date="1444549462943" expanded="true" signature="46729:46871" placeholder="UPDATE KH_NE..." />
-                <marker date="1444549462943" expanded="true" signature="47516:47610" placeholder="UPDATE KH_NE..." />
-                <marker date="1444549462943" expanded="true" signature="48048:48161" placeholder="UPDATE KH_NE..." />
-                <marker date="1444549462943" expanded="true" signature="53423:53479" placeholder="SELECT NEWS_..KH_NEWS..." />
-                <marker date="1444549462943" expanded="true" signature="53618:53705" placeholder="SELECT NEWS_..KH_NEWS..." />
-                <marker date="1444549462943" expanded="true" signature="53966:54020" placeholder="UPDATE KH_NE..." />
-                <marker date="1444549462943" expanded="true" signature="54267:54318" placeholder="UPDATE KH_NE..." />
-                <marker date="1444549462943" expanded="true" signature="54707:54766" placeholder="UPDATE KH_NE..." />
-                <marker date="1444549462943" expanded="true" signature="55876:55957" placeholder="SELECT MAX(B..KH_BRAND..." />
-                <marker date="1444549462943" expanded="true" signature="56231:56287" placeholder="INSERT INTO ..." />
-                <marker date="1444549462943" expanded="true" signature="56916:56988" placeholder="UPDATE KH_BR..." />
-                <marker date="1444549462943" expanded="true" signature="59141:59227" placeholder="UPDATE KH_BR..." />
-                <marker date="1444549462943" expanded="true" signature="59783:59832" placeholder="UPDATE KH_BR..." />
-                <marker date="1444549462943" expanded="true" signature="60353:60413" placeholder="SELECT BRAND..KH_BRAND..." />
-                <marker date="1444549462943" expanded="true" signature="60552:60644" placeholder="SELECT BRAND..KH_BRAND..." />
-                <marker date="1444549462943" expanded="true" signature="60906:60963" placeholder="UPDATE KH_BR..." />
-                <marker date="1444549462943" expanded="true" signature="61210:61264" placeholder="UPDATE KH_BR..." />
-                <marker date="1444549462943" expanded="true" signature="61656:61718" placeholder="UPDATE KH_BR..." />
-                <marker date="1444549462943" expanded="true" signature="61785:61851" placeholder="UPDATE KH_PR..." />
-                <marker date="1444549462943" expanded="true" signature="62068:62125" placeholder="INSERT INTO ..." />
-                <marker date="1444549462943" expanded="true" signature="62342:62404" placeholder="DELETE FROM ..." />
-                <marker date="1444549462943" expanded="true" signature="62608:62670" placeholder="UPDATE KH_GR..." />
-                <marker date="1444549462943" expanded="true" signature="63464:63506" placeholder="INSERT INTO ..." />
-                <marker date="1444549462943" expanded="true" signature="64393:64446" placeholder="UPDATE KH_GR..." />
-                <marker date="1444549462943" expanded="true" signature="64782:64850" placeholder="SELECT PRODU..KH_PRODUCT..." />
-                <marker date="1444549462943" expanded="true" signature="64989:65084" placeholder="SELECT PRODU..KH_PRODUCT..." />
-                <marker date="1444549462943" expanded="true" signature="65348:65411" placeholder="UPDATE KH_PR..." />
-                <marker date="1444549462943" expanded="true" signature="65662:65722" placeholder="UPDATE KH_PR..." />
-                <marker date="1444549462943" expanded="true" signature="66377:66445" placeholder="UPDATE KH_PR..." />
-                <marker date="1444549462943" expanded="true" signature="67952:68039" placeholder="SELECT MAX(P..KH_PRODUCT..." />
-                <marker date="1444549462943" expanded="true" signature="68313:68430" placeholder="INSERT INTO ..." />
-                <marker date="1444549462943" expanded="true" signature="69095:69222" placeholder="UPDATE KH_PR..." />
-                <marker date="1444549462943" expanded="true" signature="71823:71984" placeholder="UPDATE KH_PR..." />
-                <marker date="1444549462943" expanded="true" signature="72596:72670" placeholder="UPDATE KH_PR..." />
-                <marker date="1444549462943" expanded="true" signature="73217:73293" placeholder="SELECT CATAL..KH_CATALOGUE..." />
-                <marker date="1444549462943" expanded="true" signature="73431:73543" placeholder="SELECT CATAL..KH_CATALOGUE..." />
-                <marker date="1444549462943" expanded="true" signature="73805:73871" placeholder="UPDATE KH_CA..." />
-                <marker date="1444549462943" expanded="true" signature="74147:74213" placeholder="UPDATE KH_CA..." />
+                <marker date="1444551289517" expanded="true" signature="5144:5283" placeholder="SELECT BRAND..KH_BRAND..." />
+                <marker date="1444551289517" expanded="true" signature="5341:5432" placeholder="SELECT GROUP..KH_GROUP..." />
+                <marker date="1444551289517" expanded="true" signature="5548:5707" placeholder="SELECT A.GRO..KH_GROUP..." />
+                <marker date="1444551289517" expanded="true" signature="6782:6941" placeholder="SELECT A.GRO..KH_GROUP..." />
+                <marker date="1444551289517" expanded="true" signature="6965:7053" placeholder="SELECT BRAND..KH_BRAND..." />
+                <marker date="1444551289517" expanded="true" signature="7688:7779" placeholder="SELECT GROUP..KH_GROUP..." />
+                <marker date="1444551289517" expanded="true" signature="8017:8105" placeholder="SELECT GROUP..KH_GROUP..." />
+                <marker date="1444551289517" expanded="true" signature="8129:8220" placeholder="SELECT GROUP..KH_GROUP..." />
+                <marker date="1444551289517" expanded="true" signature="11104:11263" placeholder="SELECT A.GRO..KH_GROUP..." />
+                <marker date="1444551289517" expanded="true" signature="30015:30127" placeholder="insert into ..." />
+                <marker date="1444551289517" expanded="true" signature="32326:32407" placeholder="SELECT BANNE..KH_BANNER..." />
+                <marker date="1444551289517" expanded="true" signature="32836:32964" placeholder="UPDATE KH_BA..." />
+                <marker date="1444551289517" expanded="true" signature="33911:34004" placeholder="UPDATE KH_BA..." />
+                <marker date="1444551289517" expanded="true" signature="35536:35617" placeholder="SELECT MAX(B..KH_BANNER..." />
+                <marker date="1444551289517" expanded="true" signature="36004:36103" placeholder="INSERT INTO ..." />
+                <marker date="1444551289517" expanded="true" signature="36876:36949" placeholder="UPDATE KH_BA..." />
+                <marker date="1444551289517" expanded="true" signature="37940:38004" placeholder="SELECT BANNE..KH_BANNER..." />
+                <marker date="1444551289517" expanded="true" signature="38143:38237" placeholder="SELECT BANNE..KH_BANNER..." />
+                <marker date="1444551289517" expanded="true" signature="38500:38560" placeholder="UPDATE KH_BA..." />
+                <marker date="1444551289517" expanded="true" signature="38809:38866" placeholder="UPDATE KH_BA..." />
+                <marker date="1444551289517" expanded="true" signature="39257:39319" placeholder="UPDATE KH_BA..." />
+                <marker date="1444551289517" expanded="true" signature="41260:41338" placeholder="SELECT MAX(N..KH_NEWS..." />
+                <marker date="1444551289517" expanded="true" signature="41808:41909" placeholder="INSERT INTO ..." />
+                <marker date="1444551289517" expanded="true" signature="42676:42758" placeholder="UPDATE KH_NE..." />
+                <marker date="1444551289517" expanded="true" signature="43870:43990" placeholder="INSERT INTO ..." />
+                <marker date="1444551289517" expanded="true" signature="46745:46887" placeholder="UPDATE KH_NE..." />
+                <marker date="1444551289517" expanded="true" signature="47532:47626" placeholder="UPDATE KH_NE..." />
+                <marker date="1444551289517" expanded="true" signature="48064:48177" placeholder="UPDATE KH_NE..." />
+                <marker date="1444551289517" expanded="true" signature="53439:53495" placeholder="SELECT NEWS_..KH_NEWS..." />
+                <marker date="1444551289517" expanded="true" signature="53634:53721" placeholder="SELECT NEWS_..KH_NEWS..." />
+                <marker date="1444551289517" expanded="true" signature="53982:54036" placeholder="UPDATE KH_NE..." />
+                <marker date="1444551289517" expanded="true" signature="54283:54334" placeholder="UPDATE KH_NE..." />
+                <marker date="1444551289517" expanded="true" signature="54723:54782" placeholder="UPDATE KH_NE..." />
+                <marker date="1444551289517" expanded="true" signature="55892:55973" placeholder="SELECT MAX(B..KH_BRAND..." />
+                <marker date="1444551289517" expanded="true" signature="56247:56303" placeholder="INSERT INTO ..." />
+                <marker date="1444551289517" expanded="true" signature="56932:57004" placeholder="UPDATE KH_BR..." />
+                <marker date="1444551289517" expanded="true" signature="59157:59243" placeholder="UPDATE KH_BR..." />
+                <marker date="1444551289517" expanded="true" signature="59799:59848" placeholder="UPDATE KH_BR..." />
+                <marker date="1444551289517" expanded="true" signature="60369:60429" placeholder="SELECT BRAND..KH_BRAND..." />
+                <marker date="1444551289517" expanded="true" signature="60568:60660" placeholder="SELECT BRAND..KH_BRAND..." />
+                <marker date="1444551289517" expanded="true" signature="60922:60979" placeholder="UPDATE KH_BR..." />
+                <marker date="1444551289517" expanded="true" signature="61226:61280" placeholder="UPDATE KH_BR..." />
+                <marker date="1444551289517" expanded="true" signature="61672:61734" placeholder="UPDATE KH_BR..." />
+                <marker date="1444551289517" expanded="true" signature="61801:61867" placeholder="UPDATE KH_PR..." />
+                <marker date="1444551289517" expanded="true" signature="62084:62141" placeholder="INSERT INTO ..." />
+                <marker date="1444551289517" expanded="true" signature="62358:62420" placeholder="DELETE FROM ..." />
+                <marker date="1444551289517" expanded="true" signature="62624:62686" placeholder="UPDATE KH_GR..." />
+                <marker date="1444551289517" expanded="true" signature="63480:63522" placeholder="INSERT INTO ..." />
+                <marker date="1444551289517" expanded="true" signature="64409:64462" placeholder="UPDATE KH_GR..." />
+                <marker date="1444551289517" expanded="true" signature="64798:64866" placeholder="SELECT PRODU..KH_PRODUCT..." />
+                <marker date="1444551289517" expanded="true" signature="65005:65100" placeholder="SELECT PRODU..KH_PRODUCT..." />
+                <marker date="1444551289517" expanded="true" signature="65364:65427" placeholder="UPDATE KH_PR..." />
+                <marker date="1444551289517" expanded="true" signature="65678:65738" placeholder="UPDATE KH_PR..." />
+                <marker date="1444551289517" expanded="true" signature="66393:66461" placeholder="UPDATE KH_PR..." />
+                <marker date="1444551289517" expanded="true" signature="67968:68055" placeholder="SELECT MAX(P..KH_PRODUCT..." />
+                <marker date="1444551289517" expanded="true" signature="68329:68446" placeholder="INSERT INTO ..." />
+                <marker date="1444551289517" expanded="true" signature="69111:69238" placeholder="UPDATE KH_PR..." />
+                <marker date="1444551289517" expanded="true" signature="71839:72000" placeholder="UPDATE KH_PR..." />
+                <marker date="1444551289517" expanded="true" signature="72612:72686" placeholder="UPDATE KH_PR..." />
+                <marker date="1444551289517" expanded="true" signature="73233:73309" placeholder="SELECT CATAL..KH_CATALOGUE..." />
+                <marker date="1444551289517" expanded="true" signature="73447:73559" placeholder="SELECT CATAL..KH_CATALOGUE..." />
+                <marker date="1444551289517" expanded="true" signature="73821:73887" placeholder="UPDATE KH_CA..." />
+                <marker date="1444551289517" expanded="true" signature="74163:74229" placeholder="UPDATE KH_CA..." />
               </folding>
             </state>
           </provider>
@@ -180,10 +175,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="memberdetail.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="memberdetail.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/admin/memberdetail.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7525196">
+            <state vertical-scroll-proportion="-51.346153">
               <caret line="87" column="92" selection-start-line="87" selection-start-column="92" selection-end-line="87" selection-end-column="92" />
               <folding />
             </state>
@@ -292,9 +287,9 @@
         <option value="$PROJECT_DIR$/resources/views/admin/catalogueEdit.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/member.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/routes.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" />
         <option value="$PROJECT_DIR$/resources/views/app.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/memberdetail.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" />
       </list>
     </option>
   </component>
@@ -1193,79 +1188,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AdminController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-44.807693">
-          <caret line="1832" column="39" selection-start-line="1832" selection-start-column="39" selection-end-line="1832" selection-end-column="39" />
-          <folding>
-            <element signature="e#40#58#0#PHP" expanded="true" />
-            <marker date="1444549462943" expanded="true" signature="5128:5267" placeholder="SELECT BRAND..KH_BRAND..." />
-            <marker date="1444549462943" expanded="true" signature="5325:5416" placeholder="SELECT GROUP..KH_GROUP..." />
-            <marker date="1444549462943" expanded="true" signature="5532:5691" placeholder="SELECT A.GRO..KH_GROUP..." />
-            <marker date="1444549462943" expanded="true" signature="6766:6925" placeholder="SELECT A.GRO..KH_GROUP..." />
-            <marker date="1444549462943" expanded="true" signature="6949:7037" placeholder="SELECT BRAND..KH_BRAND..." />
-            <marker date="1444549462943" expanded="true" signature="7672:7763" placeholder="SELECT GROUP..KH_GROUP..." />
-            <marker date="1444549462943" expanded="true" signature="8001:8089" placeholder="SELECT GROUP..KH_GROUP..." />
-            <marker date="1444549462943" expanded="true" signature="8113:8204" placeholder="SELECT GROUP..KH_GROUP..." />
-            <marker date="1444549462943" expanded="true" signature="11088:11247" placeholder="SELECT A.GRO..KH_GROUP..." />
-            <marker date="1444549462943" expanded="true" signature="29999:30111" placeholder="insert into ..." />
-            <marker date="1444549462943" expanded="true" signature="32310:32391" placeholder="SELECT BANNE..KH_BANNER..." />
-            <marker date="1444549462943" expanded="true" signature="32820:32948" placeholder="UPDATE KH_BA..." />
-            <marker date="1444549462943" expanded="true" signature="33895:33988" placeholder="UPDATE KH_BA..." />
-            <marker date="1444549462943" expanded="true" signature="35520:35601" placeholder="SELECT MAX(B..KH_BANNER..." />
-            <marker date="1444549462943" expanded="true" signature="35988:36087" placeholder="INSERT INTO ..." />
-            <marker date="1444549462943" expanded="true" signature="36860:36933" placeholder="UPDATE KH_BA..." />
-            <marker date="1444549462943" expanded="true" signature="37924:37988" placeholder="SELECT BANNE..KH_BANNER..." />
-            <marker date="1444549462943" expanded="true" signature="38127:38221" placeholder="SELECT BANNE..KH_BANNER..." />
-            <marker date="1444549462943" expanded="true" signature="38484:38544" placeholder="UPDATE KH_BA..." />
-            <marker date="1444549462943" expanded="true" signature="38793:38850" placeholder="UPDATE KH_BA..." />
-            <marker date="1444549462943" expanded="true" signature="39241:39303" placeholder="UPDATE KH_BA..." />
-            <marker date="1444549462943" expanded="true" signature="41244:41322" placeholder="SELECT MAX(N..KH_NEWS..." />
-            <marker date="1444549462943" expanded="true" signature="41792:41893" placeholder="INSERT INTO ..." />
-            <marker date="1444549462943" expanded="true" signature="42660:42742" placeholder="UPDATE KH_NE..." />
-            <marker date="1444549462943" expanded="true" signature="43854:43974" placeholder="INSERT INTO ..." />
-            <marker date="1444549462943" expanded="true" signature="46729:46871" placeholder="UPDATE KH_NE..." />
-            <marker date="1444549462943" expanded="true" signature="47516:47610" placeholder="UPDATE KH_NE..." />
-            <marker date="1444549462943" expanded="true" signature="48048:48161" placeholder="UPDATE KH_NE..." />
-            <marker date="1444549462943" expanded="true" signature="53423:53479" placeholder="SELECT NEWS_..KH_NEWS..." />
-            <marker date="1444549462943" expanded="true" signature="53618:53705" placeholder="SELECT NEWS_..KH_NEWS..." />
-            <marker date="1444549462943" expanded="true" signature="53966:54020" placeholder="UPDATE KH_NE..." />
-            <marker date="1444549462943" expanded="true" signature="54267:54318" placeholder="UPDATE KH_NE..." />
-            <marker date="1444549462943" expanded="true" signature="54707:54766" placeholder="UPDATE KH_NE..." />
-            <marker date="1444549462943" expanded="true" signature="55876:55957" placeholder="SELECT MAX(B..KH_BRAND..." />
-            <marker date="1444549462943" expanded="true" signature="56231:56287" placeholder="INSERT INTO ..." />
-            <marker date="1444549462943" expanded="true" signature="56916:56988" placeholder="UPDATE KH_BR..." />
-            <marker date="1444549462943" expanded="true" signature="59141:59227" placeholder="UPDATE KH_BR..." />
-            <marker date="1444549462943" expanded="true" signature="59783:59832" placeholder="UPDATE KH_BR..." />
-            <marker date="1444549462943" expanded="true" signature="60353:60413" placeholder="SELECT BRAND..KH_BRAND..." />
-            <marker date="1444549462943" expanded="true" signature="60552:60644" placeholder="SELECT BRAND..KH_BRAND..." />
-            <marker date="1444549462943" expanded="true" signature="60906:60963" placeholder="UPDATE KH_BR..." />
-            <marker date="1444549462943" expanded="true" signature="61210:61264" placeholder="UPDATE KH_BR..." />
-            <marker date="1444549462943" expanded="true" signature="61656:61718" placeholder="UPDATE KH_BR..." />
-            <marker date="1444549462943" expanded="true" signature="61785:61851" placeholder="UPDATE KH_PR..." />
-            <marker date="1444549462943" expanded="true" signature="62068:62125" placeholder="INSERT INTO ..." />
-            <marker date="1444549462943" expanded="true" signature="62342:62404" placeholder="DELETE FROM ..." />
-            <marker date="1444549462943" expanded="true" signature="62608:62670" placeholder="UPDATE KH_GR..." />
-            <marker date="1444549462943" expanded="true" signature="63464:63506" placeholder="INSERT INTO ..." />
-            <marker date="1444549462943" expanded="true" signature="64393:64446" placeholder="UPDATE KH_GR..." />
-            <marker date="1444549462943" expanded="true" signature="64782:64850" placeholder="SELECT PRODU..KH_PRODUCT..." />
-            <marker date="1444549462943" expanded="true" signature="64989:65084" placeholder="SELECT PRODU..KH_PRODUCT..." />
-            <marker date="1444549462943" expanded="true" signature="65348:65411" placeholder="UPDATE KH_PR..." />
-            <marker date="1444549462943" expanded="true" signature="65662:65722" placeholder="UPDATE KH_PR..." />
-            <marker date="1444549462943" expanded="true" signature="66377:66445" placeholder="UPDATE KH_PR..." />
-            <marker date="1444549462943" expanded="true" signature="67952:68039" placeholder="SELECT MAX(P..KH_PRODUCT..." />
-            <marker date="1444549462943" expanded="true" signature="68313:68430" placeholder="INSERT INTO ..." />
-            <marker date="1444549462943" expanded="true" signature="69095:69222" placeholder="UPDATE KH_PR..." />
-            <marker date="1444549462943" expanded="true" signature="71823:71984" placeholder="UPDATE KH_PR..." />
-            <marker date="1444549462943" expanded="true" signature="72596:72670" placeholder="UPDATE KH_PR..." />
-            <marker date="1444549462943" expanded="true" signature="73217:73293" placeholder="SELECT CATAL..KH_CATALOGUE..." />
-            <marker date="1444549462943" expanded="true" signature="73431:73543" placeholder="SELECT CATAL..KH_CATALOGUE..." />
-            <marker date="1444549462943" expanded="true" signature="73805:73871" placeholder="UPDATE KH_CA..." />
-            <marker date="1444549462943" expanded="true" signature="74147:74213" placeholder="UPDATE KH_CA..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/app.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-21.576923">
@@ -1284,9 +1206,82 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/memberdetail.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7525196">
+        <state vertical-scroll-proportion="-51.346153">
           <caret line="87" column="92" selection-start-line="87" selection-start-column="92" selection-end-line="87" selection-end-column="92" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AdminController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6282195">
+          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding>
+            <element signature="e#40#58#0#PHP" expanded="true" />
+            <marker date="1444551289517" expanded="true" signature="5144:5283" placeholder="SELECT BRAND..KH_BRAND..." />
+            <marker date="1444551289517" expanded="true" signature="5341:5432" placeholder="SELECT GROUP..KH_GROUP..." />
+            <marker date="1444551289517" expanded="true" signature="5548:5707" placeholder="SELECT A.GRO..KH_GROUP..." />
+            <marker date="1444551289517" expanded="true" signature="6782:6941" placeholder="SELECT A.GRO..KH_GROUP..." />
+            <marker date="1444551289517" expanded="true" signature="6965:7053" placeholder="SELECT BRAND..KH_BRAND..." />
+            <marker date="1444551289517" expanded="true" signature="7688:7779" placeholder="SELECT GROUP..KH_GROUP..." />
+            <marker date="1444551289517" expanded="true" signature="8017:8105" placeholder="SELECT GROUP..KH_GROUP..." />
+            <marker date="1444551289517" expanded="true" signature="8129:8220" placeholder="SELECT GROUP..KH_GROUP..." />
+            <marker date="1444551289517" expanded="true" signature="11104:11263" placeholder="SELECT A.GRO..KH_GROUP..." />
+            <marker date="1444551289517" expanded="true" signature="30015:30127" placeholder="insert into ..." />
+            <marker date="1444551289517" expanded="true" signature="32326:32407" placeholder="SELECT BANNE..KH_BANNER..." />
+            <marker date="1444551289517" expanded="true" signature="32836:32964" placeholder="UPDATE KH_BA..." />
+            <marker date="1444551289517" expanded="true" signature="33911:34004" placeholder="UPDATE KH_BA..." />
+            <marker date="1444551289517" expanded="true" signature="35536:35617" placeholder="SELECT MAX(B..KH_BANNER..." />
+            <marker date="1444551289517" expanded="true" signature="36004:36103" placeholder="INSERT INTO ..." />
+            <marker date="1444551289517" expanded="true" signature="36876:36949" placeholder="UPDATE KH_BA..." />
+            <marker date="1444551289517" expanded="true" signature="37940:38004" placeholder="SELECT BANNE..KH_BANNER..." />
+            <marker date="1444551289517" expanded="true" signature="38143:38237" placeholder="SELECT BANNE..KH_BANNER..." />
+            <marker date="1444551289517" expanded="true" signature="38500:38560" placeholder="UPDATE KH_BA..." />
+            <marker date="1444551289517" expanded="true" signature="38809:38866" placeholder="UPDATE KH_BA..." />
+            <marker date="1444551289517" expanded="true" signature="39257:39319" placeholder="UPDATE KH_BA..." />
+            <marker date="1444551289517" expanded="true" signature="41260:41338" placeholder="SELECT MAX(N..KH_NEWS..." />
+            <marker date="1444551289517" expanded="true" signature="41808:41909" placeholder="INSERT INTO ..." />
+            <marker date="1444551289517" expanded="true" signature="42676:42758" placeholder="UPDATE KH_NE..." />
+            <marker date="1444551289517" expanded="true" signature="43870:43990" placeholder="INSERT INTO ..." />
+            <marker date="1444551289517" expanded="true" signature="46745:46887" placeholder="UPDATE KH_NE..." />
+            <marker date="1444551289517" expanded="true" signature="47532:47626" placeholder="UPDATE KH_NE..." />
+            <marker date="1444551289517" expanded="true" signature="48064:48177" placeholder="UPDATE KH_NE..." />
+            <marker date="1444551289517" expanded="true" signature="53439:53495" placeholder="SELECT NEWS_..KH_NEWS..." />
+            <marker date="1444551289517" expanded="true" signature="53634:53721" placeholder="SELECT NEWS_..KH_NEWS..." />
+            <marker date="1444551289517" expanded="true" signature="53982:54036" placeholder="UPDATE KH_NE..." />
+            <marker date="1444551289517" expanded="true" signature="54283:54334" placeholder="UPDATE KH_NE..." />
+            <marker date="1444551289517" expanded="true" signature="54723:54782" placeholder="UPDATE KH_NE..." />
+            <marker date="1444551289517" expanded="true" signature="55892:55973" placeholder="SELECT MAX(B..KH_BRAND..." />
+            <marker date="1444551289517" expanded="true" signature="56247:56303" placeholder="INSERT INTO ..." />
+            <marker date="1444551289517" expanded="true" signature="56932:57004" placeholder="UPDATE KH_BR..." />
+            <marker date="1444551289517" expanded="true" signature="59157:59243" placeholder="UPDATE KH_BR..." />
+            <marker date="1444551289517" expanded="true" signature="59799:59848" placeholder="UPDATE KH_BR..." />
+            <marker date="1444551289517" expanded="true" signature="60369:60429" placeholder="SELECT BRAND..KH_BRAND..." />
+            <marker date="1444551289517" expanded="true" signature="60568:60660" placeholder="SELECT BRAND..KH_BRAND..." />
+            <marker date="1444551289517" expanded="true" signature="60922:60979" placeholder="UPDATE KH_BR..." />
+            <marker date="1444551289517" expanded="true" signature="61226:61280" placeholder="UPDATE KH_BR..." />
+            <marker date="1444551289517" expanded="true" signature="61672:61734" placeholder="UPDATE KH_BR..." />
+            <marker date="1444551289517" expanded="true" signature="61801:61867" placeholder="UPDATE KH_PR..." />
+            <marker date="1444551289517" expanded="true" signature="62084:62141" placeholder="INSERT INTO ..." />
+            <marker date="1444551289517" expanded="true" signature="62358:62420" placeholder="DELETE FROM ..." />
+            <marker date="1444551289517" expanded="true" signature="62624:62686" placeholder="UPDATE KH_GR..." />
+            <marker date="1444551289517" expanded="true" signature="63480:63522" placeholder="INSERT INTO ..." />
+            <marker date="1444551289517" expanded="true" signature="64409:64462" placeholder="UPDATE KH_GR..." />
+            <marker date="1444551289517" expanded="true" signature="64798:64866" placeholder="SELECT PRODU..KH_PRODUCT..." />
+            <marker date="1444551289517" expanded="true" signature="65005:65100" placeholder="SELECT PRODU..KH_PRODUCT..." />
+            <marker date="1444551289517" expanded="true" signature="65364:65427" placeholder="UPDATE KH_PR..." />
+            <marker date="1444551289517" expanded="true" signature="65678:65738" placeholder="UPDATE KH_PR..." />
+            <marker date="1444551289517" expanded="true" signature="66393:66461" placeholder="UPDATE KH_PR..." />
+            <marker date="1444551289517" expanded="true" signature="67968:68055" placeholder="SELECT MAX(P..KH_PRODUCT..." />
+            <marker date="1444551289517" expanded="true" signature="68329:68446" placeholder="INSERT INTO ..." />
+            <marker date="1444551289517" expanded="true" signature="69111:69238" placeholder="UPDATE KH_PR..." />
+            <marker date="1444551289517" expanded="true" signature="71839:72000" placeholder="UPDATE KH_PR..." />
+            <marker date="1444551289517" expanded="true" signature="72612:72686" placeholder="UPDATE KH_PR..." />
+            <marker date="1444551289517" expanded="true" signature="73233:73309" placeholder="SELECT CATAL..KH_CATALOGUE..." />
+            <marker date="1444551289517" expanded="true" signature="73447:73559" placeholder="SELECT CATAL..KH_CATALOGUE..." />
+            <marker date="1444551289517" expanded="true" signature="73821:73887" placeholder="UPDATE KH_CA..." />
+            <marker date="1444551289517" expanded="true" signature="74163:74229" placeholder="UPDATE KH_CA..." />
+          </folding>
         </state>
       </provider>
     </entry>
