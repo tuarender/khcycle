@@ -22,7 +22,7 @@ Route::get('logout','MemberController@logout');
 Route::post('logout','MemberController@logout');
 //Route::post('updatemember/{id}','MemberController@update');
 
-Route::get('member/{id}','MemberController@show');
+
 
 Route::get('contact','ContactController@index');
 //register
@@ -51,6 +51,7 @@ Route::get('admin',array('uses'=>'AdminController@index'));
 Route::get('admin/home','AdminController@getHome');
 Route::get('admin/contact','AdminController@getContact');
 Route::get('admin/member','AdminController@getMember');
+Route::get('member/{id}','AdminController@memberShow');
 Route::get('admin/catalogue','AdminController@getCatalogue');
 Route::get('admin/product','AdminController@getBrand');
 Route::get('admin/news','AdminController@getNews');

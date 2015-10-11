@@ -29,7 +29,7 @@
                 echo "<div class='form-group'>";
                 echo " <label class='col-sm-3 control-label'>ตัวอย่างภาพหน้าปก</label>";
                 echo " <div class='col-sm-3'>";
-                echo "  <img class='img-responsive' src='cover/".$data[0]['CATALOGUE_COVER_PIC']."'>";
+                echo "  <img class='img-responsive' src='cover/".$data[0]['CATALOGUE_COVER_PIC'].".jpg'>";
                 echo " </div>";
                 echo "</div>";
             }

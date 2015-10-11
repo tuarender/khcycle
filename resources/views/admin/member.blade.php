@@ -77,7 +77,10 @@
                             <td>{{$member['KH_INFORMATION_WEIGHT']}}</td>
                             <td>{{$member['KH_INFORMATION_SHOE']}}</td>
                             <td>{{$member['KH_CONTACT_ADDR']}}</td>
-                            <td><button onclick="getSetting('member/edit/{{ $member['ID'] }}',true)" class="btn btn-warning">EDIT</button></td>
+                            <td>
+                                <a href="member/{{$member['ID']}}" class="btn btn-warning">EDIT</a>
+                                {{--<button onclick="getSetting('member/edit/{{ $member['ID'] }}',true)" class="btn btn-warning">EDIT</button>--}}
+                            </td>
                             {{--<td><a href="member/{{$member['ID']}}">EDIT</a></td>--}}
                             {{-- */$i++;/* --}}
                         </tr>
