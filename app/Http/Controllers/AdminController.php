@@ -1809,4 +1809,24 @@ class AdminController extends Controller
             });
         })->export('xls');
     }
+
+    public function memberShow($id)
+    {
+        $data = DB::table('KH_MEMBER_LOGIN AS login ')
+            ->leftjoin('KH_INFORMATION AS info','login.ID','=','info.KH_INFORMATION_MEMBER')
+            ->leftjoin('KH_CONTACT AS contact','login.ID','=','contact.KH_CONTACT_MEMBER')
+            ->select(
+                'login.ID',
+                'login.KH_MEMBER_LOGIN_USERNAME',
+                'contact.KH_CONTACT_NAME',
+                'contact.KH_CONTACT_EMAIL',
+                'contact.KH_CONTACT_TEL',
+                'info.KH_INFORMATION_HEIGHT',
+                'info.KH_INFORMATION_WEIGHT',
+                'info.KH_INFORMATION_SHOE',
+                'contact.KH_CONTACT_ADDR')
+            ->where('login.ID','=',$id)
+            ->get();
+        return view('admin.memberdetail')->with('name','Member')->with('data',$data);
+    }
 }

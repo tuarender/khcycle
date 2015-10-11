@@ -26,6 +26,11 @@ Route::post('password/reset', 'MemberController@postResetPassword');
 //Route::post('updatemember/{id}','MemberController@update');
 
 
+<<<<<<< HEAD
+Route::get('member/{id}','MemberController@show');
+=======
+>>>>>>> origin/master
+
 Route::get('contact','ContactController@index');
 //register
 //--get
