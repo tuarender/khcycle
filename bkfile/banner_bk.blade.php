@@ -28,10 +28,10 @@
               <img src="images/facebook.png" style="max-width:150px">
             </a>
             <span class="innerFollowUs">Follow us:</span>
-            <a href="https://www.facebook.com/KhcycleThailand" target="_blank" class="btn btn-social-icon btn-facebook tagFacebookIcon">
+            <a class="btn btn-social-icon btn-facebook tagFacebookIcon">
                 <i class="fa fa-facebook"></i>
             </a>
-            <a href="https://instagram.com/khcycle_thailand/" target="_blank" class="btn btn-social-icon btn-instagram">
+            <a class="btn btn-social-icon btn-instagram">
                 <i class="fa fa-instagram"></i>
             </a>
   		</div>

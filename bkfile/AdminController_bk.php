@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\carbon;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -36,11 +37,11 @@ class AdminController extends Controller
         {
             return Redirect::to('home')->send();
         }
+
         if(Session::get('user')->KH_MEMBER_RULE=='ADMIN')
         {
 
-        }else
-        {
+        }else{
             return Redirect::to('home')->send();
         }
     }
@@ -1495,7 +1496,7 @@ class AdminController extends Controller
     function deleteBrand($id){
         $sqlDelete = "UPDATE KH_BRAND SET BRAND_DELETE_STATUS = 1 WHERE BRAND_ID = ?";
         $deleteParam = array($id);
-        $sqlDeleteProduct = "UPDATE KH_PRODUCT SET PRODUCT_DELETE_STATUS = 1 WHERE PRODUCT_BRAND_ID = ?";
+        $sqlDeleteProduct = "UPDATE KH_PRODUCT SET PRODUCT_DELETE_STATUS = 1 WHERE BRAND_ID = ?";
         DB::update($sqlDelete,$deleteParam);
         DB::update($sqlDeleteProduct,$deleteParam);
         return redirect('admin/product');
@@ -1768,8 +1769,8 @@ class AdminController extends Controller
 
     public function generateExcel()
     {
-        $mytime =  date('Y-m-d H:i:s');
-        $filename = 'MemberExport'."_".$mytime;
+        $mytime = Carbon::now();
+        $filename = 'MemberExport'."_".$mytime->toDateTimeString();
         Excel::create($filename,function($excel){
             $excel->sheet('SheetName',function($sheet){
                 // first row styling and writing content

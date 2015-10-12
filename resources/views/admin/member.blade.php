@@ -57,8 +57,8 @@
                         <th class="text-center">ชื่อ-นามสกุล</th>
                         <th class="text-center">Email</th>
                         <th class="text-center">เบอร์โทรศัพท์</th>
-                        <th class="text-center">น้ำหนัก</th>
                         <th class="text-center">ส่วนสูง</th>
+                        <th class="text-center">น้ำหนัก</th>
                         <th class="text-center">เบอร์รองเท้า</th>
                         <th class="text-center">ที่อยู่</th>
                         <th class="text-center">จัดการ</th>
@@ -68,15 +68,15 @@
                     {{-- */$i=1;/* --}}
                     @foreach($data as $member)
                         <tr>
-                            <td>{{ $i }}</td>
-                            <td>{{$member['KH_MEMBER_LOGIN_USERNAME']}}</td>
-                            <td>{{$member['KH_CONTACT_NAME']}}</td>
-                            <td>{{$member['KH_CONTACT_EMAIL']}}</td>
-                            <td>{{$member['KH_CONTACT_TEL']}}</td>
-                            <td>{{$member['KH_INFORMATION_HEIGHT']}}</td>
-                            <td>{{$member['KH_INFORMATION_WEIGHT']}}</td>
-                            <td>{{$member['KH_INFORMATION_SHOE']}}</td>
-                            <td>{{$member['KH_CONTACT_ADDR']}}</td>
+                            <td class="tdCenter">{{ $i }}</td>
+                            <td class="tdCenter">{{$member['KH_MEMBER_LOGIN_USERNAME']}}</td>
+                            <td class="tdCenter">{{$member['KH_CONTACT_NAME']}}</td>
+                            <td class="tdCenter">{{$member['KH_CONTACT_EMAIL']}}</td>
+                            <td class="tdCenter">{{$member['KH_CONTACT_TEL']}}</td>
+                            <td class="tdCenter">{{$member['KH_INFORMATION_HEIGHT']}}</td>
+                            <td class="tdCenter">{{$member['KH_INFORMATION_WEIGHT']}}</td>
+                            <td class="tdCenter">{{$member['KH_INFORMATION_SHOE']}}</td>
+                            <td class="tdCenter">{{$member['KH_CONTACT_ADDR']}}</td>
                             <td>
                                 <a href="member/{{$member['ID']}}" class="btn btn-warning">EDIT</a>
                                 {{--<button onclick="getSetting('member/edit/{{ $member['ID'] }}',true)" class="btn btn-warning">EDIT</button>--}}

@@ -11,7 +11,7 @@
             <a href="https://www.facebook.com/KhcycleThailand" target="_blank" class="btn btn-social-icon btn-facebook">
                 <i class="fa fa-facebook"></i>
             </a>
-            <a href="https://instagram.com/khcycle_thailand/" target="_blank" class="btn btn-social-icon btn-instagram">
+            <a class="btn btn-social-icon btn-instagram">
                 <i class="fa fa-instagram"></i>
             </a>
         </div>
