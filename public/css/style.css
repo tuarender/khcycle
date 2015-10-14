@@ -1,0 +1,688 @@
+@font-face {
+	font-family: HelveticaInseratLTStd;
+    src: url(../fonts/HelveticaInseratLTStd-Roman.otf);
+}
+@font-face {
+    font-family: CSChatThai;
+    src: url(../fonts/CSChatThai.ttf);
+}
+@font-face {
+    font-family: OpenSans;
+    src: url(../fonts/OpenSans-Light.ttf);
+}
+@font-face {
+    font-family: DidactGothic;
+    src: url(../fonts/DidactGothic.ttf);
+}
+p.news {
+	font-family: OpenSans;
+	font-style: normal;
+	font-weight: 300;
+	color: #5a5a5a;
+	font-size: 18px;
+    text-indent: 50px;
+}
+p.newsList {
+	word-wrap: break-word;
+	font-family: OpenSans;
+	font-style: normal;
+	font-weight: 300;
+	color: #5a5a5a;
+	font-size: 16px;
+    text-indent: 30px;
+}
+img{
+	border: 0px;
+}
+img.error {
+  width: inherit;  /* This makes the next two lines work in IE8. */
+  max-width: 100%; /* Add !important if needed. */
+  height: auto;    /* Add !important if needed. */
+}
+img.main {
+  display: inline-block;
+  width: inherit;  /* This makes the next two lines work in IE8. */
+  max-width: 100%; /* Add !important if needed. */
+  height: 900px;    /* Add !important if needed. */
+}
+img.logo {
+  display: inline-block;
+  width: inherit;  /* This makes the next two lines work in IE8. */
+  max-height: 50px; /* Add !important if needed. */
+}
+div.error{
+	margin: auto;
+	text-align: center;
+	max-width: 800px;
+}
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+div.detail{
+	background-color: #E0E0E0;
+	width: 100%;
+}
+
+div.detail >div{
+	width: 100%;
+}
+
+ul.adminGroupList{
+	list-style: none;
+	padding: 0;
+}
+
+ul#horizontal-list {
+	max-width: 100%;
+	list-style: none;
+	text-align:center;
+	padding: 0;
+    list-style-type: none;
+    margin: 0px auto;
+}
+ul#horizontal-list li {
+	display: inline-block;
+	margin:5px 5px;
+}
+div.catalogue{
+	display: block;
+	margin: 10px 0px;
+	padding:0px;
+	text-align: center;
+}
+div.brand{
+	margin: 10px 0px;
+	height: inherit;
+	text-align: center;
+}
+.head1{
+	font-family: CSChatThai;
+	font-weight: bold;
+	font-size: 24px;
+	color: #FEFA03;
+	text-shadow: 2px 2px #888888;
+}
+.linkCatalogue{
+	background-color: #080808;
+	font-family: HelveticaInseratLTStd;
+	font-size: 20px;
+	color: #F2F100;
+	font-weight: bold;
+	border-width: 0px;
+}
+.linkCatalogue:focus,.linkCatalogue:hover {
+	color: #FFFFFF;
+}
+.linkViewMoreCatalogue{
+	padding-left: 90px;
+	font-family: CSChatThai;
+	font-weight: bold;
+	font-size: 14px;
+}
+.catalogueDetail{
+	margin-top: 5px;
+}
+.slideContainer{
+	/*padding-top: 50px;*/
+}
+.productContainer{
+	/*padding-top: 50px;*/
+	max-width:1340px;
+	margin:10px auto;
+}
+.subheaderContainer{
+	/*padding-top: 50px;*/
+	max-width:100%;
+	margin:5px auto;
+}
+.productSubheader{
+	margin: 5px auto;
+}
+.subheaderContainer,.productSubheader row{
+	display: block;
+}
+.subheaderContainer,.productSubheader label{
+	padding-left: 20px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 18px;
+	vertical-align: bottom;
+}
+.sessionContainer{
+	text-align: right;
+	padding-right: 20px;
+	margin: 10px auto;
+}
+.subheaderContact{
+	display:none;
+	text-align: left;
+}
+.subheaderProduct{
+	display:inline;
+}
+.subheaderContact,.subheaderProduct label{
+	font-family: CSChatThai !important;
+	font-size: 22px;
+	line-height: 32px;
+}
+.contactContainer{
+	font-family: CSChatThai;
+	font-size: 20px;
+	margin: 10px auto;
+	max-width: 1340px;
+}
+.contactContainer ul{
+	font-family: CSChatThai;
+	color: #00afea;
+	font-size: 30px;
+}
+.contactContainer ul li{
+	color: #000;
+	font-size: 20px;
+	margin-left: 50px;
+}
+
+.contactContainer ul dd{
+	text-indent: -9999px;
+	display: inline-block;
+}
+.contactContainer img{
+	width:100%;
+}
+
+.contactContainer .jumbotron{
+	padding:20px;
+}
+
+.membercontainer{
+	/*margin-left: 250px;*/
+}
+
+.adminleft{
+	float: left;
+	width: 100%;
+	max-width: 250px;
+	margin-left: 10px;
+	text-align: center;
+	margin-top: 11px;
+}
+
+.adminleft #button li{
+	float: left;
+	list-style: none;
+	text-align: center;
+	background-color: #C0C0C0;
+	margin-right: 30px;
+	width: 200px;
+	line-height: 60px;
+	max-width: none;
+	display:inline-block;
+	margin-top: 30px;
+}
+
+.brandWrapper{
+	float: left;
+	width: 100%;
+	max-width: none;
+}
+.brandList{
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.newsHome{
+	max-width:100%
+}
+.brandContainer{
+	text-align: center;
+	margin: 0px auto;
+}
+.brandLogo{
+	-moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+	border: 4px solid #F2F2F2;
+}
+.brandLogoActive{
+	border-color: #F2F100;
+}
+.brandLogo:hover,.brandLogo_home:hover{
+	border-color: #F2F100;
+}
+.brandLogo_home{
+	-moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+	border: 4px solid #E0E0E0;
+}
+.product{
+	margin:5px auto;
+	max-width:330px;
+	/*height:200px;*/
+	/*float:left;*/
+	height: 260px;
+	position: relative;
+}
+
+.groupList{
+	text-align: center;
+	list-style-type: none;
+    margin: 0;
+    padding: 0;
+    padding-left: 30px;
+}
+.groupListContainer{
+	display:block;
+	/*overflow:hidden;*/
+}
+.groupList >li{
+    display: inline-block;
+    margin:5px 5px;
+}
+.groupList >li >a{
+	background-color:#424242;
+	-moz-border-radius:18px;
+	-webkit-border-radius:18px;
+	border-radius:18px;
+	/*border:1px solid #263666;*/
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	padding:5px 15px;
+	text-decoration:none;
+	font-weight: bold;
+}
+.groupListActive{
+	background-color:#000000 !important;
+	color:#F2F100 !important;
+}
+.groupList >li >a:hover{
+	background-color:#000000;
+	color:#F2F100;
+}
+.newsInnerRow{
+	word-wrap: break-word;
+	margin-left:10px;
+	margin-right:10px;
+	margin-top:20px;
+}
+.newsInnerRow >div>h2{
+	font-size: 23px;
+	font-family: DidactGothic;
+	letter-spacing: 4px;
+	margin-top: 0px;
+}
+.readmoreBtn{
+	border-radius: 0px;
+}
+.imageTitleNews{
+	max-width: 75%;
+	margin: auto;
+}
+.topBuffer { 
+	margin-top:20px; 
+}
+.copyRight{
+	text-align: center;
+	margin-bottom: 20px;
+}
+.viewmoreContainer{
+	text-align: right;
+	padding-right: 40px;
+}
+.viewmore{
+	font-size: 26px;
+	font-family: CSChatThai;
+	font-weight: bold;
+}
+.videoWrapper{
+	position:relative;
+	padding-bottom:56.25%;
+	height:0;
+}
+.videoWrapper iframe{
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%
+}
+div.newsEnd{
+	margin-bottom: 25px;
+}
+.newsContent{
+	padding-left: 20px;
+}
+.navText{
+	font-family: HelveticaInseratLTStd,"Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.productListContainer,.adminDetailContainer{ 
+	padding-top: 3px;
+	padding-left: 0px
+}
+.productList{
+	padding-top: 15px;
+	padding-bottom: 15px;
+	padding-left: 0px;
+}
+.productList >div{
+	min-height: 225px;
+}
+.adminMenuDiv{
+	margin-top: 10px;
+}
+.adminMenuDiv a{
+	border:1px solid;
+	-moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+}
+.contactbutton {
+	-moz-box-shadow:inset 0px 34px 0px -15px #261614;
+	-webkit-box-shadow:inset 0px 34px 0px -15px #261614;
+	box-shadow:inset 0px 34px 0px -15px #261614;
+	background-color:#120705;
+	border:1px solid #241d13;
+	display:inline-block;
+	cursor:pointer;
+	color:#e9f53b;
+	font-family:Arial;
+	font-size:21px;
+	font-weight:bold;
+	padding:9px 23px;
+	text-decoration:none;
+	text-shadow:0px -1px 0px #7a2a1d;
+}
+.contactbutton:hover {
+	background-color:#000000;
+	color:#e9f53b;
+}
+.contactbutton:active {
+	position:relative;
+	top:1px;
+}
+.loginPanelHeader{
+	background-color: #424242 !important; 
+	color: #F2F100 !important;
+}
+.loginPanel{
+	border-color: #424242 !important;
+	/*font-family: CSChatThai;*/
+}
+.btnKhcycle{
+	font-size: 18px;
+	background-color: #424242 !important; 
+	color: #F2F100 !important;
+	border-color: #424242 !important;
+}
+.btnKhcycle:hover{
+	background-color:#000000 !important;
+}
+.tag {
+	background-color: #E0E0E0;
+   	z-index: 1000;
+   	padding: 5px;
+   	color: #FEFA03;
+   	text-shadow: 2px 2px #888888;
+}
+.tag h3{
+	display:none;
+	margin-top: 0px;
+	font-weight: bold;
+}
+.tag div{
+	text-align: right;
+	margin-left: 0px;
+	margin-right: 0px;
+	padding-right: 0px;
+}
+.tagFacebookIcon,.innerFollowUs{
+	display: inline-block;
+}
+.innerFollowUs{
+	font-family: HelveticaInseratLTStd;
+	color: #000000;
+	font-weight: bold;
+	display: inline-block;
+	text-shadow: none; 
+}
+.tagFacebookImage{
+	display: none;
+}
+.btnSearch{
+	color:#DDDDDD;
+	background-color:#222;
+	border: 0px;
+	border-color: #222;
+}
+.btnSearch:hover,.btnSearch:active,.btnSearch:focus{
+	color:#F2F100;
+	background-color:#222;
+	border: 0px;
+	border-color: #222;
+}
+
+.searchInput{
+	-moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    border-radius: 15px;
+}
+
+.productMain,.adminMain,.productSubheader{
+	max-width: 100%;
+}
+
+.catalogueHome{
+	max-width: 130px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.lastestCatalogue{
+	padding-left: 20px;
+	padding-right: 20px;
+}
+.searchHeader{
+	text-align: center;
+}
+.searchHeader >label{
+	font-size: 24px;
+	font-family: HelveticaInseratLTStd;
+	font-weight: bold;
+	padding-left: 15px;
+}
+.productName{
+	font-family: HelveticaInseratLTStd;
+	font-size: 18px;
+}
+.notFoundProduct{
+	color: #F2F100;
+	text-shadow: 3px 0 0 #000, -3px 0 0 #000, 0 3px 0 #000, 0 -3px 0 #000, 2px 2px #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;
+	text-align: center;
+	font-family: HelveticaInseratLTStd;
+	padding-top: 50px;
+	font-size: 45px;
+	font-weight: bold;
+}
+.productImgDiv{
+	padding-right: 0px;
+}
+.sampleTextArea{
+	width: 100%;
+    height: 150px;
+}
+.productThumb{
+	max-width: 230px;
+}
+.adminProductImg{
+	margin-right: auto;
+	margin-left: auto;
+}
+@media screen and (max-width: 767px){
+	#brandHome{
+		margin-left: 0px;
+		margin-right: 0px;
+	}
+	.catalogueHome{
+		max-width:none;
+		padding: 120px 0 0 0;
+	    margin: 1px;
+	    height: 0px;
+	    display: block;
+	    background-repeat: no-repeat;
+	    background-size: 100%;
+	    background-position-y: -100px;
+	    width: 100%;
+	}
+}
+@media screen and (min-width: 768px){
+	.productList{
+		padding-left: 30px;
+	}
+	.subheaderContainer{
+		max-width:85%;
+	}
+	.subheaderContact{
+		display:inline;
+		text-align: right;
+	}
+	.subheaderProduct{
+		display:none;
+	}
+	.searchHeader{
+		text-align: left;
+	}
+	.lastestCatalogue{
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+	.tagFacebookImage{
+		display: inline-block;
+	}
+	.tagFacebookIcon,.innerFollowUs{
+		display: none;
+	}
+	.brandLogo{
+		/*max-width: 200px;*/
+		float: right;
+	}
+	.tag{
+		color:#FFFFFF;
+	   	float: right;
+   		position: absolute;
+   		background-color: transparent;
+	   	text-shadow: none;
+	}
+	.tag h3{
+		display:block;
+	}
+	.tag div{
+		text-align: left;
+	}
+	.product{
+		margin: 5px 10px;
+		float: left;
+	}
+	.groupList{
+		text-align: left;
+	}
+	.newsHome{
+		max-width:100%
+	}
+	.brandList >li{
+		float: left;
+	}
+	.brandWrapper{
+		max-width: 230px
+	}
+	.brandContainer{
+		width: auto;
+		margin: 0px auto;
+	}
+	.groupListContainer{
+		overflow:hidden;
+	}
+}
+
+@media screen and (min-width: 992px) {
+	.productMain,.adminMain,.productSubheader{
+		max-width: 95%;
+	}
+	div.detail >div{
+		width: 90%;
+	}
+	.newsHome{
+		max-width:95%
+	}
+	div.catalogue{
+		float:left;
+		width: 30%;
+		height: 100%;
+	}
+	div.brand{
+		text-align: left;
+	}
+	.brandDiv{
+		margin: 5px 5px;
+	}
+	.brandList >li{
+		float: none;
+	}
+	.productContainer{
+		margin:5px auto;
+	}
+	.videoWrapper iframe{
+		height:100%
+	}
+}
+@media screen and (min-width: 1200px) {
+	.productHeight{
+		min-height: 870px;
+	}
+	.productMain,.adminMain,.productSubheader{
+		max-width: 90%;
+	}
+}
+@media screen and (min-width: 1500px) {
+	.productMain,.adminMain,.productSubheader{
+		max-width: 75%;
+	}
+	div.detail >div{
+		width: 85%;
+	}
+	.newsHome{
+		max-width:70%
+	}
+	.newsInnerRow >div>h2{
+		font-size: 30px;
+	}
+}
+
+
+/*--------ADMIN------------*/
+.adminSubheader{
+	padding-left: 15px;
+}
+.adminMenuSubheader{
+	padding-top: 5px;
+}
+.adminSubheader,.adminMenuSubheader span{
+	color: #444444;
+	font-weight: bold;
+	font-family: HelveticaInseratLTStd,"Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 18px;
+}
+.adminBtnManage{
+	margin: 0px 5px;
+}
+.tableAdmin .tdCenter{
+	text-align: center;
+	/*vertical-align: middle;*/
+}
+.tableAdmin .tdGryph{
+	font-size: 20px;
+}
+.tableAdmin .tableHeader{
+	background-color: #222222;
+	color: #DDDDDD;
+}
