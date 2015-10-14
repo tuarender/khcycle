@@ -35,9 +35,9 @@ class MemberController extends Controller
         }
     }
 
-    public function forgotpassword()
+    public function forgotPassword()
     {
-        return view('member.forgotpassword')->with('name','ForgotPassword');
+        return view('member.forgotPassword')->with('name','ForgotPassword');
     }
 
     public function register()
@@ -416,10 +416,32 @@ class MemberController extends Controller
     }
 
     public function generateToken(){
-        return bin2hex(random_bytes($length));
+        $string = $this->generateRandomString(17);
+        return bin2hex($string);
     }
 
-    public function postForgotPassword(){
+    function generateRandomString($length = 10) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+    }
+
+    function checkSendForget($email){
+        $sended =  "SELECT COUNT(*) AS COUNT_SEND FROM KH_PASSWORD_RESET WHERE EMAIL LIKE ? AND CREATE_AT >= DATE_SUB(NOW(),INTERVAL 15 MINUTE)";
+        $queryParam = array($email);
+        $data = DB::select($sended,$queryParam);
+        $checkCountSend = 0;
+        if(count($data)>0){
+            $checkCountSend = $data[0]['COUNT_SEND'];
+        }
+        return $checkCountSend;
+    }
+
+    public function postForgotPassword(Request $request){
 
         $rules=[
             'email' =>'required',
@@ -431,36 +453,43 @@ class MemberController extends Controller
 
         $validator =  Validator::make($request->all(),$rules,$messages);
         if($validator->fails()){
-            return redirect('forgotpassword')->withErrors($validator)->withInput();
+            return redirect('forgotPassword')->withErrors($validator)->withInput();
         }
         else{
             $email = $request->input('email');
             $findUser = $this->checkemail($email);
             if($findUser>0){
-                $token = generateToken();
-                DB::table('KH_PASSWORD_RESET')->insert([
-                    'EMAIL'=>$email,
-                    'TOKEN' =>$member_email
-                ]);
+                $checkSendForget = $this->checkSendForget($email);
+                if($checkSendForget<3){
+                    $token = $this->generateToken();
+                    DB::table('KH_PASSWORD_RESET')->insert([
+                        'EMAIL'=>$email,
+                        'TOKEN' =>$token
+                    ]);
 
-                $message = "<h2>Hi!!</h2>\n
-                            Click here to reset your password.<br>
-                            <a href='http://khcycle.co.th/password/reset/".$token."'>http://khcycle.co.th/password/reset/".$token."</a>
-                            <br><br> Please note that: this url valid only 15 minute.
-                            <br><br><h3>Thank you!</h3>";
-                $rEmail = $email;
-                $headers  = "MIME-Version: 1.0\r\n";
-                $headers .= "Content-type: text/html; charset=utf8\r\n";
-                $headers .= "From: donotreply@khcycle.co.th\r\n";
-                $headers .= "X-Mailer: JOBTOPGUN.COM\r\n";
-                $subject = "=?utf-8?B?".base64_encode("Reset password")."?=";
-                mail($rEmail,$subject,$message,$headers,"-f tuarender005@gmail.com");
-                Session::flash('alert-success', 'เราได้ส่งข้อมูลไปยังอีเมล์ของท่านแล้ว');
-                return view('member.forgotpassword')->with('name','ForgotPassword');
+                    $message = "<h2>Hi!!</h2>\n
+                                Click here to reset your password.<br>
+                                <a href='http://khcycle.co.th/password/reset/".$token."'>http://khcycle.co.th/password/reset/".$token."</a>
+                                <br><br> Please note that: this url valid only 15 minute.
+                                <br><br><h3>Thank you!</h3>";
+                    $rEmail = $email;
+                    $headers  = "MIME-Version: 1.0\r\n";
+                    $headers .= "Content-type: text/html; charset=utf8\r\n";
+                    $headers .= "From: donotreply@khcycle.co.th\r\n";
+                    $headers .= "X-Mailer: khcycle.co.th\r\n";
+                    $subject = "=?utf-8?B?".base64_encode("Reset password")."?=";
+                    mail($rEmail,$subject,$message,$headers,"-f tuarender005@gmail.com");
+                    Session::flash('alert-success', 'เราได้ส่งข้อมูลไปยังอีเมล์ของท่านแล้ว');
+                    return view('member.forgotPassword')->with('name','ForgotPassword');
+                }
+                else{
+                    Session::flash('alert-danger', 'เราได้ส่งข้อมูลไปยังอีเมล์ของท่านแล้ว');
+                    return view('member.forgotPassword')->with('name','ForgotPassword');
+                }
             }
             else{
                 Session::flash('alert-danger', 'ไม่พบอีเมล์ดังกล่าว กรุณาตรวจสอบ');
-                return view('member.forgotpassword')->with('name','ForgotPassword');
+                return view('member.forgotPassword')->with('name','ForgotPassword');
             }
         }
     }

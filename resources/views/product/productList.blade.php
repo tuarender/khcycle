@@ -11,14 +11,26 @@
             <a href="https://www.facebook.com/KhcycleThailand" target="_blank" class="btn btn-social-icon btn-facebook">
                 <i class="fa fa-facebook"></i>
             </a>
-            <a class="btn btn-social-icon btn-instagram">
-                <i class="fa fa-instagram"></i>
+            <a href="https://instagram.com/khcycle_thailand/" target="_blank">
+                <img src="images/instragram.png" class="img-responsive" style="max-width:32px;display:inline">
+            </a>
+            <a href="#lineLogo" data-targer="#lineLogo" data-toggle='modal' style="border:0px;outline:none">
+                <img src="images/line.png" class="img-responsive" style="max-width:32px;display:inline;border : 0;">
             </a>
         </div>
         <div class="col-xs-12">
         	<hr style='width:100%;margin:0px 0px;border-color:#D7D7D7'>
     	</div>
     </div>
+</div>
+<div  id='lineLogo' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
+  <div class='modal-dialog modal-lg'>
+      <div class='modal-content'>
+          <div class='modal-body'>
+              <img src='images/lineQR_code.jpg' class='img-responsive' onerror='this.src="images/product/default-lg.png"'>
+          </div>
+      </div>
+  </div>
 </div>
 <?php
 	echo "<div class='row'>";

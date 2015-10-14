@@ -11,8 +11,11 @@
             <a href="https://www.facebook.com/KhcycleThailand" target="_blank" class="btn btn-social-icon btn-facebook">
                 <i class="fa fa-facebook"></i>
             </a>
-            <a class="btn btn-social-icon btn-instagram">
-                <i class="fa fa-instagram"></i>
+            <a href="https://instagram.com/khcycle_thailand/" target="_blank">
+                <img src="images/instragram.png" class="img-responsive" style="max-width:32px;display:inline">
+            </a>
+            <a href="https://instagram.com/khcycle_thailand/" target="_blank">
+                <img src="images/line.png" class="img-responsive" style="max-width:32px;display:inline">
             </a>
         </div>
         <hr style='width:100%;margin:10px 0px;border-color:#D7D7D7'>
