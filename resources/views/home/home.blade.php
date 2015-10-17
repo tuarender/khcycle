@@ -69,13 +69,7 @@
         $('.slideContainer').fadeIn('slow',function(){
           $('#detail').fadeIn('slow');
           $('.contactContainer').fadeIn('slow',function(){
-            var topTag = ($('.slideContainer').height()*0.8)-100;
-            var rightTag = ($('.slideContainer').width()*0.9)-120;
-            if($('.slideContainer').width()<800){
-              rightTag-=50;
-            }
-            $(".tag").css({ top: topTag ,left: rightTag });
-            $(".tag").fadeIn(800);
+            resizeTag();
           });
           $('#footer').fadeIn('slow');
 
@@ -96,11 +90,17 @@
 
     function resizeTag(){
       var topTag = ($('.slideContainer').height()*0.8)-100;
-      var rightTag = ($('.slideContainer').width()*0.9)-120;
+      var rightTag = ($('.slideContainer').width()*0.9)-150;
+      var topTagAdmin = 20;
+      var rightTagAdmin = ($('.slideContainer').width()*0.9)-150;
       if($('.slideContainer').width()<800){
         rightTag-=50;
+        rightTagAdmin-=50;
       }
       $(".tag").css({ top: topTag,left: rightTag });
+      $(".tagAdmin").css({ top: topTagAdmin,left: rightTagAdmin });
+      $(".tag").fadeIn(500);
+      $(".tagAdmin").fadeIn(500);
     }
 
     function getNews(){

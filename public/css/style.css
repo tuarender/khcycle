@@ -420,19 +420,19 @@ div.newsEnd{
 .btnKhcycle:hover{
 	background-color:#000000 !important;
 }
-.tag {
+.tag,.tagAdmin {
 	background-color: #E0E0E0;
    	z-index: 1000;
    	padding: 5px;
    	color: #FEFA03;
    	text-shadow: 2px 2px #888888;
 }
-.tag h3{
+.tag,.tagAdmin h3{
 	display:none;
 	margin-top: 0px;
 	font-weight: bold;
 }
-.tag div{
+.tag,.tagAdmin div{
 	text-align: right;
 	margin-left: 0px;
 	margin-right: 0px;
@@ -567,17 +567,17 @@ div.newsEnd{
 		/*max-width: 200px;*/
 		float: right;
 	}
-	.tag{
+	.tag,.tagAdmin{
 		color:#FFFFFF;
 	   	float: right;
    		position: absolute;
    		background-color: transparent;
 	   	text-shadow: none;
 	}
-	.tag h3{
+	.tag,.tagAdmin h3{
 		display:block;
 	}
-	.tag div{
+	.tag,.tagAdmin div{
 		text-align: left;
 	}
 	.product{
