@@ -34,6 +34,7 @@
 </div>
 <?php
 	echo "<div class='row'>";
+	echo "<div class='col-md-8'>";
 	if(isset($groups)&&!empty($groups)){
 		echo "<ul class='groupList'>";
 		echo "<li><a ";
@@ -50,6 +51,23 @@
 		}
 		echo "</ul>";
 	}
+	echo "</div>";
+	echo "<div class='col-md-4'>";
+?>
+	@if(Session::has('user'))
+	<div class="container" style="">
+	<div class="sessionContainer" style="width: 100%"> 
+	    <div class="row">
+	        Log in as {{Session::get('user')->KH_MEMBER_LOGIN_USERNAME }} <a href="logout">ออกจากระบบ</a><br>
+	        @if(Session::get('user')->KH_MEMBER_RULE =='ADMIN')
+	        <a href="admin/home" class="btn btn-info btnKhcycle"><span class="glyphicon glyphicon-asterisk"></span> จัดการข้อมูลโดยแอดมิน</a>
+	        @endif
+	    </div>
+	</div>
+	</div>
+	@endif
+<?php
+	echo "</div>";
 	echo "</div>";
 	echo "<div class='row productList'>";
 	if(isset($products)&&!empty($products)){

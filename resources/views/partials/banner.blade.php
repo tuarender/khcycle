@@ -16,6 +16,18 @@
 	}
 ?>
   </div>
+  @if(Session::has('user'))
+  <div class="container tagAdmin" style="display:none">
+    <div class="sessionContainer" style="width: 100%"> 
+        <div class="row">
+            Log in as {{Session::get('user')->KH_MEMBER_LOGIN_USERNAME }} <a href="logout">ออกจากระบบ</a><br>
+            @if(Session::get('user')->KH_MEMBER_RULE =='ADMIN')
+            <a href="admin/home" class="btn btn-info btnKhcycle"><span class="glyphicon glyphicon-asterisk"></span> จัดการข้อมูลโดยแอดมิน</a>
+            @endif
+        </div>
+    </div>
+  </div>
+  @endif
   <div class="container tag" style="display:none">
   	<div class="row">
   		<div class="col-xs-12">
