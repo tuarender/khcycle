@@ -1,6 +1,6 @@
 @extends('app')
-@extends('partials.subheader')
 @section('content')
+@include('partials.subheader')
     <div id="contact" class="container-fluid contactContainer" style="width:90%;display:none">
         <div class="sessionContainer" style="width: 90%">
         @if(Session::has('user'))

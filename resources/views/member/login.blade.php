@@ -1,6 +1,6 @@
 @extends('app')
-@extends('partials.subheader')
 @section('content')
+@include('partials.subheader')
     <div class="contactcontainer">
         <div class="row">
             <div class="col-sm-8 col-sm-offset-2 col-lg-6 col-lg-offset-3">
@@ -39,7 +39,7 @@
                             </div>
 
                             <div class="form-group">
-                                <div class="col-sm-9 control-label"><a href="forgetpassword">ลืมรหัสผ่าน</a></div>
+                                <div class="col-sm-9 control-label"><a href="forgotPassword">ลืมรหัสผ่าน</a></div>
                             </div>
 
                             <div class="form-group">

@@ -284,7 +284,8 @@ class AdminController extends Controller
 
     private function getBanner($id){
         $banner = DB::table('KH_BANNER')
-                ->where('BANNER_ID', '=', $id);
+                ->where('BANNER_ID', '=', $id)
+                ->get();
         return $banner;
     }
 

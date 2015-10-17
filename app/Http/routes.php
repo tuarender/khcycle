@@ -19,10 +19,10 @@ Route::post('login','MemberController@postLogin');
 Route::get('profile','MemberController@profilemember');
 Route::get('logout','MemberController@logout');
 Route::get('forgotPassword','MemberController@forgotPassword');
-Route::get('password/reset/{token}', 'MemberController@getResetPassword');
+Route::get('resetPassword/{token}', 'MemberController@getResetPassword');
 Route::post('logout','MemberController@logout');
 Route::post('forgotPassword', 'MemberController@postForgotpassword');
-Route::post('password/reset', 'MemberController@postResetPassword');
+Route::post('resetPassword', 'MemberController@postResetPassword');
 //Route::post('updatemember/{id}','MemberController@update');
 
 

@@ -169,7 +169,12 @@ div.brand{
 	font-family: CSChatThai;
 	font-size: 20px;
 	margin: 10px auto;
+<<<<<<< HEAD
+	/*max-width: 1340px;*/
+	padding-right: 20px;
+=======
 	max-width: 1340px;
+>>>>>>> test
 }
 .contactContainer ul{
 	font-family: CSChatThai;
@@ -262,7 +267,6 @@ div.brand{
 	height: 260px;
 	position: relative;
 }
-<<<<<<< HEAD
 
 .groupList{
 	text-align: center;
@@ -536,8 +540,6 @@ div.newsEnd{
 	    width: 100%;
 	}
 }
-=======
->>>>>>> parent of 8105359... update
 @media screen and (min-width: 768px){
 	.productList{
 		padding-left: 30px;
@@ -602,12 +604,9 @@ div.newsEnd{
 		width: auto;
 		margin: 0px auto;
 	}
-<<<<<<< HEAD
 	.groupListContainer{
 		overflow:hidden;
 	}
-=======
->>>>>>> parent of 8105359... update
 }
 
 @media screen and (min-width: 992px) {
@@ -642,6 +641,9 @@ div.newsEnd{
 	}
 }
 @media screen and (min-width: 1200px) {
+	.productHeight{
+		min-height: 870px;
+	}
 	.productMain,.adminMain,.productSubheader{
 		max-width: 90%;
 	}

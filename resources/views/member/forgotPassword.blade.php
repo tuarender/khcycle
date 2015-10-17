@@ -1,6 +1,6 @@
 @extends('app')
-@extends('partials.subheader')
 @section('content')
+@include('partials.subheader')
     <div class="contactcontainer">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">

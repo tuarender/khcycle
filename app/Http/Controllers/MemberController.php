@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Mail;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -38,6 +39,19 @@ class MemberController extends Controller
     public function forgotPassword()
     {
         return view('member.forgotPassword')->with('name','ForgotPassword');
+    }
+
+    public function getResetPassword($token)
+    {
+        $foundToken = $this->getTokenForReset($token);
+        if(count($foundToken)==1){
+            Session::flash('alert-success', 'กรุณาตั้งรหัสผ่านใหม่');
+            return view('member.resetPassword')->with('name','ResetPassword')->with('token',$token);
+        }
+        else{
+            Session::flash('alert-danger', 'ไม่พบข้อมูลของรีเซ็ตรหัสผ่านในระบบ ลิงค์ดังกล่าวอาจจะหมดอายุ กรุณากรอกข้อมูลเพื่อรับอีเมล์ใหม่');
+            return view('member.forgotPassword')->with('name','ForgotPassword');
+        }
     }
 
     public function register()
@@ -131,8 +145,7 @@ class MemberController extends Controller
             $id = DB::table('KH_MEMBER_LOGIN')->insertGetId(
               [
                   'KH_MEMBER_LOGIN_USERNAME'=>$member_username,
-                  'KH_MEMBER_LOGIN_PASSWORD'=>$ervpass,
-                  'KH_MEMBER_LOGIN_REAL'=>$member_password]
+                  'KH_MEMBER_LOGIN_PASSWORD'=>$ervpass]
             );
 
             //insert contact
@@ -441,6 +454,13 @@ class MemberController extends Controller
         return $checkCountSend;
     }
 
+    function getTokenForReset($token){
+        $sended =  "SELECT EMAIL,TOKEN FROM KH_PASSWORD_RESET WHERE TOKEN LIKE ? AND CREATE_AT >= DATE_SUB(NOW(),INTERVAL 15 MINUTE)";
+        $queryParam = array($token);
+        $data = DB::select($sended,$queryParam);
+        return $data;
+    }
+
     public function postForgotPassword(Request $request){
 
         $rules=[
@@ -467,23 +487,17 @@ class MemberController extends Controller
                         'TOKEN' =>$token
                     ]);
 
-                    $message = "<h2>Hi!!</h2>\n
-                                Click here to reset your password.<br>
-                                <a href='http://khcycle.co.th/password/reset/".$token."'>http://khcycle.co.th/password/reset/".$token."</a>
-                                <br><br> Please note that: this url valid only 15 minute.
-                                <br><br><h3>Thank you!</h3>";
-                    $rEmail = $email;
-                    $headers  = "MIME-Version: 1.0\r\n";
-                    $headers .= "Content-type: text/html; charset=utf8\r\n";
-                    $headers .= "From: donotreply@khcycle.co.th\r\n";
-                    $headers .= "X-Mailer: khcycle.co.th\r\n";
-                    $subject = "=?utf-8?B?".base64_encode("Reset password")."?=";
-                    mail($rEmail,$subject,$message,$headers,"-f tuarender005@gmail.com");
+                    $subject = "KH Cycle Reset password";
+                    Mail::send('email.forgotPassword', ['data'=>$token], function ($message) use ($email,$subject) {
+                        $message->from('noreply@khcycle.co.th', 'KHcycle');
+                        $message->to($email);
+                        $message->subject($subject);
+                    });
                     Session::flash('alert-success', 'เราได้ส่งข้อมูลไปยังอีเมล์ของท่านแล้ว');
                     return view('member.forgotPassword')->with('name','ForgotPassword');
                 }
                 else{
-                    Session::flash('alert-danger', 'เราได้ส่งข้อมูลไปยังอีเมล์ของท่านแล้ว');
+                    Session::flash('alert-danger', 'เราได้ส่งข้อมูลไปยังอีเมล์ของท่านแล้ว กรุณาตรวจสอบ');
                     return view('member.forgotPassword')->with('name','ForgotPassword');
                 }
             }
@@ -491,6 +505,52 @@ class MemberController extends Controller
                 Session::flash('alert-danger', 'ไม่พบอีเมล์ดังกล่าว กรุณาตรวจสอบ');
                 return view('member.forgotPassword')->with('name','ForgotPassword');
             }
+        }
+    }
+
+    public function postResetPassword(Request $request){
+        $token = $request->input('resetToken');
+        $foundToken = $this->getTokenForReset($token);
+        if(count($foundToken)==1){
+            //เงื่อไขที่ใช้ในการ Validator
+            $rules=[
+                'member_password'=>'required|confirmed',
+                'member_password_confirmation'=>'required',
+            ];
+            //Custom ควบคุม Message Error
+            $messages = [
+                'member_password.required'=>'กรุณาระบุ Password',
+                'member_password.confirmed'=>'กรุณาใส่ Password ให้ตรงกัน',
+                'member_password_confirmation.required'=>'กรุณาระบุ Confirm Password'
+            ];
+            $validator =  Validator::make($request->all(),$rules,$messages);
+
+            if($validator->fails()){
+                return redirect('resetPassword/'.$token)->withErrors($validator)->withInput();
+            }else {
+                $member_password = $request->input('member_password');
+                $ervpass = $this-> getEncode_member($member_password,strlen($member_password));
+                echo $foundToken[0]['EMAIL'];
+                $contact = DB::table('KH_CONTACT')->where('KH_CONTACT_EMAIL','=',$foundToken[0]['EMAIL'])->select('KH_CONTACT_MEMBER')->get();
+                if(count($contact)){
+                    $id = $contact[0]['KH_CONTACT_MEMBER'];
+                    DB::table('KH_MEMBER_LOGIN')
+                    ->where('ID','=',$id)
+                    ->update([
+                        'KH_MEMBER_LOGIN_PASSWORD'=>$ervpass]
+                    );
+                    Session::flash('alert-success', 'เปลี่ยนรหัสผ่านสำเร็จ');
+                    return view('member.login')->with('name','Member');
+                }
+                else{
+                    Session::flash('alert-danger', 'เกิดข้อผิดพลาดในการรีเซ็ตรหัสผ่าน กรุณาติดต่อผู้ดูแลระบบ');
+                    return view('member.forgotPassword')->with('name','ForgotPassword');
+                }
+            }
+        }
+        else{
+            Session::flash('alert-danger', 'ไม่พบข้อมูลของรีเซ็ตรหัสผ่านในระบบ ลิงค์ดังกล่าวอาจจะหมดอายุ กรุณากรอกข้อมูลเพื่อรับอีเมล์ใหม่');
+            return view('member.forgotPassword')->with('name','ForgotPassword');
         }
     }
 }

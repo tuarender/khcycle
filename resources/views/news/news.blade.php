@@ -1,6 +1,6 @@
 @extends('app')
-@extends('partials.subheader')
 @section('content')
+@include('partials.subheader')
 <?php
 	if(isset($news)){
 ?>
