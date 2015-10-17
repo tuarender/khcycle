@@ -8,8 +8,8 @@
 <?php
   if(isset($catalogue)){
     if(count($catalogue)>0){
-      echo "<a href='PDF/".$catalogue[0]['CATALOGUE_PATH_PDF']."' target='_blank'>";
-      echo "<div class='catalogueDetail'><a class='btn btn-md linkCatalogue' href='PDF/".$catalogue[0]['CATALOGUE_PATH_PDF']."' target='_blank'>Lastest Catalogue</a></div>";
+      echo "<a href='PDF/".$catalogue[0]['CATALOGUE_PATH_PDF'].".pdf' target='_blank'>";
+      echo "<div class='catalogueDetail'><a class='btn btn-md linkCatalogue' href='PDF/".$catalogue[0]['CATALOGUE_PATH_PDF'].".pdf' target='_blank'>Lastest Catalogue</a></div>";
       echo "<div><a class='linkViewMoreCatalogue' href='catalogue'>View more..</a></div>";
     }
   }

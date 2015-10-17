@@ -444,7 +444,7 @@ class AdminController extends Controller
                 ->simplePaginate(10);
         }
         $name= 'BRANCH MANAGE';
-        $zone = DB::table('KH_ZONE')->get();
+        $zone = DB::table('KH_ZONE')->where('ZONE_DELETE_STATUS','<>','1')->get();
 
         return view('admin/branch',['name'=>$name,'data'=>$data,'zone'=>$zone]);
     }
