@@ -55,7 +55,7 @@
                     <div class="form-group @if ($errors->has('member_weight')) has-error @endif">
                         <label class="col-sm-4 control-label"><font color="red">*</font>น้ำหนัก</label>
                         <div class="col-sm-4">
-                            <input type="text"  class="form-control" onkeypress="validate(event)" name="member_weight" maxlength="5" value="{{ $members['KH_INFORMATION_HEIGHT']  }}"  >
+                            <input type="text"  class="form-control" onkeypress="validate(event)" name="member_weight" maxlength="5" value="{{ $members['KH_INFORMATION_WEIGHT']  }}"  >
                             @if($errors->has('member_weight')) <p class="help-block">{{$errors->first('member_weight')}}</p>@endif
                         </div>
                         <label class="col-sm-1 control-label">KG</label>
@@ -64,7 +64,7 @@
                     <div class="form-group @if ($errors->has('member_height')) has-error @endif">
                         <label class="col-sm-4 control-label"><font color="red">*</font>ส่วนสูง</label>
                         <div class="col-sm-4">
-                            <input type="text"  class="form-control" onkeypress="validate(event)" name="member_height" maxlength="5" value="{{ $members['KH_INFORMATION_WEIGHT']   }}" >
+                            <input type="text"  class="form-control" onkeypress="validate(event)" name="member_height" maxlength="5" value="{{ $members['KH_INFORMATION_HEIGHT']   }}" >
                             @if($errors->has('member_height')) <p class="help-block">{{$errors->first('member_height')}}</p>@endif
                         </div>
                         <label class="col-sm-1 control-label">CM</label>
