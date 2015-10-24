@@ -1,9 +1,9 @@
 @extends('app')
 @section('content')
 @include('partials.subheader')
-    <div class="contactcontainer">
+    <div class="container-fluid contactcontainer">
         <div class="row">
-            <div class="col-sm-8 col-sm-offset-2 col-lg-6 col-lg-offset-3">
+            <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
                 @include('partials.flashmessage')
                 <div class="panel panel-primary loginPanel">
                     <div class="loginPanel loginPanelHeader panel-heading">เข้าสู่ระบบสมาชิก</div>

@@ -58,8 +58,8 @@
 		if($data[0]['NEWS_IS_YOUTUBE']==0){
 			echo "<img class='img-responsive' src='images/news/".$data[0]['NEWS_IMAGE_TITLE_NAME'].".".$data[0]['NEWS_IMAGE_TITLE_EXT']."'>";
 			echo "<input type='hidden' value='1' name='datacheck'>";
-			echo "<input type='hidden' value='".$data[0]['NEWS_IMAGE_TITLE_NAME']."'"." name='filename'>";
-			echo "<input type='hidden' value='".$data[0]['NEWS_IMAGE_TITLE_EXT']."'"." name='fileExt'>";
+			echo "<input type='hidden' value='".$data[0]['NEWS_IMAGE_TITLE_NAME'].' name='filename'>";
+			echo "<input type='hidden' value='".$data[0]['NEWS_IMAGE_TITLE_EXT'].' name='fileExt'>";
 		}
 		else{
 			echo "<div class='videoWrapper'><iframe src='".$data[0]['NEWS_YOUTUBE_URI']."' frameborder='0' allowfullscreen></iframe></div>";
@@ -85,6 +85,7 @@
             <label for="youTubeUrl" class="col-sm-3 control-label"><font  id='youTubeUrlRequired' color="red">*</font>ระบุลิงค์ Youtube</label>
             <div class="col-sm-5">
                 <input id="youTubeUrl" type="text" class="form-control" name="youTubeUrl" value="{{old('youTubeUrl',$youTubeUrl)}}" disabled>
+
                 @if($errors->has('youTubeUrl')) 
                 <p class="help-block">{{$errors->first('youTubeUrl')}}</p>@endif
             </div>

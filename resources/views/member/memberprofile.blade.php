@@ -1,16 +1,16 @@
 @extends('app')
 @section('content')
 @include('partials.subheader')
-<div class="contactcontainer">
+<div class="container-fluid contactcontainer">
     <div class="col-sm-8 col-sm-offset-2">
-        <div class="row" style="text-align: right;width: 99%">
+        <div class="row" style="text-align: right">
             @if(Session::get('user')->KH_MEMBER_RULE =='ADMIN')
                 <a href="admin/member" class="btn btn-info btnKhcycle"><span class="glyphicon glyphicon-asterisk"></span> จัดการข้อมูลโดยแอดมิน</a>
             @endif
             <br><br>
         </div>
     </div>
-    <div class="row" style="width: 99%">
+    <div class="row">
         <div class="col-sm-8 col-sm-offset-2">
             @include('partials.flashmessage')
             <div class="panel panel-primary loginPanel">

@@ -58,6 +58,8 @@
             <label for="url" class="col-sm-3 control-label"><font color="red">*</font>ระบุลิงค์</label>
             <div class="col-sm-5">
                 <input type="text" class="form-control" name="url" value="{{old('url',$bannerUrl)}}" >
+				<p class="help-block">*หมายเหตุ อย่าลืมระบุ http:// หรือ https:// </p>
+				<p class="help-block"> ข้างหน้าลิงค์ เช่น http://www.google.co.th </p>
                 @if($errors->has('url')) 
                 <p class="help-block">{{$errors->first('url')}}</p>@endif
             </div>

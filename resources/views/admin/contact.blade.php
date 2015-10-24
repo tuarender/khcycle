@@ -30,7 +30,7 @@
                     รายละเอียดโดยย่อ
                 </div>
                 <div class="col-md-9">
-                    <textarea name="contact_name" rows="5" cols="50">{{$contact['KH_CONTACTUS']}}</textarea>
+                    <textarea name="contact_name" style="width: 100%" rows="5" cols="50">{{$contact['KH_CONTACTUS']}}</textarea>
                 </div>
             </div>
             <div class="form-group">
