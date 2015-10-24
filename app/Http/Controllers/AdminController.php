@@ -1224,29 +1224,52 @@ class AdminController extends Controller
     }
 
     function newsPreview(Request $request){
-        $rules=[
-            'newsTitle'=>'required|max:100',
-            'newsType'=>'required',
-            'youTubeUrl'=>'url|required_if:newsType,1',
-            'newsImage'=>'image|max:1024|required_if:newsType,0',
-            'sample'=>'required|max:500|not_in:<p>&nbsp; &nbsp;</p>',
-            'content'=>'required|max:20000|not_in:<p>&nbsp; &nbsp;</p>'
-        ];
-        $messages = [
-            'newsTitle.required'=>'กรุณาระบุชื่อ News/Articles',
-            'newsTitle.max'=>'News/Articles ต้องยาวไม่เกิน 100 ตัวอักษร',
-            'newsType.required'=>'กรุณาระบุประเภทของแบนเนอร์',
-            'youTubeUrl.required_if'=>'กรุณาระบุลิงค์',
-            'youTubeUrl.url'=>'ลิงค์ไม่ถูกต้อง',
-            'youTubeUrl.active_url'=>'ไม่สามารถติดต่อลิงค์ดังกล่าวได้',
-            'newsImage.required_if'=>'กรุณาระบุภาพ',
-            'newsImage.image'=>'กรุณาระบุประเภทของรูปภาพให้ถูกต้อง',
-            'newsImage.max'=>'ขนาดของรูปภาพต้องไม่เกิน 1MB',
-            'sample.required'=>'กรุณาระบุรายละเอียดโดยย่อ',
-            'sample.max'=>'รายละเอียดโดยย่อต้องยาวไม่เกิน 500ตัวอักษร',
-            'content.required'=>'กรุณาระบุรายละเอียด',
-            'content.max'=>'รายละเอียดต้องยาวไม่เกิน20000ตัวอักษร'
-        ];
+
+        $checkData = $request->input('datacheck');
+        if($checkData==1||$checkData==2)
+        {
+            $rules=[
+                'newsTitle'=>'required|max:100',
+                'newsType'=>'required',
+                'sample'=>'required|max:500|not_in:<p>&nbsp; &nbsp;</p>',
+                'content'=>'required|max:20000|not_in:<p>&nbsp; &nbsp;</p>'
+            ];
+            $messages = [
+                'newsTitle.required'=>'กรุณาระบุชื่อ News/Articles',
+                'newsTitle.max'=>'News/Articles ต้องยาวไม่เกิน 100 ตัวอักษร',
+                'newsType.required'=>'กรุณาระบุประเภทของแบนเนอร์',
+                'sample.required'=>'กรุณาระบุรายละเอียดโดยย่อ',
+                'sample.max'=>'รายละเอียดโดยย่อต้องยาวไม่เกิน 500ตัวอักษร',
+                'content.required'=>'กรุณาระบุรายละเอียด',
+                'content.max'=>'รายละเอียดต้องยาวไม่เกิน20000ตัวอักษร'
+            ];
+        }else{
+            $rules=[
+                'newsTitle'=>'required|max:100',
+                'newsType'=>'required',
+                'youTubeUrl'=>'url|required_if:newsType,1',
+                'newsImage'=>'image|max:1024|required_if:newsType,0',
+                'sample'=>'required|max:500|not_in:<p>&nbsp; &nbsp;</p>',
+                'content'=>'required|max:20000|not_in:<p>&nbsp; &nbsp;</p>'
+            ];
+            $messages = [
+                'newsTitle.required'=>'กรุณาระบุชื่อ News/Articles',
+                'newsTitle.max'=>'News/Articles ต้องยาวไม่เกิน 100 ตัวอักษร',
+                'newsType.required'=>'กรุณาระบุประเภทของแบนเนอร์',
+                'youTubeUrl.required_if'=>'กรุณาระบุลิงค์',
+                'youTubeUrl.url'=>'ลิงค์ไม่ถูกต้อง',
+                'youTubeUrl.active_url'=>'ไม่สามารถติดต่อลิงค์ดังกล่าวได้',
+                'newsImage.required_if'=>'กรุณาระบุภาพ',
+                'newsImage.image'=>'กรุณาระบุประเภทของรูปภาพให้ถูกต้อง',
+                'newsImage.max'=>'ขนาดของรูปภาพต้องไม่เกิน 1MB',
+                'sample.required'=>'กรุณาระบุรายละเอียดโดยย่อ',
+                'sample.max'=>'รายละเอียดโดยย่อต้องยาวไม่เกิน 500ตัวอักษร',
+                'content.required'=>'กรุณาระบุรายละเอียด',
+                'content.max'=>'รายละเอียดต้องยาวไม่เกิน20000ตัวอักษร'
+            ];
+        }
+
+
 
         $validator = Validator::make($request->all(),$rules,$messages);
         if($validator->fails()){
@@ -1259,55 +1282,107 @@ class AdminController extends Controller
             $title = $request->input('newsTitle');
             $youtubeUri = "";
 
-            if($newsType==0){
-                //picture case
-                $file = Input::file('newsImage');
-                if ($file!=null&&$file->isValid()) {
-                    $fileToDeletePath = self::NEWS_TEMP;
-                    File::deleteDirectory($fileToDeletePath);
-
-                    /** DO INSERT FIRST **/
-                    //insert
-                    $destinationPath = self::NEWS_TEMP; 
-                    File::makeDirectory($destinationPath);
-                    $extension = $file->getClientOriginalExtension(); 
-                    $fileName = rand(11111,99999); 
-                    $fileNameFull = $fileName.".".$extension;
-                    $fileMoved = $file->move($destinationPath, $fileNameFull);
-                    if (File::exists($fileMoved->getRealPath())){
-                        //update after moved file
+            if($checkData==1||$checkData==2) {
+                if ($checkData == 1) {
+                    if (Input::hasFile('newsImage')) {
+                        $file = Input::file('newsImage');
+                        if ($file != null && $file->isValid()) {
+                            $fileToDeletePath = self::NEWS_TEMP;
+                            File::deleteDirectory($fileToDeletePath);
+                            /** DO INSERT FIRST **/
+                            //insert
+                            $destinationPath = self::NEWS_TEMP;
+                            File::makeDirectory($destinationPath);
+                            $extension = $file->getClientOriginalExtension();
+                            $fileName = rand(11111, 99999);
+                            $fileNameFull = $fileName . "." . $extension;
+                            $fileMoved = $file->move($destinationPath, $fileNameFull);
+                            if (File::exists($fileMoved->getRealPath())) {
+                                $newsPreview['NEWS_IMAGE_TITLE_NAME'] = $fileName;
+                                $newsPreview['NEWS_IMAGE_TITLE_EXT'] = $extension;
+                                $newsPreview['NEWS_EDIT'] = 2;
+                            } else {
+                                Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาติดต่อผู้ดูแลระบบ');
+                                return redirect('admin/news/');
+                            }
+                        }
+                    }
+                    else{
+                            $fileName = $request->input('filename');
+                            $extension = $request->input('fileExt');
+                            $newsPreview['NEWS_IMAGE_TITLE_NAME'] = $fileName;
+                            $newsPreview['NEWS_IMAGE_TITLE_EXT'] = $extension;
+                            $newsPreview['NEWS_EDIT'] = 1;
+                        }
                         $newsPreview['NEWS_TITLE'] = $title;
                         $newsPreview['NEWS_CONTENT'] = htmlentities($content);
                         $newsPreview['NEWS_IS_YOUTUBE'] = 0;
-                        $newsPreview['NEWS_IMAGE_TITLE_NAME'] = $fileName;
-                        $newsPreview['NEWS_IMAGE_TITLE_EXT'] = $extension;
                         $newsPreview['NEWS_YOUTUBE_URI'] = '';
+
+
+
                         $news = array($newsPreview);
-                        return view('admin.newsPreview', ['news' => $news],['name' => 'News']);
-                    }
-                    else{
-                        Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาติดต่อผู้ดูแลระบบ');
-                        return redirect('admin/news/');
+                        return view('admin.newsPreview', ['news' => $news], ['name' => 'News']);
+                    } else {
+                        $youtubeUri = $request->input('youTubeUrl');
+                        $newsPreview['NEWS_TITLE'] = $title;
+                        $newsPreview['NEWS_CONTENT'] = htmlentities($content);
+                        $newsPreview['NEWS_IS_YOUTUBE'] = 1;
+                        $newsPreview['NEWS_YOUTUBE_URI'] = $youtubeUri;
+
+                        $news = array($newsPreview);
+
+                        return view('admin.newsPreview', ['news' => $news], ['name' => 'News']);
+                        }
+                } else {
+                    if ($newsType == 0) {
+                        //picture case
+                        $file = Input::file('newsImage');
+                        if ($file != null && $file->isValid()) {
+                            $fileToDeletePath = self::NEWS_TEMP;
+                            File::deleteDirectory($fileToDeletePath);
+
+                            /** DO INSERT FIRST **/
+                            //insert
+                            $destinationPath = self::NEWS_TEMP;
+                            File::makeDirectory($destinationPath);
+                            $extension = $file->getClientOriginalExtension();
+                            $fileName = rand(11111, 99999);
+                            $fileNameFull = $fileName . "." . $extension;
+                            $fileMoved = $file->move($destinationPath, $fileNameFull);
+                            if (File::exists($fileMoved->getRealPath())) {
+                                //update after moved file
+                                $newsPreview['NEWS_TITLE'] = $title;
+                                $newsPreview['NEWS_CONTENT'] = htmlentities($content);
+                                $newsPreview['NEWS_IS_YOUTUBE'] = 0;
+                                $newsPreview['NEWS_IMAGE_TITLE_NAME'] = $fileName;
+                                $newsPreview['NEWS_IMAGE_TITLE_EXT'] = $extension;
+                                $newsPreview['NEWS_YOUTUBE_URI'] = '';
+                                $newsPreview['NEWS_EDIT'] = '2';
+                                $news = array($newsPreview);
+                                return view('admin.newsPreview', ['news' => $news], ['name' => 'News']);
+                            } else {
+                                Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาติดต่อผู้ดูแลระบบ');
+                                return redirect('admin/news/');
+                            }
+                        } else {
+                            Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาติดต่อผู้ดูแลระบบ');
+                            return redirect('admin/news/');
+                        }
+                    } else {
+                        //youtube case
+                        $youtubeUri = $request->input('youTubeUrl');
+                        $newsPreview['NEWS_TITLE'] = $title;
+                        $newsPreview['NEWS_CONTENT'] = htmlentities($content);
+                        $newsPreview['NEWS_IS_YOUTUBE'] = 1;
+                        $newsPreview['NEWS_YOUTUBE_URI'] = $youtubeUri;
+
+                        $news = array($newsPreview);
+
+                        return view('admin.newsPreview', ['news' => $news], ['name' => 'News']);
                     }
                 }
-                else {
-                    Session::flash('alert-danger', 'เกิดข้อผิดพลาด กรุณาติดต่อผู้ดูแลระบบ');
-                    return redirect('admin/news/');
-                }
             }
-            else{
-                //youtube case
-                $youtubeUri = $request->input('youTubeUrl');
-                $newsPreview['NEWS_TITLE'] = $title;
-                $newsPreview['NEWS_CONTENT'] = htmlentities($content);
-                $newsPreview['NEWS_IS_YOUTUBE'] = 1;
-                $newsPreview['NEWS_YOUTUBE_URI'] = $youtubeUri;
-
-                $news = array($newsPreview);
-
-                return view('admin.newsPreview', ['news' => $news],['name' => 'News']);
-            }
-        }
     }
 
     function orderNews($id,$order){

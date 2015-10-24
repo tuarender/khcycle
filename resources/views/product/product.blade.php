@@ -1,5 +1,6 @@
 @extends('app')
 @section('content')
+	@include('partials.subheader')
 <?php
 	$searchKeyword = "";
 	if(isset($keyword)){

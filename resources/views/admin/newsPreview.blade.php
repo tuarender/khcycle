@@ -1,6 +1,7 @@
 @extends('app')
-@extends('partials.subheader')
+
 @section('content')
+	@include('partials.subheader')
 <?php
 	if(isset($news)){
 ?>
@@ -17,12 +18,21 @@
 	echo "</div>";
 	echo "</div>";*/
 	echo "<div class='row'>";
-	if($news[0]['NEWS_IS_YOUTUBE']==0){
-		echo "<img onerror='this.src=\"images/news/default.png\"' src='images/news/temp/".$news[0]['NEWS_IMAGE_TITLE_NAME'].".".$news[0]['NEWS_IMAGE_TITLE_EXT']."' class='img-responsive imageTitleNews'>";
+	if($news[0]['NEWS_EDIT']==1){
+		if($news[0]['NEWS_IS_YOUTUBE']==0){
+			echo "<img onerror='this.src=\"images/news/default.png\"' src='images/news/".$news[0]['NEWS_IMAGE_TITLE_NAME'].".".$news[0]['NEWS_IMAGE_TITLE_EXT']."' class='img-responsive imageTitleNews'>";
+		}else{
+			echo "<div class='videoWrapper'><iframe src='".$news[0]['NEWS_YOUTUBE_URI']."' frameborder='0' allowfullscreen></iframe></div>";
+		}
+	}else{
+		if($news[0]['NEWS_IS_YOUTUBE']==0){
+			echo "<img onerror='this.src=\"images/news/default.png\"' src='images/news/temp/".$news[0]['NEWS_IMAGE_TITLE_NAME'].".".$news[0]['NEWS_IMAGE_TITLE_EXT']."' class='img-responsive imageTitleNews'>";
+		}
+		else{
+			echo "<div class='videoWrapper'><iframe src='".$news[0]['NEWS_YOUTUBE_URI']."' frameborder='0' allowfullscreen></iframe></div>";
+		}
 	}
-	else{
-		echo "<div class='videoWrapper'><iframe src='".$news[0]['NEWS_YOUTUBE_URI']."' frameborder='0' allowfullscreen></iframe></div>";
-	}
+
 	echo "</div>";
 	echo "<div class='row topBuffer'>";
 	echo "<p  class='news'>".html_entity_decode($news[0]['NEWS_CONTENT'])."</p>";

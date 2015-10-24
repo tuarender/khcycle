@@ -9,6 +9,7 @@
                 <div class="sessionContainer" style="width: 90%">
                     Log in as:{{ Session::get('user')->KH_MEMBER_LOGIN_USERNAME }}<a href="logout">ออกจากระบบ</a>
                 </div>
+
                 <div class="row">
                     <div class="col-xs-12" align="right">
                         <a class="btn btn-info btn-sm" style="width: 100px" href="excel"><span class="glyphicon glyphicon-export" aria-hidden="true"></span> Export Excel</a>

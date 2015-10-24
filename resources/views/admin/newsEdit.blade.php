@@ -57,14 +57,21 @@
 		echo " <div class='col-sm-3'>";
 		if($data[0]['NEWS_IS_YOUTUBE']==0){
 			echo "<img class='img-responsive' src='images/news/".$data[0]['NEWS_IMAGE_TITLE_NAME'].".".$data[0]['NEWS_IMAGE_TITLE_EXT']."'>";
+			echo "<input type='hidden' value='1' name='datacheck'>";
+			echo "<input type='hidden' value='".$data[0]['NEWS_IMAGE_TITLE_NAME']."'"." name='filename'>";
+			echo "<input type='hidden' value='".$data[0]['NEWS_IMAGE_TITLE_EXT']."'"." name='fileExt'>";
 		}
 		else{
 			echo "<div class='videoWrapper'><iframe src='".$data[0]['NEWS_YOUTUBE_URI']."' frameborder='0' allowfullscreen></iframe></div>";
+			echo "<input type='hidden' value='2' name='datacheck'>";
 		}
 		echo " </div>";
 		echo "</div>";
+	}else{
+		echo "<input type='hidden' value='0' name='datacheck'>";
 	}
 ?>
+
 		<div class="form-group @if ($errors->has('newsImage')) has-error @endif">
 			<label for="newsImage" class="col-sm-3 control-label"><?=$requireImage?>แนบภาพหลัก</label>
 			<div class="col-sm-5">
