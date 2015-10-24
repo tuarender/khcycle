@@ -75,8 +75,8 @@ class MemberController extends Controller
         //เงื่อไขที่ใช้ในการ Validator
         $rules=[
             'member_username' =>'required',
-            'member_password'=>'required|confirmed',
-            'member_password_confirmation'=>'required',
+            'member_password'=>'required|confirmed|max:20',
+            'member_password_confirmation'=>'required|max:20',
             'member_email'=>'required|email|confirmed',
             'member_email_confirmation'=>'required',
             'member_name'=>'required',
@@ -101,7 +101,8 @@ class MemberController extends Controller
             'member_address.required'=>'กรุณาระบุที่อยู่',
             'member_weight.required'=>'กรุณาระบุน้ำหนัก',
             'member_height.required'=>'กรุณาระบุส่วนสูง',
-            'member_shoe.required'=>'กรุณาระบุเบอร์รองเท้า'
+            'member_shoe.required'=>'กรุณาระบุเบอร์รองเท้า',
+            'member_password.max'=>'ความยาว password ไม่เกิน 20ตัวอักษร'
         ];
         $validator =  Validator::make($request->all(),$rules,$messages);
 
@@ -195,7 +196,7 @@ class MemberController extends Controller
     {
         $query = DB::table('KH_MEMBER_LOGIN')
             ->where('KH_MEMBER_LOGIN_USERNAME','=',$user)
-            ->where('KH_memBER_LOGIN_PASSWORD','=',$pass)
+            ->where('KH_MEMBER_LOGIN_PASSWORD','=',$pass)
             ->count();
         return $query;
     }
@@ -353,7 +354,7 @@ class MemberController extends Controller
             {
                 $kh_password = $request->input('kh_password');
                 $encryp_password = $this->getEncode_member($kh_password,strlen($kh_password));
-                //$encryp_password = Hash::make($kh_password);
+               // dd($encryp_password);
                 $matchlogin = $this->chkmatchlogin($kh_username,$encryp_password);
                // dd($encryp_password);
                 if($matchlogin>0)
@@ -514,14 +515,15 @@ class MemberController extends Controller
         if(count($foundToken)==1){
             //เงื่อไขที่ใช้ในการ Validator
             $rules=[
-                'member_password'=>'required|confirmed',
-                'member_password_confirmation'=>'required',
+                'member_password'=>'required|confirmed|max:20',
+                'member_password_confirmation'=>'required|max:20',
             ];
             //Custom ควบคุม Message Error
             $messages = [
                 'member_password.required'=>'กรุณาระบุ Password',
                 'member_password.confirmed'=>'กรุณาใส่ Password ให้ตรงกัน',
-                'member_password_confirmation.required'=>'กรุณาระบุ Confirm Password'
+                'member_password_confirmation.required'=>'กรุณาระบุ Confirm Password',
+                'member_password.max'=>'ความยาว Password ไม่เกิน 20 ตัวอักษร'
             ];
             $validator =  Validator::make($request->all(),$rules,$messages);
 

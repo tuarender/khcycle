@@ -25,7 +25,7 @@
                             <div class="form-group @if ($errors->has('member_username')) has-error @endif" >
                                 <label class="col-sm-4 control-label"><font color="red">*</font>Username</label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" name="member_username" value="{{ old('member_username') }}" >
+                                    <input type="text" class="form-control" name="member_username" maxlength="30" value="{{ old('member_username') }}" >
                                     @if($errors->has('member_username')) <p class="help-block">{{$errors->first('member_username')}}</p>@endif
                                 </div>
                             </div>
@@ -33,7 +33,7 @@
                             <div class="form-group @if ($errors->has('member_password')) has-error @endif">
                                 <label class="col-sm-4 control-label"><font color="red">*</font>Password</label>
                                 <div class="col-sm-5">
-                                    <input type="password" class="form-control" name="member_password" >
+                                    <input type="password" class="form-control" name="member_password" maxlength="20">
                                     @if($errors->has('member_password')) <p class="help-block">{{$errors->first('member_password')}}</p>@endif
                                 </div>
                             </div>
@@ -41,7 +41,7 @@
                             <div class="form-group @if ($errors->has('member_password_confirmation')) has-error @endif">
                                 <label class="col-sm-4 control-label"><font color="red">*</font>Confirm Password</label>
                                 <div class="col-sm-5">
-                                    <input type="password" class="form-control" name="member_password_confirmation" >
+                                    <input type="password" class="form-control" name="member_password_confirmation" maxlength="20">
                                     @if($errors->has('member_password_confirmation')) <p class="help-block">{{$errors->first('member_password_confirmation')}}</p>@endif
                                 </div>
                             </div>
@@ -50,7 +50,7 @@
                             <div class="form-group @if ($errors->has('member_email')) has-error @endif">
                                 <label class="col-sm-4 control-label"><font color="red">*</font>E-Mail Address</label>
                                 <div class="col-sm-5">
-                                    <input type="email" class="form-control" name="member_email" value="{{ old('member_email') }}" >
+                                    <input type="email" class="form-control" name="member_email" maxlength="50" value="{{ old('member_email') }}" >
                                     @if($errors->has('member_email')) <p class="help-block">{{$errors->first('member_email')}}</p>@endif
                                 </div>
                             </div>
@@ -76,7 +76,7 @@
                             <div class="form-group @if ($errors->has('member_tel')) has-error @endif">
                                 <label class="col-sm-4 control-label"><font color="red">*</font>เบอร์โทรศัพท์</label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" name="member_tel" value="{{ old('member_tel') }}" >
+                                    <input type="text" class="form-control" name="member_tel" maxlength="20" value="{{ old('member_tel') }}" >
                                     @if($errors->has('member_tel')) <p class="help-block">{{$errors->first('member_tel')}}</p>@endif
                                 </div>
                             </div>

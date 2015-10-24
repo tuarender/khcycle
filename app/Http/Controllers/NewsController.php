@@ -20,7 +20,7 @@ class NewsController extends Controller
 
         $news = DB::select($sql);
 
-        return view('news.newsList', ['newsList' => $news],['name' => 'News']);
+        return view('news.newsList', ['newsList' => $news],['name' => 'News/Articles']);
     }
 
     public function getNewsListHome()
@@ -39,7 +39,7 @@ class NewsController extends Controller
 
         $news = DB::select($sql,$queryParam);
 
-        return view('news.news', ['news' => $news],['name' => 'News']);
+        return view('news.news', ['news' => $news],['name' => 'News/Articles']);
     }
 
 }

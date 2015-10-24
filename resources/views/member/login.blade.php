@@ -24,7 +24,7 @@
                             <div class="form-group @if ($errors->has('kh_username')) has-error @endif">
                                 <label class="col-sm-4 control-label">Username</label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" name="kh_username" value="{{ old('kh_username') }}">
+                                    <input type="text" class="form-control" name="kh_username" maxlength="30" value="{{ old('kh_username') }}">
                                     @if($errors->has('kh_username')) <p class="help-block">{{$errors->first('kh_username')}}</p>@endif
                                 </div>
 
@@ -33,7 +33,7 @@
                             <div class="form-group @if ($errors->has('kh_password')) has-error @endif">
                                 <label class="col-sm-4 control-label">Password</label>
                                 <div class="col-sm-5">
-                                    <input type="password" class="form-control" name="kh_password">
+                                    <input type="password" class="form-control" name="kh_password" maxlength="20">
                                     @if($errors->has('kh_password')) <p class="help-block">{{$errors->first('kh_password')}}</p>@endif
                                 </div>
                             </div>

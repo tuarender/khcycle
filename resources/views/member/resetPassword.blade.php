@@ -26,7 +26,7 @@
                             <div class="form-group @if ($errors->has('member_password')) has-error @endif">
                                 <label class="col-sm-4 control-label"><font color="red">*</font>New Password</label>
                                 <div class="col-sm-5">
-                                    <input type="password" class="form-control" name="member_password" >
+                                    <input type="password" class="form-control" name="member_password" maxlength="20">
                                     @if($errors->has('member_password')) <p class="help-block">{{$errors->first('member_password')}}</p>@endif
                                 </div>
                             </div>
@@ -34,7 +34,7 @@
                             <div class="form-group @if ($errors->has('member_password_confirmation')) has-error @endif">
                                 <label class="col-sm-4 control-label"><font color="red">*</font>Confirm New Password</label>
                                 <div class="col-sm-5">
-                                    <input type="password" class="form-control" name="member_password_confirmation" >
+                                    <input type="password" class="form-control" name="member_password_confirmation" maxlength="20">
                                     @if($errors->has('member_password_confirmation')) <p class="help-block">{{$errors->first('member_password_confirmation')}}</p>@endif
                                 </div>
                             </div>
