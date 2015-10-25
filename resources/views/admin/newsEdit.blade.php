@@ -58,8 +58,8 @@
 		if($data[0]['NEWS_IS_YOUTUBE']==0){
 			echo "<img class='img-responsive' src='images/news/".$data[0]['NEWS_IMAGE_TITLE_NAME'].".".$data[0]['NEWS_IMAGE_TITLE_EXT']."'>";
 			echo "<input type='hidden' value='1' name='datacheck'>";
-			echo "<input type='hidden' value='".$data[0]['NEWS_IMAGE_TITLE_NAME'].' name='filename'>";
-			echo "<input type='hidden' value='".$data[0]['NEWS_IMAGE_TITLE_EXT'].' name='fileExt'>";
+			echo "<input type='hidden' value='".$data[0]['NEWS_IMAGE_TITLE_NAME']."' name='filename'>";
+			echo "<input type='hidden' value='".$data[0]['NEWS_IMAGE_TITLE_EXT']."' name='fileExt'>";
 		}
 		else{
 			echo "<div class='videoWrapper'><iframe src='".$data[0]['NEWS_YOUTUBE_URI']."' frameborder='0' allowfullscreen></iframe></div>";
@@ -98,6 +98,7 @@
                 <p class="help-block">{{$errors->first('sample')}}</p>@endif
             </div>
         </div>
+		<progress></progress>
         <div class="form-group @if ($errors->has('content')) has-error @endif">
         	<label for="content" class="col-sm-3 control-label"><font color="red">*</font>รายละเอียด</label>
             <div class="col-sm-8">
@@ -162,6 +163,11 @@
         $.ajax({
             data: data,
             type: "POST",
+			xhr: function() {
+				var myXhr = $.ajaxSettings.xhr();
+				if (myXhr.upload) myXhr.upload.addEventListener('progress',progressHandlingFunction, false);
+				return myXhr;
+			},
             url: "admin/news/uploadImage",
             cache: false,
             contentType: false,
@@ -187,5 +193,14 @@
 		}
 	}
 
+	function progressHandlingFunction(e){
+		if(e.lengthComputable){
+			$('progress').attr({value:e.loaded, max:e.total});
+			// reset progress on complete
+			if (e.loaded == e.total) {
+				$('progress').attr('value','0.0');
+			}
+		}
+	}
 </script>
 @endsection

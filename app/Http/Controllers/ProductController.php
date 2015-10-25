@@ -47,7 +47,7 @@ class ProductController extends Controller
         $brand = DB::select($sqlBrand,$queryParam);
         $groups = DB::select($sqlGroup,$queryParam);
         $products = DB::select($sqlProduct,$productQueryParam);
-
+        
         $brandName="";
         if(count($brand)>0){
             $brandName = $brand[0]['BRAND_NAME'];
