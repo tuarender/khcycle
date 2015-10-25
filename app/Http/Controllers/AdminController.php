@@ -1687,13 +1687,13 @@ class AdminController extends Controller
     public function productAdd(Request $request){
         $rules=[
             'productName'=>'required',
-            'productGroup'=>'required',
+          //  'productGroup'=>'required',
             'brandId'=>'required',
             'productImage'=>'required|image|max:1024',
         ];
         $messages = [
             'productName.required'=>'กรุณาระบุข้อมูลสินค้า',
-            'productGroup.require'=>'กรุณาเลือกกลุ่มสินค้า',
+          //  'productGroup.require'=>'กรุณาเลือกกลุ่มสินค้า',
             'brandId'=>'ไม่พบข้อมูลแบรนด์',
             'productImage.required'=>'กรุณาระบุภาพ',
             'productImage.image'=>'กรุณาระบุประเภทของรูปภาพให้ถูกต้อง',
@@ -1758,13 +1758,13 @@ class AdminController extends Controller
     public function productUpdate(Request $request,$id){
         $rules=[
             'productName'=>'required',
-            'productGroup'=>'required',
+           // 'productGroup'=>'required',
             'brandId'=>'required',
             'productImage'=>'image|max:1024',
         ];
         $messages = [
             'productName.required'=>'กรุณาระบุข้อมูลสินค้า',
-            'productGroup.require'=>'กรุณาเลือกกลุ่มสินค้า',
+           // 'productGroup.require'=>'กรุณาเลือกกลุ่มสินค้า',
             'brandId'=>'ไม่พบข้อมูลแบรนด์',
             'productImage.image'=>'กรุณาระบุประเภทของรูปภาพให้ถูกต้อง',
             'productImage.max'=>'ขนาดของรูปภาพต้องไม่เกิน 1MB'

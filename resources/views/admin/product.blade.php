@@ -47,7 +47,13 @@
             echo "<img class='img-responsive productThumb adminProductImg' onerror='this.src=\"images/product/default.png\"' src='images/product/".$data[$i]['PRODUCT_MIN_FILE_NAME'].".".$data[$i]['PRODUCT_MIN_EXT']."'>";
             echo "</td>";
             echo "<td class='tdCenter'>".$data[$i]['PRODUCT_NAME']."</td>";
-            echo "<td class='tdCenter'>".$groupData[$data[$i]['PRODUCT_GROUP_ID']]."</td>";
+
+            if (isset($groupData[$data[$i]['PRODUCT_GROUP_ID']])){
+                echo "<td class='tdCenter'>".$groupData[$data[$i]['PRODUCT_GROUP_ID']]."</td>";
+            }else {
+                echo "<td class='tdCenter'></td>";
+            }
+
             echo "<td class='tdCenter'>";
             echo "<div class='btn-group' role='group'>";
             echo "  <a href='admin/product/product/".$productId."/".$data[$i]['PRODUCT_ID']."' class='btn btn-warning'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span> แก้ไข</a>";

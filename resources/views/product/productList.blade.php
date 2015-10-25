@@ -61,7 +61,7 @@
 	    <div class="row">
 	        Log in as {{Session::get('user')->KH_MEMBER_LOGIN_USERNAME }} <a href="logout">ออกจากระบบ</a><br>
 	        @if(Session::get('user')->KH_MEMBER_RULE =='ADMIN')
-	        <a href="admin/home" class="btn btn-info btnKhcycle"><span class="glyphicon glyphicon-asterisk"></span> จัดการข้อมูลโดยแอดมิน</a>
+	        <a href="admin/product" class="btn btn-info btnKhcycle"><span class="glyphicon glyphicon-asterisk"></span> จัดการข้อมูลโดยแอดมิน</a>
 	        @endif
 	    </div>
 	</div>
