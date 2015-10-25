@@ -1,6 +1,5 @@
 @extends('app')
 @section('content')
-	@include('partials.subheader')
 <?php
 	$searchKeyword = "";
 	if(isset($keyword)){
@@ -20,12 +19,15 @@
 		            <label>สนใจสินค้าติดต่อ 0-2510-1906</label>
 		        </div>
 		        <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5 subheaderProduct">
-		            <label>Social Network:</label>
+                    <label>Social Network:</label>
 		            <a href="https://www.facebook.com/KhcycleThailand" target="_blank" class="btn btn-social-icon btn-facebook">
 		                <i class="fa fa-facebook"></i>
 		            </a>
-		            <a class="btn btn-social-icon btn-instagram">
-		                <i class="fa fa-instagram"></i>
+		            <a href="https://instagram.com/khcycle_thailand/" target="_blank">
+		                <img src="images/instragram.png" class="img-responsive" style="max-width:32px;display:inline">
+		            </a>
+		            <a href="#lineLogo" data-targer="#lineLogo" data-toggle='modal' style="border:0px;outline:none">
+		                <img src="images/line.png" class="img-responsive" style="max-width:32px;display:inline;border : 0;">
 		            </a>
 		        </div>
 				<div class="col-xs-12">
@@ -36,7 +38,7 @@
 <?php
 	foreach($brand as $eachBrand){
 		echo "<div id='".$eachBrand["BRAND_ID"]."' class='brandDiv' style='text-align:right'>";
-		echo "<a href='javascript:getProduct(".$eachBrand["BRAND_ID"].",0,false)'>";
+		echo "<a href='javascript:getProduct(".$eachBrand["BRAND_ID"].",0,1)'>";
 		echo "<img onerror='this.src=\"images/brand/default.png\"' id='logoBrand".$eachBrand["BRAND_ID"]."' src='images/brand/".$eachBrand["BRAND_LOGO_NAME"].".".$eachBrand["BRAND_LOGO_EXT"]."'";
 		echo " class='brandLogo img-responsive"; 
     	if(isset($brandId)&&!is_null($brandId)&&$brandId==$eachBrand["BRAND_ID"]&&$searchKeyword==""){
@@ -53,6 +55,15 @@
 		</div>
 	</div>
 </div>
+<div  id='lineLogo' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
+  <div class='modal-dialog modal-lg'>
+      <div class='modal-content'>
+          <div class='modal-body'>
+              <img src='images/lineQR_code.jpg' class='img-responsive' onerror='this.src="images/product/default-lg.png"'>
+          </div>
+      </div>
+  </div>
+</div>
 <?php
 	}
 ?>
@@ -65,14 +76,14 @@
     	$(document).ready(function(){
     		if($('#keyword').length==0){
 	    		if(!$('.brandDiv>a>img').hasClass('brandLogoActive')){
-	    			getProduct($('.productMain').children().children().children().next().children().attr("id"),false,true);
+	    			getProduct($('.productMain').children().children().children().next().children().attr("id"),false,1);
 	    		}
 	    		else{
-	    			getProduct($('.brandLogoActive').parent().parent().attr('id'),false,true);
+	    			getProduct($('.brandLogoActive').parent().parent().attr('id'),false,1);
 	    		}
     		}
     		else{
-    			searchProduct($('#keyword').val());
+    			searchProduct($('#keyword').val(),1);
     		}
 
 		   	$('.productMain').fadeIn('2000',function(){
@@ -101,8 +112,11 @@
 	      }
 	    }
 
-		function searchProduct(keyword){
+		function searchProduct(keyword,page){
 			var urlSearch = "search/"+keyword;
+			if(page){
+				urlSearch+="?page="+page;
+			}
 			$('#productList').fadeOut(300,function(){
 				$.ajax({
 					url: urlSearch, 
@@ -115,14 +129,17 @@
 			});
 		}
 
-		function getProduct(brandId,groupId,isFirstTime){
+		function getProduct(brandId,groupId,page){
 			var url = "product/"+brandId;
-			if(groupId){
+			if(groupId&&groupId!=-1){
 				url += "/"+groupId;
 			}
 			else{
 				$('.brandLogoActive').removeClass("brandLogoActive");
 				$('#logoBrand'+brandId).addClass("brandLogoActive");
+			}
+			if(page){
+				url+="?page="+page;
 			}
 			$('#productList').fadeOut(300,function(){
 				$.ajax({
@@ -130,21 +147,12 @@
 					success: function(result){
 						if(result){
 							$('#productList').html(result).fadeIn(800);
-							showProduct();
 						}
 			    	}
 				});
 			});
 		}
 
-		function showProduct(){
-			$('.imageProduct').on('appear', function(event, $appread) {
-				alert("jaja");
-		    });
-		    $('.imageProduct').on('disappear', function(event, $all_disappeared_elements) {
-		    	alert("jajaja");
-		    });
-		}
     </script>
 @endsection
 @stop

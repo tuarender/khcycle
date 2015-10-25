@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Utils;
 
+use Request;
 use DB;
 
 class ProductController extends Controller
@@ -22,6 +22,10 @@ class ProductController extends Controller
     }
 
     public function getProduct($brandId,$groupId=null){
+        $page = intval(Request::input('page',1));
+        if(!is_int($page)){
+            $page = 1;
+        }
         $groups = null;
         $products = null;
         //SQL
@@ -53,7 +57,7 @@ class ProductController extends Controller
             $brandName = $brand[0]['BRAND_NAME'];
         }
 
-        return view('product.productList', ['products' => $products,'groups' => $groups,'brandId' => $brandId,'groupId' => $groupId,'name'=>$brandName]);
+        return view('product.productList', ['products' => $products,'groups' => $groups,'brandId' => $brandId,'groupId' => $groupId,'name'=>$brandName,'page'=>$page]);
     }
 
 }

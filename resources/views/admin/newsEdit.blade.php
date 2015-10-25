@@ -98,13 +98,16 @@
                 <p class="help-block">{{$errors->first('sample')}}</p>@endif
             </div>
         </div>
-		<progress></progress>
         <div class="form-group @if ($errors->has('content')) has-error @endif">
         	<label for="content" class="col-sm-3 control-label"><font color="red">*</font>รายละเอียด</label>
             <div class="col-sm-8">
                 <textarea name="content" class="summernoteContent">{{old('content',$newsContent)}}</textarea>
                 @if($errors->has('content')) 
                 <p class="help-block">{{$errors->first('content')}}</p>@endif
+                <div id="progress" style="display:none">
+                	กำลังอัพโหลดภาพ...<br>
+                	<progress></progress>
+                </div>
                 <div>
 	                <button id="previewNews" type="submit" class="btn btn-info">
 	                	Preview
@@ -156,7 +159,6 @@
 	});
 
 	function sendFile(file, editor, welEditable) {
-		//alert("SEND FILE");
         data = new FormData();
         data.append("fileImage", file);
         data.append("_token",$('#_token').val());
@@ -164,8 +166,10 @@
             data: data,
             type: "POST",
 			xhr: function() {
+				$('#progress').show();
 				var myXhr = $.ajaxSettings.xhr();
-				if (myXhr.upload) myXhr.upload.addEventListener('progress',progressHandlingFunction, false);
+				if (myXhr.upload) 
+					myXhr.upload.addEventListener('progress',progressHandlingFunction, false);
 				return myXhr;
 			},
             url: "admin/news/uploadImage",
@@ -199,6 +203,7 @@
 			// reset progress on complete
 			if (e.loaded == e.total) {
 				$('progress').attr('value','0.0');
+				$('#progress').hide();
 			}
 		}
 	}

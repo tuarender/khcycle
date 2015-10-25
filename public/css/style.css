@@ -14,6 +14,18 @@
     font-family: DidactGothic;
     src: url(../fonts/DidactGothic.ttf);
 }
+.paginationBlock{
+	text-align: center;
+}
+a.pagination{
+	font-family: HelveticaInseratLTStd;
+	font-size: 18px;
+}
+a.disabled {
+   pointer-events: none;
+   cursor: default;
+   color: #B9B9B9;
+}
 p.news {
 	font-family: OpenSans;
 	font-style: normal;
