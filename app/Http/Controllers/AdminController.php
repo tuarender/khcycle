@@ -1858,6 +1858,48 @@ class AdminController extends Controller
         }
     }
 
+    public function generateBranchExcel()
+    {
+        $mytime =  date('Y-m-d H:i:s');
+        $filename = 'BranchExport'."_".$mytime;
+        Excel::create($filename,function($excel){
+            $excel->sheet('SheetName',function($sheet){
+                // first row styling and writing content
+                $sheet->mergeCells('A1:W1');
+                $sheet->row(1,function($row){
+                    $row->setFontFamily('Comic Sans MS');
+                    $row->setFontSize(30);
+                });
+                $sheet->row(1,array('BRANCH DATA'));
+
+                // getting data to display
+                $data = DB::table('KH_BRANCH as br')
+                    ->join('KH_ZONE AS zone','br.BRANCH_ZONE','=','zone.ID')
+                    ->select('zone.ZONE_NAME',
+                        'br.BRANCH_ID',
+                        'br.BRANCH_SHOP',
+                        'br.BRANCH_ADDR as ADDRESS',
+                        'br.BRANCH_EMAIL as EMAIL',
+                        'br.BRANCH_TEL as TEL_SHOP',
+                        'br.BRANCH_FAX as FAX_SHOP')
+                    ->where('BRANCH_DELETE_STATUS','<>','1')
+                    ->get();
+                // setting column names for data - you can of course set it manually
+                $sheet->appendRow(array_keys($data[0]));
+
+                // getting last row number (the one we already filled and setting it to bold
+                $sheet->row($sheet->getHighestRow(), function ($row) {
+                    $row->setFontWeight('bold');
+                });
+
+                // putting users data as next rows
+                foreach ($data as $user) {
+                    $sheet->appendRow($user);
+                }
+            });
+        })->export('xls');
+    }
+
     public function generateExcel()
     {
         $mytime =  date('Y-m-d H:i:s');
