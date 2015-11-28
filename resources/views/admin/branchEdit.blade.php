@@ -49,6 +49,26 @@
                 </div>
 
             </div>
+
+            <div class="form-group @if ($errors->has('BRANCH_TEL')) has-error @endif">
+                <label for="url" class="col-sm-3 control-label">เบอร์โทร Shop Dealer :</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" name="BRANCH_TEL" value="{{old('BRANCH_TEL', $data[0]['BRANCH_TEL'] )}}" >
+                    @if($errors->has('BRANCH_TEL'))
+                        <p class="help-block">{{$errors->first('BRANCH_TEL')}}</p>@endif
+                </div>
+
+            </div>
+
+            <div class="form-group @if ($errors->has('BRANCH_FAX')) has-error @endif">
+                <label for="url" class="col-sm-3 control-label">เบอร์ Fax Shop Dealer :</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" name="BRANCH_FAX" value="{{old('BRANCH_FAX', $data[0]['BRANCH_FAX'] )}}" >
+                    @if($errors->has('BRANCH_FAX'))
+                        <p class="help-block">{{$errors->first('BRANCH_FAX')}}</p>@endif
+                </div>
+
+            </div>
             <div class="form-group @if ($errors->has('BRANCH_EMAIL')) has-error @endif">
                 <label for="url" class="col-sm-3 control-label"><font color="red">*</font>EMAIL :</label>
                 <div class="col-sm-5">

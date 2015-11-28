@@ -459,7 +459,9 @@ class AdminController extends Controller
                 'br.BRANCH_ID',
                 'br.BRANCH_SHOP',
                 'br.BRANCH_ADDR',
-                'br.BRANCH_EMAIL'
+                'br.BRANCH_EMAIL',
+                'br.BRANCH_TEL',
+                'br.BRANCH_FAX'
             )
             ->where('BRANCH_ID','=',$id)
             ->get();
@@ -491,11 +493,15 @@ class AdminController extends Controller
             $addrshop = $request->input('BRANCH_ADDR');
             $emailshop = $request->input('BRANCH_EMAIL');
             $valuezone = $request->get('BRANCH_ZONE');
+            $telshop = $request->get('BRANCH_TEL');
+            $faxshop  = $request->get('BRANCH_FAX');
             DB::table('KH_BRANCH')->insert([
                 'BRANCH_ZONE' => $valuezone,
                 'BRANCH_SHOP' => $nameshop,
                 'BRANCH_ADDR' => $addrshop,
                 "BRANCH_EMAIL" => $emailshop,
+                'BRANCH_TEL' =>$telshop,
+                'BRANCH_FAX' =>$faxshop
             ]);
 
             Session::flash('alert-success', 'อัพเดตเรียบร้อย');
@@ -528,6 +534,8 @@ class AdminController extends Controller
             $addrshop = $request->input('BRANCH_ADDR');
             $emailshop = $request->input('BRANCH_EMAIL');
             $valuezone = $request->get('BRANCH_ZONE');
+            $telshop = $request->get('BRANCH_TEL');
+            $faxshop = $request->get('BRANCH_FAX');
             DB::table('KH_BRANCH')
                 ->where('BRANCH_ID','=',$id)
                 ->update([
@@ -535,6 +543,8 @@ class AdminController extends Controller
                 'BRANCH_SHOP' => $nameshop,
                 'BRANCH_ADDR' => $addrshop,
                 "BRANCH_EMAIL" => $emailshop,
+                    "BRANCH_TEL"=>$telshop,
+                    "BRANCH_FAX"=>$faxshop
             ]);
 
             Session::flash('alert-success', 'อัพเดตเรียบร้อย');
