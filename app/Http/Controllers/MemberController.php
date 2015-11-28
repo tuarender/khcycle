@@ -76,7 +76,7 @@ class MemberController extends Controller
         $rules=[
             'member_username' =>'required',
             'member_password'=>'required|confirmed|max:20',
-            'member_password_confirmation'=>'required|max:20',
+            'member_password_confirmation'=>'required',
             'member_email'=>'required|email|confirmed',
             'member_email_confirmation'=>'required',
             'member_name'=>'required',
@@ -515,8 +515,8 @@ class MemberController extends Controller
         if(count($foundToken)==1){
             //เงื่อไขที่ใช้ในการ Validator
             $rules=[
-                'member_password'=>'required|confirmed|max:20',
-                'member_password_confirmation'=>'required|max:20',
+                'member_password'=>'required|confirmed|Max:20',
+                'member_password_confirmation'=>'required',
             ];
             //Custom ควบคุม Message Error
             $messages = [

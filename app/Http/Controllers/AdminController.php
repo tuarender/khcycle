@@ -1329,7 +1329,7 @@ class AdminController extends Controller
                         $newsPreview['NEWS_CONTENT'] = htmlentities($content);
                         $newsPreview['NEWS_IS_YOUTUBE'] = 1;
                         $newsPreview['NEWS_YOUTUBE_URI'] = $youtubeUri;
-
+                        $newsPreview['NEWS_EDIT'] = '2';
                         $news = array($newsPreview);
 
                         return view('admin.newsPreview', ['news' => $news], ['name' => 'News']);
@@ -1376,7 +1376,7 @@ class AdminController extends Controller
                         $newsPreview['NEWS_CONTENT'] = htmlentities($content);
                         $newsPreview['NEWS_IS_YOUTUBE'] = 1;
                         $newsPreview['NEWS_YOUTUBE_URI'] = $youtubeUri;
-
+                        $newsPreview['NEWS_EDIT'] = '2';
                         $news = array($newsPreview);
 
                         return view('admin.newsPreview', ['news' => $news], ['name' => 'News']);

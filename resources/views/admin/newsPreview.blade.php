@@ -35,7 +35,7 @@
 
 	echo "</div>";
 	echo "<div class='row topBuffer'>";
-	echo "<p  class='news'>".html_entity_decode($news[0]['NEWS_CONTENT'])."</p>";
+	echo "<p  class='news img-responsive'>".html_entity_decode($news[0]['NEWS_CONTENT'])."</p>";
 	echo "</div>";
 ?>
 </div>
