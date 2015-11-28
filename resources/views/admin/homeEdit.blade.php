@@ -49,7 +49,7 @@
 			<label for="bannerImage" class="col-sm-3 control-label"><?=$requireImage?>แนบภาพหน้าปก</label>
 			<div class="col-sm-5">
 				<input type="file" name="bannerImage" id="bannerImage">
-				<p class="help-block">.jpg and .png, Limit size &lt; 1MB</p>
+				<p class="help-block">.jpg and .png, Limit size &lt; 1MB ขนาด 1600x800 ( 2:1 )</p>
 				@if($errors->has('bannerImage')) 
                 <p class="help-block">{{$errors->first('bannerImage')}}</p>@endif
 			</div>
