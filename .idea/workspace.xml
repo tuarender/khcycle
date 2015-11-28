@@ -2,12 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5970b3a4-5267-4b5c-85c9-b90e5acb2c62" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/database.php" afterPath="$PROJECT_DIR$/config/database.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/product.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/product.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/product/productList.blade.php" afterPath="$PROJECT_DIR$/resources/views/product/productList.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/deployment.xml" afterPath="$PROJECT_DIR$/.idea/deployment.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/MemberController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/MemberController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.json" afterPath="$PROJECT_DIR$/composer.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/database.php" afterPath="$PROJECT_DIR$/config/database.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/memberdetail.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/memberdetail.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/member/memberdetail.blade.php" afterPath="$PROJECT_DIR$/resources/views/member/memberdetail.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/member/memberprofile.blade.php" afterPath="$PROJECT_DIR$/resources/views/member/memberprofile.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/member/register.blade.php" afterPath="$PROJECT_DIR$/resources/views/member/register.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/autoload.php" afterPath="$PROJECT_DIR$/vendor/autoload.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/composer/ClassLoader.php" afterPath="$PROJECT_DIR$/vendor/composer/ClassLoader.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/composer/LICENSE" afterPath="$PROJECT_DIR$/vendor/composer/LICENSE" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/composer/autoload_files.php" afterPath="$PROJECT_DIR$/vendor/composer/autoload_files.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" afterPath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/composer/autoload_real.php" afterPath="$PROJECT_DIR$/vendor/composer/autoload_real.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/composer/installed.json" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" />
     </list>
     <ignored path="khcycle.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,28 +46,12 @@
     <favorites_list name="khcycle" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="ProductController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProductController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-20.26923">
-              <caret line="38" column="53" selection-start-line="38" selection-start-column="53" selection-end-line="38" selection-end-column="53" />
-              <folding>
-                <marker date="1445772159170" expanded="true" signature="294:434" placeholder="SELECT BRAND..KH_BRAND..." />
-                <marker date="1445772159170" expanded="true" signature="724:774" placeholder="SELECT BRAND..KH_BRAND..." />
-                <marker date="1445772159170" expanded="true" signature="798:941" placeholder="SELECT GROUP..KH_GROUP..." />
-                <marker date="1445772159170" expanded="true" signature="886:940" placeholder="SELECT GROUP..KH_BRAND_GROUP..." />
-                <marker date="1445772159170" expanded="true" signature="967:1179" placeholder="SELECT PRODU..KH_PRODUCT..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="product.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/product/product.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-79.76923">
-              <caret line="131" column="43" selection-start-line="131" selection-start-column="32" selection-end-line="131" selection-end-column="43" />
+            <state vertical-scroll-proportion="-22.884615">
+              <caret line="42" column="53" selection-start-line="42" selection-start-column="53" selection-end-line="42" selection-end-column="53" />
               <folding />
             </state>
           </provider>
@@ -62,18 +60,8 @@
       <file leaf-file-name="productList.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/product/productList.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.5">
-              <caret line="63" column="34" selection-start-line="63" selection-start-column="34" selection-end-line="63" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="product.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/admin/product.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-16.692308">
-              <caret line="50" column="65" selection-start-line="50" selection-start-column="65" selection-end-line="50" selection-end-column="65" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="53" column="34" selection-start-line="53" selection-start-column="34" selection-end-line="53" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -82,83 +70,136 @@
       <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-28.461538">
+            <state vertical-scroll-proportion="0.0">
               <caret line="127" column="72" selection-start-line="127" selection-start-column="59" selection-end-line="127" selection-end-column="72" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AdminController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AdminController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AdminController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3923611">
-              <caret line="1766" column="13" selection-start-line="1766" selection-start-column="13" selection-end-line="1766" selection-end-column="13" />
+            <state vertical-scroll-proportion="-5.109091">
+              <caret line="1908" column="36" selection-start-line="1908" selection-start-column="22" selection-end-line="1908" selection-end-column="36" />
               <folding>
                 <element signature="e#40#68#0#PHP" expanded="true" />
-                <marker date="1445779077227" expanded="true" signature="5133:5272" placeholder="SELECT BRAND..KH_BRAND..." />
-                <marker date="1445779077227" expanded="true" signature="5330:5421" placeholder="SELECT GROUP..KH_GROUP..." />
-                <marker date="1445779077227" expanded="true" signature="5537:5696" placeholder="SELECT A.GRO..KH_GROUP..." />
-                <marker date="1445779077227" expanded="true" signature="6771:6930" placeholder="SELECT A.GRO..KH_GROUP..." />
-                <marker date="1445779077227" expanded="true" signature="6954:7042" placeholder="SELECT BRAND..KH_BRAND..." />
-                <marker date="1445779077227" expanded="true" signature="7677:7768" placeholder="SELECT GROUP..KH_GROUP..." />
-                <marker date="1445779077227" expanded="true" signature="8006:8094" placeholder="SELECT GROUP..KH_GROUP..." />
-                <marker date="1445779077227" expanded="true" signature="8118:8209" placeholder="SELECT GROUP..KH_GROUP..." />
-                <marker date="1445779077227" expanded="true" signature="10810:10969" placeholder="SELECT A.GRO..KH_GROUP..." />
-                <marker date="1445779077227" expanded="true" signature="29759:29871" placeholder="insert into ..." />
-                <marker date="1445779077227" expanded="true" signature="32070:32151" placeholder="SELECT BANNE..KH_BANNER..." />
-                <marker date="1445779077227" expanded="true" signature="32580:32708" placeholder="UPDATE KH_BA..." />
-                <marker date="1445779077227" expanded="true" signature="33655:33748" placeholder="UPDATE KH_BA..." />
-                <marker date="1445779077227" expanded="true" signature="35280:35361" placeholder="SELECT MAX(B..KH_BANNER..." />
-                <marker date="1445779077227" expanded="true" signature="35748:35847" placeholder="INSERT INTO ..." />
-                <marker date="1445779077227" expanded="true" signature="36620:36693" placeholder="UPDATE KH_BA..." />
-                <marker date="1445779077227" expanded="true" signature="37684:37748" placeholder="SELECT BANNE..KH_BANNER..." />
-                <marker date="1445779077227" expanded="true" signature="37887:37981" placeholder="SELECT BANNE..KH_BANNER..." />
-                <marker date="1445779077227" expanded="true" signature="38244:38304" placeholder="UPDATE KH_BA..." />
-                <marker date="1445779077227" expanded="true" signature="38553:38610" placeholder="UPDATE KH_BA..." />
-                <marker date="1445779077227" expanded="true" signature="39001:39063" placeholder="UPDATE KH_BA..." />
-                <marker date="1445779077227" expanded="true" signature="41006:41084" placeholder="SELECT MAX(N..KH_NEWS..." />
-                <marker date="1445779077227" expanded="true" signature="41554:41655" placeholder="INSERT INTO ..." />
-                <marker date="1445779077227" expanded="true" signature="42422:42504" placeholder="UPDATE KH_NE..." />
-                <marker date="1445779077227" expanded="true" signature="43616:43736" placeholder="INSERT INTO ..." />
-                <marker date="1445779077227" expanded="true" signature="46493:46635" placeholder="UPDATE KH_NE..." />
-                <marker date="1445779077227" expanded="true" signature="47280:47374" placeholder="UPDATE KH_NE..." />
-                <marker date="1445779077227" expanded="true" signature="47812:47925" placeholder="UPDATE KH_NE..." />
-                <marker date="1445779077227" expanded="true" signature="57505:57561" placeholder="SELECT NEWS_..KH_NEWS..." />
-                <marker date="1445779077227" expanded="true" signature="57700:57787" placeholder="SELECT NEWS_..KH_NEWS..." />
-                <marker date="1445779077227" expanded="true" signature="58048:58102" placeholder="UPDATE KH_NE..." />
-                <marker date="1445779077227" expanded="true" signature="58349:58400" placeholder="UPDATE KH_NE..." />
-                <marker date="1445779077227" expanded="true" signature="58789:58848" placeholder="UPDATE KH_NE..." />
-                <marker date="1445779077227" expanded="true" signature="59958:60039" placeholder="SELECT MAX(B..KH_BRAND..." />
-                <marker date="1445779077227" expanded="true" signature="60313:60369" placeholder="INSERT INTO ..." />
-                <marker date="1445779077227" expanded="true" signature="60998:61070" placeholder="UPDATE KH_BR..." />
-                <marker date="1445779077227" expanded="true" signature="63223:63309" placeholder="UPDATE KH_BR..." />
-                <marker date="1445779077227" expanded="true" signature="63865:63914" placeholder="UPDATE KH_BR..." />
-                <marker date="1445779077227" expanded="true" signature="64435:64495" placeholder="SELECT BRAND..KH_BRAND..." />
-                <marker date="1445779077227" expanded="true" signature="64634:64726" placeholder="SELECT BRAND..KH_BRAND..." />
-                <marker date="1445779077227" expanded="true" signature="64988:65045" placeholder="UPDATE KH_BR..." />
-                <marker date="1445779077227" expanded="true" signature="65292:65346" placeholder="UPDATE KH_BR..." />
-                <marker date="1445779077227" expanded="true" signature="65738:65800" placeholder="UPDATE KH_BR..." />
-                <marker date="1445779077227" expanded="true" signature="65867:65941" placeholder="UPDATE KH_PR..." />
-                <marker date="1445779077227" expanded="true" signature="66158:66215" placeholder="INSERT INTO ..." />
-                <marker date="1445779077227" expanded="true" signature="66432:66494" placeholder="DELETE FROM ..." />
-                <marker date="1445779077227" expanded="true" signature="66698:66760" placeholder="UPDATE KH_GR..." />
-                <marker date="1445779077227" expanded="true" signature="67554:67596" placeholder="INSERT INTO ..." />
-                <marker date="1445779077227" expanded="true" signature="68483:68536" placeholder="UPDATE KH_GR..." />
-                <marker date="1445779077227" expanded="true" signature="68872:68940" placeholder="SELECT PRODU..KH_PRODUCT..." />
-                <marker date="1445779077227" expanded="true" signature="69079:69174" placeholder="SELECT PRODU..KH_PRODUCT..." />
-                <marker date="1445779077227" expanded="true" signature="69438:69501" placeholder="UPDATE KH_PR..." />
-                <marker date="1445779077227" expanded="true" signature="69752:69812" placeholder="UPDATE KH_PR..." />
-                <marker date="1445779077227" expanded="true" signature="70467:70535" placeholder="UPDATE KH_PR..." />
-                <marker date="1445779077227" expanded="true" signature="72046:72133" placeholder="SELECT MAX(P..KH_PRODUCT..." />
-                <marker date="1445779077227" expanded="true" signature="72407:72524" placeholder="INSERT INTO ..." />
-                <marker date="1445779077227" expanded="true" signature="73189:73316" placeholder="UPDATE KH_PR..." />
-                <marker date="1445779077227" expanded="true" signature="75921:76082" placeholder="UPDATE KH_PR..." />
-                <marker date="1445779077227" expanded="true" signature="76694:76768" placeholder="UPDATE KH_PR..." />
-                <marker date="1445779077227" expanded="true" signature="77315:77391" placeholder="SELECT CATAL..KH_CATALOGUE..." />
-                <marker date="1445779077227" expanded="true" signature="77529:77641" placeholder="SELECT CATAL..KH_CATALOGUE..." />
-                <marker date="1445779077227" expanded="true" signature="77903:77969" placeholder="UPDATE KH_CA..." />
-                <marker date="1445779077227" expanded="true" signature="78245:78311" placeholder="UPDATE KH_CA..." />
+                <marker date="1448712526323" expanded="true" signature="5133:5272" placeholder="SELECT BRAND..KH_BRAND..." />
+                <marker date="1448712526323" expanded="true" signature="5330:5421" placeholder="SELECT GROUP..KH_GROUP..." />
+                <marker date="1448712526323" expanded="true" signature="5537:5696" placeholder="SELECT A.GRO..KH_GROUP..." />
+                <marker date="1448712526323" expanded="true" signature="6771:6930" placeholder="SELECT A.GRO..KH_GROUP..." />
+                <marker date="1448712526323" expanded="true" signature="6954:7042" placeholder="SELECT BRAND..KH_BRAND..." />
+                <marker date="1448712526323" expanded="true" signature="7677:7768" placeholder="SELECT GROUP..KH_GROUP..." />
+                <marker date="1448712526323" expanded="true" signature="8006:8094" placeholder="SELECT GROUP..KH_GROUP..." />
+                <marker date="1448712526323" expanded="true" signature="8118:8209" placeholder="SELECT GROUP..KH_GROUP..." />
+                <marker date="1448712526323" expanded="true" signature="10810:10969" placeholder="SELECT A.GRO..KH_GROUP..." />
+                <marker date="1448712526323" expanded="true" signature="30079:30191" placeholder="insert into KH_CATALOGUE..." />
+                <marker date="1448712526323" expanded="true" signature="32390:32471" placeholder="SELECT BANNE..KH_BANNER..." />
+                <marker date="1448712526323" expanded="true" signature="32900:33028" placeholder="UPDATE KH_BA..." />
+                <marker date="1448712526323" expanded="true" signature="33975:34068" placeholder="UPDATE KH_BA..." />
+                <marker date="1448712526323" expanded="true" signature="35600:35681" placeholder="SELECT MAX(B..KH_BANNER..." />
+                <marker date="1448712526323" expanded="true" signature="36068:36167" placeholder="INSERT INTO KH_BANNER..." />
+                <marker date="1448712526323" expanded="true" signature="36940:37013" placeholder="UPDATE KH_BA..." />
+                <marker date="1448712526323" expanded="true" signature="38004:38068" placeholder="SELECT BANNE..KH_BANNER..." />
+                <marker date="1448712526323" expanded="true" signature="38207:38301" placeholder="SELECT BANNE..KH_BANNER..." />
+                <marker date="1448712526323" expanded="true" signature="38564:38624" placeholder="UPDATE KH_BA..." />
+                <marker date="1448712526323" expanded="true" signature="38873:38930" placeholder="UPDATE KH_BA..." />
+                <marker date="1448712526323" expanded="true" signature="39321:39383" placeholder="UPDATE KH_BA..." />
+                <marker date="1448712526323" expanded="true" signature="41326:41404" placeholder="SELECT MAX(N..KH_NEWS..." />
+                <marker date="1448712526323" expanded="true" signature="41874:41975" placeholder="INSERT INTO KH_NEWS..." />
+                <marker date="1448712526323" expanded="true" signature="42742:42824" placeholder="UPDATE KH_NE..." />
+                <marker date="1448712526323" expanded="true" signature="43936:44056" placeholder="INSERT INTO KH_NEWS..." />
+                <marker date="1448712526323" expanded="true" signature="46813:46955" placeholder="UPDATE KH_NE..." />
+                <marker date="1448712526323" expanded="true" signature="47600:47694" placeholder="UPDATE KH_NE..." />
+                <marker date="1448712526323" expanded="true" signature="48132:48245" placeholder="UPDATE KH_NE..." />
+                <marker date="1448712526323" expanded="true" signature="57937:57993" placeholder="SELECT NEWS_..KH_NEWS..." />
+                <marker date="1448712526323" expanded="true" signature="58132:58219" placeholder="SELECT NEWS_..KH_NEWS..." />
+                <marker date="1448712526323" expanded="true" signature="58480:58534" placeholder="UPDATE KH_NE..." />
+                <marker date="1448712526323" expanded="true" signature="58781:58832" placeholder="UPDATE KH_NE..." />
+                <marker date="1448712526323" expanded="true" signature="59221:59280" placeholder="UPDATE KH_NE..." />
+                <marker date="1448712526323" expanded="true" signature="60390:60471" placeholder="SELECT MAX(B..KH_BRAND..." />
+                <marker date="1448712526323" expanded="true" signature="60745:60801" placeholder="INSERT INTO KH_BRAND..." />
+                <marker date="1448712526323" expanded="true" signature="61430:61502" placeholder="UPDATE KH_BR..." />
+                <marker date="1448712526323" expanded="true" signature="63655:63741" placeholder="UPDATE KH_BR..." />
+                <marker date="1448712526323" expanded="true" signature="64297:64346" placeholder="UPDATE KH_BR..." />
+                <marker date="1448712526323" expanded="true" signature="64867:64927" placeholder="SELECT BRAND..KH_BRAND..." />
+                <marker date="1448712526323" expanded="true" signature="65066:65158" placeholder="SELECT BRAND..KH_BRAND..." />
+                <marker date="1448712526323" expanded="true" signature="65420:65477" placeholder="UPDATE KH_BR..." />
+                <marker date="1448712526323" expanded="true" signature="65724:65778" placeholder="UPDATE KH_BR..." />
+                <marker date="1448712526323" expanded="true" signature="66170:66232" placeholder="UPDATE KH_BR..." />
+                <marker date="1448712526323" expanded="true" signature="66299:66373" placeholder="UPDATE KH_PR..." />
+                <marker date="1448712526323" expanded="true" signature="66590:66647" placeholder="INSERT INTO KH_BRAND_GROUP..." />
+                <marker date="1448712526323" expanded="true" signature="66864:66926" placeholder="DELETE FROM ..." />
+                <marker date="1448712526323" expanded="true" signature="67130:67192" placeholder="UPDATE KH_GR..." />
+                <marker date="1448712526323" expanded="true" signature="67986:68028" placeholder="INSERT INTO KH_GROUP..." />
+                <marker date="1448712526323" expanded="true" signature="68915:68968" placeholder="UPDATE KH_GR..." />
+                <marker date="1448712526323" expanded="true" signature="69304:69372" placeholder="SELECT PRODU..KH_PRODUCT..." />
+                <marker date="1448712526323" expanded="true" signature="69511:69606" placeholder="SELECT PRODU..KH_PRODUCT..." />
+                <marker date="1448712526323" expanded="true" signature="69870:69933" placeholder="UPDATE KH_PR..." />
+                <marker date="1448712526323" expanded="true" signature="70184:70244" placeholder="UPDATE KH_PR..." />
+                <marker date="1448712526323" expanded="true" signature="70899:70967" placeholder="UPDATE KH_PR..." />
+                <marker date="1448712526323" expanded="true" signature="72478:72565" placeholder="SELECT MAX(P..KH_PRODUCT..." />
+                <marker date="1448712526323" expanded="true" signature="72839:72956" placeholder="INSERT INTO KH_PRODUCT..." />
+                <marker date="1448712526323" expanded="true" signature="73621:73748" placeholder="UPDATE KH_PR..." />
+                <marker date="1448712526323" expanded="true" signature="76353:76514" placeholder="UPDATE KH_PR..." />
+                <marker date="1448712526323" expanded="true" signature="77126:77200" placeholder="UPDATE KH_PR..." />
+                <marker date="1448712526323" expanded="true" signature="77747:77823" placeholder="SELECT CATAL..KH_CATALOGUE..." />
+                <marker date="1448712526323" expanded="true" signature="77961:78073" placeholder="SELECT CATAL..KH_CATALOGUE..." />
+                <marker date="1448712526323" expanded="true" signature="78335:78401" placeholder="UPDATE KH_CA..." />
+                <marker date="1448712526323" expanded="true" signature="78677:78743" placeholder="UPDATE KH_CA..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="memberdetail.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/admin/memberdetail.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.38659793">
+              <caret line="84" column="69" selection-start-line="84" selection-start-column="69" selection-end-line="84" selection-end-column="69" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="register.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/member/register.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-13.730769">
+              <caret line="128" column="112" selection-start-line="128" selection-start-column="112" selection-end-line="128" selection-end-column="112" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="memberprofile.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/member/memberprofile.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-9.961538">
+              <caret line="102" column="0" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="memberdetail.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/member/memberdetail.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-13.230769">
+              <caret line="103" column="103" selection-start-line="103" selection-start-column="103" selection-end-line="103" selection-end-column="103" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MemberController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MemberController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-31.384615">
+              <caret line="425" column="43" selection-start-line="425" selection-start-column="43" selection-end-line="425" selection-end-column="43" />
+              <folding>
+                <marker date="1448712266120" expanded="true" signature="15547:15670" placeholder="SELECT COUNT..KH_PASSWORD_RESET..." />
+                <marker date="1448712266120" expanded="true" signature="15978:16090" placeholder="SELECT EMAIL..KH_PASSWORD_RESET..." />
               </folding>
             </state>
           </provider>
@@ -175,11 +216,6 @@
   </component>
   <component name="FrameworkCommandLineHistory">
     <commandsHistory>
-      <command text="ls" />
-      <command text="composer require intervention/image" />
-      <command text="php artisan vendor:publish" />
-      <command text="php artisan cache:clear" />
-      <command text="composer update" />
       <command text="composer install" />
       <command text="composer update" />
       <command text="composer install" />
@@ -200,15 +236,22 @@
       <command text="php artisan make:middleware FilterSession" />
       <command text="composer install" />
       <command text="composer update" />
+      <command text="composer install" />
+      <command text="composer update" />
+      <command text="composer self-update" />
+      <command text="composer instakk" />
+      <command text="composer install" />
     </commandsHistory>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Dummy.txt" root0="SKIP_INSPECTION" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/views/member/memberdetail.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/partials/sideleftadmin.php" />
         <option value="$PROJECT_DIR$/resources/views/home/newsList.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/partials/sideleftadmin.blade.php" />
@@ -228,22 +271,18 @@
         <option value="$PROJECT_DIR$/resources/views/partials/subheader.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Kernel.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/catalogueEdit.blade.php" />
-        <option value="$PROJECT_DIR$/config/database.php" />
         <option value="$PROJECT_DIR$/public/css/style.css" />
         <option value="$PROJECT_DIR$/../index.html" />
         <option value="$PROJECT_DIR$/config/app.php" />
         <option value="$PROJECT_DIR$/resources/views/news/news.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/contact/contact.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/app.blade.php" />
-        <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/resources/views/home/home.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/catalogue/catalogue.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/CatalogueController.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/memberdetail.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/MemberController_bk.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/NewsController.php" />
         <option value="$PROJECT_DIR$/resources/views/member/resetPassword.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/MemberController.php" />
         <option value="$PROJECT_DIR$/app/Exceptions/Handler.php" />
         <option value="$PROJECT_DIR$/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/member.blade.php" />
@@ -251,18 +290,24 @@
         <option value="$PROJECT_DIR$/resources/views/admin/contact.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/newsPreview.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/member/login.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/member/memberprofile.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/member/register.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/homeEdit.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/newsEdit.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/product.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/product/productList.blade.php" />
+        <option value="$PROJECT_DIR$/composer.json" />
+        <option value="$PROJECT_DIR$/config/database.php" />
+        <option value="$PROJECT_DIR$/resources/views/member/register.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/member/memberdetail.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/member/memberprofile.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/MemberController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/memberdetail.blade.php" />
       </list>
     </option>
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" />
+  <component name="JsBuildToolPackageJson" detection-done="true" />
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <gulpfiles>
@@ -270,9 +315,6 @@
         <gulpfile-path>$PROJECT_DIR$/gulpfile.js</gulpfile-path>
       </GulpfileState>
     </gulpfiles>
-  </component>
-  <component name="NamedScopeManager">
-    <order />
   </component>
   <component name="PhpServers">
     <servers />
@@ -341,8 +383,7 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
+    <option name="width" value="1924" />
     <option name="height" value="1056" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -382,9 +423,11 @@
       <autoscrollToSource />
       <autoscrollFromSource />
       <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -456,6 +499,14 @@
               <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="member" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -467,7 +518,29 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="khcycle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="khcycle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -527,18 +600,17 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.lastSelected" value="configurable.group.appearance" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="File.Encoding" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/MemberController.php" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="FullScreen" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
@@ -564,9 +636,6 @@
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
-      <method />
-    </configuration>
-    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" working-dir="">
       <method />
     </configuration>
     <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -619,30 +688,30 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="0" width="1924" height="1056" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14270833" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3284055" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32946146" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14255765" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32769555" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32946146" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -773,20 +842,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/database.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="37" column="56" selection-start-line="37" selection-start-column="56" selection-end-line="37" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/composer.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="10" selection-start-line="25" selection-start-column="10" selection-end-line="25" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/member/forgotPasswordSuccess.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -857,13 +912,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MemberController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4513889">
-          <caret line="173" column="39" selection-start-line="173" selection-start-column="36" selection-end-line="173" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/partials/subheader.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-17.653847">
@@ -883,13 +931,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/memberdetail.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-37.923077">
-          <caret line="58" column="104" selection-start-line="58" selection-start-column="104" selection-end-line="58" selection-end-column="104" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/member.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.57110864">
@@ -901,13 +942,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-30.73077">
           <caret line="47" column="5" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/member/memberdetail.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.8461537">
-          <caret line="15" column="47" selection-start-line="15" selection-start-column="47" selection-end-line="15" selection-end-column="47" />
         </state>
       </provider>
     </entry>
@@ -951,25 +985,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/member/memberprofile.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="28" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/member/register.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="31" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/homeEdit.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="61" column="86" selection-start-line="61" selection-start-column="86" selection-end-line="61" selection-end-column="86" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -977,7 +996,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -985,25 +1003,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4896074">
           <caret line="170" column="42" selection-start-line="170" selection-start-column="42" selection-end-line="170" selection-end-column="42" />
-          <folding>
-            <marker date="1445765912113" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1445765912113" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1445765912113" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1445765912113" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1445765912113" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1445765912113" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1445765912113" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1445765912113" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1445765912113" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1445765912113" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1445765912113" expanded="true" signature="-1:-1" placeholder="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/product.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.692308">
+        <state vertical-scroll-proportion="0.0">
           <caret line="50" column="65" selection-start-line="50" selection-start-column="65" selection-end-line="50" selection-end-column="65" />
           <folding />
         </state>
@@ -1011,112 +1016,165 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/product/product.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-79.76923">
-          <caret line="131" column="43" selection-start-line="131" selection-start-column="32" selection-end-line="131" selection-end-column="43" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="147" column="35" selection-start-line="147" selection-start-column="35" selection-end-line="147" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/product/productList.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.5">
-          <caret line="63" column="34" selection-start-line="63" selection-start-column="34" selection-end-line="63" selection-end-column="34" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="53" column="34" selection-start-line="53" selection-start-column="34" selection-end-line="53" selection-end-column="34" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProductController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-20.26923">
-          <caret line="38" column="53" selection-start-line="38" selection-start-column="53" selection-end-line="38" selection-end-column="53" />
-          <folding>
-            <marker date="1445772159170" expanded="true" signature="294:434" placeholder="SELECT BRAND..KH_BRAND..." />
-            <marker date="1445772159170" expanded="true" signature="724:774" placeholder="SELECT BRAND..KH_BRAND..." />
-            <marker date="1445772159170" expanded="true" signature="798:941" placeholder="SELECT GROUP..KH_GROUP..." />
-            <marker date="1445772159170" expanded="true" signature="886:940" placeholder="SELECT GROUP..KH_BRAND_GROUP..." />
-            <marker date="1445772159170" expanded="true" signature="967:1179" placeholder="SELECT PRODU..KH_PRODUCT..." />
-          </folding>
+        <state vertical-scroll-proportion="-22.884615">
+          <caret line="42" column="53" selection-start-line="42" selection-start-column="53" selection-end-line="42" selection-end-column="53" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-28.461538">
+        <state vertical-scroll-proportion="0.0">
           <caret line="127" column="72" selection-start-line="127" selection-start-column="59" selection-end-line="127" selection-end-column="72" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24504505">
+          <caret line="20" column="22" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/database.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6718213">
+          <caret line="59" column="47" selection-start-line="59" selection-start-column="47" selection-end-line="59" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/member/register.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.730769">
+          <caret line="128" column="112" selection-start-line="128" selection-start-column="112" selection-end-line="128" selection-end-column="112" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/member/memberdetail.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.230769">
+          <caret line="103" column="103" selection-start-line="103" selection-start-column="103" selection-end-line="103" selection-end-column="103" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/member/memberprofile.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.961538">
+          <caret line="102" column="0" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MemberController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-31.384615">
+          <caret line="425" column="43" selection-start-line="425" selection-start-column="43" selection-end-line="425" selection-end-column="43" />
+          <folding>
+            <marker date="1448712266120" expanded="true" signature="15547:15670" placeholder="SELECT COUNT..KH_PASSWORD_RESET..." />
+            <marker date="1448712266120" expanded="true" signature="15978:16090" placeholder="SELECT EMAIL..KH_PASSWORD_RESET..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AdminController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3923611">
-          <caret line="1766" column="13" selection-start-line="1766" selection-start-column="13" selection-end-line="1766" selection-end-column="13" />
+        <state vertical-scroll-proportion="-5.109091">
+          <caret line="1908" column="36" selection-start-line="1908" selection-start-column="22" selection-end-line="1908" selection-end-column="36" />
           <folding>
             <element signature="e#40#68#0#PHP" expanded="true" />
-            <marker date="1445779077227" expanded="true" signature="5133:5272" placeholder="SELECT BRAND..KH_BRAND..." />
-            <marker date="1445779077227" expanded="true" signature="5330:5421" placeholder="SELECT GROUP..KH_GROUP..." />
-            <marker date="1445779077227" expanded="true" signature="5537:5696" placeholder="SELECT A.GRO..KH_GROUP..." />
-            <marker date="1445779077227" expanded="true" signature="6771:6930" placeholder="SELECT A.GRO..KH_GROUP..." />
-            <marker date="1445779077227" expanded="true" signature="6954:7042" placeholder="SELECT BRAND..KH_BRAND..." />
-            <marker date="1445779077227" expanded="true" signature="7677:7768" placeholder="SELECT GROUP..KH_GROUP..." />
-            <marker date="1445779077227" expanded="true" signature="8006:8094" placeholder="SELECT GROUP..KH_GROUP..." />
-            <marker date="1445779077227" expanded="true" signature="8118:8209" placeholder="SELECT GROUP..KH_GROUP..." />
-            <marker date="1445779077227" expanded="true" signature="10810:10969" placeholder="SELECT A.GRO..KH_GROUP..." />
-            <marker date="1445779077227" expanded="true" signature="29759:29871" placeholder="insert into ..." />
-            <marker date="1445779077227" expanded="true" signature="32070:32151" placeholder="SELECT BANNE..KH_BANNER..." />
-            <marker date="1445779077227" expanded="true" signature="32580:32708" placeholder="UPDATE KH_BA..." />
-            <marker date="1445779077227" expanded="true" signature="33655:33748" placeholder="UPDATE KH_BA..." />
-            <marker date="1445779077227" expanded="true" signature="35280:35361" placeholder="SELECT MAX(B..KH_BANNER..." />
-            <marker date="1445779077227" expanded="true" signature="35748:35847" placeholder="INSERT INTO ..." />
-            <marker date="1445779077227" expanded="true" signature="36620:36693" placeholder="UPDATE KH_BA..." />
-            <marker date="1445779077227" expanded="true" signature="37684:37748" placeholder="SELECT BANNE..KH_BANNER..." />
-            <marker date="1445779077227" expanded="true" signature="37887:37981" placeholder="SELECT BANNE..KH_BANNER..." />
-            <marker date="1445779077227" expanded="true" signature="38244:38304" placeholder="UPDATE KH_BA..." />
-            <marker date="1445779077227" expanded="true" signature="38553:38610" placeholder="UPDATE KH_BA..." />
-            <marker date="1445779077227" expanded="true" signature="39001:39063" placeholder="UPDATE KH_BA..." />
-            <marker date="1445779077227" expanded="true" signature="41006:41084" placeholder="SELECT MAX(N..KH_NEWS..." />
-            <marker date="1445779077227" expanded="true" signature="41554:41655" placeholder="INSERT INTO ..." />
-            <marker date="1445779077227" expanded="true" signature="42422:42504" placeholder="UPDATE KH_NE..." />
-            <marker date="1445779077227" expanded="true" signature="43616:43736" placeholder="INSERT INTO ..." />
-            <marker date="1445779077227" expanded="true" signature="46493:46635" placeholder="UPDATE KH_NE..." />
-            <marker date="1445779077227" expanded="true" signature="47280:47374" placeholder="UPDATE KH_NE..." />
-            <marker date="1445779077227" expanded="true" signature="47812:47925" placeholder="UPDATE KH_NE..." />
-            <marker date="1445779077227" expanded="true" signature="57505:57561" placeholder="SELECT NEWS_..KH_NEWS..." />
-            <marker date="1445779077227" expanded="true" signature="57700:57787" placeholder="SELECT NEWS_..KH_NEWS..." />
-            <marker date="1445779077227" expanded="true" signature="58048:58102" placeholder="UPDATE KH_NE..." />
-            <marker date="1445779077227" expanded="true" signature="58349:58400" placeholder="UPDATE KH_NE..." />
-            <marker date="1445779077227" expanded="true" signature="58789:58848" placeholder="UPDATE KH_NE..." />
-            <marker date="1445779077227" expanded="true" signature="59958:60039" placeholder="SELECT MAX(B..KH_BRAND..." />
-            <marker date="1445779077227" expanded="true" signature="60313:60369" placeholder="INSERT INTO ..." />
-            <marker date="1445779077227" expanded="true" signature="60998:61070" placeholder="UPDATE KH_BR..." />
-            <marker date="1445779077227" expanded="true" signature="63223:63309" placeholder="UPDATE KH_BR..." />
-            <marker date="1445779077227" expanded="true" signature="63865:63914" placeholder="UPDATE KH_BR..." />
-            <marker date="1445779077227" expanded="true" signature="64435:64495" placeholder="SELECT BRAND..KH_BRAND..." />
-            <marker date="1445779077227" expanded="true" signature="64634:64726" placeholder="SELECT BRAND..KH_BRAND..." />
-            <marker date="1445779077227" expanded="true" signature="64988:65045" placeholder="UPDATE KH_BR..." />
-            <marker date="1445779077227" expanded="true" signature="65292:65346" placeholder="UPDATE KH_BR..." />
-            <marker date="1445779077227" expanded="true" signature="65738:65800" placeholder="UPDATE KH_BR..." />
-            <marker date="1445779077227" expanded="true" signature="65867:65941" placeholder="UPDATE KH_PR..." />
-            <marker date="1445779077227" expanded="true" signature="66158:66215" placeholder="INSERT INTO ..." />
-            <marker date="1445779077227" expanded="true" signature="66432:66494" placeholder="DELETE FROM ..." />
-            <marker date="1445779077227" expanded="true" signature="66698:66760" placeholder="UPDATE KH_GR..." />
-            <marker date="1445779077227" expanded="true" signature="67554:67596" placeholder="INSERT INTO ..." />
-            <marker date="1445779077227" expanded="true" signature="68483:68536" placeholder="UPDATE KH_GR..." />
-            <marker date="1445779077227" expanded="true" signature="68872:68940" placeholder="SELECT PRODU..KH_PRODUCT..." />
-            <marker date="1445779077227" expanded="true" signature="69079:69174" placeholder="SELECT PRODU..KH_PRODUCT..." />
-            <marker date="1445779077227" expanded="true" signature="69438:69501" placeholder="UPDATE KH_PR..." />
-            <marker date="1445779077227" expanded="true" signature="69752:69812" placeholder="UPDATE KH_PR..." />
-            <marker date="1445779077227" expanded="true" signature="70467:70535" placeholder="UPDATE KH_PR..." />
-            <marker date="1445779077227" expanded="true" signature="72046:72133" placeholder="SELECT MAX(P..KH_PRODUCT..." />
-            <marker date="1445779077227" expanded="true" signature="72407:72524" placeholder="INSERT INTO ..." />
-            <marker date="1445779077227" expanded="true" signature="73189:73316" placeholder="UPDATE KH_PR..." />
-            <marker date="1445779077227" expanded="true" signature="75921:76082" placeholder="UPDATE KH_PR..." />
-            <marker date="1445779077227" expanded="true" signature="76694:76768" placeholder="UPDATE KH_PR..." />
-            <marker date="1445779077227" expanded="true" signature="77315:77391" placeholder="SELECT CATAL..KH_CATALOGUE..." />
-            <marker date="1445779077227" expanded="true" signature="77529:77641" placeholder="SELECT CATAL..KH_CATALOGUE..." />
-            <marker date="1445779077227" expanded="true" signature="77903:77969" placeholder="UPDATE KH_CA..." />
-            <marker date="1445779077227" expanded="true" signature="78245:78311" placeholder="UPDATE KH_CA..." />
+            <marker date="1448712526323" expanded="true" signature="5133:5272" placeholder="SELECT BRAND..KH_BRAND..." />
+            <marker date="1448712526323" expanded="true" signature="5330:5421" placeholder="SELECT GROUP..KH_GROUP..." />
+            <marker date="1448712526323" expanded="true" signature="5537:5696" placeholder="SELECT A.GRO..KH_GROUP..." />
+            <marker date="1448712526323" expanded="true" signature="6771:6930" placeholder="SELECT A.GRO..KH_GROUP..." />
+            <marker date="1448712526323" expanded="true" signature="6954:7042" placeholder="SELECT BRAND..KH_BRAND..." />
+            <marker date="1448712526323" expanded="true" signature="7677:7768" placeholder="SELECT GROUP..KH_GROUP..." />
+            <marker date="1448712526323" expanded="true" signature="8006:8094" placeholder="SELECT GROUP..KH_GROUP..." />
+            <marker date="1448712526323" expanded="true" signature="8118:8209" placeholder="SELECT GROUP..KH_GROUP..." />
+            <marker date="1448712526323" expanded="true" signature="10810:10969" placeholder="SELECT A.GRO..KH_GROUP..." />
+            <marker date="1448712526323" expanded="true" signature="30079:30191" placeholder="insert into KH_CATALOGUE..." />
+            <marker date="1448712526323" expanded="true" signature="32390:32471" placeholder="SELECT BANNE..KH_BANNER..." />
+            <marker date="1448712526323" expanded="true" signature="32900:33028" placeholder="UPDATE KH_BA..." />
+            <marker date="1448712526323" expanded="true" signature="33975:34068" placeholder="UPDATE KH_BA..." />
+            <marker date="1448712526323" expanded="true" signature="35600:35681" placeholder="SELECT MAX(B..KH_BANNER..." />
+            <marker date="1448712526323" expanded="true" signature="36068:36167" placeholder="INSERT INTO KH_BANNER..." />
+            <marker date="1448712526323" expanded="true" signature="36940:37013" placeholder="UPDATE KH_BA..." />
+            <marker date="1448712526323" expanded="true" signature="38004:38068" placeholder="SELECT BANNE..KH_BANNER..." />
+            <marker date="1448712526323" expanded="true" signature="38207:38301" placeholder="SELECT BANNE..KH_BANNER..." />
+            <marker date="1448712526323" expanded="true" signature="38564:38624" placeholder="UPDATE KH_BA..." />
+            <marker date="1448712526323" expanded="true" signature="38873:38930" placeholder="UPDATE KH_BA..." />
+            <marker date="1448712526323" expanded="true" signature="39321:39383" placeholder="UPDATE KH_BA..." />
+            <marker date="1448712526323" expanded="true" signature="41326:41404" placeholder="SELECT MAX(N..KH_NEWS..." />
+            <marker date="1448712526323" expanded="true" signature="41874:41975" placeholder="INSERT INTO KH_NEWS..." />
+            <marker date="1448712526323" expanded="true" signature="42742:42824" placeholder="UPDATE KH_NE..." />
+            <marker date="1448712526323" expanded="true" signature="43936:44056" placeholder="INSERT INTO KH_NEWS..." />
+            <marker date="1448712526323" expanded="true" signature="46813:46955" placeholder="UPDATE KH_NE..." />
+            <marker date="1448712526323" expanded="true" signature="47600:47694" placeholder="UPDATE KH_NE..." />
+            <marker date="1448712526323" expanded="true" signature="48132:48245" placeholder="UPDATE KH_NE..." />
+            <marker date="1448712526323" expanded="true" signature="57937:57993" placeholder="SELECT NEWS_..KH_NEWS..." />
+            <marker date="1448712526323" expanded="true" signature="58132:58219" placeholder="SELECT NEWS_..KH_NEWS..." />
+            <marker date="1448712526323" expanded="true" signature="58480:58534" placeholder="UPDATE KH_NE..." />
+            <marker date="1448712526323" expanded="true" signature="58781:58832" placeholder="UPDATE KH_NE..." />
+            <marker date="1448712526323" expanded="true" signature="59221:59280" placeholder="UPDATE KH_NE..." />
+            <marker date="1448712526323" expanded="true" signature="60390:60471" placeholder="SELECT MAX(B..KH_BRAND..." />
+            <marker date="1448712526323" expanded="true" signature="60745:60801" placeholder="INSERT INTO KH_BRAND..." />
+            <marker date="1448712526323" expanded="true" signature="61430:61502" placeholder="UPDATE KH_BR..." />
+            <marker date="1448712526323" expanded="true" signature="63655:63741" placeholder="UPDATE KH_BR..." />
+            <marker date="1448712526323" expanded="true" signature="64297:64346" placeholder="UPDATE KH_BR..." />
+            <marker date="1448712526323" expanded="true" signature="64867:64927" placeholder="SELECT BRAND..KH_BRAND..." />
+            <marker date="1448712526323" expanded="true" signature="65066:65158" placeholder="SELECT BRAND..KH_BRAND..." />
+            <marker date="1448712526323" expanded="true" signature="65420:65477" placeholder="UPDATE KH_BR..." />
+            <marker date="1448712526323" expanded="true" signature="65724:65778" placeholder="UPDATE KH_BR..." />
+            <marker date="1448712526323" expanded="true" signature="66170:66232" placeholder="UPDATE KH_BR..." />
+            <marker date="1448712526323" expanded="true" signature="66299:66373" placeholder="UPDATE KH_PR..." />
+            <marker date="1448712526323" expanded="true" signature="66590:66647" placeholder="INSERT INTO KH_BRAND_GROUP..." />
+            <marker date="1448712526323" expanded="true" signature="66864:66926" placeholder="DELETE FROM ..." />
+            <marker date="1448712526323" expanded="true" signature="67130:67192" placeholder="UPDATE KH_GR..." />
+            <marker date="1448712526323" expanded="true" signature="67986:68028" placeholder="INSERT INTO KH_GROUP..." />
+            <marker date="1448712526323" expanded="true" signature="68915:68968" placeholder="UPDATE KH_GR..." />
+            <marker date="1448712526323" expanded="true" signature="69304:69372" placeholder="SELECT PRODU..KH_PRODUCT..." />
+            <marker date="1448712526323" expanded="true" signature="69511:69606" placeholder="SELECT PRODU..KH_PRODUCT..." />
+            <marker date="1448712526323" expanded="true" signature="69870:69933" placeholder="UPDATE KH_PR..." />
+            <marker date="1448712526323" expanded="true" signature="70184:70244" placeholder="UPDATE KH_PR..." />
+            <marker date="1448712526323" expanded="true" signature="70899:70967" placeholder="UPDATE KH_PR..." />
+            <marker date="1448712526323" expanded="true" signature="72478:72565" placeholder="SELECT MAX(P..KH_PRODUCT..." />
+            <marker date="1448712526323" expanded="true" signature="72839:72956" placeholder="INSERT INTO KH_PRODUCT..." />
+            <marker date="1448712526323" expanded="true" signature="73621:73748" placeholder="UPDATE KH_PR..." />
+            <marker date="1448712526323" expanded="true" signature="76353:76514" placeholder="UPDATE KH_PR..." />
+            <marker date="1448712526323" expanded="true" signature="77126:77200" placeholder="UPDATE KH_PR..." />
+            <marker date="1448712526323" expanded="true" signature="77747:77823" placeholder="SELECT CATAL..KH_CATALOGUE..." />
+            <marker date="1448712526323" expanded="true" signature="77961:78073" placeholder="SELECT CATAL..KH_CATALOGUE..." />
+            <marker date="1448712526323" expanded="true" signature="78335:78401" placeholder="UPDATE KH_CA..." />
+            <marker date="1448712526323" expanded="true" signature="78677:78743" placeholder="UPDATE KH_CA..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/memberdetail.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.38659793">
+          <caret line="84" column="69" selection-start-line="84" selection-start-column="69" selection-end-line="84" selection-end-column="69" />
+          <folding />
         </state>
       </provider>
     </entry>

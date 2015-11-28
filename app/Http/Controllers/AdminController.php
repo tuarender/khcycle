@@ -611,6 +611,8 @@ class AdminController extends Controller
                 'info.KH_INFORMATION_HEIGHT',
                 'info.KH_INFORMATION_WEIGHT',
                 'info.KH_INFORMATION_SHOE',
+                'info.KH_INFORMATION_LINE',
+                'info.KH_INFORMATION_BIKE',
                 'contact.KH_CONTACT_ADDR')
             ->where('login.ID','=',$id)
             ->get();
@@ -652,6 +654,8 @@ class AdminController extends Controller
             $member_height = $request->input('member_height', 0.00);
             $member_weight = $request->input('member_weight', 0.00);
             $member_shoe = $request->input('member_shoe', 0.00);
+            $member_line = $request->input('member_line');
+            $member_bike = $request->input('member_bike');
 
             //insert contact
             DB::table('KH_CONTACT')
@@ -668,7 +672,9 @@ class AdminController extends Controller
                 ->update([
                     'KH_INFORMATION_HEIGHT'=>$member_height,
                     'KH_INFORMATION_WEIGHT'=>$member_weight,
-                    'KH_INFORMATION_SHOE'=>$member_shoe
+                    'KH_INFORMATION_SHOE'=>$member_shoe,
+                    'KH_INFORMATION_LINE'=>$member_line,
+                    'KH_INFORMATION_BIKE'=>$member_bike
                 ]);
             Session::flash('alert-success', 'อัพเดตค่าเรียบร้อยแล้ว');
             return redirect('admin/member');
@@ -1902,6 +1908,8 @@ class AdminController extends Controller
                 'info.KH_INFORMATION_HEIGHT',
                 'info.KH_INFORMATION_WEIGHT',
                 'info.KH_INFORMATION_SHOE',
+                'info.KH_INFORMATION_LINE',
+                'info.KH_INFORMATION_BIKE',
                 'contact.KH_CONTACT_ADDR')
             ->where('login.ID','=',$id)
             ->get();

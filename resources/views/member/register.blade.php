@@ -117,6 +117,22 @@
                                 <label class="col-sm-1 control-label">EU</label>
                             </div>
 
+                            <div class="form-group @if ($errors->has('member_line')) has-error @endif">
+                                <label class="col-sm-4 control-label"><font color="red"></font>LINE ID</label>
+                                <div class="col-sm-4">
+                                    <input type="text"  class="form-control" name="member_line" maxlength="20" value="{{ old('member_line') }}" >
+                                    @if($errors->has('member_line')) <p class="help-block">{{$errors->first('member_line')}}</p>@endif
+                                </div>
+                            </div>
+
+                            <div class="form-group @if ($errors->has('member_bike')) has-error @endif">
+                                <label class="col-sm-4 control-label"><font color="red"></font>จักรยานที่ใช้อยู่</label>
+                                <div class="col-sm-4">
+                                    <input type="text"  class="form-control" name="member_bike" maxlength="30" value="{{ old('member_bike') }}" >
+                                    @if($errors->has('member_bike')) <p class="help-block">{{$errors->first('member_bike')}}</p>@endif
+                                </div>
+                            </div>
+
 
                             <div class="form-group">
                                 <div class="col-sm-6 col-sm-offset-4">

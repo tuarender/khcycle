@@ -124,6 +124,9 @@ class MemberController extends Controller
             $member_height = $request->input('member_height',0.00);
             $member_weight = $request->input('member_weight',0.00);
             $member_shoe = $request ->input('member_shoe',0.00);
+            $member_line = $request->input('member_line');
+            $member_bike = $request->input('member_bike');
+
             $ervpass = $this-> getEncode_member($member_password,strlen($member_password));
 
             //check user
@@ -163,7 +166,9 @@ class MemberController extends Controller
                'KH_INFORMATION_MEMBER' =>$id,
                 'KH_INFORMATION_HEIGHT'=>$member_height,
                 'KH_INFORMATION_WEIGHT'=>$member_weight,
-                'KH_INFORMATION_SHOE'=>$member_shoe
+                'KH_INFORMATION_SHOE'=>$member_shoe,
+                'KH_INFORMATION_LINE'=>$member_line,
+                'KH_INFORMATION_BIKE'=>$member_bike
             ]);
             Session::flash('alert-success', 'สมัครสมาชิกเรียบร้อยแล้ว');
             return redirect('member');
@@ -237,6 +242,8 @@ class MemberController extends Controller
                 'info.KH_INFORMATION_HEIGHT',
                 'info.KH_INFORMATION_WEIGHT',
                 'info.KH_INFORMATION_SHOE',
+                'info.KH_INFORMATION_LINE',
+                'info.KH_INFORMATION_BIKE',
                 'contact.KH_CONTACT_ADDR')
             ->where('login.ID','=',$id)
             ->get();
@@ -415,6 +422,8 @@ class MemberController extends Controller
                 'info.KH_INFORMATION_HEIGHT',
                 'info.KH_INFORMATION_WEIGHT',
                 'info.KH_INFORMATION_SHOE',
+                'info.KH_INFORMATION_LINE',
+                'info.KH_INFORMATION_BIKE',
                 'contact.KH_CONTACT_ADDR')
             ->where('login.ID','=',$id)
             ->get();
