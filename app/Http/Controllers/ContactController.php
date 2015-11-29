@@ -37,7 +37,18 @@ class ContactController extends Controller
                 'br.BRANCH_ID',
                 'br.BRANCH_SHOP',
                 'br.BRANCH_ADDR',
-                'br.BRANCH_EMAIL')
+                'br.BRANCH_EMAIL',
+                'br.BRANCH_BRAND_01',
+                'br.BRANCH_BRAND_02',
+                'br.BRANCH_BRAND_03',
+                'br.BRANCH_BRAND_04',
+                'br.BRANCH_BRAND_05',
+                'br.BRANCH_BRAND_06',
+                'br.BRANCH_BRAND_07',
+                'br.BRANCH_BRAND_08',
+                'br.BRANCH_BRAND_09',
+                'br.BRANCH_BRAND_10'
+                )
             ->where('BRANCH_DELETE_STATUS', '<>', '1')
             ->get();
 

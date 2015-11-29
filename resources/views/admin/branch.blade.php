@@ -43,9 +43,10 @@
                     <table class="table table-bordered table-condensed table-hover tableAdmin">
                         <thead>
                         <tr class="tableHeader">
-                            <th width="20%" class="tdCenter">ZONE NAME</th>
+                            <th width="10%" class="tdCenter">ZONE NAME</th>
                             <th width="20%" class="tdCenter">BRANCH SHOP</th>
-                            <th width="40%" class="tdCenter">BRANCH ADDR</th>
+                            <th width="30%" class="tdCenter">BRANCH ADDR</th>
+                            <th width="20%" class="tdcenter">BRANDS</th>
                             <th width="20%" class="tdCenter">การจัดการ</th>
                         </tr>
                         </thead>
@@ -55,6 +56,15 @@
                             <td class="tdCenter">{{$branch['ZONE_NAME']}}</td>
                             <td class="tdCenter">{{$branch['BRANCH_SHOP']}}</td>
                             <td class="tdCenter">{{$branch['BRANCH_ADDR']}}</td>
+                            <td class="tdcenter">
+                                <?php
+                                    $my_ar = array($branch['BRANCH_BRAND_01'],$branch['BRANCH_BRAND_02'],$branch['BRANCH_BRAND_03'],$branch['BRANCH_BRAND_04'],$branch['BRANCH_BRAND_05'],
+                                $branch['BRANCH_BRAND_06'],$branch['BRANCH_BRAND_07'],$branch['BRANCH_BRAND_08'],$branch['BRANCH_BRAND_09'],$branch['BRANCH_BRAND_10']);
+                                    $my_ar= array_filter($my_ar);
+                                    $my_ar = implode(',',$my_ar);
+                                    print_r($my_ar)
+                                ?>
+                            </td>
                             <td class="tdCenter">
                                 <div class='btn-group' role='group'>
                                     <a class="btn btn-warning" href="admin/branch/edit/{{$branch['BRANCH_ID']}}"><span class='glyphicon glyphicon-edit' aria-hidden='true'></span> EDIT</a>

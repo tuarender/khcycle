@@ -415,7 +415,17 @@ class AdminController extends Controller
                         'br.BRANCH_ID',
                         'br.BRANCH_SHOP',
                         'br.BRANCH_ADDR',
-                        'br.BRANCH_EMAIL')
+                        'br.BRANCH_EMAIL',
+                        'br.BRANCH_BRAND_01',
+                        'br.BRANCH_BRAND_02',
+                        'br.BRANCH_BRAND_03',
+                        'br.BRANCH_BRAND_04',
+                        'br.BRANCH_BRAND_05',
+                        'br.BRANCH_BRAND_06',
+                        'br.BRANCH_BRAND_07',
+                        'br.BRANCH_BRAND_08',
+                        'br.BRANCH_BRAND_09',
+                        'br.BRANCH_BRAND_10')
                     ->where('BRANCH_DELETE_STATUS', '<>', '1')
                     ->simplePaginate(10);
             }else{
@@ -425,7 +435,17 @@ class AdminController extends Controller
                         'br.BRANCH_ID',
                         'br.BRANCH_SHOP',
                         'br.BRANCH_ADDR',
-                        'br.BRANCH_EMAIL')
+                        'br.BRANCH_EMAIL',
+                        'br.BRANCH_BRAND_01',
+                        'br.BRANCH_BRAND_02',
+                        'br.BRANCH_BRAND_03',
+                        'br.BRANCH_BRAND_04',
+                        'br.BRANCH_BRAND_05',
+                        'br.BRANCH_BRAND_06',
+                        'br.BRANCH_BRAND_07',
+                        'br.BRANCH_BRAND_08',
+                        'br.BRANCH_BRAND_09',
+                        'br.BRANCH_BRAND_10')
                     ->where('BRANCH_DELETE_STATUS', '<>', '1')
                     ->where('BRANCH_ZONE', '=', $datazone)
                     ->simplePaginate(10);
@@ -439,7 +459,18 @@ class AdminController extends Controller
                     'br.BRANCH_ID',
                     'br.BRANCH_SHOP',
                     'br.BRANCH_ADDR',
-                    'br.BRANCH_EMAIL')
+                    'br.BRANCH_EMAIL',
+                    'br.BRANCH_BRAND_01',
+                    'br.BRANCH_BRAND_02',
+                    'br.BRANCH_BRAND_03',
+                    'br.BRANCH_BRAND_04',
+                    'br.BRANCH_BRAND_05',
+                    'br.BRANCH_BRAND_06',
+                    'br.BRANCH_BRAND_07',
+                    'br.BRANCH_BRAND_08',
+                    'br.BRANCH_BRAND_09',
+                    'br.BRANCH_BRAND_10'
+                    )
                 ->where('BRANCH_DELETE_STATUS','<>','1')
                 ->simplePaginate(10);
         }
@@ -461,7 +492,17 @@ class AdminController extends Controller
                 'br.BRANCH_ADDR',
                 'br.BRANCH_EMAIL',
                 'br.BRANCH_TEL',
-                'br.BRANCH_FAX'
+                'br.BRANCH_FAX',
+                'br.BRANCH_BRAND_01',
+                'br.BRANCH_BRAND_02',
+                'br.BRANCH_BRAND_03',
+                'br.BRANCH_BRAND_04',
+                'br.BRANCH_BRAND_05',
+                'br.BRANCH_BRAND_06',
+                'br.BRANCH_BRAND_07',
+                'br.BRANCH_BRAND_08',
+                'br.BRANCH_BRAND_09',
+                'br.BRANCH_BRAND_10'
             )
             ->where('BRANCH_ID','=',$id)
             ->get();
@@ -495,13 +536,34 @@ class AdminController extends Controller
             $valuezone = $request->get('BRANCH_ZONE');
             $telshop = $request->get('BRANCH_TEL');
             $faxshop  = $request->get('BRANCH_FAX');
+            $brand01 = $request->get('BRANCH_BRAND_01');
+            $brand02 = $request->get('BRANCH_BRAND_02');
+            $brand03 = $request->get('BRANCH_BRAND_03');
+            $brand04 = $request->get('BRANCH_BRAND_04');
+            $brand05 = $request->get('BRANCH_BRAND_05');
+            $brand06 = $request->get('BRANCH_BRAND_06');
+            $brand07 = $request->get('BRANCH_BRAND_07');
+            $brand08 = $request->get('BRANCH_BRAND_08');
+            $brand09 = $request->get('BRANCH_BRAND_09');
+            $brand10 = $request->get('BRANCH_BRAND_10');
+
             DB::table('KH_BRANCH')->insert([
                 'BRANCH_ZONE' => $valuezone,
                 'BRANCH_SHOP' => $nameshop,
                 'BRANCH_ADDR' => $addrshop,
                 "BRANCH_EMAIL" => $emailshop,
                 'BRANCH_TEL' =>$telshop,
-                'BRANCH_FAX' =>$faxshop
+                'BRANCH_FAX' =>$faxshop,
+                'BRANCH_BRAND_01'=>$brand01,
+                'BRANCH_BRAND_02'=>$brand02,
+                'BRANCH_BRAND_03'=>$brand03,
+                'BRANCH_BRAND_04'=>$brand04,
+                'BRANCH_BRAND_05'=>$brand05,
+                'BRANCH_BRAND_06'=>$brand06,
+                'BRANCH_BRAND_07'=>$brand07,
+                'BRANCH_BRAND_08'=>$brand08,
+                'BRANCH_BRAND_09'=>$brand09,
+                'BRANCH_BRAND_10'=>$brand10
             ]);
 
             Session::flash('alert-success', 'อัพเดตเรียบร้อย');
@@ -536,6 +598,17 @@ class AdminController extends Controller
             $valuezone = $request->get('BRANCH_ZONE');
             $telshop = $request->get('BRANCH_TEL');
             $faxshop = $request->get('BRANCH_FAX');
+            $brand01 = $request->get('BRANCH_BRAND_01');
+            $brand02 = $request->get('BRANCH_BRAND_02');
+            $brand03 = $request->get('BRANCH_BRAND_03');
+            $brand04 = $request->get('BRANCH_BRAND_04');
+            $brand05 = $request->get('BRANCH_BRAND_05');
+            $brand06 = $request->get('BRANCH_BRAND_06');
+            $brand07 = $request->get('BRANCH_BRAND_07');
+            $brand08 = $request->get('BRANCH_BRAND_08');
+            $brand09 = $request->get('BRANCH_BRAND_09');
+            $brand10 = $request->get('BRANCH_BRAND_10');
+
             DB::table('KH_BRANCH')
                 ->where('BRANCH_ID','=',$id)
                 ->update([
@@ -544,7 +617,17 @@ class AdminController extends Controller
                 'BRANCH_ADDR' => $addrshop,
                 "BRANCH_EMAIL" => $emailshop,
                     "BRANCH_TEL"=>$telshop,
-                    "BRANCH_FAX"=>$faxshop
+                    "BRANCH_FAX"=>$faxshop,
+                    'BRANCH_BRAND_01'=>$brand01,
+                    'BRANCH_BRAND_02'=>$brand02,
+                    'BRANCH_BRAND_03'=>$brand03,
+                    'BRANCH_BRAND_04'=>$brand04,
+                    'BRANCH_BRAND_05'=>$brand05,
+                    'BRANCH_BRAND_06'=>$brand06,
+                    'BRANCH_BRAND_07'=>$brand07,
+                    'BRANCH_BRAND_08'=>$brand08,
+                    'BRANCH_BRAND_09'=>$brand09,
+                    'BRANCH_BRAND_10'=>$brand10
             ]);
 
             Session::flash('alert-success', 'อัพเดตเรียบร้อย');
@@ -1878,6 +1961,16 @@ class AdminController extends Controller
                     ->select('zone.ZONE_NAME',
                         'br.BRANCH_ID',
                         'br.BRANCH_SHOP',
+                        'br.BRANCH_BRAND_01 as BRAND_01',
+                        'br.BRANCH_BRAND_02 as BRAND_02',
+                        'br.BRANCH_BRAND_03 as BRAND_03',
+                        'br.BRANCH_BRAND_04 as BRAND_04',
+                        'br.BRANCH_BRAND_05 as BRAND_05',
+                        'br.BRANCH_BRAND_06 as BRAND_06',
+                        'br.BRANCH_BRAND_07 as BRAND_07',
+                        'br.BRANCH_BRAND_08 as BRAND_08',
+                        'br.BRANCH_BRAND_09 as BRAND_09',
+                        'br.BRANCH_BRAND_10 as BRAND_10',
                         'br.BRANCH_ADDR as ADDRESS',
                         'br.BRANCH_EMAIL as EMAIL',
                         'br.BRANCH_TEL as TEL_SHOP',

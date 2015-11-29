@@ -40,6 +40,98 @@
                 </div>
             </div>
 
+            <div class="form-group @if ($errors->has('BRANCH_BRAND_01')) has-error @endif">
+                <label for="url" class="col-sm-3 control-label">แบรนด์ 1:</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" name="BRANCH_BRAND_01" maxlength="20" value="{{old('BRANCH_BRAND_01', $data[0]['BRANCH_BRAND_01'] )}}" >
+                    @if($errors->has('BRANCH_BRAND_01'))
+                        <p class="help-block">{{$errors->first('BRANCH_BRAND_01')}}</p>@endif
+                </div>
+            </div>
+
+            <div class="form-group @if ($errors->has('BRANCH_BRAND_02')) has-error @endif">
+                <label for="url" class="col-sm-3 control-label">แบรนด์ 2:</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" name="BRANCH_BRAND_02" maxlength="20" value="{{old('BRANCH_BRAND_02', $data[0]['BRANCH_BRAND_02'] )}}" >
+                    @if($errors->has('BRANCH_BRAND_02'))
+                        <p class="help-block">{{$errors->first('BRANCH_BRAND_02')}}</p>@endif
+                </div>
+            </div>
+
+            <div class="form-group @if ($errors->has('BRANCH_BRAND_03')) has-error @endif">
+                <label for="url" class="col-sm-3 control-label">แบรนด์ 3:</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" name="BRANCH_BRAND_03" maxlength="20" value="{{old('BRANCH_BRAND_03', $data[0]['BRANCH_BRAND_03'] )}}" >
+                    @if($errors->has('BRANCH_BRAND_03'))
+                        <p class="help-block">{{$errors->first('BRANCH_BRAND_03')}}</p>@endif
+                </div>
+            </div>
+
+            <div class="form-group @if ($errors->has('BRANCH_BRAND_04')) has-error @endif">
+                <label for="url" class="col-sm-3 control-label">แบรนด์ 4:</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" name="BRANCH_BRAND_04" maxlength="20" value="{{old('BRANCH_BRAND_04', $data[0]['BRANCH_BRAND_04'] )}}" >
+                    @if($errors->has('BRANCH_BRAND_04'))
+                        <p class="help-block">{{$errors->first('BRANCH_BRAND_04')}}</p>@endif
+                </div>
+            </div>
+
+            <div class="form-group @if ($errors->has('BRANCH_BRAND_05')) has-error @endif">
+                <label for="url" class="col-sm-3 control-label">แบรนด์ 5:</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" name="BRANCH_BRAND_05" maxlength="20" value="{{old('BRANCH_BRAND_05', $data[0]['BRANCH_BRAND_05'] )}}" >
+                    @if($errors->has('BRANCH_BRAND_05'))
+                        <p class="help-block">{{$errors->first('BRANCH_BRAND_05')}}</p>@endif
+                </div>
+            </div>
+
+            <div class="form-group @if ($errors->has('BRANCH_BRAND_06')) has-error @endif">
+                <label for="url" class="col-sm-3 control-label">แบรนด์ 6:</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" name="BRANCH_BRAND_06" maxlength="20" value="{{old('BRANCH_BRAND_06', $data[0]['BRANCH_BRAND_06'] )}}" >
+                    @if($errors->has('BRANCH_BRAND_06'))
+                        <p class="help-block">{{$errors->first('BRANCH_BRAND_06')}}</p>@endif
+                </div>
+            </div>
+
+
+            <div class="form-group @if ($errors->has('BRANCH_BRAND_07')) has-error @endif">
+                <label for="url" class="col-sm-3 control-label">แบรนด์ 7:</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" name="BRANCH_BRAND_07" maxlength="20" value="{{old('BRANCH_BRAND_07', $data[0]['BRANCH_BRAND_07'] )}}" >
+                    @if($errors->has('BRANCH_BRAND_07'))
+                        <p class="help-block">{{$errors->first('BRANCH_BRAND_07')}}</p>@endif
+                </div>
+            </div>
+
+            <div class="form-group @if ($errors->has('BRANCH_BRAND_08')) has-error @endif">
+                <label for="url" class="col-sm-3 control-label">แบรนด์ 8:</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" name="BRANCH_BRAND_08" maxlength="20" value="{{old('BRANCH_BRAND_08', $data[0]['BRANCH_BRAND_08'] )}}" >
+                    @if($errors->has('BRANCH_BRAND_08'))
+                        <p class="help-block">{{$errors->first('BRANCH_BRAND_08')}}</p>@endif
+                </div>
+            </div>
+
+            <div class="form-group @if ($errors->has('BRANCH_BRAND_09')) has-error @endif">
+                <label for="url" class="col-sm-3 control-label">แบรนด์ 9:</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" name="BRANCH_BRAND_09" maxlength="20" value="{{old('BRANCH_BRAND_09', $data[0]['BRANCH_BRAND_09'] )}}" >
+                    @if($errors->has('BRANCH_BRAND_09'))
+                        <p class="help-block">{{$errors->first('BRANCH_BRAND_09')}}</p>@endif
+                </div>
+            </div>
+
+            <div class="form-group @if ($errors->has('BRANCH_BRAND_10')) has-error @endif">
+                <label for="url" class="col-sm-3 control-label">แบรนด์ 10:</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" name="BRANCH_BRAND_10" maxlength="20" value="{{old('BRANCH_BRAND_10', $data[0]['BRANCH_BRAND_10'] )}}" >
+                    @if($errors->has('BRANCH_BRAND_10'))
+                        <p class="help-block">{{$errors->first('BRANCH_BRAND_10')}}</p>@endif
+                </div>
+            </div>
+
+
             <div class="form-group @if ($errors->has('BRANCH_ADDR')) has-error @endif">
                 <label for="url" class="col-sm-3 control-label"><font color="red">*</font>ที่อยู่ :</label>
                 <div class="col-sm-5">

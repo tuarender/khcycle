@@ -36,7 +36,12 @@
                    @foreach($zonesub as $sub)
                        @if($sub['ZONE_NAME']==$datazone['ZONE_NAME'])
                             <li><a href="#" data-toggle="modal" data-target="#shopModal" data-whatever="{{$sub['BRANCH_SHOP']}}" data-body="{{ nl2br($sub['BRANCH_ADDR'])}}"
-                                        data-email="{{$sub['BRANCH_EMAIL']}}">
+                                        data-email="{{$sub['BRANCH_EMAIL']}}" data-brand01="{{$sub['BRANCH_BRAND_01']}}"
+                                   data-brand02="{{$sub['BRANCH_BRAND_02']}}"data-brand03="{{$sub['BRANCH_BRAND_03']}}"
+                                   data-brand01="{{$sub['BRANCH_BRAND_04']}}"data-brand01="{{$sub['BRANCH_BRAND_05']}}"
+                                   data-brand06="{{$sub['BRANCH_BRAND_06']}}"data-brand07="{{$sub['BRANCH_BRAND_07']}}"
+                                   data-brand08="{{$sub['BRANCH_BRAND_08']}}"data-brand09="{{$sub['BRANCH_BRAND_09']}}"
+                                   data-brand10="{{$sub['BRANCH_BRAND_10']}}">
                                     {{$sub['BRANCH_SHOP']}} </a></li>
                         @endif
                     @endforeach
@@ -120,7 +125,23 @@
             var recipient = button.data('whatever') // Extract info from data-* attributes
             var address = button.data('body')
             var email = button.data('email')
-            var body = "<div>"+address+"</div><div>EMAIL: "+email+"</div>"
+            var brand01 = button.data('brand01')
+            var brand02 = button.data('brand02')
+            var brand03 = button.data('brand03')
+            var brand04 = button.data('brand04')
+            var brand05 = button.data('brand05')
+            var brand06 = button.data('brand06')
+            var brand07 = button.data('brand07')
+            var brand08 = button.data('brand08')
+            var brand09 = button.data('brand09')
+            var brand10 = button.data('brand10')
+
+            var all_brand = [brand01,brand02,brand03,brand04,brand05,brand06,brand07,brand08,brand09,brand10];
+            all_brand = $.grep(all_brand,function(n){return(n)});
+
+            //alert(all_brand);
+
+            var body = "<div>"+address+"</div><div>EMAIL: "+email+"</div><div>BRAND: "+all_brand +"</div>"
             // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
             // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
             var modal = $(this)
