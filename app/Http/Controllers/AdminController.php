@@ -138,6 +138,7 @@ class AdminController extends Controller
                     'info.KH_INFORMATION_SHOE',
                     'contact.KH_CONTACT_ADDR')
                 ->where('login.KH_MEMBER_RULE','<>','ADMIN')
+                ->where('login.KH_MEMBER_LOGIN_STATUS','<>','0')
                 ->where('contact.KH_CONTACT_NAME','like',$name)
                 ->where('contact.KH_CONTACT_TEL','like',$tel)
                 ->simplePaginate(10);
@@ -685,6 +686,7 @@ class AdminController extends Controller
                     'info.KH_INFORMATION_SHOE',
                     'contact.KH_CONTACT_ADDR')
                 ->where('login.KH_MEMBER_RULE','<>','ADMIN')
+                ->where('login.KH_MEMBER_LOGIN_STATUS','<>','0')
                 ->simplePaginate(10);
 
         return $data;
@@ -1520,6 +1522,13 @@ class AdminController extends Controller
         $deleteParam = array($id);
         DB::update($sqlDelete,$deleteParam);
         return redirect('admin/news');
+    }
+
+    function deleteMember($id){
+        $sqlDelete = "UPDATE KH_MEMBER_LOGIN SET KH_MEMBER_LOGIN_STATUS = 0 WHERE ID = ? AND KH_MEMBER_RULE <> 'ADMIN'";
+        $deleteParam = array($id);
+        DB::update($sqlDelete,$deleteParam);
+        return redirect('admin/member');
     }
 
     public function brandAdd(Request $request){

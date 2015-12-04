@@ -9,14 +9,6 @@
                 <div class="sessionContainer" style="width: 90%">
                     Log in as:{{ Session::get('user')->KH_MEMBER_LOGIN_USERNAME }}<a href="logout">ออกจากระบบ</a>
                 </div>
-
-                <div class="row">
-                    <div class="col-xs-12" align="right">
-                        <a class="btn btn-info btn-sm" style="width: 100px" href="excel"><span class="glyphicon glyphicon-export" aria-hidden="true"></span> Export Excel</a>
-                    </div>
-                </div>
-
-
             <div class="row" style="width: 100%">
                     <form class="form-group" role="form" method="post" action="admin/member">
                         {{ csrf_field() }}
@@ -42,9 +34,7 @@
             </div>
             <div class="row">
                 <div class="col-sm-8 col-lg-9">
-                    <div class="col-sm-2">
-                        <label>ข้อมูลสมาชิก</label>
-                    </div>
+                        <label>ข้อมูลสมาชิก</label><a class="btn btn-info btn-sm" style="width: 100px;margin:3px 5px;" href="excel"><span class="glyphicon glyphicon-export" aria-hidden="true"></span> Export Excel</a>
                 </div>
             </div>
         </div>
@@ -77,9 +67,10 @@
                             <td class="tdCenter">{{$member['KH_INFORMATION_HEIGHT']}}</td>
                             <td class="tdCenter">{{$member['KH_INFORMATION_WEIGHT']}}</td>
                             <td class="tdCenter">{{$member['KH_INFORMATION_SHOE']}}</td>
-                            <td class="tdCenter">{{$member['KH_CONTACT_ADDR']}}</td>
-                            <td>
-                                <a href="member/{{$member['ID']}}" class="btn btn-warning">EDIT</a>
+                            <td class="tdCenter" style="width:150px">{{$member['KH_CONTACT_ADDR']}}</td>
+                            <td class="tdCenter" style="width:150px">
+                                <a href="member/{{$member['ID']}}" class="btn btn-warning">แก้ไช</a>
+                                <a  href='#' data-href="member/delete/{{$member['ID']}}" class='btn btn-danger' data-toggle='modal' data-target='#confirm-delete'><span class='glyphicon glyphicon-remove-sign' aria-hidden='true'></span> ลบ</a>
                                 {{--<button onclick="getSetting('member/edit/{{ $member['ID'] }}',true)" class="btn btn-warning">EDIT</button>--}}
                             </td>
                             {{--<td><a href="member/{{$member['ID']}}">EDIT</a></td>--}}

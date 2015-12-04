@@ -96,6 +96,7 @@ Route::get('admin/product/deleteBrand/{id}','AdminController@deleteBrand');
 Route::get('admin/product/deleteProduct/{idBrand}/{id}','AdminController@deleteProduct');
 Route::get('admin/product/deleteGroup/{id}','AdminController@deleteGroup');
 Route::get('admin/product/removeGroupFromBrand/{idBrand}/{idGroup}','AdminController@deleteGroupFromBrand');
+Route::get('member/delete/{id}','AdminController@deleteMember');
 //move
 Route::get('admin/home/moveBanner/order/{id}/{order}','AdminController@orderBanner');
 Route::get('admin/news/moveNews/order/{id}/{order}','AdminController@orderNews');
